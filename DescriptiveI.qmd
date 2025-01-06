@@ -3,9 +3,7 @@
 ## Motivation
 Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. Whether capturing a snapshot of a specific moment, tracking changes over time, or organizing information in structured or unstructured formats, how data is collected and categorized significantly impacts how it is analyzed and interpreted. This overview highlights key types of data and their unique characteristics to help you better understand their application in various contexts.
 
-## Key Concepts
-
-### Data and Types of Data {.unnumbered}
+## Data and Types of Data
 
 **Data** are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:
 
@@ -20,7 +18,7 @@ Understanding the nature and classification of data is crucial for effective ana
 
 **Example:** Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated *by each location* on Black Friday, it is cross-sectional data. On the other hand, if the store tracks *weekly sales for the past year* to observe trends, it is time series data. Structured data, like sales figures stored in *spreadsheets*, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from *social media posts and video reviews* represents unstructured data, requiring advanced tools to extract meaningful insights.
 
-### Data Sets {.unnumbered}
+## Data Sets
 
 A **data set** contains all data collected for a particular study. Data sets are composed of:
 
@@ -38,7 +36,7 @@ A **data set** contains all data collected for a particular study. Data sets are
 |    ...    |    ...     |    ...     |
 
 
-### Variables and Scales of Measurement {.unnumbered}
+## Variables and Scales of Measurement
 The **scales of measurements** determine the amount and type of information contained in each variable. In general, variables can be classified as **categorical** or **numerical**.
 
 -   **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
@@ -53,7 +51,7 @@ The **scales of measurements** determine the amount and type of information cont
 
     -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. *Ex: Prices, Profits, Wins.*
 
-### Useful R Functions {.unnumbered}
+## Useful R Functions
 
 Base R has some important functions that are helpful when dealing with data. Below is a list that might come handy.
 
