@@ -46,26 +46,35 @@ Follow all prompts and complete installation.
 
 ## Installing RStudio
 
-Visit the Posit website at <https://posit.co>. Once on the website, hover to the top right of the screen. You will see a "Download RStudio" blue button.
+Visit the Posit website at <https://posit.co>. Once on the website, hover to the top of the screen and select "Open Source" from the drop down menus.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/RStudio1.jpeg")
+knitr::include_graphics("images/RStudio1.png")
 ```
 
-Next, scroll down until you reach the RStudio desktop section. Click once more on "Download RStudio". You can now just jump to Step 2 since you have already downloaded R. Finally, choose the desired download depending on your operating system.
+Next, choose "R Studio IDE".
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/Desktop.jpeg")
+knitr::include_graphics("images/RStudio2.png")
 ```
+Scroll down until you see the products. You want to download "RStudio Desktop" and make sure it is the free version. 
 
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/RStudio3.png")
+```
+Finally, select "Download RStudio" and follow the instructions for installation.
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/RStudio4.png")
+```
 It is important to note that RStudio will not work if R is not installed. You can think of R as the engine and RStudio as the interface.
 
 ## Posit Cloud
 
-If you do not wish to install R, you can always use the cloud version. To do this, visit <https://posit.cloud/>. On the main page click on the "Sign Up" button.
+If you do not wish to install R, you can always use the cloud version. To do this, visit <https://posit.cloud/>. On the main page click on the "Get Started" button.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/Cloud.jpeg")
+knitr::include_graphics("images/Cloud.png")
 ```
 
 Choose the "Cloud Free" option and log in using your Google credentials (if you have a Google account) or sign up if you want to create a new account.
