@@ -24,9 +24,9 @@ A **data set** contains all data collected for a particular study. Data sets are
 
 -   **Elements** are the entities on which data are collected. *Ex: Football teams, countries, and individuals.*
 
--   **Observations** are the set of measurements obtained for a particular element.
+-   **Variables** are a set of characteristics collected for each element. *Ex: Goals scored, GDP, weight.*
 
--   **Variables** are a set of characteristics collected for each element.
+-   **Observations** are the set of measurements obtained for a particular element. *Ex: Salah, 20 (goals), 15 (assists).*
 
 | Elements  | Variable 1 | Variable 2 |
 |:---------:|:----------:|:----------:|
