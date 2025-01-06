@@ -7,11 +7,11 @@ Understanding the nature and classification of data is crucial for effective ana
 
 **Data** are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:
 
--   **Cross Sectional Data** refers to data collected at the same (or approximately the same) point in time. Ex: NFL standings in 1980 or Country GDP in 2015.
+-   **Cross Sectional Data** refers to data collected at the same (or approximately the same) point in time. *Ex: NFL standings in 1980 or Country GDP in 2015.*
 
--   **Time Series Data** refers to data collected over several time periods. Ex: U.S. inflation rate from 2000-2010 or Tesla deliveries from 2016-2022.
+-   **Time Series Data** refers to data collected over several time periods. *Ex: U.S. inflation rate from 2000-2010 or Tesla deliveries from 2016-2022.*
 
--   **Structured Data** resides in a predefined row-column format (tidy).
+-   **Structured Data** resides in a predefined row-column format (tidy). *Ex: spreadsheet data.* 
 
 -   **Unstructured Data** do not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
 
