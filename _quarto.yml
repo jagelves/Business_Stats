@@ -1,23 +1,19 @@
 project:
   type: book
+  output-dir: docs
 
 book:
-  title: "Business_Stats"
-  author: "Norah Jones"
-  date: "1/6/2025"
+  title: "Business Statistics"
+  author: "J. Alejandro Gelves"
+  date: "09/6/2024"
+  cover-image: cover.png
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
-    - references.qmd
-
-bibliography: references.bib
-
+    - DescriptiveI.qmd
 format:
   html:
     theme: cosmo
   pdf:
     documentclass: scrreprt
 
-
-
+editor: visual
