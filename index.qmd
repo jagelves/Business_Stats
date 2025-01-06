@@ -2,7 +2,7 @@
 
 "Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else." *Epictetus*
 
-The problems in this book are designed to help you master statistics and its application in R. I recommend reviewing @HOP if you need additional help learning R. Finally, I have provided a list of concepts at the beginning of every chapter. Enjoy!
+This course companion is designed to help you build mastery in statistics and its applications using R. Through practice, you will develop the skills and confidence needed to apply statistical concepts effectively. Each chapter begins with a list of key concepts to guide your learning, and the problems are crafted to reinforce these ideas through hands-on experience. If you need additional support while learning R, I encourage you to explore @HOP. Take your time, enjoy the process, and make practice a habit!
 
 ## Why R?
 
