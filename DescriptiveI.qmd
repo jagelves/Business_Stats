@@ -1,6 +1,9 @@
 # Descriptive Stats I
 
-## Concepts
+## Motivation
+In today’s data-driven world, understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. Whether capturing a snapshot of a specific moment, tracking changes over time, or organizing information in structured or unstructured formats, how data is collected and categorized significantly impacts how it is analyzed and interpreted. This overview highlights key types of data and their unique characteristics to help you better understand their application in various contexts.
+
+## Key Concepts
 
 ### Data and Types of Data {.unnumbered}
 
@@ -13,6 +16,9 @@
 -   **Structured Data** resides in a predefined row-column format (tidy).
 
 -   **Unstructured Data** do not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
+
+#### Example
+Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated *by each location* on Black Friday, it is cross-sectional data. On the other hand, if the store tracks *weekly sales for the past year* to observe trends, it is time series data. Structured data, like sales figures stored in *spreadsheets*, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from *social media posts and video reviews* represents unstructured data, requiring advanced tools to extract meaningful insights.
 
 ### Data Sets, Variables and Scales of Measurement {.unnumbered}
 
