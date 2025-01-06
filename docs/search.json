@@ -114,7 +114,7 @@
     "href": "DescriptiveI.html#data-sets",
     "title": "1  Descriptive Stats I",
     "section": "1.3 Data Sets",
-    "text": "1.3 Data Sets\nA data set contains all data collected for a particular study. Data sets are composed of:\n\nElements are the entities on which data are collected. Ex: Football teams, countries, and individuals.\nVariables are a set of characteristics collected for each element. Ex: Goals scored, GDP, weight.\nObservations are the set of measurements obtained for a particular element. Ex: Salah, 20 (goals), 15 (assists).\n\n\n\n\nElements\nVariable 1\nVariable 2\n\n\n\n\nElement 1\n#\n#\n\n\nElement 2\n#\n#\n\n\nElement 3\n#\n#\n\n\n…\n…\n…",
+    "text": "1.3 Data Sets\nA data set contains all data collected for a particular study. Data sets are composed of:\n\nElements are the entities on which data are collected. Ex: Football teams, countries, and individuals.\nVariables are a set of characteristics collected for each element. Ex: Goals scored, GDP, weight.\nObservations are the set of measurements obtained for a particular element. Ex: Salah, 20 (goals), 15 (assists). US, 2.3 (inflation), 4.5% (federal interest rate).\n\n\n\n\nElements\nVariable 1\nVariable 2\n\n\n\n\nElement 1\n#\n#\n\n\nElement 2\n#\n#\n\n\nElement 3\n#\n#\n\n\n…\n…\n…",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Descriptive Stats I</span>"
     ]

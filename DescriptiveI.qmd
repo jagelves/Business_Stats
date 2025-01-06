@@ -26,7 +26,7 @@ A **data set** contains all data collected for a particular study. Data sets are
 
 -   **Variables** are a set of characteristics collected for each element. *Ex: Goals scored, GDP, weight.*
 
--   **Observations** are the set of measurements obtained for a particular element. *Ex: Salah, 20 (goals), 15 (assists).*
+-   **Observations** are the set of measurements obtained for a particular element. *Ex: Salah, 20 (goals), 15 (assists). US, 2.3 (inflation), 4.5% (federal interest rate).*
 
 | Elements  | Variable 1 | Variable 2 |
 |:---------:|:----------:|:----------:|
