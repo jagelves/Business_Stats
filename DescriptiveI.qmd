@@ -17,10 +17,10 @@ In today’s data-driven world, understanding the nature and classification of d
 
 -   **Unstructured Data** do not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
 
-#### Example
-Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated *by each location* on Black Friday, it is cross-sectional data. On the other hand, if the store tracks *weekly sales for the past year* to observe trends, it is time series data. Structured data, like sales figures stored in *spreadsheets*, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from *social media posts and video reviews* represents unstructured data, requiring advanced tools to extract meaningful insights.
 
-### Data Sets, Variables and Scales of Measurement {.unnumbered}
+**Example:** Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated *by each location* on Black Friday, it is cross-sectional data. On the other hand, if the store tracks *weekly sales for the past year* to observe trends, it is time series data. Structured data, like sales figures stored in *spreadsheets*, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from *social media posts and video reviews* represents unstructured data, requiring advanced tools to extract meaningful insights.
+
+### Data Sets {.unnumbered}
 
 A **data set** contains all data collected for a particular study. Data sets are composed of:
 
@@ -37,6 +37,8 @@ A **data set** contains all data collected for a particular study. Data sets are
 | Element 3 |     \#     |     \#     |
 |    ...    |    ...     |    ...     |
 
+
+### Variables and Scales of Measurement {.unnumbered}
 The **scales of measurements** determine the amount and type of information contained in each variable. In general, variables can be classified as **categorical** or **numerical**.
 
 -   **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
