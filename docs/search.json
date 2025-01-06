@@ -74,7 +74,7 @@
     "href": "index.html#installing-rstudio",
     "title": "Business Statistics",
     "section": "Installing RStudio",
-    "text": "Installing RStudio\nVisit the Posit website at https://posit.co. Once on the website, hover to the top right of the screen. You will see a “Download RStudio” blue button.\n\n\n\n\n\n\n\n\n\nNext, scroll down until you reach the RStudio desktop section. Click once more on “Download RStudio”. You can now just jump to Step 2 since you have already downloaded R. Finally, choose the desired download depending on your operating system.\n\n\n\n\n\n\n\n\n\nIt is important to note that RStudio will not work if R is not installed. You can think of R as the engine and RStudio as the interface.",
+    "text": "Installing RStudio\nVisit the Posit website at https://posit.co. Once on the website, hover to the top of the screen and select “Open Source” from the drop down menus.\n\n\n\n\n\n\n\n\n\nNext, choose “R Studio IDE”.\n\n\n\n\n\n\n\n\n\nScroll down until you see the products. You want to download “RStudio Desktop” and make sure it is the free version.\n\n\n\n\n\n\n\n\n\nFinally, select “Download RStudio” and follow the instructions for installation.\n\n\n\n\n\n\n\n\n\nIt is important to note that RStudio will not work if R is not installed. You can think of R as the engine and RStudio as the interface.",
     "crumbs": [
       "Introduction"
     ]
@@ -84,7 +84,7 @@
     "href": "index.html#posit-cloud",
     "title": "Business Statistics",
     "section": "Posit Cloud",
-    "text": "Posit Cloud\nIf you do not wish to install R, you can always use the cloud version. To do this, visit https://posit.cloud/. On the main page click on the “Sign Up” button.\n\n\n\n\n\n\n\n\n\nChoose the “Cloud Free” option and log in using your Google credentials (if you have a Google account) or sign up if you want to create a new account.",
+    "text": "Posit Cloud\nIf you do not wish to install R, you can always use the cloud version. To do this, visit https://posit.cloud/. On the main page click on the “Get Started” button.\n\n\n\n\n\n\n\n\n\nChoose the “Cloud Free” option and log in using your Google credentials (if you have a Google account) or sign up if you want to create a new account.",
     "crumbs": [
       "Introduction"
     ]
