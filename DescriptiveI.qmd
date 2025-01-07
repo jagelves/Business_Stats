@@ -36,6 +36,22 @@ A **data set** contains all data collected for a particular study. Data sets are
 |    ...    |    ...     |    ...     |
 
 
+**Example:** Consider the dataset on electric vehicles (EV's) displayed below:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/EVs.png")
+```
+In this dataset, each row represents an electric vehicle model, making the elements the specific EV models rather than the manufacturers. The variables collected for each model include:
+
+- Make: The manufacturer of the EV.
+- Model: The specific name of the EV model.
+- Range_km: Driving range in kilometers on a full charge.
+- TopSpeed_kmh: Maximum speed in km/h.
+- Price_pounds: Price in pounds (£).
+- Charge_kmh: Charging speed in kilometers per hour.
+
+An example observation is "Tesla Model 3," with the following data: Make: Tesla, Model: Model 3, Range_km: 415, TopSpeed_kmh: 201, Price_pounds: 39,990, Charge_kmh: 690.
+
 ## Variables and Scales of Measurement
 The **scales of measurements** determine the amount and type of information contained in each variable. In general, variables can be classified as **categorical** or **numerical**.
 
