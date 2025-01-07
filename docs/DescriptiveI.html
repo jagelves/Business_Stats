@@ -356,7 +356,7 @@ window.Quarto = {
 <li>The <code>summary()</code> function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. <em>Input: A data frame (tibble) or vector.</em></li>
 <li>The <code>as.integer()</code>, <code>as.factor()</code>, <code>as.double()</code>, are functions used to coerce your data into a different scale of measurement. <em>Input: A vector or column of a data frame (tibble).</em></li>
 </ul>
-<p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">@R4DS</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
+<p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">(<a href="#ref-R4DS" role="doc-biblioref"><strong>R4DS?</strong></a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
 <ul>
 <li>The <code>arrange()</code> function allows you to sort data frames in ascending order. Pair with the <code>desc()</code> function to sort the data in descending order.</li>
 <li>The <code>filter()</code> function allows you to subset the rows of your data based on a condition.</li>
@@ -417,8 +417,22 @@ window.Quarto = {
 </table>
 <ol type="1">
 <li>Which of the above variables are categorical and which are numerical?</li>
+</ol>
+<details>
+<summary>
+Suggested Answer
+</summary>
+<em>The variables Title and Rating are categorical whereas Price and Year are numerical.</em>
+</details>
+<ol start="2" type="1">
 <li>What is the measurement scale of each of the above variable?</li>
 </ol>
+<details>
+<summary>
+Suggested Answer
+</summary>
+<em>The measurement scale is nominal for Title, ordinal for Ratio, ratio for Price, and interval for Year. Recall, that the nominal and ratio scales represent the least and most sophisticated levels of measurement, respectively.</em>
+</details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>

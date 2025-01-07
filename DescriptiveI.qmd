@@ -127,7 +127,18 @@ A bookstore has compiled data set on their current inventory. A portion of the d
 | Sleepy Hollow | 6.95  |      1820      |  3.8   |
 
 1.  Which of the above variables are categorical and which are numerical?
+
+<details>
+<summary>Suggested Answer</summary>
+*The variables Title and Rating are categorical whereas Price and Year are numerical.*
+</details>
+
 2.  What is the measurement scale of each of the above variable?
+
+<details>
+<summary>Suggested Answer</summary>
+*The measurement scale is nominal for Title, ordinal for Ratio, ratio for Price, and interval for Year. Recall, that the nominal and ratio scales represent the least and most sophisticated levels of measurement, respectively.*
+</details>
 
 ### Exercise 2 {.unnumbered}
 
