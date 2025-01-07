@@ -13,6 +13,7 @@ book:
 format:
   html:
     theme: cosmo
+    include-in-header: custom-head.html
   pdf:
     documentclass: scrreprt
 
