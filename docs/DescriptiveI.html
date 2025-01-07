@@ -477,15 +477,55 @@ Suggested Answer
 </table>
 <ol type="1">
 <li>What is the measurement scale of the Year variable? What are the strengths and weaknesses of this type of measurement scale?</li>
+</ol>
+<details>
+<summary>
+Suggested Answer
+</summary>
+<em>The variable Year is measured on the interval scale because the observations can be ranked, categorized and measured when using this kind of scale. However, there is no true zero point so we cannot calculate meaningful ratios between years.</em>
+</details>
+<ol start="2" type="1">
 <li>What is the measurement scale for the Quarter variable? What is the weakness of this type of measurement scale?</li>
+</ol>
+<details>
+<summary>
+Suggested Answer
+</summary>
+<em>The variable Quarter is measured on the ordinal scale, even though it contains numbers. It is the least sophisticated level of measurement because if we are presented with nominal data, all we can do is categorize or group the data.</em>
+</details>
+<ol start="3" type="1">
 <li>What is the measurement scale for the Deliveries variable? What are the strengths of this type of measurement scale?</li>
 </ol>
+<details>
+<summary>
+Suggested Answer
+</summary>
+<em>The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.</em>
+</details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
 <p>Use the <strong>airquality</strong> data set included in R for this problem.</p>
 <ol type="1">
 <li>Sort the data by <em>Temp</em> in descending order. What is the day and month of the first observation on the sorted data?</li>
+</ol>
+<details>
+<summary>
+Suggested Answer
+</summary>
+<p><em>The day and month of the first observation is August 28th.</em></p>
+<p><em>The easiest way to sort in R is by using the <code>dplyr</code> package. Specifically, the <code>arrange()</code> function within the package. Let’s also use the <code>desc()</code> function to make sure that the data is sorted in descending order. We can use indexing to retrieve the first row of the sorted data set.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SortedAQ<span class="ot">&lt;-</span><span class="fu">arrange</span>(airquality,<span class="fu">desc</span>(Temp))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>SortedAQ[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Ozone Solar.R Wind Temp Month Day
+1    76     203  9.7   97     8  28</code></pre>
+</div>
+</div>
+</details>
+<ol start="2" type="1">
 <li>Sort the data only by <em>Temp</em> in descending order. Of the <span class="math inline">\(10\)</span> hottest days, how many of them were in July?</li>
 <li>How many missing values are there in the data set? What rows have missing values for <em>Solar.R</em>?</li>
 <li>Remove all observations that have a missing values. Create a new object called <em>CompleteAG</em>.</li>
@@ -527,9 +567,9 @@ Suggested Answer
 </ol>
 <p>The easiest way to sort in R is by using the <code>dplyr</code> package. Specifically, the <code>arrange()</code> function within the package. Let’s also use the <code>desc()</code> function to make sure that the data is sorted in descending order. We can use indexing to retrieve the first row of the sorted data set.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SortedAQ<span class="ot">&lt;-</span><span class="fu">arrange</span>(airquality,<span class="fu">desc</span>(Temp))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>SortedAQ[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SortedAQ<span class="ot">&lt;-</span><span class="fu">arrange</span>(airquality,<span class="fu">desc</span>(Temp))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>SortedAQ[<span class="dv">1</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Ozone Solar.R Wind Temp Month Day
 1    76     203  9.7   97     8  28</code></pre>
@@ -540,8 +580,8 @@ Suggested Answer
 </ol>
 <p>We can use the <code>arrange()</code> function one more time for this question. Then we can use indexing to retrieve the top <span class="math inline">\(10\)</span> observations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SortedAQ2<span class="ot">&lt;-</span><span class="fu">arrange</span>(airquality,<span class="fu">desc</span>(Temp))</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SortedAQ2[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>SortedAQ2<span class="ot">&lt;-</span><span class="fu">arrange</span>(airquality,<span class="fu">desc</span>(Temp))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>SortedAQ2[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Ozone Solar.R Wind Temp Month Day
 1     76     203  9.7   97     8  28
@@ -561,7 +601,7 @@ Suggested Answer
 </ol>
 <p>We can easily identify missing values with the <code>summary()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     Ozone           Solar.R           Wind             Temp      
  Min.   :  1.00   Min.   :  7.0   Min.   : 1.700   Min.   :56.00  
@@ -583,7 +623,7 @@ Suggested Answer
 </div>
 <p>To view the rows that have NA’s in them, we can use the <code>is.na()</code> function and indexing. Below we see that <span class="math inline">\(7\)</span> values are missing for the <em>Solar.R</em> variable in the months <span class="math inline">\(5\)</span> and <span class="math inline">\(8\)</span> combined.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>airquality[<span class="fu">is.na</span>(airquality<span class="sc">$</span>Solar.R),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>airquality[<span class="fu">is.na</span>(airquality<span class="sc">$</span>Solar.R),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Ozone Solar.R Wind Temp Month Day
 5     NA      NA 14.3   56     5   5
@@ -599,21 +639,21 @@ Suggested Answer
 <li>To create the new object of complete observations we can use the <code>na.omit()</code> function.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>CompleteAQ<span class="ot">&lt;-</span><span class="fu">na.omit</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>CompleteAQ<span class="ot">&lt;-</span><span class="fu">na.omit</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="5" type="1">
 <li>There were <span class="math inline">\(107\)</span> days where the temperature was at least <span class="math inline">\(60\)</span>.</li>
 </ol>
 <p>Using base R we have:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CompleteAQ[CompleteAQ<span class="sc">$</span>Temp<span class="sc">&gt;=</span><span class="dv">60</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CompleteAQ[CompleteAQ<span class="sc">$</span>Temp<span class="sc">&gt;=</span><span class="dv">60</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 107</code></pre>
 </div>
 </div>
 <p>We can also use <code>dplyr</code> for this question. Specifically, using the <code>filter()</code> and <code>nrow()</code> functions we get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">filter</span>(CompleteAQ,Temp<span class="sc">&gt;=</span><span class="dv">60</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">filter</span>(CompleteAQ,Temp<span class="sc">&gt;=</span><span class="dv">60</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 107</code></pre>
 </div>
@@ -623,14 +663,14 @@ Suggested Answer
 </ol>
 <p>Using base R we have:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CompleteAQ[CompleteAQ<span class="sc">$</span>Temp<span class="sc">&gt;</span><span class="dv">55</span> <span class="sc">&amp;</span> CompleteAQ<span class="sc">$</span>Temp<span class="sc">&lt;</span><span class="dv">75</span> <span class="sc">&amp;</span> CompleteAQ<span class="sc">$</span>Ozone<span class="sc">&lt;</span><span class="dv">20</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CompleteAQ[CompleteAQ<span class="sc">$</span>Temp<span class="sc">&gt;</span><span class="dv">55</span> <span class="sc">&amp;</span> CompleteAQ<span class="sc">$</span>Temp<span class="sc">&lt;</span><span class="dv">75</span> <span class="sc">&amp;</span> CompleteAQ<span class="sc">$</span>Ozone<span class="sc">&lt;</span><span class="dv">20</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24</code></pre>
 </div>
 </div>
 <p>Using the <code>filter()</code> function once more we get:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">filter</span>(CompleteAQ,Temp<span class="sc">&gt;</span><span class="dv">55</span>,Temp<span class="sc">&lt;</span><span class="dv">75</span>,Ozone<span class="sc">&lt;</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">filter</span>(CompleteAQ,Temp<span class="sc">&gt;</span><span class="dv">55</span>,Temp<span class="sc">&lt;</span><span class="dv">75</span>,Ozone<span class="sc">&lt;</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24</code></pre>
 </div>
@@ -643,15 +683,15 @@ Suggested Answer
 </ol>
 <p>Let’s import the data to R by using the <code>read.csv()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Packers<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Packers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Packers<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Packers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can remove any missing observation by using the <code>na.omit()</code> function. We can name this new object <em>Packers2</em>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="ot">&lt;-</span><span class="fu">na.omit</span>(Packers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="ot">&lt;-</span><span class="fu">na.omit</span>(Packers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>To find the number of observations we can use the <code>dim()</code> function. It returns the number of observations and variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Packers2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(Packers2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 84  8</code></pre>
 </div>
@@ -661,7 +701,7 @@ Suggested Answer
 </ol>
 <p>Use the <code>typeof()</code> function on the <em>Experience</em> variable.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(Packers2<span class="sc">$</span>Experience)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(Packers2<span class="sc">$</span>Experience)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "character"</code></pre>
 </div>
@@ -671,15 +711,15 @@ Suggested Answer
 </ol>
 <p>First, remove any observation with an R by using indexing and logicals.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="ot">&lt;-</span>Packers2[Packers2<span class="sc">$</span>Experience<span class="sc">!=</span><span class="st">"R"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="ot">&lt;-</span>Packers2[Packers2<span class="sc">$</span>Experience<span class="sc">!=</span><span class="st">"R"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we can coerce the variable to an integer by using the <code>as.integer()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="sc">$</span>Experience<span class="ot">&lt;-</span><span class="fu">as.integer</span>(Packers2<span class="sc">$</span>Experience)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="sc">$</span>Experience<span class="ot">&lt;-</span><span class="fu">as.integer</span>(Packers2<span class="sc">$</span>Experience)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Lastly, calculate the sum using the <code>sum()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(Packers2<span class="sc">$</span>Experience)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(Packers2<span class="sc">$</span>Experience)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 288</code></pre>
 </div>
