@@ -64,6 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -187,6 +188,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./DescriptiveI.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
   </div>
 </li>
     </ul>
@@ -356,7 +363,7 @@ window.Quarto = {
 <li>The <code>summary()</code> function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. <em>Input: A data frame (tibble) or vector.</em></li>
 <li>The <code>as.integer()</code>, <code>as.factor()</code>, <code>as.double()</code>, are functions used to coerce your data into a different scale of measurement. <em>Input: A vector or column of a data frame (tibble).</em></li>
 </ul>
-<p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">(<a href="#ref-R4DS" role="doc-biblioref"><strong>R4DS?</strong></a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
+<p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">(<a href="references.html#ref-R4DS" role="doc-biblioref"><strong>R4DS?</strong></a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
 <ul>
 <li>The <code>arrange()</code> function allows you to sort data frames in ascending order. Pair with the <code>desc()</code> function to sort the data in descending order.</li>
 <li>The <code>filter()</code> function allows you to subset the rows of your data based on a condition.</li>
@@ -422,7 +429,7 @@ window.Quarto = {
 <summary>
 Suggested Answer
 </summary>
-<em>The variables Title and Rating are categorical whereas Price and Year are numerical.</em>
+<p><em>The “Title” variable represents the names of books. Therefore, this is a categorical variable. “Price” represents the cost of each book in a numeric format, making it a numerical variable. “Year Published” indicates the publication year of each book. It is numerical. If “Rating” represents a numerical score based on a continuous scale (e.g., average user ratings on a platform like Goodreads), it is numerical because arithmetic operations like averaging or comparing differences are meaningful. If “Rating” represents predefined categories (e.g., “Excellent,” “Good,” “Fair,” “Poor”) or is interpreted as ranks without meaningful differences between values, it would be categorical.</em></p>
 </details>
 <ol start="2" type="1">
 <li>What is the measurement scale of each of the above variable?</li>
@@ -431,7 +438,7 @@ Suggested Answer
 <summary>
 Suggested Answer
 </summary>
-<em>The measurement scale is nominal for Title, ordinal for Ratio, ratio for Price, and interval for Year. Recall, that the nominal and ratio scales represent the least and most sophisticated levels of measurement, respectively.</em>
+<em>The measurement scale is nominal for Title since these are labels used to identify each book and do not have a numerical meaning or order. If Rating represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not “twice as good” as one rated 2.0). Price is a measurable quantity with a meaningful zero (e.g., a book priced at $0 means it is free), making it ratio data. Year is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).</em>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
@@ -1110,6 +1117,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
