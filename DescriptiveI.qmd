@@ -82,7 +82,7 @@ Range (Numerical - Ratio), refers to the car's driving range in miles. It is num
 Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data.
 Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the "absence" of time), and ratios are not meaningful (e.g., 2020 is not "twice as late" as 1010).
 
-## Useful R Functions
+## Useful Base R Functions
 
 Understanding and using Base R functions is essential for efficiently managing and analyzing data. Functions like `na.omit()` help clean datasets by removing rows with missing values, ensuring your analyses are accurate and complete. `nrow()` and `ncol()` quickly provide insights into the size of your dataset, while `is.na()` allows you to identify and address missing data. The `summary()` function is a powerful way to generate descriptive statistics and assess the overall structure of your data at a glance. Additionally, coercion functions like `as.integer()`, `as.factor()`, and `as.double()` enable you to convert variables to appropriate data types, ensuring compatibility with different analysis methods.
 
@@ -92,6 +92,8 @@ Understanding and using Base R functions is essential for efficiently managing a
 -   The `summary()` function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. *Input: A data frame (tibble) or vector.*
 -   The `as.integer()`, `as.factor()`, `as.double()`, are functions used to coerce your data into a different scale of measurement. *Input: A vector or column of a data frame (tibble).*
 
+
+## Useful DPLYR Functions
 The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to @R4DS. To install, run the following command in the console `install.packages("dplyr")`.
 
 -   The `arrange()` function allows you to sort data frames in ascending order. Pair with the `desc()` function to sort the data in descending order.

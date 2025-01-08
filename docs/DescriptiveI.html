@@ -230,8 +230,9 @@ window.Quarto = {
   <li><a href="#data-and-types-of-data" id="toc-data-and-types-of-data" class="nav-link" data-scroll-target="#data-and-types-of-data"><span class="header-section-number">1.2</span> Data and Types of Data</a></li>
   <li><a href="#data-sets" id="toc-data-sets" class="nav-link" data-scroll-target="#data-sets"><span class="header-section-number">1.3</span> Data Sets</a></li>
   <li><a href="#scales-of-measurement" id="toc-scales-of-measurement" class="nav-link" data-scroll-target="#scales-of-measurement"><span class="header-section-number">1.4</span> Scales of Measurement</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">1.5</span> Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.6</span> Exercises</a>
+  <li><a href="#useful-base-r-functions" id="toc-useful-base-r-functions" class="nav-link" data-scroll-target="#useful-base-r-functions"><span class="header-section-number">1.5</span> Useful Base R Functions</a></li>
+  <li><a href="#useful-dplyr-functions" id="toc-useful-dplyr-functions" class="nav-link" data-scroll-target="#useful-dplyr-functions"><span class="header-section-number">1.6</span> Useful DPLYR Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -366,8 +367,8 @@ window.Quarto = {
 </div>
 <p>The variables can be classified as follows: Car (Categorical - Nominal), consists of names of cars, which are labels used to identify each row. The order of these names does not matter, making it nominal data. Brand (Categorical - Nominal) represents the manufacturer of the car (e.g., Ford, Audi). These are labels with no inherent order, making it nominal data. Range (Numerical - Ratio), refers to the car’s driving range in miles. It is numerical and ratio because it has a meaningful zero (a car with zero range cannot move), and ratios are meaningful (e.g., a car with 250 miles range has double the range of one with 125 miles). Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data. Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the “absence” of time), and ratios are not meaningful (e.g., 2020 is not “twice as late” as 1010).</p>
 </section>
-<section id="useful-r-functions" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">1.5</span> Useful R Functions</h2>
+<section id="useful-base-r-functions" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="useful-base-r-functions"><span class="header-section-number">1.5</span> Useful Base R Functions</h2>
 <p>Understanding and using Base R functions is essential for efficiently managing and analyzing data. Functions like <code>na.omit()</code> help clean datasets by removing rows with missing values, ensuring your analyses are accurate and complete. <code>nrow()</code> and <code>ncol()</code> quickly provide insights into the size of your dataset, while <code>is.na()</code> allows you to identify and address missing data. The <code>summary()</code> function is a powerful way to generate descriptive statistics and assess the overall structure of your data at a glance. Additionally, coercion functions like <code>as.integer()</code>, <code>as.factor()</code>, and <code>as.double()</code> enable you to convert variables to appropriate data types, ensuring compatibility with different analysis methods.</p>
 <ul>
 <li>The <code>na.omit()</code> function removes any observations that have a missing value (NA). The resulting data frame has only complete cases. <em>Input: A data frame (tibble) or vector.</em></li>
@@ -376,6 +377,9 @@ window.Quarto = {
 <li>The <code>summary()</code> function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. <em>Input: A data frame (tibble) or vector.</em></li>
 <li>The <code>as.integer()</code>, <code>as.factor()</code>, <code>as.double()</code>, are functions used to coerce your data into a different scale of measurement. <em>Input: A vector or column of a data frame (tibble).</em></li>
 </ul>
+</section>
+<section id="useful-dplyr-functions" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="useful-dplyr-functions"><span class="header-section-number">1.6</span> Useful DPLYR Functions</h2>
 <p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">Wickham (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
 <ul>
 <li>The <code>arrange()</code> function allows you to sort data frames in ascending order. Pair with the <code>desc()</code> function to sort the data in descending order.</li>
@@ -386,8 +390,8 @@ window.Quarto = {
 <li>The <code>summarise()</code> function allows you to summarise your data, based on groupings generated by the <code>goup_by()</code> function.</li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.6</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.7</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge on the Scales of Measurement. They will also allow you to practice some basic data “wrangling” in R. In these exercises you will:</p>
 <ul>
 <li><p>Identify numerical and categorical data.</p></li>
