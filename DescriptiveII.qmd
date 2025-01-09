@@ -43,7 +43,10 @@ ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
   labs(x="",y="Frequency",title="Favorite Food Items",
        subtitle="Class of 25 Students")
 ```
+In sum, the **bar plot** illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
+
 ## Frequency Distributions (Numerical)
+
 -   The **cumulative frequency** shows the number of data items with values less than or equal to the upper class limit of each class.
 -   The **cumulative relative frequency** is given by $cf_{i}/n$, where $cf_{i}$ is the cumulative frequency of class $i$.
 
@@ -104,9 +107,70 @@ Answers are provided below. Try not to peak until you have a formulated your own
 Install the `ISLR2` package in R. You will need the **BrainCancer** data set to answer this question.
 
 1.  Construct a frequency and relative frequency table of the *Diagnosis* variable. What was the most common diagnosis? What percentage of the sample had this diagnosis?
+
+<details>
+
+<summary>Answer</summary>
+
+*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about $48.28$% of the sample.*
+
+*Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.*
+
+```{r}
+library(ISLR2)
+table(BrainCancer$diagnosis)
+```
+
+*The relative frequency distribution can be easily retrieved by saving the frequency table in an object and then using the `prop.table()` function.*
+
+```{r}
+freq<-table(BrainCancer$diagnosis)
+prop.table(freq)
+```
+
+</details>
+
 2.  Construct a bar chart. Summarize the findings.
+
+<details>
+
+<summary>Answer</summary>
+
+*The majority of diagnosis are Meningioma. Low grade glioma is the least common of diagnosis. High grade glioma and other diagnosis have about the same frequency.*
+
+To construct the bar chart use the `geom_bar()` function from `tidyverse`.
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+ggplot(data=BrainCancer) + 
+  geom_bar(aes(diagnosis), alpha=0.5, col="black") + 
+  theme_clean()
+```
+
+</details>
+
 3.  Construct a contingency table that shows the *Diagnosis* along with the *Status*. Which diagnosis had the highest number of non-survivals (0)? What was the survival rate of this diagnosis?
-4.  Construct a stacked column chart. Which two *Diagnosis* and *Status* combinations are the most frequent?
+
+<details>
+
+<summary>Answer</summary>
+
+*$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.*
+
+*Use the `table()` function one more time to create the contingency table for the two variables.*
+
+```{r}
+(freq2<-table(BrainCancer$status,BrainCancer$diagnosis))
+```
+
+*To get the survival rates, we can use the `prop.table()` function once again.*
+
+```{r}
+prop.table(freq2,margin = 2)
+```
+
+</details>
 
 ### Exercise 2 {.unnumbered}
 
