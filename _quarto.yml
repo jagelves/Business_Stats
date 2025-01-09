@@ -20,6 +20,8 @@ book:
     - DescriptiveIII.qmd
     - DescriptiveIV.qmd
     - DescriptiveV.qmd
+    - RegressionI.qmd
+    - RegressionII.qmd
     - references.qmd
     
 bibliography: references.bib
