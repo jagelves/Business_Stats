@@ -25,6 +25,11 @@ book:
     - ProbabilityI.qmd
     - ProbabilityII.qmd
     - ProbabilityIII.qmd
+    - InferenceI.qmd
+    - InferenceII.qmd
+    - InferenceIII.qmd
+    - InfReg.qmd
+    - ObjectsVectors.qmd
     - references.qmd
     
 bibliography: references.bib
