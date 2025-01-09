@@ -6,21 +6,42 @@ Understanding and visualizing data distribution is a fundamental step in data an
 
 A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}/n$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole. 
 
-**Example:** Consider the data on students' answers to the question, what is your favorite food? You can see the data below:
+**Example:** Consider data on students' answers to the question, what is your favorite food? You can see the data below:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/food.png")
 ```
 Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/FreqDist.png")
+```{r echo=FALSE, message=FALSE, fig.align='center'}
+library(ggthemes)
+library(tidyverse)
+library(gt)
+food<-c("Pizza","Sushi","Sushi","Chicken",
+        "Chicken","Pasta","Pasta","Pasta",
+        "Sushi","Pasta","Chicken","Pizza",
+        "Chicken","Sushi","Pizza","Sushi",
+        "Sushi","Sushi","Sushi","Pizza",
+        "Pizza","Chicken","Sushi","Pizza",
+        "Sushi")
+
+as_tibble(food) %>% rename(Food=value) %>% group_by(Food) %>% summarise(Frequency=n()) %>% 
+  mutate(Relative=Frequency/sum(Frequency)) %>% gt() %>% 
+  cols_align("center") %>% 
+  tab_style(
+    locations =cells_column_labels(columns = everything()),
+    style = list(cell_borders(sides = "bottom", weight = px(3)),
+                 cell_text(weight = "bold")))
+                                                  
+
 ```
 Each food item is tallied up, and the result is shown in the Frequency column. We can also show the tally result as a ratio of the total food items recorded in the data (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This approach makes it much easier to pinpoint the most popular and the least popular items. 
 Below, you can see the bar graph showing the frequency distribution of the food items data. This approach shows each food item as a bar with a height equal to the frequency.
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/FreqDist1.png")
+```{r echo=FALSE, fig.align='center'}
+ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
+  labs(x="",y="Frequency",title="Favorite Food Items",
+       subtitle="Class of 25 Students")
 ```
 ## Frequency Distributions (Numerical)
 -   The **cumulative frequency** shows the number of data items with values less than or equal to the upper class limit of each class.
