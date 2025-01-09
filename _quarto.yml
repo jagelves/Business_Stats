@@ -8,6 +8,7 @@ book:
       Business Statistics by J. Alejandro Gelves.
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
+  
   title: "Business Statistics"
   author: "J. Alejandro Gelves"
   date: "09/6/2024"
