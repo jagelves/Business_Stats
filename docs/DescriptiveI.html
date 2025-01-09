@@ -456,7 +456,7 @@ window.Quarto = {
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
 <p><em>The “Title” variable represents the names of books. Therefore, this is a categorical variable. “Price” represents the cost of each book in a numeric format, making it a numerical variable. “Year Published” indicates the publication year of each book. It is numerical. If “Rating” represents a numerical score based on a continuous scale (e.g., average user ratings on a platform like Goodreads), it is numerical because arithmetic operations like averaging or comparing differences are meaningful. If “Rating” represents predefined categories (e.g., “Excellent,” “Good,” “Fair,” “Poor”) or is interpreted as ranks without meaningful differences between values, it would be categorical.</em></p>
 </details>
@@ -465,9 +465,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<em>The measurement scale is nominal for Title since these are labels used to identify each book and do not have a numerical meaning or order. If Rating represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not “twice as good” as one rated 2.0). Price is a measurable quantity with a meaningful zero (e.g., a book priced at $0 means it is free), making it ratio data. Year is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).</em>
+<p><em>The measurement scale is nominal for Title since these are labels used to identify each book and do not have a numerical meaning or order. If Rating represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not “twice as good” as one rated 2.0). Price is a measurable quantity with a meaningful zero (e.g., a book priced at $0 means it is free), making it ratio data. Year is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).</em></p>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
@@ -509,27 +509,27 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<em>The variable Year is measured on the interval scale because the observations can be ranked, categorized and measured when using this kind of scale. However, there is no true zero point so we cannot calculate meaningful ratios between years.</em>
+<p><em>The variable Year is measured on the interval scale because the observations can be ranked, categorized and measured when using this kind of scale. However, there is no true zero point so we cannot calculate meaningful ratios between years.</em></p>
 </details>
 <ol start="2" type="1">
 <li>What is the measurement scale for the Quarter variable? What is the weakness of this type of measurement scale?</li>
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<em>The variable Quarter is measured on the ordinal scale, even though it contains numbers. It is the least sophisticated level of measurement because if we are presented with nominal data, all we can do is categorize or group the data.</em>
+<p><em>The variable Quarter is measured on the ordinal scale, even though it contains numbers. It is the least sophisticated level of measurement because if we are presented with nominal data, all we can do is categorize or group the data.</em></p>
 </details>
 <ol start="3" type="1">
 <li>What is the measurement scale for the Deliveries variable? What are the strengths of this type of measurement scale?</li>
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<em>The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.</em>
+<p><em>The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.</em></p>
 </details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
@@ -540,7 +540,7 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
 <p><em>The day and month of the first observation is August 28th.</em></p>
 <p><em>The easiest way to sort in R is by using the <code>dplyr</code> package. Specifically, the <code>arrange()</code> function within the package. Let’s also use the <code>desc()</code> function to make sure that the data is sorted in descending order. We can use indexing to retrieve the first row of the sorted data set.</em></p>
@@ -559,9 +559,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<p><em>We can use the <code>arrange()</code> function one more time for this question. Then we can use indexing to retrieve the top <span class="math inline">\(10\)</span> observations.</em></p>
+<p><em>We can use the <code>arrange()</code> function one more time for this question. Then we can use indexing to retrieve the top</em> <span class="math inline">\(10\)</span> observations.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>SortedAQ2<span class="ot">&lt;-</span><span class="fu">arrange</span>(airquality,<span class="fu">desc</span>(Temp))</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SortedAQ2[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -585,9 +585,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<p><em>There are a total of <span class="math inline">\(44\)</span> missing values. Ozone has <span class="math inline">\(37\)</span> and Solar.R has <span class="math inline">\(7\)</span>. Rows <span class="math inline">\(5\)</span>, <span class="math inline">\(6\)</span>, <span class="math inline">\(11\)</span>, <span class="math inline">\(27\)</span>, <span class="math inline">\(96\)</span>, <span class="math inline">\(97\)</span>, <span class="math inline">\(98\)</span> are missing for Solar.R</em>.</p>
+<p><em>There are a total of</em> <span class="math inline">\(44\)</span> missing values. Ozone has <span class="math inline">\(37\)</span> and Solar.R has <span class="math inline">\(7\)</span>. Rows <span class="math inline">\(5\)</span>, <span class="math inline">\(6\)</span>, <span class="math inline">\(11\)</span>, <span class="math inline">\(27\)</span>, <span class="math inline">\(96\)</span>, <span class="math inline">\(97\)</span>, <span class="math inline">\(98\)</span> are missing for Solar.R.</p>
 <p><em>We can easily identify missing values with the <code>summary()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -610,7 +610,7 @@ Suggested Answer
                                </code></pre>
 </div>
 </div>
-<p><em>To view the rows that have NA’s in them, we can use the <code>is.na()</code> function and indexing. Below we see that <span class="math inline">\(7\)</span> values are missing for the Solar.R variable in the months <span class="math inline">\(5\)</span> and <span class="math inline">\(8\)</span> combined.</em></p>
+<p><em>To view the rows that have NA’s in them, we can use the <code>is.na()</code> function and indexing. Below we see that</em> <span class="math inline">\(7\)</span> values are missing for the Solar.R variable in the months <span class="math inline">\(5\)</span> and <span class="math inline">\(8\)</span> combined.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>airquality[<span class="fu">is.na</span>(airquality<span class="sc">$</span>Solar.R),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -630,7 +630,7 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
 <p><em>To create the new object of complete observations we can use the <code>na.omit()</code> function.</em></p>
 <div class="cell">
@@ -642,9 +642,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<p><em>There were <span class="math inline">\(107\)</span> days where the temperature was at least <span class="math inline">\(60\)</span>.</em></p>
+<p><em>There were</em> <span class="math inline">\(107\)</span> days where the temperature was at least <span class="math inline">\(60\)</span>.</p>
 <p><em>Using base R we have:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CompleteAQ[CompleteAQ<span class="sc">$</span>Temp<span class="sc">&gt;=</span><span class="dv">60</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -665,9 +665,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<p><em>There were <span class="math inline">\(24\)</span> days where the temperature was between <span class="math inline">\(55\)</span> and <span class="math inline">\(75\)</span> and the ozone level was below <span class="math inline">\(20\)</span>.</em></p>
+<p><em>There were</em> <span class="math inline">\(24\)</span> days where the temperature was between <span class="math inline">\(55\)</span> and <span class="math inline">\(75\)</span> and the ozone level was below <span class="math inline">\(20\)</span>.</p>
 <p><em>Using base R we have:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(CompleteAQ[CompleteAQ<span class="sc">$</span>Temp<span class="sc">&gt;</span><span class="dv">55</span> <span class="sc">&amp;</span> CompleteAQ<span class="sc">$</span>Temp<span class="sc">&lt;</span><span class="dv">75</span> <span class="sc">&amp;</span> CompleteAQ<span class="sc">$</span>Ozone<span class="sc">&lt;</span><span class="dv">20</span>,])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -692,9 +692,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<p><em>There are <span class="math inline">\(84\)</span> observations in the complete cases data set.</em></p>
+<p><em>There are</em> <span class="math inline">\(84\)</span> observations in the complete cases data set.</p>
 <p><em>Let’s import the data to R by using the <code>read.csv()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Packers<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Packers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -716,7 +716,7 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
 <p><em>The type is character.</em></p>
 <p><em>Use the <code>typeof()</code> function on the Experience variable.</em></p>
@@ -732,9 +732,9 @@ Suggested Answer
 </ol>
 <details>
 <summary>
-Suggested Answer
+Answer
 </summary>
-<p><em>The total sum of experience is <span class="math inline">\(288\)</span>.</em></p>
+<p><em>The total sum of experience is</em> <span class="math inline">\(288\)</span>.</p>
 <p><em>First, remove any observation with an R by using indexing and logicals.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Packers2<span class="ot">&lt;-</span>Packers2[Packers2<span class="sc">$</span>Experience<span class="sc">!=</span><span class="st">"R"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

@@ -218,10 +218,9 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">2.1</span> Concepts</a>
+  <li><a href="#frequency-distribution" id="toc-frequency-distribution" class="nav-link active" data-scroll-target="#frequency-distribution"><span class="header-section-number">2.0.1</span> Frequency Distribution</a></li>
+  <li><a href="#plots-using-ggplot2" id="toc-plots-using-ggplot2" class="nav-link" data-scroll-target="#plots-using-ggplot2"><span class="header-section-number">2.1</span> Plots Using ggplot2</a>
   <ul class="collapse">
-  <li><a href="#frequency" id="toc-frequency" class="nav-link" data-scroll-target="#frequency">Frequency</a></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.2</span> Exercises</a>
@@ -261,19 +260,39 @@ window.Quarto = {
 </header>
 
 
-<section id="concepts" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">2.1</span> Concepts</h2>
-<section id="frequency" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="frequency">Frequency</h3>
+<p>Understanding and visualizing data distribution is a fundamental step in data analysis. A frequency distribution organizes a structured data summary into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques, including bar plots and histograms, play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package <code>ggplot2</code>, has functions like <code>geom_bar()</code> and <code>geom_hist()</code> to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.</p>
+<section id="frequency-distribution" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="frequency-distribution"><span class="header-section-number">2.0.1</span> Frequency Distribution</h3>
 <p>A <strong>frequency distribution</strong> is a tabular summary of data showing the number of items in each of several non-overlapping classes.</p>
 <ul>
 <li>The <strong>relative frequency</strong> is calculated by <span class="math inline">\(f_{i}/n\)</span>, where <span class="math inline">\(f_{i}\)</span> is the frequency of class <span class="math inline">\(i\)</span> and <span class="math inline">\(n\)</span> is the total frequency.</li>
 <li>The <strong>cumulative frequency</strong> shows the number of data items with values less than or equal to the upper class limit of each class.</li>
 <li>The <strong>cumulative relative frequency</strong> is given by <span class="math inline">\(cf_{i}/n\)</span>, where <span class="math inline">\(cf_{i}\)</span> is the cumulative frequency of class <span class="math inline">\(i\)</span>.</li>
 </ul>
+<p><strong>Example:</strong> Consider the data on students’ answers to the question what is your favorite food?</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/food.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. This approach makes it much easier to pinpoint the most popular and the least popular items. Below you can see the bar graph showing frequency distribution of the food items data:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/FreqDist1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can now clearly identify that the most popular food item is sushi and the least popular item is pasta.</p>
 </section>
-<section id="plots" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="plots">Plots</h3>
+<section id="plots-using-ggplot2" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="plots-using-ggplot2"><span class="header-section-number">2.1</span> Plots Using ggplot2</h2>
 <p>A <strong>bar plot</strong> illustrates the frequency distribution of qualitative data.</p>
 <ul>
 <li><p>Is an illustration for qualitative data.</p></li>
@@ -291,7 +310,6 @@ window.Quarto = {
 <li>The <strong>limits</strong> should be chosen so that each point belongs to only one class.</li>
 </ul></li>
 </ul>
-</section>
 <section id="useful-r-functions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
 <p>The <code>table()</code> command generates frequency distributions or contingency tables if two variables are used.</p>
@@ -383,7 +401,7 @@ Meningioma  LG glioma  HG glioma      Other
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -421,7 +439,7 @@ Meningioma  LG glioma  HG glioma      Other
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -489,7 +507,7 @@ Meningioma  LG glioma  HG glioma      Other
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -519,7 +537,7 @@ Meningioma  LG glioma  HG glioma      Other
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
