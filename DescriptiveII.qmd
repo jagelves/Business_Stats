@@ -4,13 +4,14 @@ Understanding and visualizing data distribution is a fundamental step in data an
 
 ## Frequency Distributions (Categorical)
 
-A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}/n$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole. 
+A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}/n$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
 
 **Example:** Consider data on students' answers to the question, what is your favorite food? You can see the data below:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/food.png")
 ```
+
 Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:
 
 ```{r echo=FALSE, message=FALSE, fig.align='center'}
@@ -35,20 +36,44 @@ as_tibble(food) %>% rename(Food=value) %>% group_by(Food) %>% summarise(Frequenc
                                                   
 
 ```
-Each food item is tallied up, and the result is shown in the Frequency column. We can also show the tally result as a ratio of the total food items recorded in the data (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This approach makes it much easier to pinpoint the most popular and the least popular items. 
-Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.
+
+Each food item is tallied up, and the result is shown in the Frequency column. We can also show the tally result as a ratio of the total food items recorded in the data (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This approach makes it much easier to pinpoint the most popular and the least popular items. Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.
 
 ```{r echo=FALSE, fig.align='center'}
 ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
   labs(x="",y="Frequency",title="Favorite Food Items",
        subtitle="Class of 25 Students")
 ```
+
 In sum, the **bar plot** illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
 
 ## Frequency Distributions (Numerical)
 
--   The **cumulative frequency** shows the number of data items with values less than or equal to the upper class limit of each class.
--   The **cumulative relative frequency** is given by $cf_{i}/n$, where $cf_{i}$ is the cumulative frequency of class $i$.
+When working with numerical data, building a frequency distribution requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a meaningful frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes.
+
+Steps to Create a Frequency Distribution for Numerical Data:
+
+**1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.  
+*Ex: If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.*
+
+**2. Calculate the Width of Each Class:** The width of a class is determined using the formula: **range/(# of Classes)**.  
+*Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is $58/6 \approx 9.7$.* Hence, we can round up and use a class width of 10.
+
+**3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.  
+*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to [20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be [20,30), [30,40), [40,50), [50,60), [60,70), and [70,80).*
+
+**Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/dow.png")
+```
+
+Let's follow the steps to build the frequency distribution. 
+**1. Determine the Number of Classes:** Here we choose five classes since $2^5=32$ is greater than $30$ by the least amount.
+
+**2. Calculate the Width of Each Class:** The smallest values in the data set is $23$ and the maximum is $501$. This gives us a range of $478$. Now we can just take the range and divide by five to get $95.6$. To make things simple we can round to $100$ and use a class width of $100$.
+
+**3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested [20,120), [120,220), [220,320), [320,420), and [420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
 
 ## Plots Using ggplot2
 
@@ -66,11 +91,7 @@ A **histogram** illustrates the frequency distribution of quantitative data.
 
 -   There are no gaps between the bars.
 
--   The **number**, **width** and **limits** of each class must be determined.
 
-    -   The **number** of classes can be determined by the $2^k$ rule: select $k$ such that $2^k$ is greater than the number of observations by the smallest amount.
-    -   The **width** of the class is approximately *range/(# of Classes)*. The value should be rounded up.
-    -   The **limits** should be chosen so that each point belongs to only one class.
 
 ## Useful R Functions {.unnumbered}
 
@@ -112,7 +133,7 @@ Install the `ISLR2` package in R. You will need the **BrainCancer** data set to 
 
 <summary>Answer</summary>
 
-*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about $48.28$% of the sample.*
+*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about* $48.28$% of the sample.
 
 *Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.*
 
@@ -156,7 +177,7 @@ ggplot(data=BrainCancer) +
 
 <summary>Answer</summary>
 
-*$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.*
+$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
 
 *Use the `table()` function one more time to create the contingency table for the two variables.*
 
