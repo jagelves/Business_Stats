@@ -44,7 +44,7 @@
     "href": "index.html",
     "title": "Business Statistics",
     "section": "",
-    "text": "Introduction\n“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” Epictetus\nThis course companion is designed to help you build mastery in statistics and its applications using R. Through practice, you will develop the skills and confidence needed to apply statistical concepts effectively. Each chapter begins with a list of key concepts to guide your learning, and the problems are crafted to reinforce these ideas through hands-on experience. If you need additional support while learning R, I encourage you to explore @HOP. Take your time, enjoy the process, and make practice a habit!",
+    "text": "Introduction\n“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” Epictetus\nThis course companion is designed to help you build mastery in statistics and its applications using R. Through practice, you will develop the skills and confidence needed to apply statistical concepts effectively. Each chapter begins with a list of key concepts to guide your learning, and the problems are crafted to reinforce these ideas through hands-on experience. If you need additional support while learning R, I encourage you to explore Grolemund (2014). Take your time, enjoy the process, and make practice a habit!",
     "crumbs": [
       "Introduction"
     ]
@@ -84,7 +84,7 @@
     "href": "index.html#posit-cloud",
     "title": "Business Statistics",
     "section": "Posit Cloud",
-    "text": "Posit Cloud\nIf you do not wish to install R, you can always use the cloud version. To do this, visit https://posit.cloud/. On the main page click on the “Get Started” button.\n\n\n\n\n\n\n\n\n\nChoose the “Cloud Free” option and log in using your Google credentials (if you have a Google account) or sign up if you want to create a new account.",
+    "text": "Posit Cloud\nIf you do not wish to install R, you can always use the cloud version. To do this, visit https://posit.cloud/. On the main page click on the “Get Started” button.\n\n\n\n\n\n\n\n\n\nChoose the “Cloud Free” option and log in using your Google credentials (if you have a Google account) or sign up if you want to create a new account.\n\n\n\n\nGrolemund, Garret. 2014. “Hands-on Programming with r.” https://jjallaire.github.io/hopr/.",
     "crumbs": [
       "Introduction"
     ]
