@@ -36,7 +36,7 @@ as_tibble(food) %>% rename(Food=value) %>% group_by(Food) %>% summarise(Frequenc
 
 ```
 Each food item is tallied up, and the result is shown in the Frequency column. We can also show the tally result as a ratio of the total food items recorded in the data (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This approach makes it much easier to pinpoint the most popular and the least popular items. 
-Below, you can see the bar graph showing the frequency distribution of the food items data. This approach shows each food item as a bar with a height equal to the frequency.
+Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.
 
 ```{r echo=FALSE, fig.align='center'}
 ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
