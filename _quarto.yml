@@ -18,6 +18,8 @@ book:
     - DescriptiveI.qmd
     - DescriptiveII.qmd
     - DescriptiveIII.qmd
+    - DescriptiveIV.qmd
+    - DescriptiveV.qmd
     - references.qmd
     
 bibliography: references.bib
