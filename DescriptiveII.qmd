@@ -2,13 +2,9 @@
 
 Understanding and visualizing data distribution is a fundamental step in data analysis. A frequency distribution organizes a structured data summary into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques, including bar plots and histograms, play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package `ggplot2`, has functions like `geom_bar()` and `geom_hist()` to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.
 
-## Frequency Distribution
+## Frequency Distributions (Categorical)
 
-A **frequency distribution** is a tabular summary of data showing the number of items in each of several non-overlapping classes.
-
--   The **relative frequency** is calculated by $f_{i}/n$, where $f_{i}$ is the frequency of class $i$ and $n$ is the total frequency.
--   The **cumulative frequency** shows the number of data items with values less than or equal to the upper class limit of each class.
--   The **cumulative relative frequency** is given by $cf_{i}/n$, where $cf_{i}$ is the cumulative frequency of class $i$.
+A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}/n$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole. 
 
 **Example:** Consider the data on students' answers to the question, what is your favorite food? You can see the data below:
 
@@ -26,7 +22,9 @@ Below, you can see the bar graph showing the frequency distribution of the food 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/FreqDist1.png")
 ```
-
+## Frequency Distributions (Numerical)
+-   The **cumulative frequency** shows the number of data items with values less than or equal to the upper class limit of each class.
+-   The **cumulative relative frequency** is given by $cf_{i}/n$, where $cf_{i}$ is the cumulative frequency of class $i$.
 
 ## Plots Using ggplot2
 

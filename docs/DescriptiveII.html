@@ -218,16 +218,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#frequency-distribution" id="toc-frequency-distribution" class="nav-link active" data-scroll-target="#frequency-distribution"><span class="header-section-number">2.1</span> Frequency Distribution</a></li>
-  <li><a href="#plots-using-ggplot2" id="toc-plots-using-ggplot2" class="nav-link" data-scroll-target="#plots-using-ggplot2"><span class="header-section-number">2.2</span> Plots Using ggplot2</a></li>
+  <li><a href="#frequency-distributions-categorical" id="toc-frequency-distributions-categorical" class="nav-link active" data-scroll-target="#frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</a></li>
+  <li><a href="#frequency-distributions-numerical" id="toc-frequency-distributions-numerical" class="nav-link" data-scroll-target="#frequency-distributions-numerical"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</a></li>
+  <li><a href="#plots-using-ggplot2" id="toc-plots-using-ggplot2" class="nav-link" data-scroll-target="#plots-using-ggplot2"><span class="header-section-number">2.3</span> Plots Using ggplot2</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.3</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.4</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">2.4</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">2.5</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -259,14 +260,9 @@ window.Quarto = {
 
 
 <p>Understanding and visualizing data distribution is a fundamental step in data analysis. A frequency distribution organizes a structured data summary into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques, including bar plots and histograms, play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package <code>ggplot2</code>, has functions like <code>geom_bar()</code> and <code>geom_hist()</code> to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.</p>
-<section id="frequency-distribution" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="frequency-distribution"><span class="header-section-number">2.1</span> Frequency Distribution</h2>
-<p>A <strong>frequency distribution</strong> is a tabular summary of data showing the number of items in each of several non-overlapping classes.</p>
-<ul>
-<li>The <strong>relative frequency</strong> is calculated by <span class="math inline">\(f_{i}/n\)</span>, where <span class="math inline">\(f_{i}\)</span> is the frequency of class <span class="math inline">\(i\)</span> and <span class="math inline">\(n\)</span> is the total frequency.</li>
-<li>The <strong>cumulative frequency</strong> shows the number of data items with values less than or equal to the upper class limit of each class.</li>
-<li>The <strong>cumulative relative frequency</strong> is given by <span class="math inline">\(cf_{i}/n\)</span>, where <span class="math inline">\(cf_{i}\)</span> is the cumulative frequency of class <span class="math inline">\(i\)</span>.</li>
-</ul>
+<section id="frequency-distributions-categorical" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</h2>
+<p>A <strong>frequency distribution</strong> is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the <strong>relative frequency</strong>, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class (<span class="math inline">\(f_{i}/n\)</span>), and dividing it by the total frequency <span class="math inline">\(n\)</span>. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.</p>
 <p><strong>Example:</strong> Consider the data on students’ answers to the question, what is your favorite food? You can see the data below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -298,8 +294,15 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="plots-using-ggplot2" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="plots-using-ggplot2"><span class="header-section-number">2.2</span> Plots Using ggplot2</h2>
+<section id="frequency-distributions-numerical" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="frequency-distributions-numerical"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</h2>
+<ul>
+<li>The <strong>cumulative frequency</strong> shows the number of data items with values less than or equal to the upper class limit of each class.</li>
+<li>The <strong>cumulative relative frequency</strong> is given by <span class="math inline">\(cf_{i}/n\)</span>, where <span class="math inline">\(cf_{i}\)</span> is the cumulative frequency of class <span class="math inline">\(i\)</span>.</li>
+</ul>
+</section>
+<section id="plots-using-ggplot2" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="plots-using-ggplot2"><span class="header-section-number">2.3</span> Plots Using ggplot2</h2>
 <p>A <strong>bar plot</strong> illustrates the frequency distribution of qualitative data.</p>
 <ul>
 <li><p>Is an illustration for qualitative data.</p></li>
@@ -336,8 +339,8 @@ window.Quarto = {
 </ul></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.3</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.4</span> Exercises</h2>
 <p>The following exercises will help you practice summarizing data with tables and simple graphs. In particular, the exercises work on:</p>
 <ul>
 <li><p>Developing frequency distributions for both categorical and numerical data.</p></li>
@@ -372,8 +375,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="answers" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="answers"><span class="header-section-number">2.4</span> Answers</h2>
+<section id="answers" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="answers"><span class="header-section-number">2.5</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">
