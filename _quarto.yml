@@ -22,6 +22,9 @@ book:
     - DescriptiveV.qmd
     - RegressionI.qmd
     - RegressionII.qmd
+    - ProbabilityI.qmd
+    - ProbabilityII.qmd
+    - ProbabilityIII.qmd
     - references.qmd
     
 bibliography: references.bib

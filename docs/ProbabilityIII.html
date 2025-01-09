@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; Regression I – Business Statistics</title>
+<title>10&nbsp; Probability III – Business Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./RegressionII.html" rel="next">
-<link href="./DescriptiveV.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./ProbabilityII.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -153,7 +153,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./RegressionI.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ProbabilityIII.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -216,7 +216,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./RegressionI.html" class="sidebar-item-text sidebar-link active">
+  <a href="./RegressionI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></span></a>
   </div>
 </li>
@@ -240,7 +240,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ProbabilityIII.html" class="sidebar-item-text sidebar-link">
+  <a href="./ProbabilityIII.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></span></a>
   </div>
 </li>
@@ -260,18 +260,22 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">6.1</span> Concepts</a>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">10.1</span> Concepts</a>
   <ul class="collapse">
-  <li><a href="#measures-of-association" id="toc-measures-of-association" class="nav-link" data-scroll-target="#measures-of-association">Measures of Association</a></li>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables">Continuous Random Variables</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution">Uniform Distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal Distribution</a></li>
+  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution">Exponential Distribution</a></li>
+  <li><a href="#triangular-distribution" id="toc-triangular-distribution" class="nav-link" data-scroll-target="#triangular-distribution">Triangular Distribution</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.2</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.2</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">6.3</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">10.3</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -285,7 +289,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></h1>
 </div>
 
 
@@ -302,263 +306,242 @@ window.Quarto = {
 </header>
 
 
-<section id="concepts" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">6.1</span> Concepts</h2>
-<section id="measures-of-association" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="measures-of-association">Measures of Association</h3>
-<p>Measures of association determine whether there is a linear relationship between two variables. They also determine the strength of the relationship.</p>
+<section id="concepts" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">10.1</span> Concepts</h2>
+<section id="continuous-random-variables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="continuous-random-variables">Continuous Random Variables</h3>
+<p>Continuous random variables are characterized by their probability density function <span class="math inline">\(f(x)\)</span>. The probability density function does not directly provide probabilities!</p>
+<p>The probability of a continuous random variable assuming a single value is zero. Instead, probabilities are defined for intervals. These are calculated by areas under the PDF curve (integral).</p>
+</section>
+<section id="uniform-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="uniform-distribution">Uniform Distribution</h3>
+<p>The <strong>uniform</strong> probability density function is given by <span class="math inline">\(f(x)= \frac {1}{b-a}\)</span> when <span class="math inline">\(a \leq x \leq b\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
+<p>The <strong>expected value</strong> of the uniform distribution is <span class="math inline">\(E(x)= \frac {a+b}{2}\)</span>.</p>
+<p>The <strong>variance</strong> of the uniform distribution is <span class="math inline">\(var(x)= \frac {(b-a)^2} {12}\)</span></p>
+</section>
+<section id="normal-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="normal-distribution">Normal Distribution</h3>
+<p>The <strong>normal</strong> PDF is given by <span class="math inline">\(f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}\)</span>, where <span class="math inline">\(\mu\)</span> is the mean, <span class="math inline">\(\sigma\)</span> is the standard deviation, <span class="math inline">\(\pi\)</span> is 3.1415… , and <span class="math inline">\(e\)</span> is 2.7282… . The normal distribution has the following properties:</p>
 <ul>
-<li><p>The <strong>covariance</strong> is a measure that determines the direction of the relationship between two variables. It is calculated by <span class="math inline">\(s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}\)</span>. If <span class="math inline">\(s_{xy}&gt;0\)</span> there is a direct relationship, if <span class="math inline">\(s_{xy}&lt;0\)</span> there is an inverse relationship, and if <span class="math inline">\(s_{xy}=0\)</span> there is no relationship.</p></li>
-<li><p>The <strong>correlation</strong> measures the strength of the linear relationship. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p></li>
-<li><p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The next chapter expands on this measure.</p></li>
-<li><p>A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot provides a visual aid to determine the relationship between two variables.</p></li>
+<li><p>The normal curve is symmetrical about the mean <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>The mean is at the middle and divides the area of the distribution into halves.</p></li>
+<li><p>The total area under the curve is equal to 1.</p></li>
+<li><p>The distribution is completely determined by its mean and standard deviation.</p></li>
 </ul>
+<p>The <strong>standard normal</strong> distribution has a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span>.</p>
+</section>
+<section id="exponential-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exponential-distribution">Exponential Distribution</h3>
+<p>The <strong>exponential distribution</strong> is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.</p>
+<p>The probability density function is given by <span class="math inline">\(f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}\)</span>.</p>
+</section>
+<section id="triangular-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="triangular-distribution">Triangular Distribution</h3>
+<p>The <strong>triangular distribution</strong> is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.</p>
+<p>The probability density function is given by <span class="math inline">\(f(x)=\frac {2(x-a)}{(b-a)(c-a)}\)</span> for <span class="math inline">\(a \leq x &lt; c\)</span>; <span class="math inline">\(f(x)=\frac {2}{(b-a)}\)</span> for <span class="math inline">\(x=c\)</span>; <span class="math inline">\(f(x)=\frac {2(b-x)}{(b-a)(b-c)}\)</span> for <span class="math inline">\(c &lt; x \leq b\)</span>, and <span class="math inline">\(f(x)=0\)</span> otherwise.</p>
+<p>The <strong>expected value</strong> of the distribution is <span class="math inline">\(E(x)= \frac {a+b+c}{3}\)</span>.<br>
+The <strong>variance</strong> of the triangular distribution is <span class="math inline">\(var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}\)</span>.</p>
 </section>
 <section id="useful-r-functions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
-<p>To calculate the covariance use the <code>cov()</code> function.</p>
-<p>The correlation coefficient can be calculated using the <code>cor()</code> function.</p>
-<p>The <code>plot()</code> function will create scatter plots.</p>
+<p>To calculate the density of continuous random variables use the <code>dunif()</code>, <code>dnorm()</code>, and <code>dexp()</code> functions. For the triangular distribution use the extraDistr package and the <code>dtriang()</code> function.</p>
+<p>To calculate probabilities of continuous random variables use the <code>punif()</code>, <code>pnorm()</code>, <code>pexp()</code>, and <code>ptriang()</code> functions.</p>
+<p>To calculate quartiles of continuous random variables use the <code>qunif()</code>, <code>qnorm()</code>,<code>qexp()</code>, and <code>qtriang()</code> functions.</p>
+<p>To calculate generate random variables based on continuous random variables use the <code>runif()</code>, <code>rnorm()</code>, <code>rexp()</code>, and <code>rtriang()</code> functions.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.2</span> Exercises</h2>
-<p>The following exercises will help you understand statistical measures that establish the relationship between two variables. In particular, the exercises work on:</p>
+<section id="exercises" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.2</span> Exercises</h2>
+<p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
-<li><p>Calculating covariance and correlation.</p></li>
-<li><p>Using R to plot scatter diagrams.</p></li>
-<li><p>Calculating the coefficient of determination.</p></li>
+<li><p>Calculating probabilities for continuous random variables.</p></li>
+<li><p>Calculating the expected value and standard deviation.</p></li>
+<li><p>Applying the uniform, normal, and exponential distributions.</p></li>
 </ul>
 <p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>For the following exercises, make your calculations by hand and verify results using R functions when possible.</p>
+<p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
 <ol type="1">
-<li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
+<li><p>A random variable <span class="math inline">\(X\)</span> follows a continuous uniform distribution with minimum of <span class="math inline">\(-2\)</span> and maximum of <span class="math inline">\(4\)</span>. Determine the height of the density function <span class="math inline">\(f(x)\)</span>, the mean, the standard deviation, and calculate <span class="math inline">\(P(X \leq -1)\)</span>.</p></li>
+<li><p>Your internet provider will arrive sometime between 10:00 am and 12:00 pm. Suppose you have to run a quick errand at 10:00 am. If it takes <span class="math inline">\(15\)</span> minutes to run the errand, what is the probability that you will be back before the internet provider arrives? What if you take <span class="math inline">\(30\)</span> minutes?</p></li>
 </ol>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;"><strong>x</strong></th>
-<th style="text-align: center;">20</th>
-<th style="text-align: center;">21</th>
-<th style="text-align: center;">15</th>
-<th style="text-align: center;">18</th>
-<th style="text-align: center;">25</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>y</strong></td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">19</td>
-<td style="text-align: center;">12</td>
-<td style="text-align: center;">13</td>
-<td style="text-align: center;">22</td>
-</tr>
-</tbody>
-</table>
-<ol start="2" type="1">
-<li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
-</ol>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;"><strong>w</strong></th>
-<th style="text-align: center;">19</th>
-<th style="text-align: center;">16</th>
-<th style="text-align: center;">14</th>
-<th style="text-align: center;">11</th>
-<th style="text-align: center;">18</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><strong>z</strong></td>
-<td style="text-align: center;">17</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">20</td>
-<td style="text-align: center;">16</td>
-<td style="text-align: center;">18</td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>You will need the <strong>mtcars</strong> data set to answer this question. This data set is part of R. You don’t need to download any files to access it.</p>
 <ol type="1">
-<li><p>Calculate the correlation coefficient between <em>hp</em> and <em>mpg</em>. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.</p></li>
-<li><p>Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?</p></li>
-<li><p>Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the <em>mpg</em>? Let your dependent variable be <em>mpg</em>.</p></li>
+<li><p>A random variable <span class="math inline">\(Z\)</span> follows a standard normal distribution. Find <span class="math inline">\(P(-0.67 \leq Z \leq -0.23)\)</span>, <span class="math inline">\(P(0 \leq Z \leq 1.96)\)</span>, <span class="math inline">\(P(-1.28 \leq Z \leq 0)\)</span> and <span class="math inline">\(P(Z &gt; 4.2)\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(Y\)</span> be normally distributed with <span class="math inline">\(\mu=2.5\)</span> and <span class="math inline">\(\sigma=2\)</span>. Find <span class="math inline">\(P(Y&gt;7.6)\)</span>, <span class="math inline">\(P(7.4 \leq Y \leq 10.6)\)</span>, a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span>, and a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)=0.4943\)</span>.</p></li>
+<li><p>Assume that football game times are normally distributed with a mean of <span class="math inline">\(3\)</span> hours and a standard deviation of <span class="math inline">\(0.4\)</span> hour. What is the probability that the game lasts at most <span class="math inline">\(2.5\)</span> hours? Find the maximum value for a game to be in the bottom <span class="math inline">\(1\)</span>% of the distribution.</p></li>
 </ol>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>College</strong> data set to answer this question. You can find this data set here: https://jagelves.github.io/Data/College.csv</p>
 <ol type="1">
-<li><p>Create a scatter diagram between <em>GRAD_DEBT_MDN</em> (Median Debt) and <em>MD_EARN_WNE_P10</em> (Median Earnings). What type of relationship do you observe between the variables?</p></li>
-<li><p>Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?</p></li>
+<li><p>Random variable <span class="math inline">\(S\)</span> is exponentially distributed with mean of <span class="math inline">\(0.1\)</span>. What is the standard deviation of <span class="math inline">\(S\)</span>? What is <span class="math inline">\(P(0.10 \leq S \leq 0.2)\)</span>?</p></li>
+<li><p>A tollbooth operator has observed that cars arrive randomly at a rate of <span class="math inline">\(360\)</span> cars per hour. What is the mean time between car arrivals? What is the probability that the next car will arrive within ten seconds?</p></li>
 </ol>
 </section>
 </section>
-<section id="answers" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">6.3</span> Answers</h2>
+<section id="answers" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">10.3</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">
-<li>The covariance is <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</li>
+<li>The height of the density function <span class="math inline">\(f(x)=0.1667\)</span>, the mean is <span class="math inline">\(1\)</span>, standard deviation is <span class="math inline">\(1.73\)</span>, and <span class="math inline">\(P(X \leq -1)=0.1667\)</span>.</li>
 </ol>
-<p>Let’s start by finding the deviations from the mean for the <em>x</em> variable in R.</p>
+<p><span class="math inline">\(f(x)\)</span> can be easily estimated by using the formula of the continuous uniform random variable. <span class="math inline">\(f(x)=\frac{1}{b-a}\)</span>. Using R as a calculator we find:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">4</span><span class="sc">-</span>(<span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
+<pre><code>[1] 0.1666667</code></pre>
 </div>
 </div>
-<p>We will do the same with y:</p>
+<p>The mean is given by <span class="math inline">\(\mu = \frac{a+b}{2}\)</span>. In R we determine that the mean is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">2</span><span class="sc">+</span><span class="dv">4</span>)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
+<pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>Note that when the deviations in <em>x</em> are negative (positive), they are also negative (positive) in <em>y</em>. This is indicative of a direct relationship between the two variables. The covariance is given by:</p>
+<p>The standard deviation is <span class="math inline">\(\sigma = \sqrt {\frac{(b-a)^2}{12}}\)</span>. Using R we find:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span>(<span class="fu">length</span>(devx)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>((<span class="dv">4</span><span class="sc">-</span>(<span class="sc">-</span><span class="dv">2</span>))<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.9</code></pre>
+<pre><code>[1] 1.732051</code></pre>
 </div>
 </div>
-<p>We can verify this by using <code>cov()</code> function in R.</p>
+<p>Finally, we can find the probability of <span class="math inline">\(Z\)</span> being less than <span class="math inline">\(-1\)</span> by using the <code>punif()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.9</code></pre>
-</div>
-</div>
-<p>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cor<span class="ot">&lt;-</span>Ex1Cov<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9678386</code></pre>
-</div>
-</div>
-<p>We can once more verify the result in R with the built in function <code>cor()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9678386</code></pre>
+<pre><code>[1] 0.1666667</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li>The covariance is <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</li>
+<li>The probability that you will arrive on time is <span class="math inline">\(0.875\)</span>. If the time of the errand is 30 minutes, then the probability goes down to <span class="math inline">\(0.75\)</span>.</li>
 </ol>
-<p>Let’s start with <em>w</em> and finding the deviations from the mean in R.</p>
+<p>There is a <span class="math inline">\(120\)</span> minute interval in which the IP can arrive. The density function is given by <span class="math inline">\(f(x)=1/120\)</span>. Using R we can find <span class="math inline">\(P(X&gt;15)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>w<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(devw<span class="ot">&lt;-</span>w<span class="sc">-</span><span class="fu">mean</span>(w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">15</span>,<span class="dv">0</span>,<span class="dv">120</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  3.4  0.4 -1.6 -4.6  2.4</code></pre>
+<pre><code>[1] 0.875</code></pre>
 </div>
 </div>
-<p>We will do the same with <em>z</em>:</p>
+<p>Once more we can find <span class="math inline">\(P(X&gt;30)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">18</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(devz<span class="ot">&lt;-</span>z<span class="sc">-</span><span class="fu">mean</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">30</span>,<span class="dv">0</span>,<span class="dv">120</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.2  1.8  1.8 -2.2 -0.2</code></pre>
-</div>
-</div>
-<p>The covariance is given by:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devw<span class="sc">*</span>devz)<span class="sc">/</span>(<span class="fu">length</span>(devz)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.85</code></pre>
-</div>
-</div>
-<p>We can verify this with the <code>cov()</code> function in R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.85</code></pre>
-</div>
-</div>
-<p>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cor<span class="ot">&lt;-</span>Ex2Cov<span class="sc">/</span>(<span class="fu">sd</span>(z)<span class="sc">*</span><span class="fu">sd</span>(w)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1480558</code></pre>
-</div>
-</div>
-<p>We can once more verify the result in R with the built in function <code>cor()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1480558</code></pre>
+<pre><code>[1] 0.75</code></pre>
 </div>
 </div>
 </section>
 <section id="exercise-2-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2-1">Exercise 2</h3>
 <ol type="1">
-<li>The correlation coefficient is <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between <em>mpg</em> and <em>mp</em>.</li>
+<li><span class="math inline">\(P(-0.67 \leq Z \leq -0.23)=0.158\)</span>, <span class="math inline">\(P(0 \leq Z \leq 1.96)=0.475\)</span>, <span class="math inline">\(P(-1.28 \leq Z \leq 0)=0.4\)</span> and <span class="math inline">\(P(Z &gt; 4.2) \approx 0\)</span>.</li>
 </ol>
-<p>In R we can easily calculate the correlation coefficient with the <code>cor()</code> function.</p>
+<p>Use the <code>pnorm()</code> function to find the probabilities. <span class="math inline">\(P(-0.67 \leq Z \leq -0.23)\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.23</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.67</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.7761684</code></pre>
+<pre><code>[1] 0.157617</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(0 \leq Z \leq 1.96)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.96</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4750021</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(-1.28 \leq Z \leq 0)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3997274</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(P(Z &gt; 4.2)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">4.2</span>,<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00001334575</code></pre>
 </div>
 </div>
 <ol start="2" type="1">
-<li>The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of <span class="math inline">\(-0.78\)</span>.</li>
+<li><span class="math inline">\(P(Y&gt;7.6)=0.005386\)</span>, <span class="math inline">\(P(7.4 \leq Y \leq 10.6)=0.0071\)</span>, a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span> is <span class="math inline">\(6.42\)</span>, and a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)\)</span> is <span class="math inline">\(-2.56\)</span>.</li>
 </ol>
+<p>Let’s use once more the <code>pnorm()</code> function in R.</p>
+<p><span class="math inline">\(P(Y&gt;7.6)\)</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y=</span>mtcars<span class="sc">$</span>mpg,<span class="at">x=</span>mtcars<span class="sc">$</span>hp, <span class="at">main=</span><span class="st">""</span>, </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes=</span>F,<span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"blue"</span>,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Horse Power"</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles Per Gallon"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">40</span>),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">400</span>))</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(mtcars<span class="sc">$</span>mpg<span class="sc">~</span>mtcars<span class="sc">$</span>hp),</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="st">"darkgray"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">7.6</span>,<span class="fl">2.5</span>,<span class="dv">2</span>,<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.005386146</code></pre>
 </div>
+</div>
+<p><span class="math inline">\(P(7.4 \leq Y \leq 10.6)\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">10.6</span>,<span class="fl">2.5</span>,<span class="dv">2</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">7.4</span>,<span class="fl">2.5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.007117202</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>,<span class="fl">2.5</span>,<span class="dv">2</span>,<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.419928</code></pre>
+</div>
+</div>
+<p><span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)=0.4943\)</span>. Note that <span class="math inline">\(2.5\)</span> is the mean. Hence we are looking for a <span class="math inline">\(y\)</span> that has <span class="math inline">\(0.5-0.4943=0.0057\)</span> on the left:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.0057</span>,<span class="fl">2.5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.560385</code></pre>
 </div>
 </div>
 <ol start="3" type="1">
-<li>The coefficient of determination is <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the <em>hp</em> only explains <span class="math inline">\(60\)</span>% of the total variation.</li>
+<li>The probability is <span class="math inline">\(10.56\)</span>%. A game lasting no more than <span class="math inline">\(2.069\)</span> hours would be in the bottom <span class="math inline">\(1\)</span>%.</li>
 </ol>
-<p>In R we can calculate the coefficient of determination by squaring the correlation coefficient.</p>
+<p>Let’s use <code>pnorm()</code> once more in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">2.5</span>,<span class="dv">3</span>,<span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6024373</code></pre>
+<pre><code>[1] 0.1056498</code></pre>
+</div>
+</div>
+<p>For the threshold we can use <code>qnorm()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.01</span>,<span class="dv">3</span>,<span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.069461</code></pre>
 </div>
 </div>
 </section>
 <section id="exercise-3-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3-1">Exercise 3</h3>
 <ol type="1">
-<li>It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.</li>
+<li>The standard deviation is equal to the mean <span class="math inline">\(0.1\)</span>. <span class="math inline">\(P(0.10 \leq S \leq 0.2)=0.2325\)</span></li>
 </ol>
-<p>Start by loading the data. We’ll use the <code>read.csv()</code> function:</p>
+<p>Let’s use <code>pexp()</code> in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>College<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/College.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="fl">0.2</span>,<span class="at">rate =</span> <span class="dv">10</span>)<span class="sc">-</span><span class="fu">pexp</span>(<span class="fl">0.1</span>,<span class="at">rate =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2325442</code></pre>
 </div>
-<p>The two variables of interest are <em>GRAD_DEBT_MDN</em> and <em>MD_EARN_WNE_P10</em>. The following code creates the scatter plot:</p>
+</div>
 <ol start="2" type="1">
-<li>The correlation coefficient shows a moderate direct relationship between earnings and debt <span class="math inline">\(0.43\)</span>. The coefficient of determination indicates that only <span class="math inline">\(19\)</span>% of the variation in earnings can be explained by debt.</li>
+<li>The mean time between car arrivals is <span class="math inline">\(1/360=0.002778\)</span>. The probability that the next car will arrive within the next 10 seconds is <span class="math inline">\(0.6321\)</span>.</li>
 </ol>
-<p>In R we can start with the correlation coefficient:</p>
-<p>The coefficient of determination is:</p>
+<p>Once more we use <code>pexp()</code> in R</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">360</span>,<span class="dv">360</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6321206</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -987,13 +970,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./DescriptiveV.html" class="pagination-link" aria-label="Descriptive Stats V">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Descriptive Stats V</span></span>
+      <a href="./ProbabilityII.html" class="pagination-link" aria-label="Probability II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./RegressionII.html" class="pagination-link" aria-label="Regression II">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Regression II</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
