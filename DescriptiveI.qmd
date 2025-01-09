@@ -1,7 +1,5 @@
 # Descriptive Stats I
 
-## Motivation
-
 Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. Whether capturing a snapshot of a specific moment, tracking changes over time, or organizing information in structured or unstructured formats, how data is collected and categorized significantly impacts how it is analyzed and interpreted. This overview highlights key types of data and their unique characteristics to help you better understand their application in various contexts.
 
 ## Data and Types of Data
@@ -88,7 +86,7 @@ Understanding and using Base R functions is essential for efficiently managing a
 -   The `summary()` function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. *Input: A data frame (tibble) or vector.*
 -   The `as.integer()`, `as.factor()`, `as.double()`, are functions used to coerce your data into a different scale of measurement. *Input: A vector or column of a data frame (tibble).*
 
-## Useful DPLYR Functions
+## Useful dplyr Functions
 
 The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to @R4DS. To install, run the following command in the console `install.packages("dplyr")`.
 

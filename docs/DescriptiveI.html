@@ -310,13 +310,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#motivation" id="toc-motivation" class="nav-link active" data-scroll-target="#motivation"><span class="header-section-number">1.1</span> Motivation</a></li>
-  <li><a href="#data-and-types-of-data" id="toc-data-and-types-of-data" class="nav-link" data-scroll-target="#data-and-types-of-data"><span class="header-section-number">1.2</span> Data and Types of Data</a></li>
-  <li><a href="#data-sets" id="toc-data-sets" class="nav-link" data-scroll-target="#data-sets"><span class="header-section-number">1.3</span> Data Sets</a></li>
-  <li><a href="#scales-of-measurement" id="toc-scales-of-measurement" class="nav-link" data-scroll-target="#scales-of-measurement"><span class="header-section-number">1.4</span> Scales of Measurement</a></li>
-  <li><a href="#useful-base-r-functions" id="toc-useful-base-r-functions" class="nav-link" data-scroll-target="#useful-base-r-functions"><span class="header-section-number">1.5</span> Useful Base R Functions</a></li>
-  <li><a href="#useful-dplyr-functions" id="toc-useful-dplyr-functions" class="nav-link" data-scroll-target="#useful-dplyr-functions"><span class="header-section-number">1.6</span> Useful DPLYR Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.7</span> Exercises</a>
+  <li><a href="#data-and-types-of-data" id="toc-data-and-types-of-data" class="nav-link active" data-scroll-target="#data-and-types-of-data"><span class="header-section-number">1.1</span> Data and Types of Data</a></li>
+  <li><a href="#data-sets" id="toc-data-sets" class="nav-link" data-scroll-target="#data-sets"><span class="header-section-number">1.2</span> Data Sets</a></li>
+  <li><a href="#scales-of-measurement" id="toc-scales-of-measurement" class="nav-link" data-scroll-target="#scales-of-measurement"><span class="header-section-number">1.3</span> Scales of Measurement</a></li>
+  <li><a href="#useful-base-r-functions" id="toc-useful-base-r-functions" class="nav-link" data-scroll-target="#useful-base-r-functions"><span class="header-section-number">1.4</span> Useful Base R Functions</a></li>
+  <li><a href="#useful-dplyr-functions" id="toc-useful-dplyr-functions" class="nav-link" data-scroll-target="#useful-dplyr-functions"><span class="header-section-number">1.5</span> Useful dplyr Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">1.6</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -348,12 +347,9 @@ window.Quarto = {
 </header>
 
 
-<section id="motivation" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="motivation"><span class="header-section-number">1.1</span> Motivation</h2>
 <p>Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. Whether capturing a snapshot of a specific moment, tracking changes over time, or organizing information in structured or unstructured formats, how data is collected and categorized significantly impacts how it is analyzed and interpreted. This overview highlights key types of data and their unique characteristics to help you better understand their application in various contexts.</p>
-</section>
-<section id="data-and-types-of-data" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="data-and-types-of-data"><span class="header-section-number">1.2</span> Data and Types of Data</h2>
+<section id="data-and-types-of-data" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="data-and-types-of-data"><span class="header-section-number">1.1</span> Data and Types of Data</h2>
 <p><strong>Data</strong> are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:</p>
 <ul>
 <li><p><strong>Cross Sectional Data</strong> refers to data collected at the same (or approximately the same) point in time. <em>Ex: NFL standings in 1980 or Country GDP in 2015.</em></p></li>
@@ -363,8 +359,8 @@ window.Quarto = {
 </ul>
 <p><strong>Example:</strong> Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated <em>by each location</em> on Black Friday, it is cross-sectional data. On the other hand, if the store tracks <em>weekly sales for the past year</em> to observe trends, it is time series data. Structured data, like sales figures stored in <em>spreadsheets</em>, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from <em>social media posts and video reviews</em> represents unstructured data, requiring advanced tools to extract meaningful insights.</p>
 </section>
-<section id="data-sets" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="data-sets"><span class="header-section-number">1.3</span> Data Sets</h2>
+<section id="data-sets" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="data-sets"><span class="header-section-number">1.2</span> Data Sets</h2>
 <p>A <strong>data set</strong> contains all data collected for a particular study. Data sets are composed of:</p>
 <ul>
 <li><p><strong>Elements</strong> are the entities on which data are collected. <em>Ex: Football teams, countries, and individuals.</em></p></li>
@@ -423,8 +419,8 @@ window.Quarto = {
 </ul>
 <p>An example observation is “Tesla Model 3,” with the following data: Make: Tesla, Model: Model 3, Range_km: 415, TopSpeed_kmh: 201, Price_pounds: 39,990, Charge_kmh: 690.</p>
 </section>
-<section id="scales-of-measurement" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="scales-of-measurement"><span class="header-section-number">1.4</span> Scales of Measurement</h2>
+<section id="scales-of-measurement" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="scales-of-measurement"><span class="header-section-number">1.3</span> Scales of Measurement</h2>
 <p>Understanding scales of measurement is crucial for analyzing and interpreting data effectively in business. By distinguishing between categorical (e.g., marital status, satisfaction ratings) and numerical data (e.g., profits, prices), you’ll know what methods to use for analysis. Knowing whether data is nominal, ordinal, interval, or ratio ensures your analysis and conclusions are accurate and relevant.</p>
 <p>The <strong>scales of measurements</strong> determine the amount and type of information contained in each variable. In general, variables can be classified as <strong>categorical</strong> or <strong>numerical</strong>.</p>
 <ul>
@@ -451,8 +447,8 @@ window.Quarto = {
 </div>
 <p>The variables can be classified as follows: Car (Categorical - Nominal), consists of names of cars, which are labels used to identify each row. The order of these names does not matter, making it nominal data. Brand (Categorical - Nominal) represents the manufacturer of the car (e.g., Ford, Audi). These are labels with no inherent order, making it nominal data. Range (Numerical - Ratio), refers to the car’s driving range in miles. It is numerical and ratio because it has a meaningful zero (a car with zero range cannot move), and ratios are meaningful (e.g., a car with 250 miles range has double the range of one with 125 miles). Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data. Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the “absence” of time), and ratios are not meaningful (e.g., 2020 is not “twice as late” as 1010).</p>
 </section>
-<section id="useful-base-r-functions" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="useful-base-r-functions"><span class="header-section-number">1.5</span> Useful Base R Functions</h2>
+<section id="useful-base-r-functions" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="useful-base-r-functions"><span class="header-section-number">1.4</span> Useful Base R Functions</h2>
 <p>Understanding and using Base R functions is essential for efficiently managing and analyzing data. Functions like <code>na.omit()</code> help clean datasets by removing rows with missing values, ensuring your analyses are accurate and complete. <code>nrow()</code> and <code>ncol()</code> quickly provide insights into the size of your dataset, while <code>is.na()</code> allows you to identify and address missing data. The <code>summary()</code> function is a powerful way to generate descriptive statistics and assess the overall structure of your data at a glance. Additionally, coercion functions like <code>as.integer()</code>, <code>as.factor()</code>, and <code>as.double()</code> enable you to convert variables to appropriate data types, ensuring compatibility with different analysis methods.</p>
 <ul>
 <li>The <code>na.omit()</code> function removes any observations that have a missing value (NA). The resulting data frame has only complete cases. <em>Input: A data frame (tibble) or vector.</em></li>
@@ -462,8 +458,8 @@ window.Quarto = {
 <li>The <code>as.integer()</code>, <code>as.factor()</code>, <code>as.double()</code>, are functions used to coerce your data into a different scale of measurement. <em>Input: A vector or column of a data frame (tibble).</em></li>
 </ul>
 </section>
-<section id="useful-dplyr-functions" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="useful-dplyr-functions"><span class="header-section-number">1.6</span> Useful DPLYR Functions</h2>
+<section id="useful-dplyr-functions" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="useful-dplyr-functions"><span class="header-section-number">1.5</span> Useful dplyr Functions</h2>
 <p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">Wickham (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
 <ul>
 <li>The <code>arrange()</code> function allows you to sort data frames in ascending order. Pair with the <code>desc()</code> function to sort the data in descending order.</li>
@@ -474,8 +470,8 @@ window.Quarto = {
 <li>The <code>summarise()</code> function allows you to summarise your data, based on groupings generated by the <code>goup_by()</code> function.</li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="1.7">
-<h2 data-number="1.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.6</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge on the Scales of Measurement. They will also allow you to practice some basic data “wrangling” in R. In these exercises you will:</p>
 <ul>
 <li><p>Identify numerical and categorical data.</p></li>
