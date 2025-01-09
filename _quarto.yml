@@ -16,6 +16,7 @@ book:
     - index.qmd
     - DescriptiveI.qmd
     - DescriptiveII.qmd
+    - DescriptiveIII.qmd
     - references.qmd
     
 bibliography: references.bib
