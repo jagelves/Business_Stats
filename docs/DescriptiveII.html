@@ -331,10 +331,10 @@ window.Quarto = {
 </header>
 
 
-<p>Understanding and visualizing data distribution is a fundamental step in data analysis. A frequency distribution organizes a structured data summary into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques, including bar plots and histograms, play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package <code>ggplot2</code>, has functions like <code>geom_bar()</code> and <code>geom_hist()</code> to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.</p>
+<p>Understanding and visualizing data distributions is a fundamental step in data analysis. A frequency distribution organizes data into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package <code>ggplot2</code>, has functions like <code>geom_bar()</code> and <code>geom_hist()</code> to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.</p>
 <section id="frequency-distributions-categorical" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</h2>
-<p>A <strong>frequency distribution</strong> is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the <strong>relative frequency</strong>, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class (<span class="math inline">\(f_{i}/n\)</span>), and dividing it by the total frequency <span class="math inline">\(n\)</span>. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.</p>
+<p>A <strong>frequency distribution</strong> is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. The <strong>relative frequency</strong>, which quantifies the proportion of items in each category relative to the total number of observations is often used as an alternative to showing raw frequencies. You can calculate it by taking the frequency of a particular class (<span class="math inline">\(f_{i}\)</span>), and dividing it by the total frequency <span class="math inline">\(n\)</span>. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.</p>
 <p><strong>Example:</strong> Consider data on students’ answers to the question, what is your favorite food? You can see the data below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -348,23 +348,23 @@ window.Quarto = {
 <p>Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="yyeojgunce" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#yyeojgunce table {
+<div id="mooupysrhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mooupysrhz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#yyeojgunce thead, #yyeojgunce tbody, #yyeojgunce tfoot, #yyeojgunce tr, #yyeojgunce td, #yyeojgunce th {
+#mooupysrhz thead, #mooupysrhz tbody, #mooupysrhz tfoot, #mooupysrhz tr, #mooupysrhz td, #mooupysrhz th {
   border-style: none;
 }
 
-#yyeojgunce p {
+#mooupysrhz p {
   margin: 0;
   padding: 0;
 }
 
-#yyeojgunce .gt_table {
+#mooupysrhz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -390,12 +390,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_caption {
+#mooupysrhz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#yyeojgunce .gt_title {
+#mooupysrhz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -407,7 +407,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#yyeojgunce .gt_subtitle {
+#mooupysrhz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -419,7 +419,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#yyeojgunce .gt_heading {
+#mooupysrhz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -431,13 +431,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_bottom_border {
+#mooupysrhz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_col_headings {
+#mooupysrhz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -452,7 +452,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_col_heading {
+#mooupysrhz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -472,7 +472,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#yyeojgunce .gt_column_spanner_outer {
+#mooupysrhz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,15 +484,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#yyeojgunce .gt_column_spanner_outer:first-child {
+#mooupysrhz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#yyeojgunce .gt_column_spanner_outer:last-child {
+#mooupysrhz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#yyeojgunce .gt_column_spanner {
+#mooupysrhz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -504,11 +504,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#yyeojgunce .gt_spanner_row {
+#mooupysrhz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#yyeojgunce .gt_group_heading {
+#mooupysrhz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -534,7 +534,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#yyeojgunce .gt_empty_group_heading {
+#mooupysrhz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -549,15 +549,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#yyeojgunce .gt_from_md > :first-child {
+#mooupysrhz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#yyeojgunce .gt_from_md > :last-child {
+#mooupysrhz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#yyeojgunce .gt_row {
+#mooupysrhz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -576,7 +576,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#yyeojgunce .gt_stub {
+#mooupysrhz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -589,7 +589,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#yyeojgunce .gt_stub_row_group {
+#mooupysrhz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -603,15 +603,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#yyeojgunce .gt_row_group_first td {
+#mooupysrhz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#yyeojgunce .gt_row_group_first th {
+#mooupysrhz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#yyeojgunce .gt_summary_row {
+#mooupysrhz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -621,16 +621,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#yyeojgunce .gt_first_summary_row {
+#mooupysrhz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_first_summary_row.thick {
+#mooupysrhz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#yyeojgunce .gt_last_summary_row {
+#mooupysrhz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -640,7 +640,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_grand_summary_row {
+#mooupysrhz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -650,7 +650,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#yyeojgunce .gt_first_grand_summary_row {
+#mooupysrhz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -660,7 +660,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_last_grand_summary_row_top {
+#mooupysrhz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -670,11 +670,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_striped {
+#mooupysrhz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#yyeojgunce .gt_table_body {
+#mooupysrhz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -683,7 +683,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_footnotes {
+#mooupysrhz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -697,7 +697,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_footnote {
+#mooupysrhz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -706,7 +706,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#yyeojgunce .gt_sourcenotes {
+#mooupysrhz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -720,7 +720,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#yyeojgunce .gt_sourcenote {
+#mooupysrhz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -728,72 +728,72 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#yyeojgunce .gt_left {
+#mooupysrhz .gt_left {
   text-align: left;
 }
 
-#yyeojgunce .gt_center {
+#mooupysrhz .gt_center {
   text-align: center;
 }
 
-#yyeojgunce .gt_right {
+#mooupysrhz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#yyeojgunce .gt_font_normal {
+#mooupysrhz .gt_font_normal {
   font-weight: normal;
 }
 
-#yyeojgunce .gt_font_bold {
+#mooupysrhz .gt_font_bold {
   font-weight: bold;
 }
 
-#yyeojgunce .gt_font_italic {
+#mooupysrhz .gt_font_italic {
   font-style: italic;
 }
 
-#yyeojgunce .gt_super {
+#mooupysrhz .gt_super {
   font-size: 65%;
 }
 
-#yyeojgunce .gt_footnote_marks {
+#mooupysrhz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#yyeojgunce .gt_asterisk {
+#mooupysrhz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#yyeojgunce .gt_indent_1 {
+#mooupysrhz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#yyeojgunce .gt_indent_2 {
+#mooupysrhz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#yyeojgunce .gt_indent_3 {
+#mooupysrhz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#yyeojgunce .gt_indent_4 {
+#mooupysrhz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#yyeojgunce .gt_indent_5 {
+#mooupysrhz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#yyeojgunce .katex-display {
+#mooupysrhz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#yyeojgunce div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mooupysrhz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -833,7 +833,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Each food item is tallied up, and the result is shown in the Frequency column. We can also show the tally result as a ratio of the total food items recorded in the data (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This approach makes it much easier to pinpoint the most popular and the least popular items. Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.</p>
+<p>Each food item is tallied up, and the result is shown in the frequency column. Alternately, we can show the tally as a proportion of the total (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This calculation is shown for each food item in the relative frequency column.</p>
+<p>Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -847,8 +848,7 @@ window.Quarto = {
 </section>
 <section id="frequency-distributions-numerical" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="frequency-distributions-numerical"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</h2>
-<p>When working with numerical data, building a frequency distribution requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a meaningful frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes.</p>
-<p>Steps to Create a Frequency Distribution for Numerical Data:</p>
+<p>When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:</p>
 <p><strong>1. Determine the Number of Classes:</strong> The number of classes can be estimated using the <span class="math inline">\(2^k\)</span> rule, where <span class="math inline">\(k\)</span> is the smallest integer such that <span class="math inline">\(2^k\)</span> exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.<br>
 <em>Ex: If a data set has 50 observations, we would choose six classes since <span class="math inline">\(2^6=64\)</span> is greater than <span class="math inline">\(50\)</span> by the least amount.</em></p>
 <p><strong>2. Calculate the Width of Each Class:</strong> The width of a class is determined using the formula: <strong>range/(# of Classes)</strong>.<br>
@@ -865,7 +865,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Let’s follow the steps to build the frequency distribution. <strong>1. Determine the Number of Classes:</strong> Here we choose five classes since <span class="math inline">\(2^5=32\)</span> is greater than <span class="math inline">\(30\)</span> by the least amount.</p>
+<p>Let’s follow the steps to build the frequency distribution.</p>
+<p><strong>1. Determine the Number of Classes:</strong> Here we choose five classes since <span class="math inline">\(2^5=32\)</span> is greater than <span class="math inline">\(30\)</span> by the least amount.</p>
 <p><strong>2. Calculate the Width of Each Class:</strong> The smallest values in the data set is <span class="math inline">\(23\)</span> and the maximum is <span class="math inline">\(501\)</span>. This gives us a range of <span class="math inline">\(478\)</span>. Now we can just take the range and divide by five to get <span class="math inline">\(95.6\)</span>. To make things simple we can round to <span class="math inline">\(100\)</span> and use a class width of <span class="math inline">\(100\)</span>.</p>
 <p><strong>3. Establish Class Limits:</strong> Since we have rounded up we can be flexible with our class limits. The following class limits are suggested [20,120), [120,220), [220,320), [320,420), and [420,520). Note that each class has a width of <span class="math inline">\(100\)</span>, and that each data point belongs to one single class.</p>
 </section>

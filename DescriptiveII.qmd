@@ -1,10 +1,10 @@
 # Descriptive Stats II
 
-Understanding and visualizing data distribution is a fundamental step in data analysis. A frequency distribution organizes a structured data summary into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques, including bar plots and histograms, play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package `ggplot2`, has functions like `geom_bar()` and `geom_hist()` to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.
+Understanding and visualizing data distributions is a fundamental step in data analysis. A frequency distribution organizes data into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package `ggplot2`, has functions like `geom_bar()` and `geom_hist()` to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.
 
 ## Frequency Distributions (Categorical)
 
-A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. Presenting the data in a tabular format makes it easier to identify patterns and trends within the categories. A key component of this analysis is the **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}/n$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
+A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. The **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations is often used as an alternative to showing raw frequencies. You can calculate it by taking the frequency of a particular class ($f_{i}$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
 
 **Example:** Consider data on students' answers to the question, what is your favorite food? You can see the data below:
 
@@ -37,7 +37,9 @@ as_tibble(food) %>% rename(Food=value) %>% group_by(Food) %>% summarise(Frequenc
 
 ```
 
-Each food item is tallied up, and the result is shown in the Frequency column. We can also show the tally result as a ratio of the total food items recorded in the data (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This approach makes it much easier to pinpoint the most popular and the least popular items. Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.
+Each food item is tallied up, and the result is shown in the frequency column. Alternately, we can show the tally as a proportion of the total (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This calculation is shown for each food item in the relative frequency column.  
+
+Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency. 
 
 ```{r echo=FALSE, fig.align='center'}
 ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
@@ -49,9 +51,7 @@ In sum, the **bar plot** illustrates the frequency distribution of categorical d
 
 ## Frequency Distributions (Numerical)
 
-When working with numerical data, building a frequency distribution requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a meaningful frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes.
-
-Steps to Create a Frequency Distribution for Numerical Data:
+When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:  
 
 **1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.  
 *Ex: If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.*
@@ -68,7 +68,8 @@ Steps to Create a Frequency Distribution for Numerical Data:
 knitr::include_graphics("images/dow.png")
 ```
 
-Let's follow the steps to build the frequency distribution. 
+Let's follow the steps to build the frequency distribution.  
+
 **1. Determine the Number of Classes:** Here we choose five classes since $2^5=32$ is greater than $30$ by the least amount.
 
 **2. Calculate the Width of Each Class:** The smallest values in the data set is $23$ and the maximum is $501$. This gives us a range of $478$. Now we can just take the range and divide by five to get $95.6$. To make things simple we can round to $100$ and use a class width of $100$.
