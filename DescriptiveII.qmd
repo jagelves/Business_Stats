@@ -194,7 +194,7 @@ Install the `ISLR2` package in R. You will need the **BrainCancer** data set to 
 
 <summary>Answer</summary>
 
-*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about* $48.28$% of the sample.
+*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about $48.28$% of the sample.*
 
 *Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.*
 
@@ -238,7 +238,7 @@ ggplot(data=BrainCancer) +
 
 <summary>Answer</summary>
 
-$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
+*$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.*
 
 *Use the `table()` function one more time to create the contingency table for the two variables.*
 
@@ -259,8 +259,39 @@ prop.table(freq2,margin = 2)
 You will need the **airquality** data set (in base R) to answer this question.
 
 1.  Construct a frequency distribution for *Temp*. Use five intervals with widths of $50<x\le60$; $60<x\le70$; etc. Which interval had the highest frequency? How many times was the temperature between $50$ and $60$ degrees?
+
+<details>
+
+<summary>Answer</summary>
+
+The highest frequency is in the $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
+
+Create a vector containing the intervals desired by using the `seq()` function.
+
+```{r}
+intervals <- seq(50, 100, by=10)
+```
+
+Next use the `cut()` function to create the cuts for the histogram.
+
+```{r}
+intervals.cut <- cut(airquality$Temp, intervals, left=FALSE, right=TRUE)
+```
+
+The frequency distribution can be obtained by using the `table()` function on the *interval.cut* object created above.
+
+```{r}
+table(intervals.cut)
+```
+
+</details>
+
 2.  Construct a relative frequency, cumulative frequency and the relative cumulative frequency distributions. What proportion of the time was *Temp* between $50$ and $60$ degrees? How many times was the *Temp* $70$ degrees or less? What proportion of the time was *Temp* more than $70$ degrees?
+
+
 3.  Construct the histogram. Is the distribution symmetric? If not, is it skewed to the left or right?
+
+
 
 ### Exercise 3 {.unnumbered}
 
