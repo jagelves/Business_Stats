@@ -292,18 +292,18 @@ window.Quarto = {
   <ul>
   <li><a href="#the-mean" id="toc-the-mean" class="nav-link active" data-scroll-target="#the-mean"><span class="header-section-number">3.1</span> The Mean</a></li>
   <li><a href="#the-median" id="toc-the-median" class="nav-link" data-scroll-target="#the-median"><span class="header-section-number">3.2</span> The Median</a></li>
-  <li><a href="#the-mode" id="toc-the-mode" class="nav-link" data-scroll-target="#the-mode"><span class="header-section-number">3.3</span> The Mode</a>
-  <ul class="collapse">
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R functions</a></li>
-  </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.4</span> Exercises</a>
+  <li><a href="#the-mode" id="toc-the-mode" class="nav-link" data-scroll-target="#the-mode"><span class="header-section-number">3.3</span> The Mode</a></li>
+  <li><a href="#the-weighted-mean" id="toc-the-weighted-mean" class="nav-link" data-scroll-target="#the-weighted-mean"><span class="header-section-number">3.4</span> The Weighted Mean</a></li>
+  <li><a href="#the-geometric-mean" id="toc-the-geometric-mean" class="nav-link" data-scroll-target="#the-geometric-mean"><span class="header-section-number">3.5</span> The Geometric Mean</a></li>
+  <li><a href="#measures-of-central-location-in-r" id="toc-measures-of-central-location-in-r" class="nav-link" data-scroll-target="#measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">3.5</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">3.8</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -335,6 +335,19 @@ window.Quarto = {
 </header>
 
 
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
 <p>Understanding where the “center” of a dataset lies is popular step used to interpret and summarize data effectively. Measures of central location provide different ways to identify the “typical” value in a dataset, each with its unique strengths and limitations.</p>
 <section id="the-mean" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="the-mean"><span class="header-section-number">3.1</span> The Mean</h2>
@@ -352,23 +365,88 @@ window.Quarto = {
 <h2 data-number="3.3" class="anchored" data-anchor-id="the-mode"><span class="header-section-number">3.3</span> The Mode</h2>
 <p>The <strong>mode</strong> is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data, as it helps determine popularity or commonality, and it can be applied to both numerical and non-numerical data sets. However, the mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.</p>
 <p><em>Ex: Consider the following numbers <span class="math inline">\(x={1,4,2,1}\)</span>. Since <span class="math inline">\(1\)</span> is repeated twice and all other numbers just repeated once, <span class="math inline">\(x_{mode}=1\)</span>.</em></p>
-<ul>
-<li><p>The <strong>weighted mean</strong> uses weights to determine the importance of each data point of a variable. It is calculated by <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span>, where <span class="math inline">\(w_{i}\)</span> are the weights associated to the values <span class="math inline">\(x_{i}\)</span>.</p></li>
-<li><p>The <strong>geometric mean</strong> is a multiplicative average that is less sensitive to outliers. It is used to average growth rates or rated of return. It is calculated by <span class="math inline">\(\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1\)</span>, where <span class="math inline">\(\sqrt[n]{}\)</span> is the <span class="math inline">\(n_{th}\)</span> root, and <span class="math inline">\(r_i\)</span> are the returns or growth rates.</p></li>
-</ul>
-<section id="useful-r-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R functions</h3>
-<p>Base R has a collection of functions that calculate measures of central location.</p>
-<ul>
-<li><p>The <code>mean()</code> function calculates the average of a vector of values.</p></li>
-<li><p>The <code>median()</code> function returns the median of a vector of values.</p></li>
-<li><p>The <code>table()</code> function provides us with a frequency distribution. We can then identify the mode(s) of the vector provided.</p></li>
-<li><p>The <code>summary()</code> function returns a collection of descriptive statistics for a vector or data frame.</p></li>
-</ul>
 </section>
+<section id="the-weighted-mean" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="the-weighted-mean"><span class="header-section-number">3.4</span> The Weighted Mean</h2>
+<p>The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. However, this measure requires additional information in the form of weights, which may not always be available or accurate. Furthermore, it is sensitive to errors in weighting, which can distort the results and lead to misleading conclusions. It is calculated by calculating the sum product of values (<span class="math inline">\(x_i\)</span>) and weights (<span class="math inline">\(w_i\)</span>) and then dividing by the sum of weights. Mathematically, the weighted average is <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span>.</p>
+<p><em>Ex: Consider three different stocks <span class="math inline">\(S={T, C, X}\)</span> with stock returns of <span class="math inline">\(R={2,4,10}\)</span>. Each stock has a weight in the portfolio of <span class="math inline">\(W={0.3,0.2,0.5}\)</span>. The average return of the portfolio is <span class="math inline">\(\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}\)</span> or <span class="math inline">\(\bar{x}_{weighted}=6.4\)</span>.</em></p>
 </section>
-<section id="exercises" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.4</span> Exercises</h2>
+<section id="the-geometric-mean" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="the-geometric-mean"><span class="header-section-number">3.5</span> The Geometric Mean</h2>
+<p>The <strong>geometric mean</strong> is a multiplicative average that is less sensitive to outliers. It is useful when averaging growth rates or rates of return. It is calculated by <span class="math inline">\(\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1\)</span>, where <span class="math inline">\(\sqrt[n]{}\)</span> is the <span class="math inline">\(n_{th}\)</span> root, and <span class="math inline">\(r_i\)</span> are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.</p>
+<p>For most all other values there is no need to add 1 because proportions already reflect a standalone quantity, not a relative change. In this case the geometric mean simplifies to <span class="math inline">\(\sqrt[n]{(x_1) \times (x_2)...(x_n)}\)</span></p>
+<p><em>Ex: Consider the variable <span class="math inline">\(x={0.2,0.3,0.1,0.1}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or 0.156.</em></p>
+</section>
+<section id="measures-of-central-location-in-r" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</h2>
+<p>Base R has a collection of functions that calculate measures of central location. Let’s consider the following data on approval ratings:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(poll<span class="ot">&lt;-</span><span class="fu">tibble</span>(<span class="at">date=</span><span class="fu">c</span>(<span class="st">"01/01/24"</span>, <span class="st">"02/01/24"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"03/01/24"</span>, <span class="st">"04/01/24"</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">people=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">30</span>,<span class="dv">250</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">approval=</span><span class="fu">c</span>(<span class="fl">0.25</span>,<span class="fl">0.25</span>,<span class="fl">0.7</span>,<span class="fl">0.85</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  date     people approval
+  &lt;chr&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 01/01/24     50     0.25
+2 02/01/24    100     0.25
+3 03/01/24     30     0.7 
+4 04/01/24    250     0.85</code></pre>
+</div>
+</div>
+<p>To calculate the mean we can just pass a vector into the <code>mean()</code> function. Hence, the mean approval is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(poll<span class="sc">$</span>approval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5125</code></pre>
+</div>
+</div>
+<p>To calculate the mode we will use the <code>table()</code> function, as there is no mode function in base R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(poll<span class="sc">$</span>approval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+0.25  0.7 0.85 
+   2    1    1 </code></pre>
+</div>
+</div>
+<p>For the median we will use the <code>median()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(poll<span class="sc">$</span>approval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.475</code></pre>
+</div>
+</div>
+<p>The weighted average can be calculated using the <code>weighted.mean()</code> function. Let the approval be the value and number of people surveyed the weight.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(<span class="at">x=</span>poll<span class="sc">$</span>approval,<span class="at">w =</span> poll<span class="sc">$</span>people)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6302326</code></pre>
+</div>
+</div>
+<p>Lastly, the geometric mean has no built in function in base R. However, we can easily calculate it with the command:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="fu">prod</span>(poll<span class="sc">$</span>approval)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(poll<span class="sc">$</span>approval))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers.</p>
+<p>The <code>summary()</code> calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     date               people         approval     
+ Length:4           Min.   : 30.0   Min.   :0.2500  
+ Class :character   1st Qu.: 45.0   1st Qu.:0.2500  
+ Mode  :character   Median : 75.0   Median :0.4750  
+                    Mean   :107.5   Mean   :0.5125  
+                    3rd Qu.:137.5   3rd Qu.:0.7375  
+                    Max.   :250.0   Max.   :0.8500  </code></pre>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.7</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of central location. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the mean, median, and the mode.</p></li>
@@ -392,6 +470,40 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p>To find the mean we will use the following formula <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</p>
+<pre><code>The median is found by locating the middle value when data is sorted in ascending order. The median in this example is $10$.
+
+The mode is the value with the highest frequency. In this example the mode is $12$ since it is repeated twice and all other numbers appear only once.</code></pre>
+<p>The mean can be easily verified in R by using the <code>mean()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.2</code></pre>
+</div>
+</div>
+<p>Similarly, the median is easily verified by using the <code>median()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>We can use the <code>table()</code> function to calculate frequencies and easily identify the mode.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 8  9 10 12 
+ 1  1  1  2 </code></pre>
+</div>
+</div>
+</details>
+<ol start="2" type="1">
 <li><p>Use following observations to calculate the mean, the median, and the mode.</p>
 <table class="caption-top table">
 <tbody>
@@ -405,6 +517,37 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p>The mean is <span class="math inline">\(-2.67\)</span>, the median is <span class="math inline">\(-3.5\)</span>, the mode is <span class="math inline">\(-4\)</span>.</p>
+<p>These mean is verified in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.666667</code></pre>
+</div>
+</div>
+<p>The median in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -3.5</code></pre>
+</div>
+</div>
+<p>Finally, the mode in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+-6 -4 -3  0  1 
+ 1  2  1  1  1 </code></pre>
+</div>
+</div>
+</details>
+<ol start="3" type="1">
 <li><p>Use the following observations, calculate the mean, the median, and the mode.</p>
 <table class="caption-top table">
 <tbody>
@@ -422,15 +565,39 @@ window.Quarto = {
 </tbody>
 </table></li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <p>Download the <code>ISLR2</code> package. You will need the <strong>OJ</strong> data set to answer this question.</p>
 <ol type="1">
-<li><p>Find the mean price for Country Hill (<em>PriceCH</em>) and Minute Maid (<em>PriceMM</em>).</p></li>
-<li><p>Find the mean price of Country Hill (<em>PriceCH</em>) in store 1 and store 2 (<em>StoreID</em>). Which store had the better price?</p></li>
-<li><p>Find the mean price paid by Country Hill (<em>PriceCH</em>) purchasers (<em>Purchase</em>) in store 1 (<em>StoreID</em>)? How about store 2? Which store had the better price?</p></li>
+<li>Find the mean price for Country Hill (<em>PriceCH</em>) and Minute Maid (<em>PriceMM</em>).</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="2" type="1">
+<li>Find the mean price of Country Hill (<em>PriceCH</em>) in store 1 and store 2 (<em>StoreID</em>). Which store had the better price?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="3" type="1">
+<li>Find the mean price paid by Country Hill (<em>PriceCH</em>) purchasers (<em>Purchase</em>) in store 1 (<em>StoreID</em>)? How about store 2? Which store had the better price?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
@@ -463,9 +630,19 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 <ol start="2" type="1">
 <li>What would have been the average price per share if the investor would have bought equal amounts of shares each month?</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
@@ -482,6 +659,13 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="2" type="1">
 <li><p>Suppose that you want to invest $1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.</p>
 <table class="caption-top table">
 <thead>
@@ -510,10 +694,15 @@ window.Quarto = {
 </tbody>
 </table></li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 </section>
-<section id="answers" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="answers"><span class="header-section-number">3.5</span> Answers</h2>
+<section id="answers" class="level2" data-number="3.8">
+<h2 data-number="3.8" class="anchored" data-anchor-id="answers"><span class="header-section-number">3.8</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">
@@ -523,21 +712,21 @@ window.Quarto = {
 </ol>
 <p>The mean can be easily verified in R by using the <code>mean()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.2</code></pre>
 </div>
 </div>
 <p>Similarly, the median is easily verified by using the <code>median()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
 <p>We can use the <code>table()</code> function to calculate frequencies and easily identify the mode.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
  8  9 10 12 
@@ -549,21 +738,21 @@ window.Quarto = {
 </ol>
 <p>These mean is verified in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -2.666667</code></pre>
 </div>
 </div>
 <p>The median in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -3.5</code></pre>
 </div>
 </div>
 <p>Finally, the mode in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="sc">-</span><span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 -6 -4 -3  0  1 
@@ -575,21 +764,21 @@ window.Quarto = {
 </ol>
 <p>These mean is verified in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 18.33333</code></pre>
 </div>
 </div>
 <p>The median in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 20</code></pre>
 </div>
 </div>
 <p>The frequency distribution identifies the modes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 10 15 20 25 
@@ -604,12 +793,12 @@ window.Quarto = {
 </ol>
 <p>The means can be easily found with the <code>mean()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.867421</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceMM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceMM)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.085411</code></pre>
 </div>
@@ -619,14 +808,14 @@ window.Quarto = {
 </ol>
 <p>The means for each store can be found by using indexing and a logical statement. The Country Hill mean price at store 1 is given by:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.803758</code></pre>
 </div>
 </div>
 <p>The Country Hill mean price at store 2 is given by:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.841216</code></pre>
 </div>
@@ -636,14 +825,14 @@ window.Quarto = {
 </ol>
 <p>The mean for Country Hill purchasers at store 1 is given by:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> OJ<span class="sc">$</span>Purchase<span class="sc">==</span><span class="st">"CH"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> OJ<span class="sc">$</span>Purchase<span class="sc">==</span><span class="st">"CH"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.797176</code></pre>
 </div>
 </div>
 <p>The mean for Country Hill purchasers at store 2 is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">2</span> <span class="sc">&amp;</span> OJ<span class="sc">$</span>Purchase<span class="sc">==</span><span class="st">"CH"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(OJ<span class="sc">$</span>PriceCH[OJ<span class="sc">$</span>StoreID<span class="sc">==</span><span class="dv">2</span> <span class="sc">&amp;</span> OJ<span class="sc">$</span>Purchase<span class="sc">==</span><span class="st">"CH"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.857383</code></pre>
 </div>
@@ -656,13 +845,13 @@ window.Quarto = {
 </ol>
 <p>In R you can create two vectors. One holds the share price and the other one the number of shares bought.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>PricePerShare<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">250.34</span>,<span class="fl">234.59</span>,<span class="fl">270.45</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>NumberOfShares<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">120</span>,<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>PricePerShare<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">250.34</span>,<span class="fl">234.59</span>,<span class="fl">270.45</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>NumberOfShares<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">120</span>,<span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next, you can multiply the <em>PricePerShare</em> and <em>NumberOfShares</em> vectors to find the numerator and then use <code>sum()</code> function to find the denominator. The weighted average is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(WeightedAverage<span class="ot">&lt;-</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(PricePerShare<span class="sc">*</span>NumberOfShares)<span class="sc">/</span><span class="fu">sum</span>(NumberOfShares))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>(WeightedAverage<span class="ot">&lt;-</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(PricePerShare<span class="sc">*</span>NumberOfShares)<span class="sc">/</span><span class="fu">sum</span>(NumberOfShares))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 246.802</code></pre>
 </div>
@@ -672,7 +861,7 @@ window.Quarto = {
 </ol>
 <p>In R you can use the <code>mean()</code> function on the PricePerShare vector.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>(Average<span class="ot">&lt;-</span><span class="fu">mean</span>(PricePerShare))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>(Average<span class="ot">&lt;-</span><span class="fu">mean</span>(PricePerShare))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 251.7933</code></pre>
 </div>
@@ -695,11 +884,11 @@ window.Quarto = {
 </table>
 <p>In R create an object to store the values of the CPI:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>CPI<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.3</span>,<span class="fl">1.6</span>,<span class="fl">1.8</span>,<span class="fl">2.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>CPI<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">1.3</span>,<span class="fl">1.6</span>,<span class="fl">1.8</span>,<span class="fl">2.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next use the <code>diff()</code> function to find the difference between the end value and start value. Divide the result by a vector of starting value and multiply times 100.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(Inflation<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span><span class="fu">diff</span>(CPI)<span class="sc">/</span>CPI[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(Inflation<span class="ot">&lt;-</span><span class="dv">100</span><span class="sc">*</span><span class="fu">diff</span>(CPI)<span class="sc">/</span>CPI[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30.00000 23.07692 12.50000 16.66667</code></pre>
 </div>
@@ -709,25 +898,25 @@ window.Quarto = {
 </ol>
 <p>In R include the annual rates in a vector:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>growth<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.173</span>,<span class="fl">0.196</span>,<span class="fl">0.068</span>,<span class="fl">0.082</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>growth<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.173</span>,<span class="fl">0.196</span>,<span class="fl">0.068</span>,<span class="fl">0.082</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The arithmetic mean is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(growth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(growth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12.975</code></pre>
 </div>
 </div>
 <p>The geometric mean is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(geom<span class="ot">&lt;-</span>((<span class="fu">prod</span>(<span class="dv">1</span><span class="sc">+</span>growth))<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>(geom<span class="ot">&lt;-</span>((<span class="fu">prod</span>(<span class="dv">1</span><span class="sc">+</span>growth))<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12.8384</code></pre>
 </div>
 </div>
 <p>At the end of the four years we would have:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>geom<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>geom<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1621.167</code></pre>
 </div>

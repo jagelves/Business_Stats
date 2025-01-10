@@ -327,6 +327,19 @@ window.Quarto = {
 </header>
 
 
+<style>
+details {
+  background-color: #D8E2DC;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
 <p>Understanding and visualizing data distributions is a fundamental step in data analysis. A frequency distribution organizes data into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package <code>ggplot2</code>, has functions like <code>geom_bar()</code> and <code>geom_hist()</code> to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.</p>
 <section id="frequency-distributions-categorical" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</h2>
@@ -344,23 +357,23 @@ window.Quarto = {
 <p>Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="jnpjygtnpx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jnpjygtnpx table {
+<div id="vvcsuqbobu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vvcsuqbobu table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jnpjygtnpx thead, #jnpjygtnpx tbody, #jnpjygtnpx tfoot, #jnpjygtnpx tr, #jnpjygtnpx td, #jnpjygtnpx th {
+#vvcsuqbobu thead, #vvcsuqbobu tbody, #vvcsuqbobu tfoot, #vvcsuqbobu tr, #vvcsuqbobu td, #vvcsuqbobu th {
   border-style: none;
 }
 
-#jnpjygtnpx p {
+#vvcsuqbobu p {
   margin: 0;
   padding: 0;
 }
 
-#jnpjygtnpx .gt_table {
+#vvcsuqbobu .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -386,12 +399,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_caption {
+#vvcsuqbobu .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jnpjygtnpx .gt_title {
+#vvcsuqbobu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -403,7 +416,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#jnpjygtnpx .gt_subtitle {
+#vvcsuqbobu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -415,7 +428,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#jnpjygtnpx .gt_heading {
+#vvcsuqbobu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -427,13 +440,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_bottom_border {
+#vvcsuqbobu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_col_headings {
+#vvcsuqbobu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -448,7 +461,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_col_heading {
+#vvcsuqbobu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -468,7 +481,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#jnpjygtnpx .gt_column_spanner_outer {
+#vvcsuqbobu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -480,15 +493,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#jnpjygtnpx .gt_column_spanner_outer:first-child {
+#vvcsuqbobu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jnpjygtnpx .gt_column_spanner_outer:last-child {
+#vvcsuqbobu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jnpjygtnpx .gt_column_spanner {
+#vvcsuqbobu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -500,11 +513,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#jnpjygtnpx .gt_spanner_row {
+#vvcsuqbobu .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jnpjygtnpx .gt_group_heading {
+#vvcsuqbobu .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -530,7 +543,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#jnpjygtnpx .gt_empty_group_heading {
+#vvcsuqbobu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -545,15 +558,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#jnpjygtnpx .gt_from_md > :first-child {
+#vvcsuqbobu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jnpjygtnpx .gt_from_md > :last-child {
+#vvcsuqbobu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jnpjygtnpx .gt_row {
+#vvcsuqbobu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -572,7 +585,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#jnpjygtnpx .gt_stub {
+#vvcsuqbobu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -585,7 +598,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#jnpjygtnpx .gt_stub_row_group {
+#vvcsuqbobu .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -599,15 +612,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#jnpjygtnpx .gt_row_group_first td {
+#vvcsuqbobu .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jnpjygtnpx .gt_row_group_first th {
+#vvcsuqbobu .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jnpjygtnpx .gt_summary_row {
+#vvcsuqbobu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -617,16 +630,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#jnpjygtnpx .gt_first_summary_row {
+#vvcsuqbobu .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_first_summary_row.thick {
+#vvcsuqbobu .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jnpjygtnpx .gt_last_summary_row {
+#vvcsuqbobu .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -636,7 +649,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_grand_summary_row {
+#vvcsuqbobu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -646,7 +659,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#jnpjygtnpx .gt_first_grand_summary_row {
+#vvcsuqbobu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -656,7 +669,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_last_grand_summary_row_top {
+#vvcsuqbobu .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -666,11 +679,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_striped {
+#vvcsuqbobu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jnpjygtnpx .gt_table_body {
+#vvcsuqbobu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -679,7 +692,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_footnotes {
+#vvcsuqbobu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -693,7 +706,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_footnote {
+#vvcsuqbobu .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -702,7 +715,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#jnpjygtnpx .gt_sourcenotes {
+#vvcsuqbobu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -716,7 +729,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#jnpjygtnpx .gt_sourcenote {
+#vvcsuqbobu .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -724,72 +737,72 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#jnpjygtnpx .gt_left {
+#vvcsuqbobu .gt_left {
   text-align: left;
 }
 
-#jnpjygtnpx .gt_center {
+#vvcsuqbobu .gt_center {
   text-align: center;
 }
 
-#jnpjygtnpx .gt_right {
+#vvcsuqbobu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jnpjygtnpx .gt_font_normal {
+#vvcsuqbobu .gt_font_normal {
   font-weight: normal;
 }
 
-#jnpjygtnpx .gt_font_bold {
+#vvcsuqbobu .gt_font_bold {
   font-weight: bold;
 }
 
-#jnpjygtnpx .gt_font_italic {
+#vvcsuqbobu .gt_font_italic {
   font-style: italic;
 }
 
-#jnpjygtnpx .gt_super {
+#vvcsuqbobu .gt_super {
   font-size: 65%;
 }
 
-#jnpjygtnpx .gt_footnote_marks {
+#vvcsuqbobu .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jnpjygtnpx .gt_asterisk {
+#vvcsuqbobu .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jnpjygtnpx .gt_indent_1 {
+#vvcsuqbobu .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jnpjygtnpx .gt_indent_2 {
+#vvcsuqbobu .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jnpjygtnpx .gt_indent_3 {
+#vvcsuqbobu .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jnpjygtnpx .gt_indent_4 {
+#vvcsuqbobu .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jnpjygtnpx .gt_indent_5 {
+#vvcsuqbobu .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jnpjygtnpx .katex-display {
+#vvcsuqbobu .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jnpjygtnpx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vvcsuqbobu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -846,9 +859,9 @@ window.Quarto = {
 <h2 data-number="2.2" class="anchored" data-anchor-id="freqdistnum"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</h2>
 <p>When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:</p>
 <p><strong>1. Determine the Number of Classes:</strong> The number of classes can be estimated using the <span class="math inline">\(2^k\)</span> rule, where <span class="math inline">\(k\)</span> is the smallest integer such that <span class="math inline">\(2^k\)</span> exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.<br>
-<em>Ex: If a data set has 50 observations, we would choose six classes since <span class="math inline">\(2^6=64\)</span> is greater than <span class="math inline">\(50\)</span> by the least amount.</em></p>
+<em>Ex: If a data set has 50 observations, we would choose six classes since</em> <span class="math inline">\(2^6=64\)</span> is greater than <span class="math inline">\(50\)</span> by the least amount.</p>
 <p><strong>2. Calculate the Width of Each Class:</strong> The width of a class is determined using the formula: <strong>range/(# of Classes)</strong>.<br>
-<em>Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is <span class="math inline">\(58/6 \approx 9.7\)</span>.</em> Hence, we can round up and use a class width of 10.</p>
+<em>Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is</em> <span class="math inline">\(58/6 \approx 9.7\)</span>. Hence, we can round up and use a class width of 10.</p>
 <p><strong>3. Establish Class Limits:</strong> The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.<br>
 <em>Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to [20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be [20,30), [30,40), [40,50), [50,60), [60,70), and [70,80).</em></p>
 <p><strong>Example:</strong> Let’s look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:</p>
@@ -1012,7 +1025,7 @@ Chicken   Pasta   Pizza   Sushi
 <summary>
 Answer
 </summary>
-<p><em>The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about <span class="math inline">\(48.28\)</span>% of the sample.</em></p>
+<p><em>The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about</em> <span class="math inline">\(48.28\)</span>% of the sample.</p>
 <p><em>Start by loading the <code>ISLR2</code> package. To construct the frequency distribution table, use the <code>table()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
@@ -1065,7 +1078,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em><span class="math inline">\(33\)</span> people did not survive Meningioma. The survival rate of Meningioma is only <span class="math inline">\(21.43\)</span>%.</em></p>
+<p><span class="math inline">\(33\)</span> people did not survive Meningioma. The survival rate of Meningioma is only <span class="math inline">\(21.43\)</span>%.</p>
 <p><em>Use the <code>table()</code> function one more time to create the contingency table for the two variables.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(freq2<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1098,7 +1111,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The highest frequency is in the <span class="math inline">\(80 &lt; x ≤ 90\)</span> bin. <span class="math inline">\(8\)</span> temperatures were between <span class="math inline">\(50 &lt; x ≤ 60\)</span> degrees.</em></p>
+<p><em>The highest frequency is in the</em> <span class="math inline">\(80 &lt; x ≤ 90\)</span> bin. <span class="math inline">\(8\)</span> temperatures were between <span class="math inline">\(50 &lt; x ≤ 60\)</span> degrees.</p>
 <p><em>Create a vector containing the intervals desired by using the <code>seq()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>intervals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="at">by=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1124,7 +1137,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The temperature was <span class="math inline">\(5.22\)</span>% of the time between <span class="math inline">\(50\)</span> and <span class="math inline">\(60\)</span>; The temperature was <span class="math inline">\(70\)</span> or less <span class="math inline">\(33\)</span> times; The temperature was above <span class="math inline">\(70\)</span>, <span class="math inline">\(78.43\)</span>% of the time.</em></p>
+<p><em>The temperature was</em> <span class="math inline">\(5.22\)</span>% of the time between <span class="math inline">\(50\)</span> and <span class="math inline">\(60\)</span>; The temperature was <span class="math inline">\(70\)</span> or less <span class="math inline">\(33\)</span> times; The temperature was above <span class="math inline">\(70\)</span>, <span class="math inline">\(78.43\)</span>% of the time.</p>
 <p><em>To get the relative frequency table, start by saving the proportion table into an object.Then you can use the <code>prop.table()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(intervals.cut) </span>
@@ -1190,7 +1203,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>From <span class="math inline">\(1901\)</span> through <span class="math inline">\(2000\)</span>, both portfolios have behaved very similarly. Returns are between <span class="math inline">\(-3\)</span>% and <span class="math inline">\(3\)</span>%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.</em></p>
+<p><em>From</em> <span class="math inline">\(1901\)</span> through <span class="math inline">\(2000\)</span>, both portfolios have behaved very similarly. Returns are between <span class="math inline">\(-3\)</span>% and <span class="math inline">\(3\)</span>%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.</p>
 <p><em>You can use the <code>geom_line()</code> function to create a line for each portfolio.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>

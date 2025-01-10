@@ -1,3 +1,17 @@
+<style>
+details {
+  background-color: #D8E2DC;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+
 # Descriptive Stats II
 
 Understanding and visualizing data distributions is a fundamental step in data analysis. A frequency distribution organizes data into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package `ggplot2`, has functions like `geom_bar()` and `geom_hist()` to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.
@@ -37,9 +51,9 @@ as_tibble(food) %>% rename(Food=value) %>% group_by(Food) %>% summarise(Frequenc
 
 ```
 
-Each food item is tallied up, and the result is shown in the frequency column. Alternately, we can show the tally as a proportion of the total (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This calculation is shown for each food item in the relative frequency column.  
+Each food item is tallied up, and the result is shown in the frequency column. Alternately, we can show the tally as a proportion of the total (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This calculation is shown for each food item in the relative frequency column.
 
-Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency. 
+Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.
 
 ```{r echo=FALSE, fig.align='center'}
 ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
@@ -51,16 +65,16 @@ In sum, the **bar plot** illustrates the frequency distribution of categorical d
 
 ## Frequency Distributions (Numerical) {#freqdistnum}
 
-When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:  
+When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:
 
-**1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.  
-*Ex: If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.*
+**1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.\
+*Ex: If a data set has 50 observations, we would choose six classes since* $2^6=64$ is greater than $50$ by the least amount.
 
-**2. Calculate the Width of Each Class:** The width of a class is determined using the formula: **range/(# of Classes)**.  
-*Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is $58/6 \approx 9.7$.* Hence, we can round up and use a class width of 10.
+**2. Calculate the Width of Each Class:** The width of a class is determined using the formula: **range/(# of Classes)**.\
+*Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is* $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10.
 
-**3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.  
-*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to [20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be [20,30), [30,40), [40,50), [50,60), [60,70), and [70,80).*
+**3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.\
+*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80).*
 
 **Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
 
@@ -68,13 +82,13 @@ When working with numerical data, building a frequency distributions requires ad
 knitr::include_graphics("images/dow.png")
 ```
 
-Let's follow the steps to build the frequency distribution.  
+Let's follow the steps to build the frequency distribution.
 
 **1. Determine the Number of Classes:** Here we choose five classes since $2^5=32$ is greater than $30$ by the least amount.
 
 **2. Calculate the Width of Each Class:** The smallest values in the data set is $23$ and the maximum is $501$. This gives us a range of $478$. Now we can just take the range and divide by five to get $95.6$. To make things simple we can round to $100$ and use a class width of $100$.
 
-**3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested [20,120), [120,220), [220,320), [320,420), and [420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
+**3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested \[20,120), \[120,220), \[220,320), \[320,420), and \[420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
 
 ## Frequency Distributions in R (Categorical)
 
@@ -95,13 +109,16 @@ Here we define a vector called food by assigning (`<-`) the combination (`c`) of
 ```{r}
 table(food)
 ```
+
 As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the `prop.table()` function. This function requires as an input a frequency distribution created by the `table()` function. Hence, we can first create the frequency distribution, save it into an object, and the generate the relative frequency. The code is below:
 
 ```{r}
 freq<-table(food)
 prop.table(freq)
 ```
+
 As a last modification. If you want percent frequencies, you can multiply the prop.table by 100, as shown below:
+
 ```{r}
 prop.table(freq)*100
 ```
@@ -119,6 +136,7 @@ Now R will identify the functions `ggplot()` and `geom_bar()` from the `ggplot` 
 ```{r}
 ggplot() + geom_bar(aes(food))
 ```
+
 We can enhance the visualization by adding a title and changing the theme. The `labs()` function allows us to change the titles and the `ggthemes` package allows us to choose from a variety of themes.
 
 ```{r}
@@ -129,6 +147,7 @@ ggplot() + geom_bar(aes(food), col="black", alpha=0.5, bg="blue") +
   theme_clean()
   
 ```
+
 A few arguments are worth explaining in the code above. The arguments in the `geom_bar()` function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the `labs()` function. To omit label we can just open and close quotations. Hence, `x=""` omits the x label.
 
 ## Frequency Distribution in R (Numerical)
@@ -141,6 +160,7 @@ dow<-c(277,174,202,383,358,188,293,156,
        22,59,287,121,312,52,53,158,500,
        96,95,43,188,200)
 ```
+
 To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is we will be using five classes, of width 100. Below is the code to do this:
 
 ```{r}
@@ -149,13 +169,14 @@ price.cut<-cut(dow,thresh,right=F)
 (dowfreq<-table(price.cut))
 ```
 
-The process involves three steps. First we generate a sequence that captures the thresholds for our bins. We start at the minimum 20 and each class is generated at an increment of 100 (the class width). Next, we place each observation in the dow, into the bins by using the `cut()` function. This involve using, the data (dow), the thresholds for each class (thresh), and specifying if the right limit should be included in the bins. The last step is to tally the results with the `table()` function.  
+The process involves three steps. First we generate a sequence that captures the thresholds for our bins. We start at the minimum 20 and each class is generated at an increment of 100 (the class width). Next, we place each observation in the dow, into the bins by using the `cut()` function. This involve using, the data (dow), the thresholds for each class (thresh), and specifying if the right limit should be included in the bins. The last step is to tally the results with the `table()` function.
 
 To obtain the cumulative distribution, we can use the `cumsum()` function. Below we just wrap the frequency distribution (freq) into the `cumsum()` function.
 
 ```{r}
 cumsum(dowfreq)
 ```
+
 ## Histograms in R
 
 To generate the histogram in R we will use once again the `tidyverse` package. This time we will use the `geom_histogram()` function. Below is the code to generate the histogram for the dow data:
@@ -170,6 +191,7 @@ ggplot() +
        y="Frequency", x="") + 
   theme_clean()
 ```
+
 Within the `geom_histogram()` command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are price between 20 and 220 dollars.
 
 ## Exercises
@@ -194,7 +216,7 @@ Install the `ISLR2` package in R. You will need the **BrainCancer** data set to 
 
 <summary>Answer</summary>
 
-*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about $48.28$% of the sample.*
+*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about* $48.28$% of the sample.
 
 *Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.*
 
@@ -238,7 +260,7 @@ ggplot(data=BrainCancer) +
 
 <summary>Answer</summary>
 
-*$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.*
+$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
 
 *Use the `table()` function one more time to create the contingency table for the two variables.*
 
@@ -264,7 +286,7 @@ You will need the **airquality** data set (in base R) to answer this question.
 
 <summary>Answer</summary>
 
-*The highest frequency is in the $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.*
+*The highest frequency is in the* $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
 
 *Create a vector containing the intervals desired by using the `seq()` function.*
 
@@ -291,7 +313,8 @@ table(intervals.cut)
 <details>
 
 <summary>Answer</summary>
-*The temperature was $5.22$% of the time between $50$ and $60$; The temperature was $70$ or less $33$ times; The temperature was above $70$, $78.43$% of the time.*
+
+*The temperature was* $5.22$% of the time between $50$ and $60$; The temperature was $70$ or less $33$ times; The temperature was above $70$, $78.43$% of the time.
 
 *To get the relative frequency table, start by saving the proportion table into an object.Then you can use the `prop.table()` function.*
 
@@ -313,8 +336,6 @@ cumulfreq
 cumsum(prop.table(freq))
 ```
 
-
-
 </details>
 
 3.  Construct the histogram. Is the distribution symmetric? If not, is it skewed to the left or right?
@@ -322,6 +343,7 @@ cumsum(prop.table(freq))
 <details>
 
 <summary>Answer</summary>
+
 *The distribution is not perfectly symmetric. It is skewed slightly to the left (see histogram.)*
 
 Use the `geom_histogram()` function to create the histogram.
@@ -336,9 +358,7 @@ ggplot() +
   labs(x="Temperature", y="Frequency")
 ```
 
-
 </details>
-
 
 ### Exercise 3 {.unnumbered}
 
@@ -349,7 +369,8 @@ You will need the **Portfolio** data set from the `ISLR2` package to answer this
 <details>
 
 <summary>Answer</summary>
-*From $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.*
+
+*From* $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
 
 *You can use the `geom_line()` function to create a line for each portfolio.*
 
@@ -362,4 +383,3 @@ ggplot() +
 ```
 
 </details>
-
