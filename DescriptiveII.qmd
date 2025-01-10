@@ -258,27 +258,27 @@ prop.table(freq2,margin = 2)
 
 You will need the **airquality** data set (in base R) to answer this question.
 
-1.  Construct a frequency distribution for *Temp*. Use five intervals with widths of $50<x\le60$; $60<x\le70$; etc. Which interval had the highest frequency? How many times was the temperature between $50$ and $60$ degrees?
+1.  Construct a frequency distribution for *Temp*. Use five classes with widths of $50<x\le60$; $60<x\le70$; etc. Which interval had the highest frequency? How many times was the temperature between $50$ and $60$ degrees?
 
 <details>
 
 <summary>Answer</summary>
 
-The highest frequency is in the $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
+*The highest frequency is in the $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.*
 
-Create a vector containing the intervals desired by using the `seq()` function.
+*Create a vector containing the intervals desired by using the `seq()` function.*
 
 ```{r}
 intervals <- seq(50, 100, by=10)
 ```
 
-Next use the `cut()` function to create the cuts for the histogram.
+*Next use the `cut()` function to create the cuts for the histogram.*
 
 ```{r}
 intervals.cut <- cut(airquality$Temp, intervals, left=FALSE, right=TRUE)
 ```
 
-The frequency distribution can be obtained by using the `table()` function on the *interval.cut* object created above.
+*The frequency distribution can be obtained by using the `table()` function on the interval.cut object created above.*
 
 ```{r}
 table(intervals.cut)
@@ -288,9 +288,56 @@ table(intervals.cut)
 
 2.  Construct a relative frequency, cumulative frequency and the relative cumulative frequency distributions. What proportion of the time was *Temp* between $50$ and $60$ degrees? How many times was the *Temp* $70$ degrees or less? What proportion of the time was *Temp* more than $70$ degrees?
 
+<details>
+
+<summary>Answer</summary>
+*The temperature was $5.22$% of the time between $50$ and $60$; The temperature was $70$ or less $33$ times; The temperature was above $70$, $78.43$% of the time.*
+
+*To get the relative frequency table, start by saving the proportion table into an object.Then you can use the `prop.table()` function.*
+
+```{r}
+freq<-table(intervals.cut) 
+prop.table(freq)
+```
+
+*For the cumulative distribution you can use the `cumsum()` function on the frequency distribution.*
+
+```{r}
+cumulfreq<-cumsum(freq)
+cumulfreq
+```
+
+*Lastly, for the relative cumulative distribution table, you can use the `cumsum()` function on the relative frequency table.*
+
+```{r}
+cumsum(prop.table(freq))
+```
+
+
+
+</details>
 
 3.  Construct the histogram. Is the distribution symmetric? If not, is it skewed to the left or right?
 
+<details>
+
+<summary>Answer</summary>
+*The distribution is not perfectly symmetric. It is skewed slightly to the left (see histogram.)*
+
+Use the `geom_histogram()` function to create the histogram.
+
+```{r}
+ggplot() + 
+  geom_histogram(aes(airquality$Temp), col="black", 
+                 bg="darkgreen",alpha=0.2,
+                 bins=5,
+                 binwidth = 10,
+                 boundary=0) + theme_clean() +
+  labs(x="Temperature", y="Frequency")
+```
+
+
+</details>
 
 
 ### Exercise 3 {.unnumbered}
@@ -298,6 +345,23 @@ table(intervals.cut)
 You will need the **Portfolio** data set from the `ISLR2` package to answer this question.
 
 1.  Construct a line chart that shows the returns over time for each portfolio (X and Y) by using two lines each with a unique color. Assume the data is for the period $1901$ to $2000$. Include also a legend that matches colors to portfolios.
+
+<details>
+
+<summary>Answer</summary>
+*From $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.*
+
+*You can use the `geom_line()` function to create a line for each portfolio.*
+
+```{r}
+ggplot() +
+  geom_line(aes(y=Portfolio$Y,x=seq(1901,2000)), col="blue") +
+  geom_line(aes(y=Portfolio$X,x=seq(1901,2000)), col="grey") +
+  theme_clean() +
+  labs(x="Year", y="Return")
+```
+
+</details>
 
 ## Answers
 
