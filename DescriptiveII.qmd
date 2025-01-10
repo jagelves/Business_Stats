@@ -49,7 +49,7 @@ ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
 
 In sum, the **bar plot** illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
 
-## Frequency Distributions (Numerical)
+## Frequency Distributions (Numerical) {#freqdistnum}
 
 When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:  
 
@@ -76,41 +76,101 @@ Let's follow the steps to build the frequency distribution.
 
 **3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested [20,120), [120,220), [220,320), [320,420), and [420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
 
-## Plots Using ggplot2
+## Frequency Distributions in R (Categorical)
 
-A **bar plot** illustrates the frequency distribution of qualitative data.
+The process of constructing frequency distributions in R is straightforward. We will be mainly using the `table()` function. Let's start by saving the data in a vector:
 
--   Is an illustration for qualitative data.
+```{r}
+food<-c("Pizza","Sushi","Sushi","Chicken",
+        "Chicken","Pasta","Pasta","Pasta",
+        "Sushi","Pasta","Chicken","Pizza",
+        "Chicken","Sushi","Pizza","Sushi",
+        "Sushi","Sushi","Sushi","Pizza",
+        "Pizza","Chicken","Sushi","Pizza",
+        "Sushi")
+```
 
--   Includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis.
+Here we define a vector called food by assigning (`<-`) the combination (`c`) of all the food items. To generate the frequency distribution we simply pass the food vector into the `table()` command.
 
--   Has gaps between each bar.
+```{r}
+table(food)
+```
+As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the `prop.table()` function. This function requires as an input a frequency distribution created by the `table()` function. Hence, we can first create the frequency distribution, save it into an object, and the generate the relative frequency. The code is below:
 
-A **histogram** illustrates the frequency distribution of quantitative data.
+```{r}
+freq<-table(food)
+prop.table(freq)
+```
+As a last modification. If you want percent frequencies, you can multiply the prop.table by 100, as shown below:
+```{r}
+prop.table(freq)*100
+```
 
--   Is an illustration for quantitative data.
+## Bar Plot in R
 
--   There are no gaps between the bars.
+To create the bar plot we will be using the `geom_bar()` function within the `tidyverse` package. We start by loading the package:
 
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
 
+Now R will identify the functions `ggplot()` and `geom_bar()` from the `ggplot` library. To construct the plot we will first call on `ggplot` and then specify the type of graph we want by calling on `geom_bar()`. In the `aes()` function we will specify which variable (or vector) we want to plot.
 
-## Useful R Functions {.unnumbered}
+```{r}
+ggplot() + geom_bar(aes(food))
+```
+We can enhance the visualization by adding a title and changing the theme. The `labs()` function allows us to change the titles and the `ggthemes` package allows us to choose from a variety of themes.
 
-The `table()` command generates frequency distributions or contingency tables if two variables are used.
+```{r}
+ggplot() + geom_bar(aes(food), col="black", alpha=0.5, bg="blue") +
+  labs(title="Favorite Food Items",
+       subtitle="Class of 25 Students",
+       x="", y="Frequency") + 
+  theme_clean()
+  
+```
+A few arguments are worth explaining in the code above. The arguments in the `geom_bar()` function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the `labs()` function. To omit label we can just open and close quotations. Hence, `x=""` omits the x label.
 
-The `prop.table()` command generates relative frequency distributions from an object that contains a table.
+## Frequency Distribution in R (Numerical)
 
-The `cut()` function generates class limits and bins used in frequency distributions (and histograms) for quantitative data.
+To construct the frequency distribution in R we will be first generating the classes and the using the `table()` function as we did in the categorical case. Let's first get the data into R:
 
-Base R has the `barplot()` function for categorical variable, `histogram()` function for numerical data, and the `plot()` function for line charts or scatter plots. Below are some arguments that are helpful when plotting.
+```{r}
+dow<-c(277,174,202,383,358,188,293,156,
+       212,42,149,410,303,165,203,103,
+       22,59,287,121,312,52,53,158,500,
+       96,95,43,188,200)
+```
+To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is we will be using five classes, of width 100. Below is the code to do this:
 
--   *main*: used to set the plot's title. The title should be entered as a character.
--   *col*: used to set the color of the plot. Hex and RGB values are allowed as inputs. The color should be entered as a character.
--   *xlab* and *ylab*: are used to set the labels for the $x$ and $y$ axis respectively. The labels should be entered as characters.
--   `legend()` is a function to customize the legend of a graph. This argument may be used with the `plot()`, `barplot()` or `histogram()` functions.
-    -   *x*: used to set the location of the legend in the plotting area. Ex: "bottomleft".
-    -   *legend*: a vector specifying the legend names to be included.
-    -   *col*: a vector specifying the color of each item in the legend.
+```{r}
+thresh<-seq(20,520,100)
+price.cut<-cut(dow,thresh,right=F)
+(dowfreq<-table(price.cut))
+```
+
+The process involves three steps. First we generate a sequence that captures the thresholds for our bins. We start at the minimum 20 and each class is generated at an increment of 100 (the class width). Next, we place each observation in the dow, into the bins by using the `cut()` function. This involve using, the data (dow), the thresholds for each class (thresh), and specifying if the right limit should be included in the bins. The last step is to tally the results with the `table()` function.  
+
+To obtain the cumulative distribution, we can use the `cumsum()` function. Below we just wrap the frequency distribution (freq) into the `cumsum()` function.
+
+```{r}
+cumsum(dowfreq)
+```
+## Histograms in R
+
+To generate the histogram in R we will use once again the `tidyverse` package. This time we will use the `geom_histogram()` function. Below is the code to generate the histogram for the dow data:
+
+```{r}
+ggplot() + 
+  geom_histogram(aes(dow), bg="blue", alpha=0.5, col="black",
+                 bins=5,
+                 binwidth = 100,
+                 boundary=20) +
+  labs(title="Dow Stock Prices",
+       y="Frequency", x="") + 
+  theme_clean()
+```
+Within the `geom_histogram()` command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are price between 20 and 220 dollars.
 
 ## Exercises
 

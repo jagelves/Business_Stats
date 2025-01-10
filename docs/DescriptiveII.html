@@ -291,16 +291,18 @@ window.Quarto = {
    
   <ul>
   <li><a href="#frequency-distributions-categorical" id="toc-frequency-distributions-categorical" class="nav-link active" data-scroll-target="#frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</a></li>
-  <li><a href="#frequency-distributions-numerical" id="toc-frequency-distributions-numerical" class="nav-link" data-scroll-target="#frequency-distributions-numerical"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</a></li>
-  <li><a href="#plots-using-ggplot2" id="toc-plots-using-ggplot2" class="nav-link" data-scroll-target="#plots-using-ggplot2"><span class="header-section-number">2.3</span> Plots Using ggplot2</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.4</span> Exercises</a>
+  <li><a href="#freqdistnum" id="toc-freqdistnum" class="nav-link" data-scroll-target="#freqdistnum"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</a></li>
+  <li><a href="#frequency-distributions-in-r-categorical" id="toc-frequency-distributions-in-r-categorical" class="nav-link" data-scroll-target="#frequency-distributions-in-r-categorical"><span class="header-section-number">2.3</span> Frequency Distributions in R (Categorical)</a></li>
+  <li><a href="#bar-plot-in-r" id="toc-bar-plot-in-r" class="nav-link" data-scroll-target="#bar-plot-in-r"><span class="header-section-number">2.4</span> Bar Plot in R</a></li>
+  <li><a href="#frequency-distribution-in-r-numerical" id="toc-frequency-distribution-in-r-numerical" class="nav-link" data-scroll-target="#frequency-distribution-in-r-numerical"><span class="header-section-number">2.5</span> Frequency Distribution in R (Numerical)</a></li>
+  <li><a href="#histograms-in-r" id="toc-histograms-in-r" class="nav-link" data-scroll-target="#histograms-in-r"><span class="header-section-number">2.6</span> Histograms in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">2.5</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">2.8</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -348,23 +350,23 @@ window.Quarto = {
 <p>Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="mooupysrhz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#mooupysrhz table {
+<div id="wqrlzvuhdy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wqrlzvuhdy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#mooupysrhz thead, #mooupysrhz tbody, #mooupysrhz tfoot, #mooupysrhz tr, #mooupysrhz td, #mooupysrhz th {
+#wqrlzvuhdy thead, #wqrlzvuhdy tbody, #wqrlzvuhdy tfoot, #wqrlzvuhdy tr, #wqrlzvuhdy td, #wqrlzvuhdy th {
   border-style: none;
 }
 
-#mooupysrhz p {
+#wqrlzvuhdy p {
   margin: 0;
   padding: 0;
 }
 
-#mooupysrhz .gt_table {
+#wqrlzvuhdy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -390,12 +392,12 @@ window.Quarto = {
   border-left-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_caption {
+#wqrlzvuhdy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#mooupysrhz .gt_title {
+#wqrlzvuhdy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -407,7 +409,7 @@ window.Quarto = {
   border-bottom-width: 0;
 }
 
-#mooupysrhz .gt_subtitle {
+#wqrlzvuhdy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -419,7 +421,7 @@ window.Quarto = {
   border-top-width: 0;
 }
 
-#mooupysrhz .gt_heading {
+#wqrlzvuhdy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -431,13 +433,13 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_bottom_border {
+#wqrlzvuhdy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_col_headings {
+#wqrlzvuhdy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -452,7 +454,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_col_heading {
+#wqrlzvuhdy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -472,7 +474,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#mooupysrhz .gt_column_spanner_outer {
+#wqrlzvuhdy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -484,15 +486,15 @@ window.Quarto = {
   padding-right: 4px;
 }
 
-#mooupysrhz .gt_column_spanner_outer:first-child {
+#wqrlzvuhdy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mooupysrhz .gt_column_spanner_outer:last-child {
+#wqrlzvuhdy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mooupysrhz .gt_column_spanner {
+#wqrlzvuhdy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -504,11 +506,11 @@ window.Quarto = {
   width: 100%;
 }
 
-#mooupysrhz .gt_spanner_row {
+#wqrlzvuhdy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#mooupysrhz .gt_group_heading {
+#wqrlzvuhdy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -534,7 +536,7 @@ window.Quarto = {
   text-align: left;
 }
 
-#mooupysrhz .gt_empty_group_heading {
+#wqrlzvuhdy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -549,15 +551,15 @@ window.Quarto = {
   vertical-align: middle;
 }
 
-#mooupysrhz .gt_from_md > :first-child {
+#wqrlzvuhdy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mooupysrhz .gt_from_md > :last-child {
+#wqrlzvuhdy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mooupysrhz .gt_row {
+#wqrlzvuhdy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -576,7 +578,7 @@ window.Quarto = {
   overflow-x: hidden;
 }
 
-#mooupysrhz .gt_stub {
+#wqrlzvuhdy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -589,7 +591,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#mooupysrhz .gt_stub_row_group {
+#wqrlzvuhdy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -603,15 +605,15 @@ window.Quarto = {
   vertical-align: top;
 }
 
-#mooupysrhz .gt_row_group_first td {
+#wqrlzvuhdy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#mooupysrhz .gt_row_group_first th {
+#wqrlzvuhdy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#mooupysrhz .gt_summary_row {
+#wqrlzvuhdy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -621,16 +623,16 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#mooupysrhz .gt_first_summary_row {
+#wqrlzvuhdy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_first_summary_row.thick {
+#wqrlzvuhdy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#mooupysrhz .gt_last_summary_row {
+#wqrlzvuhdy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -640,7 +642,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_grand_summary_row {
+#wqrlzvuhdy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -650,7 +652,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#mooupysrhz .gt_first_grand_summary_row {
+#wqrlzvuhdy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -660,7 +662,7 @@ window.Quarto = {
   border-top-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_last_grand_summary_row_top {
+#wqrlzvuhdy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -670,11 +672,11 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_striped {
+#wqrlzvuhdy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mooupysrhz .gt_table_body {
+#wqrlzvuhdy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -683,7 +685,7 @@ window.Quarto = {
   border-bottom-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_footnotes {
+#wqrlzvuhdy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -697,7 +699,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_footnote {
+#wqrlzvuhdy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -706,7 +708,7 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#mooupysrhz .gt_sourcenotes {
+#wqrlzvuhdy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -720,7 +722,7 @@ window.Quarto = {
   border-right-color: #D3D3D3;
 }
 
-#mooupysrhz .gt_sourcenote {
+#wqrlzvuhdy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -728,72 +730,72 @@ window.Quarto = {
   padding-right: 5px;
 }
 
-#mooupysrhz .gt_left {
+#wqrlzvuhdy .gt_left {
   text-align: left;
 }
 
-#mooupysrhz .gt_center {
+#wqrlzvuhdy .gt_center {
   text-align: center;
 }
 
-#mooupysrhz .gt_right {
+#wqrlzvuhdy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mooupysrhz .gt_font_normal {
+#wqrlzvuhdy .gt_font_normal {
   font-weight: normal;
 }
 
-#mooupysrhz .gt_font_bold {
+#wqrlzvuhdy .gt_font_bold {
   font-weight: bold;
 }
 
-#mooupysrhz .gt_font_italic {
+#wqrlzvuhdy .gt_font_italic {
   font-style: italic;
 }
 
-#mooupysrhz .gt_super {
+#wqrlzvuhdy .gt_super {
   font-size: 65%;
 }
 
-#mooupysrhz .gt_footnote_marks {
+#wqrlzvuhdy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#mooupysrhz .gt_asterisk {
+#wqrlzvuhdy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#mooupysrhz .gt_indent_1 {
+#wqrlzvuhdy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#mooupysrhz .gt_indent_2 {
+#wqrlzvuhdy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#mooupysrhz .gt_indent_3 {
+#wqrlzvuhdy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#mooupysrhz .gt_indent_4 {
+#wqrlzvuhdy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#mooupysrhz .gt_indent_5 {
+#wqrlzvuhdy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#mooupysrhz .katex-display {
+#wqrlzvuhdy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#mooupysrhz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wqrlzvuhdy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -846,8 +848,8 @@ window.Quarto = {
 </div>
 <p>In sum, the <strong>bar plot</strong> illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.</p>
 </section>
-<section id="frequency-distributions-numerical" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="frequency-distributions-numerical"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</h2>
+<section id="freqdistnum" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="freqdistnum"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</h2>
 <p>When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:</p>
 <p><strong>1. Determine the Number of Classes:</strong> The number of classes can be estimated using the <span class="math inline">\(2^k\)</span> rule, where <span class="math inline">\(k\)</span> is the smallest integer such that <span class="math inline">\(2^k\)</span> exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.<br>
 <em>Ex: If a data set has 50 observations, we would choose six classes since <span class="math inline">\(2^6=64\)</span> is greater than <span class="math inline">\(50\)</span> by the least amount.</em></p>
@@ -870,40 +872,135 @@ window.Quarto = {
 <p><strong>2. Calculate the Width of Each Class:</strong> The smallest values in the data set is <span class="math inline">\(23\)</span> and the maximum is <span class="math inline">\(501\)</span>. This gives us a range of <span class="math inline">\(478\)</span>. Now we can just take the range and divide by five to get <span class="math inline">\(95.6\)</span>. To make things simple we can round to <span class="math inline">\(100\)</span> and use a class width of <span class="math inline">\(100\)</span>.</p>
 <p><strong>3. Establish Class Limits:</strong> Since we have rounded up we can be flexible with our class limits. The following class limits are suggested [20,120), [120,220), [220,320), [320,420), and [420,520). Note that each class has a width of <span class="math inline">\(100\)</span>, and that each data point belongs to one single class.</p>
 </section>
-<section id="plots-using-ggplot2" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="plots-using-ggplot2"><span class="header-section-number">2.3</span> Plots Using ggplot2</h2>
-<p>A <strong>bar plot</strong> illustrates the frequency distribution of qualitative data.</p>
-<ul>
-<li><p>Is an illustration for qualitative data.</p></li>
-<li><p>Includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis.</p></li>
-<li><p>Has gaps between each bar.</p></li>
-</ul>
-<p>A <strong>histogram</strong> illustrates the frequency distribution of quantitative data.</p>
-<ul>
-<li><p>Is an illustration for quantitative data.</p></li>
-<li><p>There are no gaps between the bars.</p></li>
-</ul>
+<section id="frequency-distributions-in-r-categorical" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="frequency-distributions-in-r-categorical"><span class="header-section-number">2.3</span> Frequency Distributions in R (Categorical)</h2>
+<p>The process of constructing frequency distributions in R is straightforward. We will be mainly using the <code>table()</code> function. Let’s start by saving the data in a vector:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>food<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"Pizza"</span>,<span class="st">"Sushi"</span>,<span class="st">"Sushi"</span>,<span class="st">"Chicken"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Chicken"</span>,<span class="st">"Pasta"</span>,<span class="st">"Pasta"</span>,<span class="st">"Pasta"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Sushi"</span>,<span class="st">"Pasta"</span>,<span class="st">"Chicken"</span>,<span class="st">"Pizza"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Chicken"</span>,<span class="st">"Sushi"</span>,<span class="st">"Pizza"</span>,<span class="st">"Sushi"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Sushi"</span>,<span class="st">"Sushi"</span>,<span class="st">"Sushi"</span>,<span class="st">"Pizza"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Pizza"</span>,<span class="st">"Chicken"</span>,<span class="st">"Sushi"</span>,<span class="st">"Pizza"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Sushi"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here we define a vector called food by assigning (<code>&lt;-</code>) the combination (<code>c</code>) of all the food items. To generate the frequency distribution we simply pass the food vector into the <code>table()</code> command.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>food
+Chicken   Pasta   Pizza   Sushi 
+      5       4       6      10 </code></pre>
+</div>
+</div>
+<p>As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the <code>prop.table()</code> function. This function requires as an input a frequency distribution created by the <code>table()</code> function. Hence, we can first create the frequency distribution, save it into an object, and the generate the relative frequency. The code is below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(food)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>food
+Chicken   Pasta   Pizza   Sushi 
+   0.20    0.16    0.24    0.40 </code></pre>
+</div>
+</div>
+<p>As a last modification. If you want percent frequencies, you can multiply the prop.table by 100, as shown below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>food
+Chicken   Pasta   Pizza   Sushi 
+     20      16      24      40 </code></pre>
+</div>
+</div>
 </section>
-<section id="useful-r-functions" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h2>
-<p>The <code>table()</code> command generates frequency distributions or contingency tables if two variables are used.</p>
-<p>The <code>prop.table()</code> command generates relative frequency distributions from an object that contains a table.</p>
-<p>The <code>cut()</code> function generates class limits and bins used in frequency distributions (and histograms) for quantitative data.</p>
-<p>Base R has the <code>barplot()</code> function for categorical variable, <code>histogram()</code> function for numerical data, and the <code>plot()</code> function for line charts or scatter plots. Below are some arguments that are helpful when plotting.</p>
-<ul>
-<li><em>main</em>: used to set the plot’s title. The title should be entered as a character.</li>
-<li><em>col</em>: used to set the color of the plot. Hex and RGB values are allowed as inputs. The color should be entered as a character.</li>
-<li><em>xlab</em> and <em>ylab</em>: are used to set the labels for the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> axis respectively. The labels should be entered as characters.</li>
-<li><code>legend()</code> is a function to customize the legend of a graph. This argument may be used with the <code>plot()</code>, <code>barplot()</code> or <code>histogram()</code> functions.
-<ul>
-<li><em>x</em>: used to set the location of the legend in the plotting area. Ex: “bottomleft”.</li>
-<li><em>legend</em>: a vector specifying the legend names to be included.</li>
-<li><em>col</em>: a vector specifying the color of each item in the legend.</li>
-</ul></li>
-</ul>
+<section id="bar-plot-in-r" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="bar-plot-in-r"><span class="header-section-number">2.4</span> Bar Plot in R</h2>
+<p>To create the bar plot we will be using the <code>geom_bar()</code> function within the <code>tidyverse</code> package. We start by loading the package:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now R will identify the functions <code>ggplot()</code> and <code>geom_bar()</code> from the <code>ggplot</code> library. To construct the plot we will first call on <code>ggplot</code> and then specify the type of graph we want by calling on <code>geom_bar()</code>. In the <code>aes()</code> function we will specify which variable (or vector) we want to plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(food))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can enhance the visualization by adding a title and changing the theme. The <code>labs()</code> function allows us to change the titles and the <code>ggthemes</code> package allows us to choose from a variety of themes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(food), <span class="at">col=</span><span class="st">"black"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">bg=</span><span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Favorite Food Items"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span><span class="st">"Class of 25 Students"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">""</span>, <span class="at">y=</span><span class="st">"Frequency"</span>) <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A few arguments are worth explaining in the code above. The arguments in the <code>geom_bar()</code> function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the <code>labs()</code> function. To omit label we can just open and close quotations. Hence, <code>x=""</code> omits the x label.</p>
 </section>
-<section id="exercises" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.4</span> Exercises</h2>
+<section id="frequency-distribution-in-r-numerical" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="frequency-distribution-in-r-numerical"><span class="header-section-number">2.5</span> Frequency Distribution in R (Numerical)</h2>
+<p>To construct the frequency distribution in R we will be first generating the classes and the using the <code>table()</code> function as we did in the categorical case. Let’s first get the data into R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dow<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">277</span>,<span class="dv">174</span>,<span class="dv">202</span>,<span class="dv">383</span>,<span class="dv">358</span>,<span class="dv">188</span>,<span class="dv">293</span>,<span class="dv">156</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="dv">212</span>,<span class="dv">42</span>,<span class="dv">149</span>,<span class="dv">410</span>,<span class="dv">303</span>,<span class="dv">165</span>,<span class="dv">203</span>,<span class="dv">103</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="dv">22</span>,<span class="dv">59</span>,<span class="dv">287</span>,<span class="dv">121</span>,<span class="dv">312</span>,<span class="dv">52</span>,<span class="dv">53</span>,<span class="dv">158</span>,<span class="dv">500</span>,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       <span class="dv">96</span>,<span class="dv">95</span>,<span class="dv">43</span>,<span class="dv">188</span>,<span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To generate the bins we will use the example and procedure found in <a href="#freqdistnum">2.2</a>. That is we will be using five classes, of width 100. Below is the code to do this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>thresh<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">20</span>,<span class="dv">520</span>,<span class="dv">100</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>price.cut<span class="ot">&lt;-</span><span class="fu">cut</span>(dow,thresh,<span class="at">right=</span>F)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>(dowfreq<span class="ot">&lt;-</span><span class="fu">table</span>(price.cut))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>price.cut
+ [20,120) [120,220) [220,320) [320,420) [420,520) 
+        9        12         5         3         1 </code></pre>
+</div>
+</div>
+<p>The process involves three steps. First we generate a sequence that captures the thresholds for our bins. We start at the minimum 20 and each class is generated at an increment of 100 (the class width). Next, we place each observation in the dow, into the bins by using the <code>cut()</code> function. This involve using, the data (dow), the thresholds for each class (thresh), and specifying if the right limit should be included in the bins. The last step is to tally the results with the <code>table()</code> function.</p>
+<p>To obtain the cumulative distribution, we can use the <code>cumsum()</code> function. Below we just wrap the frequency distribution (freq) into the <code>cumsum()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(dowfreq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [20,120) [120,220) [220,320) [320,420) [420,520) 
+        9        21        26        29        30 </code></pre>
+</div>
+</div>
+</section>
+<section id="histograms-in-r" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="histograms-in-r"><span class="header-section-number">2.6</span> Histograms in R</h2>
+<p>To generate the histogram in R we will use once again the <code>tidyverse</code> package. This time we will use the <code>geom_histogram()</code> function. Below is the code to generate the histogram for the dow data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(dow), <span class="at">bg=</span><span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">"black"</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">bins=</span><span class="dv">5</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">100</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">20</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Dow Stock Prices"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Frequency"</span>, <span class="at">x=</span><span class="st">""</span>) <span class="sc">+</span> </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Within the <code>geom_histogram()</code> command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are price between 20 and 220 dollars.</p>
+</section>
+<section id="exercises" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.7</span> Exercises</h2>
 <p>The following exercises will help you practice summarizing data with tables and simple graphs. In particular, the exercises work on:</p>
 <ul>
 <li><p>Developing frequency distributions for both categorical and numerical data.</p></li>
@@ -924,8 +1021,8 @@ Answer
 <p><em>The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about</em> <span class="math inline">\(48.28\)</span>% of the sample.</p>
 <p><em>Start by loading the <code>ISLR2</code> package. To construct the frequency distribution table, use the <code>table()</code> function.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Meningioma  LG glioma  HG glioma      Other 
@@ -934,8 +1031,8 @@ Meningioma  LG glioma  HG glioma      Other
 </div>
 <p><em>The relative frequency distribution can be easily retrieved by saving the frequency table in an object and then using the <code>prop.table()</code> function.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Meningioma  LG glioma  HG glioma      Other 
@@ -953,15 +1050,15 @@ Answer
 <p><em>The majority of diagnosis are Meningioma. Low grade glioma is the least common of diagnosis. High grade glioma and other diagnosis have about the same frequency.</em></p>
 <p>To construct the bar chart use the <code>geom_bar()</code> function from <code>tidyverse</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>BrainCancer) <span class="sc">+</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(diagnosis), <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>BrainCancer) <span class="sc">+</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(diagnosis), <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">col=</span><span class="st">"black"</span>) <span class="sc">+</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -977,7 +1074,7 @@ Answer
 <p><span class="math inline">\(33\)</span> people did not survive Meningioma. The survival rate of Meningioma is only <span class="math inline">\(21.43\)</span>%.</p>
 <p><em>Use the <code>table()</code> function one more time to create the contingency table for the two variables.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(freq2<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(freq2<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
     Meningioma LG glioma HG glioma Other
@@ -987,7 +1084,7 @@ Answer
 </div>
 <p><em>To get the survival rates, we can use the <code>prop.table()</code> function once again.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq2,<span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq2,<span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
     Meningioma LG glioma HG glioma     Other
@@ -1014,8 +1111,8 @@ Answer
 </ol>
 </section>
 </section>
-<section id="answers" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="answers"><span class="header-section-number">2.5</span> Answers</h2>
+<section id="answers" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="answers"><span class="header-section-number">2.8</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">
@@ -1023,8 +1120,8 @@ Answer
 </ol>
 <p>Start by loading the <code>ISLR2</code> package. To construct the frequency distribution table, use the <code>table()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Meningioma  LG glioma  HG glioma      Other 
@@ -1033,8 +1130,8 @@ Meningioma  LG glioma  HG glioma      Other
 </div>
 <p>The relative frequency distribution can be easily retrieved by saving the frequency table in an object and then using the <code>prop.table()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>diagnosis)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Meningioma  LG glioma  HG glioma      Other 
@@ -1046,11 +1143,11 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>To construct the bar chart use the <code>barplot()</code> function in R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(freq, <span class="at">col =</span> <span class="st">"#F5F5F5"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(freq, <span class="at">col =</span> <span class="st">"#F5F5F5"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1060,7 +1157,7 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>Use the <code>table()</code> function one more time to create the contingency table for the two variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(freq2<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(freq2<span class="ot">&lt;-</span><span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
     Meningioma LG glioma HG glioma Other
@@ -1070,7 +1167,7 @@ Meningioma  LG glioma  HG glioma      Other
 </div>
 <p>To get the survival rates, we can use the <code>prop.table()</code> function once again.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq2,<span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq2,<span class="at">margin =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
     Meningioma LG glioma HG glioma     Other
@@ -1083,12 +1180,12 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>Use the <code>barplot()</code> function one more time to construct the stacked column chart.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis),</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">c</span>(<span class="st">"Not Survived"</span>,<span class="st">"Survived"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(BrainCancer<span class="sc">$</span>status,BrainCancer<span class="sc">$</span>diagnosis),</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">c</span>(<span class="st">"Not Survived"</span>,<span class="st">"Survived"</span>), <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">50</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1101,15 +1198,15 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>Create a vector containing the intervals desired by using the <code>seq()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>intervals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="at">by=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>intervals <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="at">by=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Next use the <code>cut()</code> function to create the cuts for the histogram.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>intervals.cut <span class="ot">&lt;-</span> <span class="fu">cut</span>(airquality<span class="sc">$</span>Temp, intervals, <span class="at">left=</span><span class="cn">FALSE</span>, <span class="at">right=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>intervals.cut <span class="ot">&lt;-</span> <span class="fu">cut</span>(airquality<span class="sc">$</span>Temp, intervals, <span class="at">left=</span><span class="cn">FALSE</span>, <span class="at">right=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The frequency distribution can be obtained by using the <code>table()</code> function on the <em>interval.cut</em> object created above.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(intervals.cut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(intervals.cut)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>intervals.cut
  (50,60]  (60,70]  (70,80]  (80,90] (90,100] 
@@ -1121,8 +1218,8 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>To get the relative frequency table, start by saving the proportion table into an object.Then you can use the <code>prop.table()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(intervals.cut) </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>freq<span class="ot">&lt;-</span><span class="fu">table</span>(intervals.cut) </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(freq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>intervals.cut
    (50,60]    (60,70]    (70,80]    (80,90]   (90,100] 
@@ -1131,8 +1228,8 @@ Meningioma  LG glioma  HG glioma      Other
 </div>
 <p>For the cumulative distribution you can use the <code>cumsum()</code> function on the frequency distribution.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>cumulfreq<span class="ot">&lt;-</span><span class="fu">cumsum</span>(freq)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>cumulfreq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>cumulfreq<span class="ot">&lt;-</span><span class="fu">cumsum</span>(freq)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>cumulfreq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> (50,60]  (60,70]  (70,80]  (80,90] (90,100] 
        8       33       85      139      153 </code></pre>
@@ -1140,7 +1237,7 @@ Meningioma  LG glioma  HG glioma      Other
 </div>
 <p>Lastly, for the relative cumulative distribution table, you can use the <code>cumsum()</code> function on the relative frequency table.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="fu">prop.table</span>(freq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumsum</span>(<span class="fu">prop.table</span>(freq))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   (50,60]    (60,70]    (70,80]    (80,90]   (90,100] 
 0.05228758 0.21568627 0.55555556 0.90849673 1.00000000 </code></pre>
@@ -1151,12 +1248,12 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>Use the <code>hist()</code> function to create the histogram.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp, <span class="at">breaks=</span>intervals, </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">right=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">"#F5F5F5"</span>, <span class="at">main=</span><span class="st">"Temperature in NY"</span>, <span class="at">xlab=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(airquality<span class="sc">$</span>Temp, <span class="at">breaks=</span>intervals, </span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">right=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">"#F5F5F5"</span>, <span class="at">main=</span><span class="st">"Temperature in NY"</span>, <span class="at">xlab=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1169,24 +1266,24 @@ Meningioma  LG glioma  HG glioma      Other
 </ol>
 <p>You can use the <code>plot()</code> function to create a plot of Portfolio Y. The line for Portfolio X can be added with the <code>lines()</code> function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Portfolio<span class="sc">$</span>Y, </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1901</span>,<span class="dv">2000</span>), <span class="at">type=</span><span class="st">"l"</span>, </span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"black"</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">"% Return"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>), </span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">1901</span>,<span class="dv">2000</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">axes =</span> F)</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Portfolio<span class="sc">$</span>X, <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1901</span>,<span class="dv">2000</span>), <span class="at">type=</span><span class="st">"l"</span>, </span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"darkgrey"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"bottomleft"</span>,          </span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Port Y"</span>, <span class="st">"Port X"</span>),  </span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Portfolio<span class="sc">$</span>Y, </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1901</span>,<span class="dv">2000</span>), <span class="at">type=</span><span class="st">"l"</span>, </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"black"</span>, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">"% Return"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>,<span class="dv">3</span>), </span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">1901</span>,<span class="dv">2000</span>), <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">axes =</span> F)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Portfolio<span class="sc">$</span>X, <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1901</span>,<span class="dv">2000</span>), <span class="at">type=</span><span class="st">"l"</span>, </span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">"darkgrey"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"bottomleft"</span>,          </span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Port Y"</span>, <span class="st">"Port X"</span>),  </span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveII_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
