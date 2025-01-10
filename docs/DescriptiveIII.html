@@ -290,19 +290,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">3.1</span> Concepts</a>
+  <li><a href="#the-mean" id="toc-the-mean" class="nav-link active" data-scroll-target="#the-mean"><span class="header-section-number">3.1</span> The Mean</a></li>
+  <li><a href="#the-median" id="toc-the-median" class="nav-link" data-scroll-target="#the-median"><span class="header-section-number">3.2</span> The Median</a></li>
+  <li><a href="#the-mode" id="toc-the-mode" class="nav-link" data-scroll-target="#the-mode"><span class="header-section-number">3.3</span> The Mode</a>
   <ul class="collapse">
-  <li><a href="#measures-of-central-location" id="toc-measures-of-central-location" class="nav-link" data-scroll-target="#measures-of-central-location">Measures of Central Location</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.2</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.4</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">3.3</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">3.5</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -334,19 +335,27 @@ window.Quarto = {
 </header>
 
 
-<section id="concepts" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">3.1</span> Concepts</h2>
-<section id="measures-of-central-location" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="measures-of-central-location">Measures of Central Location</h3>
-<p>Measures of Central Location determine where the center of a distribution lies.</p>
+<p>Understanding where the “center” of a dataset lies is popular step used to interpret and summarize data effectively. Measures of central location provide different ways to identify the “typical” value in a dataset, each with its unique strengths and limitations.</p>
+<section id="the-mean" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="the-mean"><span class="header-section-number">3.1</span> The Mean</h2>
+<p>The <strong>mean</strong> is the average value for a numerical variable. It is a widely understood and straightforward measure to calculate. It incorporates all data points, providing a comprehensive representation of the data set. However, its reliance on every value also makes it sensitive to outliers or skewed distributions, which may cause it to not accurately reflect the true center of the data.</p>
+<p>The sample statistic is estimated by <span class="math inline">\(\bar{x}=\sum x_{i}/n\)</span>, where <span class="math inline">\(x_i\)</span> is observation <span class="math inline">\(i\)</span>, and <span class="math inline">\(n\)</span> is the number of observations. The population parameter is defined as <span class="math inline">\(\mu=\sum x_{i}/N\)</span>.</p>
+<p><em>Ex: Consider the following numbers</em> <span class="math inline">\(x={1,4,2,1}\)</span>. <em>The mean would be equal to</em> <span class="math inline">\(\bar{x}=\frac{1+4+2+1}{4}\)</span> <em>or</em> <span class="math inline">\(\bar{x}=2\)</span>.</p>
+</section>
+<section id="the-median" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="the-median"><span class="header-section-number">3.2</span> The Median</h2>
+<p>The <strong>median</strong> is the value in the middle when data is organized in ascending order. When <span class="math inline">\(n\)</span> is even, the median is the average between the two middle values. The median is resistant to outliers, making it an ideal measure for skewed data or data sets with irregular distributions. It is particularly useful for ordinal data, where precise ranking is important. However, the median does not utilize all data points, which can lead to less precise comparisons compared to other measures like the mean.</p>
+<p><em>Ex 1: Consider the following numbers <span class="math inline">\(x={1,4,2,1}\)</span>. We first sort the data to obtain</em> <span class="math inline">\(x_{sorted}={1,1,2,4}\)</span>. <em>Since the number of observations is even (<span class="math inline">\(n=4\)</span>), the median is the average of the two middle numbers (1,2). <span class="math inline">\(median_x=\frac{1+2}{2}\)</span> or <span class="math inline">\(1.5\)</span>.</em></p>
+<p><em>Ex 2: Consider the following numbers <span class="math inline">\(x={1,4,2,1,100}\)</span>. We once again sort the number obtaining <span class="math inline">\(x_{sorted}={1,1,2,4,100}\)</span>. Since <span class="math inline">\(n=5\)</span> in this case we can identify the median as the third value in <span class="math inline">\(x_{sorted}\)</span>. <span class="math inline">\(median_x=2\)</span>. Note that the inclusion of <span class="math inline">\(100\)</span> in the data did not change much the measure of central location.</em></p>
+</section>
+<section id="the-mode" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-mode"><span class="header-section-number">3.3</span> The Mode</h2>
+<p>The <strong>mode</strong> is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data, as it helps determine popularity or commonality, and it can be applied to both numerical and non-numerical data sets. However, the mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.</p>
+<p><em>Ex: Consider the following numbers <span class="math inline">\(x={1,4,2,1}\)</span>. Since <span class="math inline">\(1\)</span> is repeated twice and all other numbers just repeated once, <span class="math inline">\(x_{mode}=1\)</span>.</em></p>
 <ul>
-<li><p>The <strong>mean</strong> is the average value for a numerical variable. The sample statistic is estimated by <span class="math inline">\(\bar{x}=\sum x_{i}/n\)</span>, where <span class="math inline">\(x_i\)</span> is observation <span class="math inline">\(i\)</span>, and <span class="math inline">\(n\)</span> is the number of observations. The population parameter is defined as <span class="math inline">\(\mu=\sum x_{i}/N\)</span>.</p></li>
-<li><p>The <strong>median</strong> is the value in the middle when data is organized in ascending order. When <span class="math inline">\(n\)</span> is even, the median is the average between the two middle values.</p></li>
-<li><p>The <strong>mode</strong> is the value with highest frequency from a set of observations.</p></li>
 <li><p>The <strong>weighted mean</strong> uses weights to determine the importance of each data point of a variable. It is calculated by <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span>, where <span class="math inline">\(w_{i}\)</span> are the weights associated to the values <span class="math inline">\(x_{i}\)</span>.</p></li>
 <li><p>The <strong>geometric mean</strong> is a multiplicative average that is less sensitive to outliers. It is used to average growth rates or rated of return. It is calculated by <span class="math inline">\(\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1\)</span>, where <span class="math inline">\(\sqrt[n]{}\)</span> is the <span class="math inline">\(n_{th}\)</span> root, and <span class="math inline">\(r_i\)</span> are the returns or growth rates.</p></li>
 </ul>
-</section>
 <section id="useful-r-functions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R functions</h3>
 <p>Base R has a collection of functions that calculate measures of central location.</p>
@@ -358,8 +367,8 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.2</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.4</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of central location. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the mean, median, and the mode.</p></li>
@@ -503,8 +512,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="answers" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">3.3</span> Answers</h2>
+<section id="answers" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="answers"><span class="header-section-number">3.5</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">
