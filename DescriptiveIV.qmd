@@ -1,3 +1,17 @@
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+
 # Descriptive Stats IV
 
 ## Concepts
@@ -62,27 +76,305 @@ For the following exercises, make your calculations by hand and verify results u
     |:---:|:---:|:---:|:---:|
     | 70  | 68  |  4  | 98  |
 
+<details>
+
+<summary>Answer</summary>
+*The mean is $60$, the Range is $94$, the MAD is $28$, the variance is $1186$ and the variance is $34.44$.*
+
+*Start by crating a vector to hold the values:*
+
+```{r}
+Ex1<-c(70,68,4,98)
+```
+
+*The range can be calculated by using the `range()` and `diff()` functions in R.*
+
+```{r}
+(Range<-diff(range(Ex1)))
+```
+
+*Next, we can create a table by hand that captures the deviations from the mean. Let's calculate the mean first:*
+
+```{r}
+(Average1<-mean(Ex1))
+```
+
+*Now we can use the mean to fill out a table of deviations:*
+
+| $x_{i}$ | $x_{i}-\bar{x}$ | $(x_{i}-\bar{x})^2$ | $|x_{i}-\bar{x}|$ |
+|:-------:|:---------------:|:-------------------:|:-----------------:|
+|   70    |       10        |         100         |        10         |
+|   68    |        8        |         64          |         8         |
+|    4    |       -56       |        3136         |        56         |
+|   98    |       38        |        1444         |        38         |
+
+*The variance averages out the squared deviations $(x_{i}-\bar{x})^2$, the MAD averages out the absolute deviations $|x_{i}-\bar{x}|$, and the standard deviation is the square root of the variance.*
+
+*Let's verify the variance in R:*
+
+```{r}
+SquaredDeviations1<-(Ex1-Average1)^2
+AverageDeviations1<-mean(SquaredDeviations1)
+var(Ex1)*3/4
+```
+
+*Note that R calculates the sample variance. Hence, we must multiply the result by $3/4$ to get the population variance. The standard deviation is just the square root of the variance:*
+
+```{r}
+sqrt(AverageDeviations1)
+```
+
+*Lastly, the MAD is calculated by averaging the absolute deviations $|x_{i}-\bar{x}|$.*
+
+```{r}
+AbsoluteDeviations1<-abs(Ex1-Average1)
+mean(AbsoluteDeviations1)
+```
+
+
+</details>
+
+
 2.  Use the following observations to calculate the Range, MAD, Variance and Standard Deviation. Assume that the data below is a sample from the population.
 
     |     |     |     |     |     |     |
     |:---:|:---:|:---:|:---:|:---:|:---:|
     | -4  |  0  | -6  |  1  | -3  |  0  |
 
+<details>
+
+<summary>Answer</summary>
+*The mean is $-2$, Range is $7$, the MAD is $2.33$, the variance is $7.6$ and the standard deviation is $2.76$.*
+
+*Here is the table of deviations from the mean:*
+
+| $x_{i}$ | $x_{i}-\bar{x}$ | $(x_{i}-\bar{x})^2$ | $|x_{i}-\bar{x}|$ |
+|:-------:|:---------------:|:-------------------:|:-----------------:|
+|   -4    |       -2        |          4          |         2         |
+|    0    |        2        |          4          |         2         |
+|   -6    |       -4        |         16          |         4         |
+|    1    |        3        |          9          |         3         |
+|   -3    |       -1        |          1          |         1         |
+|    0    |        2        |          4          |         2         |
+
+*We can check the results in R. Let's start with the variance:*
+
+```{r}
+Ex2<-c(-4,0,-6,1,-3,0)
+var(Ex2)
+```
+
+*The standard deviation can be found with the `sd()` function:*
+
+```{r}
+sd(Ex2)
+```
+
+*The MAD is given by:*
+
+```{r}
+(MAD<-mean(abs(Ex2-mean(Ex2))))
+```
+
+*Lastly, the range:*
+
+```{r}
+diff(range(Ex2))
+```
+
+</details>
+
 ### Exercise 2 {.unnumbered}
 
 You will need the **Stocks** data set to answer this question. You can find this data at https://jagelves.github.io/Data/Stocks.csv The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&P 500) and GBTC (Bitcoin).
 
 1.  Calculate the standard deviations for each stock. Which stock had the lowest standard deviation?
+
+<details>
+
+<summary>Answer</summary>
+*For the sample taken, GBTC has the less variation. The standard deviation of GBTC is $9.43$, which is less than $16.57$ for VTI or $50.38$ for TSLA.*
+
+*Start by loading the data set from the website. Since the file is in csv format, we will use the `read.csv()` function.*
+
+```{r}
+StockPrices<-read.csv("https://jagelves.github.io/Data/Stocks.csv")
+```
+
+*Let's start with the standard deviation of the Tesla stock. The standard deviation is given by:*
+
+```{r}
+sd(StockPrices$TSLA)
+```
+
+*Next, let's find the standard deviation for the S&P 500 or VTI. The standard deviation is given by:*
+
+```{r}
+sd(StockPrices$VTI)
+```
+
+*Finally, let's calculate the standard deviation for GBTC or Bitcoin.*
+
+```{r}
+sd(StockPrices$GBTC)
+```
+
+</details>
+
 2.  Calculate the MAD. Does your answer in 1. remain the same?
+
+<details>
+
+<summary>Answer</summary>
+
+*The answer is the same, since the MAD for GBTC is $8.46$ which is lower than $14.27$ for VTI or $41.67$ for TSLA.*
+
+*To calculate the MAD for TSLA we can use the following command:*
+
+```{r}
+(MADTSLA<-mean(abs(StockPrices$TSLA-mean(StockPrices$TSLA))))
+```
+
+*The MAD for VTI is:*
+
+```{r}
+(MADVTI<-mean(abs(StockPrices$VTI-mean(StockPrices$VTI))))
+```
+
+*The MAD for GBTC is:*
+
+```{r}
+(MADGBTC<-mean(abs(StockPrices$GBTC-mean(StockPrices$GBTC))))
+```
+
+</details>
+
 3.  Finally, calculate the coefficient of variation. Any changes to your conclusions?
+
+<details>
+
+<summary>Answer</summary>
+*By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of $0.08$ which is lower than $0.44$ for GBTC or $0.18$ for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.*
+
+*The coefficients of variations are as follows. For TSLA the CV is:*
+
+```{r}
+(CVTSLA<-sd(StockPrices$TSLA)/mean(StockPrices$TSLA))
+```
+
+*For VTI the CV is:*
+
+```{r}
+(CVVTI<-sd(StockPrices$VTI)/mean(StockPrices$VTI))
+```
+
+*For GBTC we get:*
+
+```{r}
+(CVGBTC<-sd(StockPrices$GBTC)/mean(StockPrices$GBTC))
+```
+
+</details>
 
 ### Exercise 3 {.unnumbered}
 
 Install the `ISLR2` package. You will need the **Portfolio** data set to answer this question. The data has 100 records of the returns of two stocks.
 
 1.  Calculate the mean and standard deviation for each stock. Which investment has higher returns on average? Which investment is safest as measured by the standard deviation?
+
+<details>
+
+<summary>Answer</summary>
+*The best performing stock on average is stock X. It has an average return of $-0.078$% vs. $0.097$% for stock Y. The safest stock is stock X as well, since the standard deviation is $1.062$ percentage points vs. $1.14$ percentage points for stock Y.*
+
+*Start by loading the `ISLR2` package:*
+
+```{r}
+library(ISLR2)
+```
+
+*Next, calculate the mean for stock X:*
+
+```{r}
+mean(Portfolio$X)
+```
+
+*and stock Y.*
+
+```{r}
+mean(Portfolio$Y)
+```
+
+*Then, calculate the standard deviation for stock X*
+
+```{r}
+sd(Portfolio$X)
+```
+
+*and stock Y.*
+
+```{r}
+sd(Portfolio$Y)
+```
+
+
+</details>
+
 2.  Use a Risk Free rate of return of 3.5% to calculate the Sharpe ratio for each stock. Which stock would you recommend?
+
+<details>
+
+<summary>Answer</summary>
+*The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio. $-0.106$ vs. $-0.115$. Stock X is recommended since it provides a higher excess return per unit of risk taken.*
+
+*To calculate Sharpe Ratios use both the average return, and the standard deviation. For stock X, the Sharpe Ratio is:*
+
+```{r}
+(mean(Portfolio$X)-0.035)/sd(Portfolio$X)
+```
+
+*The Sharpe Ratio for stock Y:*
+
+```{r}
+(mean(Portfolio$Y)-0.035)/sd(Portfolio$Y)
+```
+
+
+</details>
+
 3.  Calculate the average return for a portfolio that has 30% of stock X and 70% of stock Y. What is the standard deviation of the portfolio?
+
+<details>
+
+<summary>Answer</summary>
+
+*The portfolio has an average return of $-0.091$ which is worse than stock X but better than stock Y. The standard deviation is $1.00$. This is better than stock X and Y separately. The Sharpe ratio of $-0.091$ is also better for the portfolio than for each stock individually.*
+
+*The mean of the portfolio is given by:*
+
+```{r}
+(mean_return=0.3*mean(Portfolio$X)+0.7*mean(Portfolio$Y))
+```
+
+*The covariance matrix is given by:*
+
+```{r}
+(risk<-cov(Portfolio))
+```
+
+*Using the matrix we can now calculate the standard deviation:*
+
+```{r}
+(standard<-sqrt(t(c(0.3,0.7)) %*% (risk %*% c(0.3,0.7))))
+```
+
+*Finally, the Sharpe ration for the portfolio is:*
+
+```{r}
+mean_return/standard[1]
+```
+
+</details>
 
 ## Answers
 
