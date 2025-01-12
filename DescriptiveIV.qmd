@@ -26,7 +26,7 @@ This is the simplest measure of dispersion, defined as the difference between th
 
 Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by averaging them out.The population parameter is given by $\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$, while the sample statistic is $s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$.  
 
-**Example:** Let's consider once more a sample of the price of Ether (a famous crytpo currency). Below is a graph of the prices:
+**Example:** Let's consider a sample of the price of Ether (a famous crypto currency). Below is a graph of the prices:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Ether.png")
