@@ -56,7 +56,15 @@ To find the standard deviation, take the square root of the variance. For the po
 
 ## Mean Absolute Deviation
 
-Unlike variance, MAD considers absolute deviations from the mean, providing a measure that is less sensitive to outliers. The **Mean Absolute Deviation** ($MAD$) measures the average deviation from the mean. This measure uses absolute deviations. It is calculated by $MAD=\frac{\sum |x_i-\mu|}{N}$ for the population and $mad=\frac{\sum |x_i-\bar{x}|}{n}$ for the sample.
+Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using the absolute deviations from the mean, rather than squaring them like variance does. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to outliers. Practically, the **Mean Absolute Deviation** measures the average deviation from the mean, by using absolute deviations. It is calculated by $MAD=\frac{\sum |x_i-\mu|}{N}$ for the population and $mad=\frac{\sum |x_i-\bar{x}|}{n}$ for the sample.
+
+**Example:** Let's consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Mad.png")
+```
+
+For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals $MAD=899.2$. This means, on average, each data point is roughly 900 dollars away from the mean. Note that the standard deviation is higher ($988.73$) because squaring deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.
 
 ## Coefficient of Variation
 -   The **coefficient of variation** $CV=s/\bar{x}$ adjusts the standard deviation for differences in units of measure or scale.

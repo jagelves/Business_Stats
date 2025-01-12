@@ -393,7 +393,18 @@ details summary {
 </section>
 <section id="mean-absolute-deviation" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</h2>
-<p>Unlike variance, MAD considers absolute deviations from the mean, providing a measure that is less sensitive to outliers. The <strong>Mean Absolute Deviation</strong> (<span class="math inline">\(MAD\)</span>) measures the average deviation from the mean. This measure uses absolute deviations. It is calculated by <span class="math inline">\(MAD=\frac{\sum |x_i-\mu|}{N}\)</span> for the population and <span class="math inline">\(mad=\frac{\sum |x_i-\bar{x}|}{n}\)</span> for the sample.</p>
+<p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using the absolute deviations from the mean, rather than squaring them like variance does. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to outliers. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by <span class="math inline">\(MAD=\frac{\sum |x_i-\mu|}{N}\)</span> for the population and <span class="math inline">\(mad=\frac{\sum |x_i-\bar{x}|}{n}\)</span> for the sample.</p>
+<p><strong>Example:</strong> Let’s consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Mad.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals <span class="math inline">\(MAD=899.2\)</span>. This means, on average, each data point is roughly 900 dollars away from the mean. Note that the standard deviation is higher (<span class="math inline">\(988.73\)</span>) because squaring deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.</p>
 </section>
 <section id="coefficient-of-variation" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</h2>
