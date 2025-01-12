@@ -48,7 +48,11 @@ The table shows the deviations from the mean in the second column. You can convi
 
 ## The Standard Deviation
 
--   The **standard deviation** measures the average deviation around the mean. It is calculated as the square root of the variance. For the population parameter use $\sigma=\sqrt{\sigma^2}$ and $s=\sqrt{s^2}$ for the sample statistic.
+The standard deviation is the square root of the variance, converting the spread back into the original units of the data. This makes it a practical tool since it quantifies how much data points deviate from the mean and does it in a way that's directly comparable to the data itself. For example, if you're assessing the consistency of manufacturing processes or the volatility of stock prices, the standard deviation provides a clear, tangible measure of variability in the same units as your data, making it easier to communicate results and make informed decisions based on the spread of the data."
+
+The **standard deviation** measures the average deviation around the mean. It is calculated as the square root of the variance. For the population parameter use $\sigma=\sqrt{\sigma^2}$ and $s=\sqrt{s^2}$ for the sample statistic.
+
+*Ex: Consider once more the price of Ether. That is. $x={480, 1050, 1400, 2500, 3200}$. In the previous section we found that the variance $s^2=977594$. Using the squared root we find that $s=\sqrt{977594}=988.73$. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.
 
 ## Mean Absolute Deviation
 -   The **Mean Absolute Deviation** ($MAD$) measures the average deviation from the mean. This measure uses absolute deviations. It is calculated by $MAD=\frac{\sum |x_i-\mu|}{N}$ for the population and $mad=\frac{\sum |x_i-\bar{x}|}{n}$ for the sample.
