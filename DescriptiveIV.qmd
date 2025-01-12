@@ -44,7 +44,7 @@ To address this issue, variance squares each deviation from the mean before aver
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Var1.png")
 ```
-The table shows the deviations from the mean in the second column. You can convince yourself that these add up to zero. The third column squares the deviation. The variance, averages the numbers in the third column. The result is $s^2=977594$.
+The table shows the deviations from the mean in the second column. You can convince yourself that these add up to zero. The third column squares the deviation. The variance, averages the numbers in the third column. The result is $s^2=977594$, which means that the price of Ether varies on average 977,594 squared deviations from the mean. The result by itself is not very intuitive, however if we compare with another variable, we can assess whether Ether is more or less variable.
 
 ## The Standard Deviation
 
