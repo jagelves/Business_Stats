@@ -18,13 +18,15 @@ Understanding the spread or variability of data is important when making informe
 
 ## The Range 
 
-This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable.The **range** is calculated by $largest-smallest$.
+This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable.The **range** is calculated by $largest-smallest$.  
 
-*Ex: Consider the data $x={480, 1050, 1400, 2500, 3200}$. The range is given by $Range=3200-480=2720$.
+*Ex: Consider the data $x={480, 1050, 1400, 2500, 3200}$. The range is given by $Range=3200-480=2720$.*
 
 ## The Variance
 
-The **variance** calculates the dispersion around the mean. It uses squared deviations. The population parameter is given by $\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$, while the sample statistic is $s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$.
+Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by averaging them out.The population parameter is given by $\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$, while the sample statistic is $s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$.
+
+
 
 ## The Standard Deviation
 

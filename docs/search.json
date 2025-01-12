@@ -224,7 +224,7 @@
     "href": "DescriptiveIV.html",
     "title": "4  Descriptive Stats IV",
     "section": "",
-    "text": "4.1 The Range\nUnderstanding the spread or variability of data is important when making informed decisions. Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency, which is often represented by the mean. Below, we explore key concepts that help quantify this variability:\nThis is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable.The range is calculated by \\(largest-smallest\\).\n*Ex: Consider the data \\(x={480, 1050, 1400, 2500, 3200}\\). The range is given by \\(Range=3200-480=2720\\).",
+    "text": "4.1 The Range\nUnderstanding the spread or variability of data is important when making informed decisions. Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency, which is often represented by the mean. Below, we explore key concepts that help quantify this variability:\nThis is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable.The range is calculated by \\(largest-smallest\\).\nEx: Consider the data \\(x={480, 1050, 1400, 2500, 3200}\\). The range is given by \\(Range=3200-480=2720\\).",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Descriptive Stats IV</span>"
     ]
@@ -804,7 +804,7 @@
     "href": "DescriptiveIV.html#the-variance",
     "title": "4  Descriptive Stats IV",
     "section": "4.2 The Variance",
-    "text": "4.2 The Variance\nThe variance calculates the dispersion around the mean. It uses squared deviations. The population parameter is given by \\(\\sigma^2= \\frac{\\sum (x_i-\\mu)^2}{N}\\), while the sample statistic is \\(s^2=\\frac{\\sum (x_i-\\bar{x})^2}{n-1}\\).",
+    "text": "4.2 The Variance\nVariance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by averaging them out.The population parameter is given by \\(\\sigma^2= \\frac{\\sum (x_i-\\mu)^2}{N}\\), while the sample statistic is \\(s^2=\\frac{\\sum (x_i-\\bar{x})^2}{n-1}\\).",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Descriptive Stats IV</span>"
     ]
