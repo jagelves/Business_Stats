@@ -24,9 +24,27 @@ This is the simplest measure of dispersion, defined as the difference between th
 
 ## The Variance
 
-Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by averaging them out.The population parameter is given by $\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$, while the sample statistic is $s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$.
+Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by averaging them out.The population parameter is given by $\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$, while the sample statistic is $s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$.  
 
+**Example:** Let's consider once more a sample of the price of Ether (a famous crytpo currency). Below is a graph of the prices:
 
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Ether.png")
+```
+The y axis represents the price, while the x axis represents the period of time. The red line is the average price of Ether. The way the variance calculates dispersion, is by first finding the distance between each point and the average. The image below illustrates these distances:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Ether2.png")
+```
+
+Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. However, because the mean is calculated to balance out these distances, the sum of all deviations from the mean equals zero. This balancing effect is visually apparent in the graph, where positive deviations are offset by negative ones.
+
+To address this issue, variance squares each deviation from the mean before averaging them. This squaring eliminates negative values, ensuring a non-zero measure of spread. The table below illustrates these calculations:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Var1.png")
+```
+The table shows the deviations from the mean in the second column. You can convince yourself that these add up to zero. The third column squares the deviation. The variance, averages the numbers in the third column. The result is $s^2=977594$.
 
 ## The Standard Deviation
 
