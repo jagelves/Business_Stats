@@ -1,6 +1,6 @@
 <style>
 details {
-  background-color: #D8E2DC;
+  background-color: #F8F9FA;
   padding: 5px;
   border: 1px solid #ddd; /* Light border */
   border-radius: 5px; /* Rounded corners */
