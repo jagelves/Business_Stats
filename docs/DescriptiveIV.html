@@ -295,11 +295,12 @@ window.Quarto = {
   <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">4.3</span> The Standard Deviation</a></li>
   <li><a href="#mean-absolute-deviation" id="toc-mean-absolute-deviation" class="nav-link" data-scroll-target="#mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</a></li>
   <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</a></li>
-  <li><a href="#portfolio-assesment-and-the-sharpe-ratio" id="toc-portfolio-assesment-and-the-sharpe-ratio" class="nav-link" data-scroll-target="#portfolio-assesment-and-the-sharpe-ratio"><span class="header-section-number">4.6</span> Portfolio Assesment and The Sharpe Ratio</a>
+  <li><a href="#the-sharpe-ratio" id="toc-the-sharpe-ratio" class="nav-link" data-scroll-target="#the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</a></li>
+  <li><a href="#portfolio-assesment" id="toc-portfolio-assesment" class="nav-link" data-scroll-target="#portfolio-assesment"><span class="header-section-number">4.7</span> Portfolio Assesment</a>
   <ul class="collapse">
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.7</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.8</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -408,17 +409,41 @@ details summary {
 </section>
 <section id="coefficient-of-variation" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</h2>
-<ul>
-<li>The <strong>coefficient of variation</strong> <span class="math inline">\(CV=s/\bar{x}\)</span> adjusts the standard deviation for differences in units of measure or scale.</li>
-</ul>
+<p>The <strong>Coefficient of Variation</strong> simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by <span class="math inline">\(CV=s/\bar{x}\)</span>.</p>
+<p><strong>Example:</strong> Consider the table below, that shows information on two different stocks:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/CV.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The third column shows the standard deviation of each stock. One could conclude that both stocks vary the same as they have the same standard deviation of one. Recall that the coefficient of variation considers the variable’s scale by incorporating the mean into its calculation. Since one stock is centered around 1 dollar and the other around 100 dollars (second column), it is clear that they do not vary similarly percentage-wise. Stock A varies 100% from the mean, whereas Stock B only varies 1%. Hence, the coefficient of variation would identify Stock A as the more variable stock.</p>
 </section>
-<section id="portfolio-assesment-and-the-sharpe-ratio" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="portfolio-assesment-and-the-sharpe-ratio"><span class="header-section-number">4.6</span> Portfolio Assesment and The Sharpe Ratio</h2>
+<section id="the-sharpe-ratio" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</h2>
+<p>The Sharpe Ratio measures how much excess return an investor receives for the extra volatility (risk) taken on beyond the risk-free rate. It essentially uses the same principle of normalization as the CV but adds the dimension of risk-adjusted performance. If the CV tells you the variability of returns in relation to their mean, the Sharpe Ratio tells you if that variability is worth it by comparing it against what you could safely earn without risk. In essence, while the CV highlights variability, the Sharpe Ratio motivates investment choices by rewarding higher returns per unit of risk taken.</p>
+<p>In sum, the <strong>Sharpe ratio</strong> quantifies the excess return of an investment over the risk free return. It is calculated by <span class="math inline">\(\frac{\bar{R_p}-R_f}{s}\)</span>, where <span class="math inline">\(\bar{R_p}\)</span> is the mean return of the portfolio, <span class="math inline">\(R_f\)</span> is the risk free return, and <span class="math inline">\(s\)</span> is the standard deviation.</p>
+<p><strong>Example:</strong> Consider the table below that includes a collection of investments.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Sharpe.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The table shows four investments (Apple, Bitcoin, Shiba, and S&amp;P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&amp;P is clearly the safest investment with a standard deviation of only 0.9%. The coefficient of variation, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&amp;P at 0.11%.</p>
+</section>
+<section id="portfolio-assesment" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="portfolio-assesment"><span class="header-section-number">4.7</span> Portfolio Assesment</h2>
 <p>To asses the performance of a portfolio calculate:</p>
 <ul>
 <li><p>The mean return of the portfolio <span class="math inline">\(\alpha\bar{R}_1+(1-\alpha)\bar{R}_2\)</span>, where <span class="math inline">\(\alpha\)</span> is the weight of investment 1 in the portfolio and <span class="math inline">\(\bar{R}_i\)</span> is the average return of investment <span class="math inline">\(i \in\)</span>{<span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>}.</p></li>
 <li><p>The variance of the portfolio is given by <span class="math inline">\(\begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}^T \begin{bmatrix} s_x^2 &amp; s_{xy} \\ s_{xy} &amp; s_y^2 \end{bmatrix} \begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}\)</span></p></li>
-<li><p>The <strong>Sharpe ratio</strong> quantifies the excess return of an investment over the risk free return. It is calculated by <span class="math inline">\(\frac{\bar{R_p}-R_f}{s}\)</span>, where <span class="math inline">\(\bar{R_p}\)</span> is the mean return of the portfolio, <span class="math inline">\(R_f\)</span> is the risk free return, and <span class="math inline">\(s\)</span> is the standard deviation.</p></li>
 </ul>
 <section id="useful-r-functions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
@@ -430,8 +455,8 @@ details summary {
 <p>When dealing with matrices, the <code>t()</code> function transposes a vector or matrix, and the operator <code>%*%</code> performs matrix multiplication.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.8</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of dispersion. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the range, MAD, variance, and the standard deviation.</p></li>

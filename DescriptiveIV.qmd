@@ -67,9 +67,32 @@ knitr::include_graphics("images/Mad.png")
 For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals $MAD=899.2$. This result states that, on average, each data point is roughly 900 dollars away from the mean. Note that the standard deviation is higher ($988.73$) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.
 
 ## Coefficient of Variation
--   The **coefficient of variation** $CV=s/\bar{x}$ adjusts the standard deviation for differences in units of measure or scale.
 
-## Portfolio Assesment and The Sharpe Ratio
+The **Coefficient of Variation** simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by $CV=s/\bar{x}$. 
+
+**Example:** Consider the table below, that shows information on two different stocks:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/CV.png")
+```
+
+The third column shows the standard deviation of each stock. One could conclude that both stocks vary the same as they have the same standard deviation of one. Recall that the coefficient of variation considers the variable's scale by incorporating the mean into its calculation. Since one stock is centered around 1 dollar and the other around 100 dollars (second column), it is clear that they do not vary similarly percentage-wise. Stock A varies 100% from the mean, whereas Stock B only varies 1%. Hence, the coefficient of variation would identify Stock A as the more variable stock.
+
+
+## The Sharpe Ratio
+The Sharpe Ratio measures how much excess return an investor receives for the extra volatility (risk) taken on beyond the risk-free rate. It essentially uses the same principle of normalization as the CV but adds the dimension of risk-adjusted performance. If the CV tells you the variability of returns in relation to their mean, the Sharpe Ratio tells you if that variability is worth it by comparing it against what you could safely earn without risk. In essence, while the CV highlights variability, the Sharpe Ratio motivates investment choices by rewarding higher returns per unit of risk taken.
+
+In sum, the **Sharpe ratio** quantifies the excess return of an investment over the risk free return. It is calculated by $\frac{\bar{R_p}-R_f}{s}$, where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
+
+**Example:** Consider the table below that includes a collection of investments. 
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Sharpe.png")
+```
+
+The table shows four investments (Apple, Bitcoin, Shiba, and S&P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&P is clearly the safest investment with a standard deviation of only 0.9%. The coefficient of variation, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&P at 0.11%.
+
+## Portfolio Assesment
 
 To asses the performance of a portfolio calculate:
 
@@ -77,7 +100,6 @@ To asses the performance of a portfolio calculate:
 
 -   The variance of the portfolio is given by $\begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}^T \begin{bmatrix} s_x^2 & s_{xy} \\ s_{xy} & s_y^2 \end{bmatrix} \begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}$
 
--   The **Sharpe ratio** quantifies the excess return of an investment over the risk free return. It is calculated by $\frac{\bar{R_p}-R_f}{s}$, where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
 
 ### Useful R Functions {.unnumbered}
 
