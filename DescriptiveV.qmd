@@ -72,7 +72,7 @@ A popular way to summarize data is by calculating the minimum, first quartile, m
 
 **Example:** Let's use the IQ scores for a group of students once more. Recall that the data is given by $IQ=\{80,100,110,75,130,90\}$. The minimum and the maximum are easily identified as $Max=130$ and $Min=75$. The first quartile ($P_{25}$) was calculated in [1.1](#.quartiles) as 78.75. Using the same steps the third quartile ($P_75$) is 115. The median is the average between the third and fourth numbers $Median=190/2=95$. The five point summary is given in the table below:
 
-|Min|$P_{25}$|Median|$P_75$|Max|
+|$Min$|$P_{25}$|$Median$|$P_75$|$Max$|
 |:-:|:-:|:-:|:-:|:-:|
 |75|78.75|95|115|130|
 
@@ -106,7 +106,7 @@ The data shown above are z-scores for the first five observations of the faithfu
 
 If we want to filter all observations that are say 1.3 standard deviations away from the mean, we can use the following command from `tidyverse`:
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 faithful %>% mutate(z_eruptions=scale(eruptions)) %>%
                       filter(scale(eruptions)>1.3)
@@ -253,7 +253,6 @@ StockPrices %>%
 *Let's construct a histogram in R to search for skewness.*
 
 ```{r}
-
 StockPrices %>% ggplot() +
   geom_histogram(aes(VTI), bins = 8,
                  binwidth = 8,
@@ -303,16 +302,20 @@ You will need the **mtcars** data set to answer this question. This data set is 
 *In R we can construct a boxplot with the following command:*
 
 ```{r}
-boxplot(mtcars$hp,axes=F, ylim=c(0,400),
-        cex=1.5, col="#F5F5F5",pch=21,bg="red")
-axis(side=1, labels=c("HP"), at=seq(1))
-axis(side=2, labels=TRUE, at=seq(0,400,50),font=1,las=1)
+mtcars %>% 
+  ggplot() +
+  geom_boxplot(aes(y=hp),
+               fill="lightgrey", alpha=0.5,
+               col="black", width=0.3,
+               outlier.colour = "red") +
+  theme_clean() +
+  scale_x_continuous(breaks = NULL, limits=c(-1,1))
 ```
 
 *From the graph it seems like the outlier is beyond a horsepower of 275. Let's write an R command to retrieve the car.*
 
 ```{r}
-mtcars[mtcars$hp>275,]
+mtcars %>% filter(hp>300)
 ```
 
 *It's the Masserati Bora!*
@@ -326,19 +329,17 @@ mtcars[mtcars$hp>275,]
 <summary>Answer</summary>
 *The histogram looks skewed to the right. This is confirmed by the estimation of a Pearson coefficient fo skewness of $1.04$.*
 
-*In R we can construct a histogram with vertical lines for the mean and median wit the following code:*
+*In R we can construct a histogram with vertical lines for the mean and median with the following code:*
 
 ```{r}
-hist(mtcars$hp,main="", ylim=c(0,12), xlab="Horse Power",
-     col="#F5F5F5")
-abline(v=mean(mtcars$hp),col="black",lwd=2)
-abline(v=median(mtcars$hp),col="darkgrey",lwd=2)
-legend(x = "topright",          
-       legend = c("Mean", "Median"),  
-       lty = c(1, 1),           
-       col = c("black", "darkgrey"),         
-       lwd = 2,
-       bty="n")    
+mtcars %>% ggplot() +
+  geom_histogram(aes(hp), bins = 5,
+                 binwidth = 60,
+                 col="black", bg="grey",
+                 boundary=50) +
+  theme_clean() +
+  geom_vline(xintercept = mean(StockPrices$VTI), col="black")+
+  geom_vline(xintercept = median(StockPrices$VTI), col="orange")
 ```
 
 *The histogram looks skewed to the right. Pearson's Coefficient of Skewness is:*
@@ -365,16 +366,12 @@ LogHP<-log(mtcars$hp)
 *Let's use this new variable to create our histogram:*
 
 ```{r}
-hist(LogHP,main="", ylim=c(0,12), xlab="Horse Power", 
-     col="#F5F5F5")
-abline(v=mean(LogHP),col="black",lwd=2)
-abline(v=median(LogHP),col="darkgrey",lwd=2)
-legend(x = "topright",          
-       legend = c("Mean", "Median"),  
-       lty = c(1, 1),           
-       col = c("black", "darkgrey"),         
-       lwd = 2,
-       bty="n")    
+ggplot() +
+  geom_histogram(aes(LogHP), bins = 5,
+                 col="black", bg="grey") +
+  theme_clean() +
+  geom_vline(xintercept = mean(LogHP), col="black")+
+  geom_vline(xintercept = median(LogHP), col="orange")
 ```
 
 *The mean and the variance now look closer together. The tail of the distribution (skew) now also looks diminished. The Skewness coefficient has decreased significantly:*
