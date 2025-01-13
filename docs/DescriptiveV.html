@@ -291,14 +291,15 @@ window.Quarto = {
    
   <ul>
   <li><a href="#quantiles-and-percentiles" id="toc-quantiles-and-percentiles" class="nav-link active" data-scroll-target="#quantiles-and-percentiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</a></li>
-  <li><a href="#chevyshevs-theorem-and-empirical-rule" id="toc-chevyshevs-theorem-and-empirical-rule" class="nav-link" data-scroll-target="#chevyshevs-theorem-and-empirical-rule">Chevyshev’s Theorem and Empirical Rule</a></li>
-  <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">5.2</span> The Empirical Rule</a></li>
-  <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew"><span class="header-section-number">5.3</span> Skew</a></li>
-  <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.4</span> Five Point Summary</a></li>
-  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers"><span class="header-section-number">5.5</span> Outliers</a></li>
-  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.6</span> Box Plots in R</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">5.7</span> Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.8</span> Exercises</a>
+  <li><a href="#chevyshevs-theorem" id="toc-chevyshevs-theorem" class="nav-link" data-scroll-target="#chevyshevs-theorem"><span class="header-section-number">5.2</span> Chevyshev’s Theorem</a></li>
+  <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</a></li>
+  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers"><span class="header-section-number">5.4</span> Outliers</a></li>
+  <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew"><span class="header-section-number">5.5</span> Skew</a></li>
+  <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</a></li>
+  <li><a href="#outliers-1" id="toc-outliers-1" class="nav-link" data-scroll-target="#outliers-1"><span class="header-section-number">5.7</span> Outliers</a></li>
+  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.8</span> Box Plots in R</a></li>
+  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">5.9</span> Useful R Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.10</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -342,52 +343,78 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
+<p>There are statistical measures that describe the shape and distribution of data beyond simple measures of central location or dispersion. They provide a nuanced view of how data is spread out, where it concentrates, and how it deviates from what might be expected. Quantiles and percentiles give specific points of division within the data, highlighting where certain proportions lie. Chebyshev’s Theorem and the Empirical Rule explain how much data falls within certain ranges from the mean, providing a framework for normalcy or expected variability across different distributions. Skewness adds insight into the symmetry of the distribution, revealing biases in data distribution. The five-point summary and resulting interquartile range (IQR) offer a robust measure of spread, focusing on the middle 50% of the data to avoid the influence of outliers. Finally, box plots visualize this summary alongside outliers, giving a complete picture of data distribution. Together, these tools quantify central tendency and variability and illustrate the data’s shape, symmetry, and anomalies, offering a fuller understanding of the dataset’s characteristics. Below we take a look at these measures in detail.</p>
 <section id="quantiles-and-percentiles" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="quantiles-and-percentiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</h2>
-<p>A <strong>quantile</strong> is a location within a set of ranked numbers (or distribution), below which a certain proportion, <span class="math inline">\(q\)</span>, of that set lie. Ex: 0.25 of the data lies below the 0.25 quantile.</p>
-<p><strong>Percentiles</strong> express quantiles in percentage form. Ex: 25% of the data lies below the 25th percentile. To calculate a percentile:</p>
-<ul>
+<p>Quantiles and percentiles are values beneath which a certain (proportion) percentage of the data in a data set is found. Specifically, if we are using quantiles we express ratios, for percentiles we use percentages.</p>
+<p><em>Ex: Imagine all your data points lined up from smallest to largest. If you say you’re looking at the 25th percentile, it means you’re finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It’s a way to see where a value stands in relation to the rest of the data in terms of percentage.</em></p>
+<p>Formally, a <strong>quantile</strong> is a location within a set of ranked numbers (or distribution), below which a certain proportion, <span class="math inline">\(q\)</span>, of that set lie. Ex: 0.45 of the data lies below the 0.45 quantile. <strong>Percentiles</strong> express quantiles in percentage form. Ex: 45% of the data lies below the 45th percentile.</p>
+<p>To calculate a percentile we follow the steps below:</p>
+<ol type="1">
 <li><p>Sort the data in ascending order.</p></li>
 <li><p>Compute the location of the percentile desired using <span class="math inline">\(L_{p}=\frac{(n+1)P}{100}\)</span> where <span class="math inline">\(L_{p}\)</span> is the location of the <span class="math inline">\(P_{th}\)</span> percentile, and <span class="math inline">\(P\)</span> is the percentile desired.</p></li>
 <li><p>The value at <span class="math inline">\(L_p\)</span>, is the the <span class="math inline">\(P_{th}\)</span> percentile.</p></li>
-</ul>
+</ol>
+<p><strong>Example:</strong> Let’s use the IQ scores for a group of students to find the 25th percentile. <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>.</p>
+<ol type="1">
+<li><p>We sort the data: <span class="math inline">\(IQ_{sorted}=\{75,80,90,100,110,130\}\)</span></p></li>
+<li><p>Find the location of the 25th percentile: <span class="math inline">\(L_{25}=7 \times 0.25=1.75\)</span>. The 25th percentile is in the position 1.75 of the sorted data.</p></li>
+<li><p>Retrieve the 25th percentile: Since position 1 is 75 and position 2 is 80, the 25th percentile lies 0.75 of the way between position 1 and 2. Hence, the 25th percentile is <span class="math inline">\(P_{25}=75+0.75(5)=78.75\)</span>.</p></li>
+</ol>
 </section>
-<section id="chevyshevs-theorem-and-empirical-rule" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="chevyshevs-theorem-and-empirical-rule">Chevyshev’s Theorem and Empirical Rule</h2>
-<p><strong>Chevyshev’s Theorem</strong> states that at least <span class="math inline">\(1-1/z^2\)</span>% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean. This result does not depend on the shape of the distribution.</p>
+<section id="chevyshevs-theorem" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="chevyshevs-theorem"><span class="header-section-number">5.2</span> Chevyshev’s Theorem</h2>
+<p>Chebyshev’s Theorem is crucial as it applies to all data distributions, and ensures that a certain proportion of data must lie between a given standard deviation from the mean. This offers a baseline to understanding the range of your data, and aids in detecting outliers. Formally, <strong>Chevyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least <span class="math inline">\(1-1/z^2\)</span>% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
+<p><em>Ex: For a given data set, we want to know at least how much of the data is between two standard deviations. Substituting 2 into Chevyshev’s formula yields $1-1/4=0.75. Hence, 75% of the data lies between two standard deviations from the mean.</em></p>
 </section>
-<section id="the-empirical-rule" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">5.2</span> The Empirical Rule</h2>
-<p>The <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule depends on the data being normally distributed.</p>
+<section id="the-empirical-rule" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</h2>
+<p>Whereas Chevyshev’s theorem holds for any data distribution, the empirical rule is a bit more precise when looking at “bell shaped” data. Formally, the <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule depends on the data being normally distributed.</p>
 </section>
-<section id="skew" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="skew"><span class="header-section-number">5.3</span> Skew</h2>
-<p>To determine if the data is skewed, calculate the <strong>Pearson’s Coefficient of Skew</strong>. <span class="math inline">\(Sk=\frac{3(\bar {x}- Median)}{s_x}\)</span>. The distribution is skewed to the left if <span class="math inline">\(Sk&lt;0\)</span>, skewed to the right is <span class="math inline">\(Sk&gt;0\)</span>, and symmetric if <span class="math inline">\(Sk=0\)</span>.</p>
+<section id="outliers" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="outliers"><span class="header-section-number">5.4</span> Outliers</h2>
+<p>Given the boundaries set by both the empirical rule and Chevyshev’s theorem, we can classify points as being common or normal and not common or outliers. Specifically, <strong>outliers</strong> are extreme deviations from the mean. They are values that are not “common” or rarely occurring. Since both the empirical rule and Chevyshev’s theorem state that a large proportion of the data is between three standard deviation, it would be uncommon to have a data point that is more that three standard deviations from the mean.</p>
+<p>To calculate outliers we use a z-score, which is a measure of distance from the mean in units of standard deviation. It can be calculated for any data point in your variable by using the formula <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected to be outliers.</p>
+<p><em>Ex: On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get: <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</em></p>
 </section>
-<section id="five-point-summary" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.4</span> Five Point Summary</h2>
+<section id="skew" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="skew"><span class="header-section-number">5.5</span> Skew</h2>
+<p>The skew refers to the asymmetry in the distribution of data. If most of the data leans towards one side, it’s skewed. If it leans to the left, it’s left-skewed or negatively skewed, meaning the tail on the left side is longer. If it leans to the right, it’s right-skewed or positively skewed, with a longer tail on the right. If the data is evenly distributed, it’s not skewed at all, it’s symmetric. To determine if the data is skewed, calculate the <strong>Pearson’s Coefficient of Skew</strong>. <span class="math inline">\(Sk=\frac{3(\bar {x}- Median)}{s_x}\)</span>. The distribution is skewed to the left if <span class="math inline">\(Sk&lt;0\)</span>, skewed to the right is <span class="math inline">\(Sk&gt;0\)</span>, and symmetric if <span class="math inline">\(Sk=0\)</span>.</p>
+<p>The image below shows the different types of skew:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Skew.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="five-point-summary" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</h2>
 <p>A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary).</p>
 <p>The <strong>interquartile range</strong> (IQR) is the difference between the third quartile and the first quartile.</p>
 </section>
-<section id="outliers" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="outliers"><span class="header-section-number">5.5</span> Outliers</h2>
+<section id="outliers-1" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="outliers-1"><span class="header-section-number">5.7</span> Outliers</h2>
 <p><strong>Outliers</strong> are extreme deviations from the mean. They are values that are not “normal”. To calculate outliers:</p>
 <ul>
 <li><p>Use a <strong>z-score</strong> to measure the distance from the mean in units of standard deviation. <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected outliers.</p></li>
 <li><p>Calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If <span class="math inline">\(x_i\)</span> is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p></li>
 </ul>
 </section>
-<section id="box-plots-in-r" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.6</span> Box Plots in R</h2>
+<section id="box-plots-in-r" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.8</span> Box Plots in R</h2>
 <p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data.</p>
 </section>
-<section id="useful-r-functions" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">5.7</span> Useful R Functions</h2>
+<section id="useful-r-functions" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">5.9</span> Useful R Functions</h2>
 <p>The <code>quantile()</code> function returns the five point summary when no arguments are specified. For a specific quantile, specify the <em>probs</em> argument.</p>
 <p>The <code>boxplot()</code> command returns a box plot for a vector of values.</p>
 </section>
-<section id="exercises" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.8</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.10</span> Exercises</h2>
 <p>The following exercises will help you practice other statistical measures. In particular, the exercises work on:</p>
 <ul>
 <li><p>Constructing a five point summary and a boxplot.</p></li>
@@ -489,7 +516,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -519,7 +546,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -549,7 +576,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -576,7 +603,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -614,7 +641,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -654,7 +681,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
