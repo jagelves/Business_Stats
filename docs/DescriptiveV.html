@@ -290,20 +290,23 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">5.1</span> Concepts</a>
-  <ul class="collapse">
-  <li><a href="#quantiles-and-percentiles" id="toc-quantiles-and-percentiles" class="nav-link" data-scroll-target="#quantiles-and-percentiles">Quantiles and Percentiles</a></li>
+  <li><a href="#quantiles-and-percentiles" id="toc-quantiles-and-percentiles" class="nav-link active" data-scroll-target="#quantiles-and-percentiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</a></li>
   <li><a href="#chevyshevs-theorem-and-empirical-rule" id="toc-chevyshevs-theorem-and-empirical-rule" class="nav-link" data-scroll-target="#chevyshevs-theorem-and-empirical-rule">Chevyshev’s Theorem and Empirical Rule</a></li>
-  <li><a href="#five-point-summary-and-outliers" id="toc-five-point-summary-and-outliers" class="nav-link" data-scroll-target="#five-point-summary-and-outliers">Five Point Summary and Outliers</a></li>
+  <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">5.2</span> The Empirical Rule</a></li>
+  <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew"><span class="header-section-number">5.3</span> Skew</a></li>
+  <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.4</span> Five Point Summary</a></li>
+  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers"><span class="header-section-number">5.5</span> Outliers</a></li>
+  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.6</span> Box Plots in R</a>
+  <ul class="collapse">
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.2</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">5.3</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">5.8</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -334,10 +337,21 @@ window.Quarto = {
 </header>
 
 
-<section id="concepts" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">5.1</span> Concepts</h2>
-<section id="quantiles-and-percentiles" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="quantiles-and-percentiles">Quantiles and Percentiles</h3>
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+<section id="quantiles-and-percentiles" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="quantiles-and-percentiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</h2>
 <p>A <strong>quantile</strong> is a location within a set of ranked numbers (or distribution), below which a certain proportion, <span class="math inline">\(q\)</span>, of that set lie. Ex: 0.25 of the data lies below the 0.25 quantile.</p>
 <p><strong>Percentiles</strong> express quantiles in percentage form. Ex: 25% of the data lies below the 25th percentile. To calculate a percentile:</p>
 <ul>
@@ -346,31 +360,42 @@ window.Quarto = {
 <li><p>The value at <span class="math inline">\(L_p\)</span>, is the the <span class="math inline">\(P_{th}\)</span> percentile.</p></li>
 </ul>
 </section>
-<section id="chevyshevs-theorem-and-empirical-rule" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="chevyshevs-theorem-and-empirical-rule">Chevyshev’s Theorem and Empirical Rule</h3>
+<section id="chevyshevs-theorem-and-empirical-rule" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="chevyshevs-theorem-and-empirical-rule">Chevyshev’s Theorem and Empirical Rule</h2>
 <p><strong>Chevyshev’s Theorem</strong> states that at least <span class="math inline">\(1-1/z^2\)</span>% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean. This result does not depend on the shape of the distribution.</p>
+</section>
+<section id="the-empirical-rule" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">5.2</span> The Empirical Rule</h2>
 <p>The <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule depends on the data being normally distributed.</p>
 </section>
-<section id="five-point-summary-and-outliers" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="five-point-summary-and-outliers">Five Point Summary and Outliers</h3>
+<section id="skew" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="skew"><span class="header-section-number">5.3</span> Skew</h2>
+<p>To determine if the data is skewed, calculate the <strong>Pearson’s Coefficient of Skew</strong>. <span class="math inline">\(Sk=\frac{3(\bar {x}- Median)}{s_x}\)</span>. The distribution is skewed to the left if <span class="math inline">\(Sk&lt;0\)</span>, skewed to the right is <span class="math inline">\(Sk&gt;0\)</span>, and symmetric if <span class="math inline">\(Sk=0\)</span>.</p>
+</section>
+<section id="five-point-summary" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.4</span> Five Point Summary</h2>
 <p>A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary).</p>
 <p>The <strong>interquartile range</strong> (IQR) is the difference between the third quartile and the first quartile.</p>
+</section>
+<section id="outliers" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="outliers"><span class="header-section-number">5.5</span> Outliers</h2>
 <p><strong>Outliers</strong> are extreme deviations from the mean. They are values that are not “normal”. To calculate outliers:</p>
 <ul>
 <li><p>Use a <strong>z-score</strong> to measure the distance from the mean in units of standard deviation. <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected outliers.</p></li>
 <li><p>Calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If <span class="math inline">\(x_i\)</span> is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p></li>
 </ul>
-<p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data.</p>
-<p>To determine if the data is skewed, calculate the <strong>Pearson’s Coefficient of Skew</strong>. <span class="math inline">\(Sk=\frac{3(\bar {x}- Median)}{s_x}\)</span>. The distribution is skewed to the left if <span class="math inline">\(Sk&lt;0\)</span>, skewed to the right is <span class="math inline">\(Sk&gt;0\)</span>, and symmetric if <span class="math inline">\(Sk=0\)</span>.</p>
 </section>
+<section id="box-plots-in-r" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.6</span> Box Plots in R</h2>
+<p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data.</p>
 <section id="useful-r-functions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
 <p>The <code>quantile()</code> function returns the five point summary when no arguments are specified. For a specific quantile, specify the <em>probs</em> argument.</p>
 <p>The <code>boxplot()</code> command returns a box plot for a vector of values.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.2</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.7</span> Exercises</h2>
 <p>The following exercises will help you practice other statistical measures. In particular, the exercises work on:</p>
 <ul>
 <li><p>Constructing a five point summary and a boxplot.</p></li>
@@ -397,31 +422,88 @@ window.Quarto = {
 </tr>
 </tbody>
 </table></li>
-<li><p>Confirm your finding of an outlier by calculating the <span class="math inline">\(z\)</span>-score. Is <span class="math inline">\(30\)</span> an outlier when using a <span class="math inline">\(z\)</span>-Score?</p></li>
-<li><p>Use Chebyshev’s theorem to determine what percent of the data falls between the <span class="math inline">\(z\)</span>-score found in <span class="math inline">\(2\)</span>.</p></li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="2" type="1">
+<li>Confirm your finding of an outlier by calculating the <span class="math inline">\(z\)</span>-score. Is <span class="math inline">\(30\)</span> an outlier when using a <span class="math inline">\(z\)</span>-Score?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="3" type="1">
+<li>Use Chebyshev’s theorem to determine what percent of the data falls between the <span class="math inline">\(z\)</span>-score found in <span class="math inline">\(2\)</span>.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <p>You will need the <strong>Stocks</strong> data set to answer this question. You can find this data at https://jagelves.github.io/Data/Stocks.csv The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&amp;P 500) and GBTC (Bitcoin).</p>
 <ol type="1">
 <li>Construct a boxplot for Stock A. Is the data skewed or symmetric?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="2" type="1">
 <li>Create a histogram of the data. Include a vertical line for the mean and median. Explain how the mean and median indicates a skew in the data. Calculate the skewness statistic to confirm your result.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="3" type="1">
 <li>Use a line chart to plot your data. Can you explain why the data has a skew?</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
 <p>You will need the <strong>mtcars</strong> data set to answer this question. This data set is part of R. You don’t need to download any files to access it.</p>
 <ol type="1">
 <li>Construct a boxplot for the <em>hp</em> variable. Write a command in R that retrieves the outlier. Which car is the outlier?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="2" type="1">
 <li>Create a histogram of the data. Is the data skewed? Include a vertical line for the mean and median. Calculate the skewness statistic to confirm your result.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
+<ol start="3" type="1">
 <li>Transform the data by taking a natural logarithm. Specifically, create a new variable called <em>Loghp</em>. Repeat the procedure in 2. Is the skew still there?</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+</details>
 </section>
 </section>
-<section id="answers" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">5.3</span> Answers</h2>
+<section id="answers" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="answers"><span class="header-section-number">5.8</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">

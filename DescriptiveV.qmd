@@ -1,8 +1,21 @@
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+
 # Descriptive Stats V
 
-## Concepts
 
-### Quantiles and Percentiles {.unnumbered}
+## Quantiles and Percentiles
 
 A **quantile** is a location within a set of ranked numbers (or distribution), below which a certain proportion, $q$, of that set lie. Ex: 0.25 of the data lies below the 0.25 quantile.
 
@@ -14,27 +27,33 @@ A **quantile** is a location within a set of ranked numbers (or distribution), b
 
 -   The value at $L_p$, is the the $P_{th}$ percentile.
 
-### Chevyshev's Theorem and Empirical Rule {.unnumbered}
+## Chevyshev's Theorem and Empirical Rule {.unnumbered}
 
 **Chevyshev's Theorem** states that at least $1-1/z^2$% of the data lies between $z$ standard deviations from the mean. This result does not depend on the shape of the distribution.
 
+## The Empirical Rule
+
 The **Empirical Rule** or ($68$,$95$,$99.7$ rule) states that $68$%, $95$%, and $99.7$% of the data lies between $1$, $2$, and $3$ standard deviations from the mean respectively. The rule depends on the data being normally distributed.
 
-### Five Point Summary and Outliers {.unnumbered}
+## Skew
+To determine if the data is skewed, calculate the **Pearson's Coefficient of Skew**. $Sk=\frac{3(\bar {x}- Median)}{s_x}$. The distribution is skewed to the left if $Sk<0$, skewed to the right is $Sk>0$, and symmetric if $Sk=0$.
+
+## Five Point Summary
 
 A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary).
 
 The **interquartile range** (IQR) is the difference between the third quartile and the first quartile.
 
+## Outliers
 **Outliers** are extreme deviations from the mean. They are values that are not "normal". To calculate outliers:
 
 -   Use a **z-score** to measure the distance from the mean in units of standard deviation. $z_{i}=\frac{x_i-\bar{x}}{s_x}$. $z$-scores above $3$ are suspected outliers.
 
 -   Calculate $Q_1-1.5(IQR)$ and $Q_3+1.5(IQR)$, where $Q_1$ is the first quartile, $Q_3$ is the third quartile, and $IQR$ is the interquartile range. If $x_i$ is less than $Q_1-1.5(IQR)$ or greater than $Q_3+1.5(IQR)$, then it is considered an outlier.
 
+## Box Plots in R
 A **box plot** is a graph that shows the five point summary, outliers (if any), and the distribution of data.
 
-To determine if the data is skewed, calculate the **Pearson's Coefficient of Skew**. $Sk=\frac{3(\bar {x}- Median)}{s_x}$. The distribution is skewed to the left if $Sk<0$, skewed to the right is $Sk>0$, and symmetric if $Sk=0$.
 
 ### Useful R Functions {.unnumbered}
 
@@ -66,25 +85,93 @@ For the following exercises, make your calculations by hand and verify results u
     |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
     |  3  | 10  |  4  |  1  |  0  | 30  |  6  |
 
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 2.  Confirm your finding of an outlier by calculating the $z$-score. Is $30$ an outlier when using a $z$-Score?
 
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 3.  Use Chebyshev's theorem to determine what percent of the data falls between the $z$-score found in $2$.
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
 
 ### Exercise 2 {.unnumbered}
 
 You will need the **Stocks** data set to answer this question. You can find this data at https://jagelves.github.io/Data/Stocks.csv The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&P 500) and GBTC (Bitcoin).
 
 1.  Construct a boxplot for Stock A. Is the data skewed or symmetric?
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 2.  Create a histogram of the data. Include a vertical line for the mean and median. Explain how the mean and median indicates a skew in the data. Calculate the skewness statistic to confirm your result.
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 3.  Use a line chart to plot your data. Can you explain why the data has a skew?
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
 
 ### Exercise 3 {.unnumbered}
 
 You will need the **mtcars** data set to answer this question. This data set is part of R. You don't need to download any files to access it.
 
 1.  Construct a boxplot for the *hp* variable. Write a command in R that retrieves the outlier. Which car is the outlier?
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 2.  Create a histogram of the data. Is the data skewed? Include a vertical line for the mean and median. Calculate the skewness statistic to confirm your result.
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 3.  Transform the data by taking a natural logarithm. Specifically, create a new variable called *Loghp*. Repeat the procedure in 2. Is the skew still there?
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
 
 ## Answers
 
