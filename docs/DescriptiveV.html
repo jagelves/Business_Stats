@@ -290,16 +290,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#quantiles-and-percentiles" id="toc-quantiles-and-percentiles" class="nav-link active" data-scroll-target="#quantiles-and-percentiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</a></li>
+  <li><a href="#.quartiles" id="toc-.quartiles" class="nav-link active" data-scroll-target="#.quartiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</a></li>
   <li><a href="#chevyshevs-theorem" id="toc-chevyshevs-theorem" class="nav-link" data-scroll-target="#chevyshevs-theorem"><span class="header-section-number">5.2</span> Chevyshev’s Theorem</a></li>
   <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</a></li>
-  <li><a href="#outliers" id="toc-outliers" class="nav-link" data-scroll-target="#outliers"><span class="header-section-number">5.4</span> Outliers</a></li>
+  <li><a href="#outliers-z-scores" id="toc-outliers-z-scores" class="nav-link" data-scroll-target="#outliers-z-scores"><span class="header-section-number">5.4</span> Outliers Z-Scores</a></li>
   <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew"><span class="header-section-number">5.5</span> Skew</a></li>
   <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</a></li>
-  <li><a href="#outliers-1" id="toc-outliers-1" class="nav-link" data-scroll-target="#outliers-1"><span class="header-section-number">5.7</span> Outliers</a></li>
-  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.8</span> Box Plots in R</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">5.9</span> Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.10</span> Exercises</a>
+  <li><a href="#outliers-iqr" id="toc-outliers-iqr" class="nav-link" data-scroll-target="#outliers-iqr"><span class="header-section-number">5.7</span> Outliers IQR</a></li>
+  <li><a href="#quantiles-and-quartiles-in-r" id="toc-quantiles-and-quartiles-in-r" class="nav-link" data-scroll-target="#quantiles-and-quartiles-in-r"><span class="header-section-number">5.8</span> Quantiles and Quartiles in R</a></li>
+  <li><a href="#outliers-in-r" id="toc-outliers-in-r" class="nav-link" data-scroll-target="#outliers-in-r"><span class="header-section-number">5.9</span> Outliers in R</a></li>
+  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.10</span> Box Plots in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.11</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -343,12 +344,11 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>There are statistical measures that describe the shape and distribution of data beyond simple measures of central location or dispersion. They provide a nuanced view of how data is spread out, where it concentrates, and how it deviates from what might be expected. Quantiles and percentiles give specific points of division within the data, highlighting where certain proportions lie. Chebyshev’s Theorem and the Empirical Rule explain how much data falls within certain ranges from the mean, providing a framework for normalcy or expected variability across different distributions. Skewness adds insight into the symmetry of the distribution, revealing biases in data distribution. The five-point summary and resulting interquartile range (IQR) offer a robust measure of spread, focusing on the middle 50% of the data to avoid the influence of outliers. Finally, box plots visualize this summary alongside outliers, giving a complete picture of data distribution. Together, these tools quantify central tendency and variability and illustrate the data’s shape, symmetry, and anomalies, offering a fuller understanding of the dataset’s characteristics. Below we take a look at these measures in detail.</p>
-<section id="quantiles-and-percentiles" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="quantiles-and-percentiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</h2>
-<p>Quantiles and percentiles are values beneath which a certain (proportion) percentage of the data in a data set is found. Specifically, if we are using quantiles we express ratios, for percentiles we use percentages.</p>
+<p>There are statistical measures that describe the shape and distribution of data beyond simple measures of central location or dispersion. They provide a view of how data is spread out, where it concentrates, and how it deviates from what might be expected. The tools shown below describe the data’s shape, symmetry, and anomalies, offering a fuller understanding of the dataset’s characteristics.</p>
+<section id=".quartiles" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id=".quartiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</h2>
+<p>A <strong>quantile</strong> is a location within a set of ranked numbers (or distribution), below which a certain proportion, <span class="math inline">\(q\)</span>, of that set lie. If instead express quantiles in percentage they are referred to as <strong>percentiles</strong>.</p>
 <p><em>Ex: Imagine all your data points lined up from smallest to largest. If you say you’re looking at the 25th percentile, it means you’re finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It’s a way to see where a value stands in relation to the rest of the data in terms of percentage.</em></p>
-<p>Formally, a <strong>quantile</strong> is a location within a set of ranked numbers (or distribution), below which a certain proportion, <span class="math inline">\(q\)</span>, of that set lie. Ex: 0.45 of the data lies below the 0.45 quantile. <strong>Percentiles</strong> express quantiles in percentage form. Ex: 45% of the data lies below the 45th percentile.</p>
 <p>To calculate a percentile we follow the steps below:</p>
 <ol type="1">
 <li><p>Sort the data in ascending order.</p></li>
@@ -364,17 +364,17 @@ details summary {
 </section>
 <section id="chevyshevs-theorem" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="chevyshevs-theorem"><span class="header-section-number">5.2</span> Chevyshev’s Theorem</h2>
-<p>Chebyshev’s Theorem is crucial as it applies to all data distributions, and ensures that a certain proportion of data must lie between a given standard deviation from the mean. This offers a baseline to understanding the range of your data, and aids in detecting outliers. Formally, <strong>Chevyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least <span class="math inline">\(1-1/z^2\)</span>% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
+<p>Chebyshev’s Theorem is crucial as it applies to all data distributions, and ensures that a certain proportion of data must lie between a given standard deviation from the mean. This offers a baseline to understanding the range of your data, and aids in detecting outliers. Formally, <strong>Chevyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least (<span class="math inline">\(1-1/z^2\)</span>)% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
 <p><em>Ex: For a given data set, we want to know at least how much of the data is between two standard deviations. Substituting 2 into Chevyshev’s formula yields $1-1/4=0.75. Hence, 75% of the data lies between two standard deviations from the mean.</em></p>
 </section>
 <section id="the-empirical-rule" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</h2>
 <p>Whereas Chevyshev’s theorem holds for any data distribution, the empirical rule is a bit more precise when looking at “bell shaped” data. Formally, the <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule depends on the data being normally distributed.</p>
 </section>
-<section id="outliers" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="outliers"><span class="header-section-number">5.4</span> Outliers</h2>
-<p>Given the boundaries set by both the empirical rule and Chevyshev’s theorem, we can classify points as being common or normal and not common or outliers. Specifically, <strong>outliers</strong> are extreme deviations from the mean. They are values that are not “common” or rarely occurring. Since both the empirical rule and Chevyshev’s theorem state that a large proportion of the data is between three standard deviation, it would be uncommon to have a data point that is more that three standard deviations from the mean.</p>
-<p>To calculate outliers we use a z-score, which is a measure of distance from the mean in units of standard deviation. It can be calculated for any data point in your variable by using the formula <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected to be outliers.</p>
+<section id="outliers-z-scores" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="outliers-z-scores"><span class="header-section-number">5.4</span> Outliers Z-Scores</h2>
+<p>Given the boundaries set by both the empirical rule and Chevyshev’s theorem, we can classify points as being common (normal) and not common (outliers). Specifically, <strong>outliers</strong> are extreme deviations from the mean. They are values that are not “common” or rarely occurring. Since both the empirical rule and Chevyshev’s theorem state that a large proportion of the data is between three standard deviations, it would be uncommon to have a data point that is more that three standard deviations away from the mean.</p>
+<p>To calculate outliers we use a z-score, which is a measure of distance from the mean in units of standard deviations. It can be calculated for any data point in your variable by using the formula <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. By definition, <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected to be outliers.</p>
 <p><em>Ex: On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get: <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</em></p>
 </section>
 <section id="skew" class="level2" data-number="5.5">
@@ -385,36 +385,122 @@ details summary {
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/Skew.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+<p><img src="images/Skew.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
 </div>
+<p><em>Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The pearson coefficient of skew is equal to <span class="math inline">\(Sk=3(10-8)/2=3\)</span>. Since the skew is positive, we expect the distribution to be right skewed.</em></p>
 </section>
 <section id="five-point-summary" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</h2>
-<p>A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary).</p>
-<p>The <strong>interquartile range</strong> (IQR) is the difference between the third quartile and the first quartile.</p>
+<p>A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary). This gives us a good idea of how data is distributed. We can additionally inquire how the middle 50% of the data varies. Recall, that we can use a range to assess dispersion. The interquartile range quantifies the dispersion of the middle 50% of the data. Formally, the <strong>interquartile range</strong> (IQR) is the difference between the third quartile and the first quartile.</p>
+<p><strong>Example:</strong> Let’s use the IQ scores for a group of students once more. Recall that the data is given by <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The minimum and the maximum are easily identified as <span class="math inline">\(Max=130\)</span> and <span class="math inline">\(Min=75\)</span>. The first quartile (<span class="math inline">\(P_{25}\)</span>) was calculated in <a href="#.quartiles">1.1</a> as 78.75. Using the same steps the third quartile (<span class="math inline">\(P_75\)</span>) is 115. The median is the average between the third and fourth numbers <span class="math inline">\(Median=190/2=95\)</span>. The five point summary is given in the table below:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Min</th>
+<th style="text-align: center;"><span class="math inline">\(P_{25}\)</span></th>
+<th style="text-align: center;">Median</th>
+<th style="text-align: center;"><span class="math inline">\(P_75\)</span></th>
+<th style="text-align: center;">Max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;">78.75</td>
+<td style="text-align: center;">95</td>
+<td style="text-align: center;">115</td>
+<td style="text-align: center;">130</td>
+</tr>
+</tbody>
+</table>
+<p>To calculate the interquartile range we find the difference between the 75th and 25th percentiles. <span class="math inline">\(IQR=115-78.75=36.25\)</span> which means that the middle 50% of the data has a range of 36.25.</p>
 </section>
-<section id="outliers-1" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="outliers-1"><span class="header-section-number">5.7</span> Outliers</h2>
-<p><strong>Outliers</strong> are extreme deviations from the mean. They are values that are not “normal”. To calculate outliers:</p>
+<section id="outliers-iqr" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="outliers-iqr"><span class="header-section-number">5.7</span> Outliers IQR</h2>
+<p>An alternate way to identify outliers is by using the interquartile range. Specifically, we first calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If the observation (<span class="math inline">\(x_i\)</span>) is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p>
+<p><em>Ex: Consider once more the IQ data. <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The lower limit for on outlier is given by <span class="math inline">\(LL=Q_1-1.5(IQR)=78.75-1.5(36.25)\)</span> or <span class="math inline">\(LL=24.375\)</span>. The upper limit is given by <span class="math inline">\(UL=Q_3+1.5(IQR)=115+1.5(36.25)\)</span> or <span class="math inline">\(UL=169.375\)</span>. Any data point outside the range [24.375,169.375] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.</em></p>
+</section>
+<section id="quantiles-and-quartiles-in-r" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="quantiles-and-quartiles-in-r"><span class="header-section-number">5.8</span> Quantiles and Quartiles in R</h2>
+<p>R quickly calculates quantiles for a given variable (vector) using the <code>quantile()</code> function. Below we use the IQ example once more.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">100</span>,<span class="dv">110</span>,<span class="dv">75</span>,<span class="dv">130</span>,<span class="dv">90</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(IQ, <span class="at">type=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    0%    25%    50%    75%   100% 
+ 75.00  78.75  95.00 115.00 130.00 </code></pre>
+</div>
+</div>
+<p>You will notice that an extra argument <em>type</em> has been been passed into the quantile function. Since, there are several ways to calculate quantiles, R allows you to identify which method you want to use. In sec <a href=".#quartiles">1.1</a> we explained method 6.</p>
+</section>
+<section id="outliers-in-r" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="outliers-in-r"><span class="header-section-number">5.9</span> Outliers in R</h2>
+<p>To identify outliers we can us the <code>scale()</code> function. We’ll consider the first five observations in the <em>faithful</em> data set.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">scale</span>(faithful),<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    eruptions    waiting
+1  0.09831763  0.5960248
+2 -1.47873278 -1.2428901
+3 -0.13561152  0.2282418
+4 -1.05555759 -0.6544374
+5  0.91575542  1.0373644</code></pre>
+</div>
+</div>
+<p>The data shown above are z-scores for the first five observations of the faithful data set. As you can see non of the observations are outliers, as they are all less that 3 standard deviations away from the mean.</p>
+<p>If we want to filter all observations that are say 1.3 standard deviations away from the mean, we can use the following command from <code>tidyverse</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>faithful <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_eruptions=</span><span class="fu">scale</span>(eruptions)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">filter</span>(<span class="fu">scale</span>(eruptions)<span class="sc">&gt;</span><span class="fl">1.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using one column matrices in `filter()` was deprecated in dplyr 1.1.0.
+ℹ Please use one dimensional logical vectors instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  eruptions waiting z_eruptions
+1     5.067      76    1.383614
+2     5.100      96    1.412526
+3     5.033      77    1.353825
+4     5.000      88    1.324912</code></pre>
+</div>
+</div>
+<p>This confirms that there are no outliers in the eruptions variable.</p>
+</section>
+<section id="box-plots-in-r" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.10</span> Box Plots in R</h2>
+<p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data. It can be easily constructed using <code>geom_boxplot()</code> in R. Let’s use the eruptions variable once more.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>faithful <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>eruptions),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The boxplot highlights the minimum just below 2, the maximum around 5, the first quartile just above 2, the median at 4, and the third quartile just above 4. Any outlier would be shown as a point beyond the whiskers of the box plot.</p>
+<p>Here is a summary of the functions used in this section:</p>
 <ul>
-<li><p>Use a <strong>z-score</strong> to measure the distance from the mean in units of standard deviation. <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected outliers.</p></li>
-<li><p>Calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If <span class="math inline">\(x_i\)</span> is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p></li>
+<li><p>The <code>quantile()</code> function returns the five point summary when no arguments are specified. For a specific quantile, specify the <em>probs</em> argument.</p></li>
+<li><p>The <code>scale()</code> function calculates the z-scores for a vector of values.</p></li>
+<li><p>The <code>geom_boxplot()</code> command returns a box plot for a vector of values.</p></li>
 </ul>
 </section>
-<section id="box-plots-in-r" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.8</span> Box Plots in R</h2>
-<p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data.</p>
-</section>
-<section id="useful-r-functions" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">5.9</span> Useful R Functions</h2>
-<p>The <code>quantile()</code> function returns the five point summary when no arguments are specified. For a specific quantile, specify the <em>probs</em> argument.</p>
-<p>The <code>boxplot()</code> command returns a box plot for a vector of values.</p>
-</section>
-<section id="exercises" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.10</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.11</span> Exercises</h2>
 <p>The following exercises will help you practice other statistical measures. In particular, the exercises work on:</p>
 <ul>
 <li><p>Constructing a five point summary and a boxplot.</p></li>
@@ -450,8 +536,8 @@ Answer
 <p><em>Quartiles are calculated using the percentile formula <span class="math inline">\((n+1)P/100\)</span>. The data set has seven numbers. The first quartile’s location is <span class="math inline">\(8/4=2\)</span>, the second quartile’s location is <span class="math inline">\(8/2=4\)</span> and the third quartile’s location is <span class="math inline">\(24/4=6\)</span>. The values at these location, when data is organized in ascending order, are <span class="math inline">\(1\)</span>, <span class="math inline">\(4\)</span>, and <span class="math inline">\(10\)</span>.</em></p>
 <p><em>In R we can get the five number summary by using the <code>quantile()</code> function. Since there are various rules that can be used to calculate percentiles, we specify type <span class="math inline">\(6\)</span> to match our rules.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">6</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(Ex1,<span class="at">type =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">6</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(Ex1,<span class="at">type =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0%  25%  50%  75% 100% 
    0    1    4   10   30 </code></pre>
@@ -469,7 +555,7 @@ Answer
 <p><em>If we use the <span class="math inline">\(z\)</span>-score instead we find that <span class="math inline">\(30\)</span> is not an outlier since the <span class="math inline">\(z\)</span>-score is <span class="math inline">\(Z_{30}=2.15\)</span>. This observation is only <span class="math inline">\(2.15\)</span> standard deviations away from the mean.</em></p>
 <p><em>In R we can make a quick calculation of the <span class="math inline">\(z\)</span>-Score to confirm our results. The <span class="math inline">\(z\)</span>-score is given by <span class="math inline">\(Z_{i}=\frac{x_{30}-\mu}{\sigma}\)</span>.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(Z30<span class="ot">&lt;-</span>(<span class="dv">30</span><span class="sc">-</span><span class="fu">mean</span>(Ex1))<span class="sc">/</span><span class="fu">sd</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(Z30<span class="ot">&lt;-</span>(<span class="dv">30</span><span class="sc">-</span><span class="fu">mean</span>(Ex1))<span class="sc">/</span><span class="fu">sd</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.148711</code></pre>
 </div>
@@ -485,7 +571,7 @@ Answer
 <p><em>Chebyshev’s theorem states that <span class="math inline">\(1-\frac{1}{z_{2}}\)</span> of the data lies between <span class="math inline">\(z\)</span> standard deviation from the mean.</em></p>
 <p><em>Substituting the <span class="math inline">\(z\)</span>-score found in 2. we get <span class="math inline">\(78.34\)</span>% of the data lies between the standard deviation calculated. In R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1-1</span><span class="sc">/</span>(Z30)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1-1</span><span class="sc">/</span>(Z30)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7834073</code></pre>
 </div>
@@ -505,18 +591,21 @@ Answer
 <p><em>The data is skewed to the right.</em></p>
 <p><em>Start by loading the data set:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>To construct the boxplot in R, use the <code>boxplot()</code> command.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">as.numeric</span>(StockPrices<span class="sc">$</span>VTI),<span class="at">axes=</span>F, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">120</span>,<span class="dv">260</span>),</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">"#F5F5F5"</span>,<span class="at">pch=</span><span class="dv">21</span>,<span class="at">bg=</span><span class="st">"red"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"VTI"</span>), <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">1</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">140</span>,<span class="dv">260</span>,<span class="dv">20</span>),<span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -533,27 +622,25 @@ Answer
 <p><em>The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.</em></p>
 <p><em>Let’s construct a histogram in R to search for skewness.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(StockPrices<span class="sc">$</span>VTI,<span class="at">main=</span><span class="st">""</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">40</span>), </span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Prices"</span>, <span class="at">col=</span><span class="st">"#F5F5F5"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI),<span class="at">col=</span><span class="st">"black"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI),<span class="at">col=</span><span class="st">"darkgrey"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"topright"</span>,          </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>),  </span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(VTI), <span class="at">bins =</span> <span class="dv">8</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">8</span>,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">179</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>The lines are close to each other but the mean is slighlty larger than the median. Let’s confirm with the skewness statistic <span class="math inline">\(3(mean-median)/sd\)</span>.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(skew<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI))<span class="sc">/</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(skew<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI))<span class="sc">/</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2856304</code></pre>
 </div>
@@ -569,14 +656,13 @@ Answer
 </summary>
 <p><em>The line chart indicates that the data has a downward trend in the early periods. This creates a few points that are large. In later periods the stock price stabilizes to lower levels.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y=</span>StockPrices<span class="sc">$</span>VTI,<span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(StockPrices<span class="sc">$</span>VTI)),</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">"l"</span>, <span class="at">ylab=</span><span class="st">"Prices"</span>, <span class="at">xlab=</span><span class="st">"Period"</span>, <span class="at">axes=</span>F)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">250</span>,<span class="dv">50</span>),<span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">300</span>,<span class="dv">20</span>),<span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI, <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(VTI)))) <span class="sc">+</span> <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Period"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -596,21 +682,21 @@ Answer
 <p><em>The outlier is the Masserati Bora. The horse power is <span class="math inline">\(335\)</span>.</em></p>
 <p><em>In R we can construct a boxplot with the following command:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mtcars<span class="sc">$</span>hp,<span class="at">axes=</span>F, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">400</span>),</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">"#F5F5F5"</span>,<span class="at">pch=</span><span class="dv">21</span>,<span class="at">bg=</span><span class="st">"red"</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"HP"</span>), <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">1</span>))</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">400</span>,<span class="dv">50</span>),<span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(mtcars<span class="sc">$</span>hp,<span class="at">axes=</span>F, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">400</span>),</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">cex=</span><span class="fl">1.5</span>, <span class="at">col=</span><span class="st">"#F5F5F5"</span>,<span class="at">pch=</span><span class="dv">21</span>,<span class="at">bg=</span><span class="st">"red"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="fu">c</span>(<span class="st">"HP"</span>), <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">1</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">at=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">400</span>,<span class="dv">50</span>),<span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>From the graph it seems like the outlier is beyond a horsepower of 275. Let’s write an R command to retrieve the car.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>hp<span class="sc">&gt;</span><span class="dv">275</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mtcars[mtcars<span class="sc">$</span>hp<span class="sc">&gt;</span><span class="dv">275</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              mpg cyl disp  hp drat   wt qsec vs am gear carb
 Maserati Bora  15   8  301 335 3.54 3.57 14.6  0  1    5    8</code></pre>
@@ -628,27 +714,27 @@ Answer
 <p><em>The histogram looks skewed to the right. This is confirmed by the estimation of a Pearson coefficient fo skewness of <span class="math inline">\(1.04\)</span>.</em></p>
 <p><em>In R we can construct a histogram with vertical lines for the mean and median wit the following code:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>hp,<span class="at">main=</span><span class="st">""</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">xlab=</span><span class="st">"Horse Power"</span>,</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"#F5F5F5"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>hp),<span class="at">col=</span><span class="st">"black"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp),<span class="at">col=</span><span class="st">"darkgrey"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"topright"</span>,          </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>),  </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(mtcars<span class="sc">$</span>hp,<span class="at">main=</span><span class="st">""</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">xlab=</span><span class="st">"Horse Power"</span>,</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"#F5F5F5"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(mtcars<span class="sc">$</span>hp),<span class="at">col=</span><span class="st">"black"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp),<span class="at">col=</span><span class="st">"darkgrey"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"topright"</span>,          </span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>),  </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>The histogram looks skewed to the right. Pearson’s Coefficient of Skewness is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(SkewHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)<span class="sc">-</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp))<span class="sc">/</span><span class="fu">sd</span>(mtcars<span class="sc">$</span>hp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(SkewHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)<span class="sc">-</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp))<span class="sc">/</span><span class="fu">sd</span>(mtcars<span class="sc">$</span>hp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.036458</code></pre>
 </div>
@@ -664,31 +750,31 @@ Answer
 <p><em>The skew is still there, but the distribution now look more symmetrical and the Skew coefficient has decreased to <span class="math inline">\(0.44\)</span>.</em></p>
 <p><em>In R we can create an new variable that captures the log transformation. The <code>log()</code> function takes the natural logarithm of a number or vector.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>LogHP<span class="ot">&lt;-</span><span class="fu">log</span>(mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>LogHP<span class="ot">&lt;-</span><span class="fu">log</span>(mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Let’s use this new variable to create our histogram:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(LogHP,<span class="at">main=</span><span class="st">""</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">xlab=</span><span class="st">"Horse Power"</span>, </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"#F5F5F5"</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(LogHP),<span class="at">col=</span><span class="st">"black"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">median</span>(LogHP),<span class="at">col=</span><span class="st">"darkgrey"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"topright"</span>,          </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>),  </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(LogHP,<span class="at">main=</span><span class="st">""</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">12</span>), <span class="at">xlab=</span><span class="st">"Horse Power"</span>, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"#F5F5F5"</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">mean</span>(LogHP),<span class="at">col=</span><span class="st">"black"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">median</span>(LogHP),<span class="at">col=</span><span class="st">"darkgrey"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="at">x =</span> <span class="st">"topright"</span>,          </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Mean"</span>, <span class="st">"Median"</span>),  </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>),           </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"darkgrey"</span>),         </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty=</span><span class="st">"n"</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>The mean and the variance now look closer together. The tail of the distribution (skew) now also looks diminished. The Skewness coefficient has decreased significantly:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(SkewLogHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(LogHP)<span class="sc">-</span><span class="fu">median</span>(LogHP))<span class="sc">/</span><span class="fu">sd</span>(LogHP))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(SkewLogHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(LogHP)<span class="sc">-</span><span class="fu">median</span>(LogHP))<span class="sc">/</span><span class="fu">sd</span>(LogHP))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4402212</code></pre>
 </div>
