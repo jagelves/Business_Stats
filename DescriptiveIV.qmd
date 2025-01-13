@@ -92,28 +92,55 @@ knitr::include_graphics("images/Sharpe.png")
 
 The table shows four investments (Apple, Bitcoin, Shiba, and S&P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&P is clearly the safest investment with a standard deviation of only 0.9%. The coefficient of variation, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&P at 0.11%.
 
-## Portfolio Assesment
+## Measures of Dispersion in R
 
-To asses the performance of a portfolio calculate:
+Let's use some stock returns to explore R functions that allow us to calculate measures of dispersion. You can run the following command to get the data into R:
 
--   The mean return of the portfolio $\alpha\bar{R}_1+(1-\alpha)\bar{R}_2$, where $\alpha$ is the weight of investment 1 in the portfolio and $\bar{R}_i$ is the average return of investment $i \in${$1$,$2$}.
+```{r message=FALSE}
+library(tidyverse)
+returns<-read_csv("https://jagelves.github.io/Data/returns.csv")
+```
 
--   The variance of the portfolio is given by $\begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}^T \begin{bmatrix} s_x^2 & s_{xy} \\ s_{xy} & s_y^2 \end{bmatrix} \begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}$
+Use the `glimpse()` fucntion to view the data:
 
+```{r}
+glimpse(returns)
+```
+It seems like the data is stock returns for different companies. We can start by finding the average return of each stock. To do this, let's use the `group_by()` and `summarise()` functions.
 
-### Useful R Functions {.unnumbered}
+```{r}
+returns %>% group_by(Stock) %>% 
+  summarise(Mean=mean(Return))
+```
+The `group_by()` function makes a group out of every unique entry in the Stock variable. Since, there are three unique entries (AAPL, SPY and TSLA), it created three groups. The `summarise()` function allows us to combine (or use) all of the entries of a particular stock to find a summary statistic. Since we specified `mean()`, the command returns the mean of the particular stock returns. It seems like TSLA has the highest mean return at 0.5%.
 
-The `range()` function returns the maximum and minimum of a vector of values.
+We can keep adding to the table by specifying other measures. To calculate the variance we can use the `var()` function, for the standard deviation we can use the `sd()` function, and for the coefficient of variation we can find the ratio between the standard deviation and the mean.
 
-The `diff()` function finds the first difference of a vector.
+```{r}
+returns %>% group_by(Stock) %>% 
+  summarise(Mean=mean(Return),
+            Variance=var(Return),
+            SD=sd(Return),
+            CV=SD/Mean*100)
+```
+TSLA seems to have the highest variation when following the standard deviation. However, if we look at the variation as a percentage of the mean, SPY seems to have the highest variation for the period considered. In the table below we once more use the `group_by()` and `summarise()` functions to calculate the other measures of dispersion.
+
+```{r}
+returns %>% group_by(Stock) %>% 
+  summarise(Range=diff(range(Return)),
+            MAD=mean(abs(Return-mean(Return))),
+            Sharpe=(mean(Return)-0.0001)/sd(Return))
+```
+In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the `range()` function. The `diff()` function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.
+
+Below is a list of the functions used:
+- The `range()` function returns the maximum and minimum of a vector of values.
+
+- The `diff()` function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.
 
 The `var()` function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of $(n-1)/n$.
 
 The `sd()` function calculates the sample standard deviation.
-
-The `matrix()` function defines a matrix.
-
-When dealing with matrices, the `t()` function transposes a vector or matrix, and the operator `%*%` performs matrix multiplication.
 
 ## Exercises
 

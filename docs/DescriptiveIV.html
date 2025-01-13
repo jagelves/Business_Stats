@@ -296,10 +296,7 @@ window.Quarto = {
   <li><a href="#mean-absolute-deviation" id="toc-mean-absolute-deviation" class="nav-link" data-scroll-target="#mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</a></li>
   <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</a></li>
   <li><a href="#the-sharpe-ratio" id="toc-the-sharpe-ratio" class="nav-link" data-scroll-target="#the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</a></li>
-  <li><a href="#portfolio-assesment" id="toc-portfolio-assesment" class="nav-link" data-scroll-target="#portfolio-assesment"><span class="header-section-number">4.7</span> Portfolio Assesment</a>
-  <ul class="collapse">
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
-  </ul></li>
+  <li><a href="#measures-of-dispersion-in-r" id="toc-measures-of-dispersion-in-r" class="nav-link" data-scroll-target="#measures-of-dispersion-in-r"><span class="header-section-number">4.7</span> Measures of Dispersion in R</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.8</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
@@ -438,22 +435,76 @@ details summary {
 </div>
 <p>The table shows four investments (Apple, Bitcoin, Shiba, and S&amp;P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&amp;P is clearly the safest investment with a standard deviation of only 0.9%. The coefficient of variation, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&amp;P at 0.11%.</p>
 </section>
-<section id="portfolio-assesment" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="portfolio-assesment"><span class="header-section-number">4.7</span> Portfolio Assesment</h2>
-<p>To asses the performance of a portfolio calculate:</p>
+<section id="measures-of-dispersion-in-r" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="measures-of-dispersion-in-r"><span class="header-section-number">4.7</span> Measures of Dispersion in R</h2>
+<p>Let’s use some stock returns to explore R functions that allow us to calculate measures of dispersion. You can run the following command to get the data into R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>returns<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/returns.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Use the <code>glimpse()</code> fucntion to view the data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(returns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 1,182
+Columns: 3
+$ date   &lt;chr&gt; "1/3/20", "1/6/20", "1/7/20", "1/8/20", "1/9/20", "1/10/20", "1…
+$ Stock  &lt;chr&gt; "AAPL", "AAPL", "AAPL", "AAPL", "AAPL", "AAPL", "AAPL", "AAPL",…
+$ Return &lt;dbl&gt; -0.009769540, 0.007936685, -0.004714194, 0.015958317, 0.0210183…</code></pre>
+</div>
+</div>
+<p>It seems like the data is stock returns for different companies. We can start by finding the average return of each stock. To do this, let’s use the <code>group_by()</code> and <code>summarise()</code> functions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stock) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean=</span><span class="fu">mean</span>(Return))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  Stock     Mean
+  &lt;chr&gt;    &lt;dbl&gt;
+1 AAPL  0.00173 
+2 SPY   0.000828
+3 TSLA  0.00511 </code></pre>
+</div>
+</div>
+<p>The <code>group_by()</code> function makes a group out of every unique entry in the Stock variable. Since, there are three unique entries (AAPL, SPY and TSLA), it created three groups. The <code>summarise()</code> function allows us to combine (or use) all of the entries of a particular stock to find a summary statistic. Since we specified <code>mean()</code>, the command returns the mean of the particular stock returns. It seems like TSLA has the highest mean return at 0.5%.</p>
+<p>We can keep adding to the table by specifying other measures. To calculate the variance we can use the <code>var()</code> function, for the standard deviation we can use the <code>sd()</code> function, and for the coefficient of variation we can find the ratio between the standard deviation and the mean.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stock) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean=</span><span class="fu">mean</span>(Return),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">Variance=</span><span class="fu">var</span>(Return),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD=</span><span class="fu">sd</span>(Return),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">CV=</span>SD<span class="sc">/</span>Mean<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  Stock     Mean Variance     SD    CV
+  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 AAPL  0.00173  0.000659 0.0257 1483.
+2 SPY   0.000828 0.000313 0.0177 2138.
+3 TSLA  0.00511  0.00252  0.0502  983.</code></pre>
+</div>
+</div>
+<p>TSLA seems to have the highest variation when following the standard deviation. However, if we look at the variation as a percentage of the mean, SPY seems to have the highest variation for the period considered. In the table below we once more use the <code>group_by()</code> and <code>summarise()</code> functions to calculate the other measures of dispersion.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stock) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Range=</span><span class="fu">diff</span>(<span class="fu">range</span>(Return)),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">MAD=</span><span class="fu">mean</span>(<span class="fu">abs</span>(Return<span class="sc">-</span><span class="fu">mean</span>(Return))),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">Sharpe=</span>(<span class="fu">mean</span>(Return)<span class="sc">-</span><span class="fl">0.0001</span>)<span class="sc">/</span><span class="fu">sd</span>(Return))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  Stock Range    MAD Sharpe
+  &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+1 AAPL  0.251 0.0179 0.0635
+2 SPY   0.203 0.0107 0.0411
+3 TSLA  0.418 0.0354 0.0998</code></pre>
+</div>
+</div>
+<p>In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the <code>range()</code> function. The <code>diff()</code> function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.</p>
+<p>Below is a list of the functions used: - The <code>range()</code> function returns the maximum and minimum of a vector of values.</p>
 <ul>
-<li><p>The mean return of the portfolio <span class="math inline">\(\alpha\bar{R}_1+(1-\alpha)\bar{R}_2\)</span>, where <span class="math inline">\(\alpha\)</span> is the weight of investment 1 in the portfolio and <span class="math inline">\(\bar{R}_i\)</span> is the average return of investment <span class="math inline">\(i \in\)</span>{<span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>}.</p></li>
-<li><p>The variance of the portfolio is given by <span class="math inline">\(\begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}^T \begin{bmatrix} s_x^2 &amp; s_{xy} \\ s_{xy} &amp; s_y^2 \end{bmatrix} \begin{bmatrix} \alpha \\ 1-\alpha \end{bmatrix}\)</span></p></li>
+<li>The <code>diff()</code> function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.</li>
 </ul>
-<section id="useful-r-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
-<p>The <code>range()</code> function returns the maximum and minimum of a vector of values.</p>
-<p>The <code>diff()</code> function finds the first difference of a vector.</p>
 <p>The <code>var()</code> function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of <span class="math inline">\((n-1)/n\)</span>.</p>
 <p>The <code>sd()</code> function calculates the sample standard deviation.</p>
-<p>The <code>matrix()</code> function defines a matrix.</p>
-<p>When dealing with matrices, the <code>t()</code> function transposes a vector or matrix, and the operator <code>%*%</code> performs matrix multiplication.</p>
-</section>
 </section>
 <section id="exercises" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.8</span> Exercises</h2>
@@ -487,18 +538,18 @@ Answer
 <p><em>The mean is <span class="math inline">\(60\)</span>, the Range is <span class="math inline">\(94\)</span>, the MAD is <span class="math inline">\(28\)</span>, the variance is <span class="math inline">\(1186\)</span> and the variance is <span class="math inline">\(34.44\)</span>.</em></p>
 <p><em>Start by crating a vector to hold the values:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">68</span>,<span class="dv">4</span>,<span class="dv">98</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">68</span>,<span class="dv">4</span>,<span class="dv">98</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>The range can be calculated by using the <code>range()</code> and <code>diff()</code> functions in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(Range<span class="ot">&lt;-</span><span class="fu">diff</span>(<span class="fu">range</span>(Ex1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(Range<span class="ot">&lt;-</span><span class="fu">diff</span>(<span class="fu">range</span>(Ex1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 94</code></pre>
 </div>
 </div>
 <p><em>Next, we can create a table by hand that captures the deviations from the mean. Let’s calculate the mean first:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(Average1<span class="ot">&lt;-</span><span class="fu">mean</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(Average1<span class="ot">&lt;-</span><span class="fu">mean</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 60</code></pre>
 </div>
@@ -543,24 +594,24 @@ Answer
 <p><em>The variance averages out the squared deviations <span class="math inline">\((x_{i}-\bar{x})^2\)</span>, the MAD averages out the absolute deviations <span class="math inline">\(|x_{i}-\bar{x}|\)</span>, and the standard deviation is the square root of the variance.</em></p>
 <p><em>Let’s verify the variance in R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>SquaredDeviations1<span class="ot">&lt;-</span>(Ex1<span class="sc">-</span>Average1)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>AverageDeviations1<span class="ot">&lt;-</span><span class="fu">mean</span>(SquaredDeviations1)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex1)<span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>SquaredDeviations1<span class="ot">&lt;-</span>(Ex1<span class="sc">-</span>Average1)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>AverageDeviations1<span class="ot">&lt;-</span><span class="fu">mean</span>(SquaredDeviations1)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex1)<span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1186</code></pre>
 </div>
 </div>
 <p><em>Note that R calculates the sample variance. Hence, we must multiply the result by <span class="math inline">\(3/4\)</span> to get the population variance. The standard deviation is just the square root of the variance:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(AverageDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(AverageDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34.43835</code></pre>
 </div>
 </div>
 <p><em>Lastly, the MAD is calculated by averaging the absolute deviations <span class="math inline">\(|x_{i}-\bar{x}|\)</span>.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>AbsoluteDeviations1<span class="ot">&lt;-</span><span class="fu">abs</span>(Ex1<span class="sc">-</span>Average1)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(AbsoluteDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>AbsoluteDeviations1<span class="ot">&lt;-</span><span class="fu">abs</span>(Ex1<span class="sc">-</span>Average1)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(AbsoluteDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28</code></pre>
 </div>
@@ -637,29 +688,29 @@ Answer
 </table>
 <p><em>We can check the results in R. Let’s start with the variance:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Ex2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">0</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Ex2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">0</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7.6</code></pre>
 </div>
 </div>
 <p><em>The standard deviation can be found with the <code>sd()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.75681</code></pre>
 </div>
 </div>
 <p><em>The MAD is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(MAD<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(Ex2<span class="sc">-</span><span class="fu">mean</span>(Ex2))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(MAD<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(Ex2<span class="sc">-</span><span class="fu">mean</span>(Ex2))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.333333</code></pre>
 </div>
 </div>
 <p><em>Lastly, the range:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Ex2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Ex2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
@@ -679,25 +730,25 @@ Answer
 <p><em>For the sample taken, GBTC has the less variation. The standard deviation of GBTC is <span class="math inline">\(9.43\)</span>, which is less than <span class="math inline">\(16.57\)</span> for VTI or <span class="math inline">\(50.38\)</span> for TSLA.</em></p>
 <p><em>Start by loading the data set from the website. Since the file is in csv format, we will use the <code>read.csv()</code> function.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Let’s start with the standard deviation of the Tesla stock. The standard deviation is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50.38092</code></pre>
 </div>
 </div>
 <p><em>Next, let’s find the standard deviation for the S&amp;P 500 or VTI. The standard deviation is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.5731</code></pre>
 </div>
 </div>
 <p><em>Finally, let’s calculate the standard deviation for GBTC or Bitcoin.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.434213</code></pre>
 </div>
@@ -713,21 +764,21 @@ Answer
 <p><em>The answer is the same, since the MAD for GBTC is <span class="math inline">\(8.46\)</span> which is lower than <span class="math inline">\(14.27\)</span> for VTI or <span class="math inline">\(41.67\)</span> for TSLA.</em></p>
 <p><em>To calculate the MAD for TSLA we can use the following command:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(MADTSLA<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>TSLA<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(MADTSLA<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>TSLA<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 41.67163</code></pre>
 </div>
 </div>
 <p><em>The MAD for VTI is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(MADVTI<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(MADVTI<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.27169</code></pre>
 </div>
 </div>
 <p><em>The MAD for GBTC is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(MADGBTC<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>GBTC<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(MADGBTC<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>GBTC<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.458029</code></pre>
 </div>
@@ -743,21 +794,21 @@ Answer
 <p><em>By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of <span class="math inline">\(0.08\)</span> which is lower than <span class="math inline">\(0.44\)</span> for GBTC or <span class="math inline">\(0.18\)</span> for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.</em></p>
 <p><em>The coefficients of variations are as follows. For TSLA the CV is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(CVTSLA<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(CVTSLA<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1793755</code></pre>
 </div>
 </div>
 <p><em>For VTI the CV is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(CVVTI<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>(CVVTI<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07970004</code></pre>
 </div>
 </div>
 <p><em>For GBTC we get:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(CVGBTC<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(CVGBTC<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4442497</code></pre>
 </div>
@@ -777,32 +828,32 @@ Answer
 <p><em>The best performing stock on average is stock X. It has an average return of <span class="math inline">\(-0.078\)</span>% vs.&nbsp;<span class="math inline">\(0.097\)</span>% for stock Y. The safest stock is stock X as well, since the standard deviation is <span class="math inline">\(1.062\)</span> percentage points vs.&nbsp;<span class="math inline">\(1.14\)</span> percentage points for stock Y.</em></p>
 <p><em>Start by loading the <code>ISLR2</code> package:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Next, calculate the mean for stock X:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.07713211</code></pre>
 </div>
 </div>
 <p><em>and stock Y.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.09694472</code></pre>
 </div>
 </div>
 <p><em>Then, calculate the standard deviation for stock X</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.062376</code></pre>
 </div>
 </div>
 <p><em>and stock Y.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.143782</code></pre>
 </div>
@@ -818,14 +869,14 @@ Answer
 <p><em>The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio. <span class="math inline">\(-0.106\)</span> vs.&nbsp;<span class="math inline">\(-0.115\)</span>. Stock X is recommended since it provides a higher excess return per unit of risk taken.</em></p>
 <p><em>To calculate Sharpe Ratios use both the average return, and the standard deviation. For stock X, the Sharpe Ratio is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.1055484</code></pre>
 </div>
 </div>
 <p><em>The Sharpe Ratio for stock Y:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.1153583</code></pre>
 </div>
@@ -841,14 +892,14 @@ Answer
 <p><em>The portfolio has an average return of <span class="math inline">\(-0.091\)</span> which is worse than stock X but better than stock Y. The standard deviation is <span class="math inline">\(1.00\)</span>. This is better than stock X and Y separately. The Sharpe ratio of <span class="math inline">\(-0.091\)</span> is also better for the portfolio than for each stock individually.</em></p>
 <p><em>The mean of the portfolio is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">mean_return=</span><span class="fl">0.3</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">+</span><span class="fl">0.7</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">mean_return=</span><span class="fl">0.3</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">+</span><span class="fl">0.7</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.09100094</code></pre>
 </div>
 </div>
 <p><em>The covariance matrix is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(risk<span class="ot">&lt;-</span><span class="fu">cov</span>(Portfolio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(risk<span class="ot">&lt;-</span><span class="fu">cov</span>(Portfolio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          X         Y
 X 1.1286424 0.6263583
@@ -857,7 +908,7 @@ Y 0.6263583 1.3082375</code></pre>
 </div>
 <p><em>Using the matrix we can now calculate the standard deviation:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(standard<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">t</span>(<span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)) <span class="sc">%*%</span> (risk <span class="sc">%*%</span> <span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(standard<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">t</span>(<span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)) <span class="sc">%*%</span> (risk <span class="sc">%*%</span> <span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         [,1]
 [1,] 1.002838</code></pre>
@@ -865,7 +916,7 @@ Y 0.6263583 1.3082375</code></pre>
 </div>
 <p><em>Finally, the Sharpe ration for the portfolio is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>mean_return<span class="sc">/</span>standard[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>mean_return<span class="sc">/</span>standard[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.09074338</code></pre>
 </div>
