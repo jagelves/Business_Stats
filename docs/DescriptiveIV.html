@@ -343,15 +343,15 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Understanding the spread or variability of data is important when making informed decisions. Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency, which is often represented by the mean. Below, we explore key concepts that help quantify this variability:</p>
+<p>Understanding the spread or variability of data is important when making informed decisions with data. Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency Below, we explore the main statistics that help us quantify variability:</p>
 <section id="the-range" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="the-range"><span class="header-section-number">4.1</span> The Range</h2>
-<p>This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable.The <strong>range</strong> is calculated by <span class="math inline">\(largest-smallest\)</span>.</p>
-<p><em>Ex: Consider the data <span class="math inline">\(x={480, 1050, 1400, 2500, 3200}\)</span>. The range is given by <span class="math inline">\(Range=3200-480=2720\)</span>.</em></p>
+<p>This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The <strong>range</strong> is calculated by <span class="math inline">\(Range=largest-smallest\)</span>.</p>
+<p><em>Ex: Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. The range is given by <span class="math inline">\(Range=3200-480=2720\)</span>.</em></p>
 </section>
 <section id="the-variance" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">4.2</span> The Variance</h2>
-<p>Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by averaging them out.The population parameter is given by <span class="math inline">\(\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\)</span>, while the sample statistic is <span class="math inline">\(s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\)</span>.</p>
+<p>Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The population parameter is given by <span class="math inline">\(\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\)</span>, while the sample statistic is <span class="math inline">\(s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\)</span>.</p>
 <p><strong>Example:</strong> Let’s consider a sample of the price of Ether (a famous crypto currency). Below is a graph of the prices:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -372,8 +372,8 @@ details summary {
 </div>
 </div>
 </div>
-<p>Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. However, because the mean is calculated to balance out these distances, the sum of all deviations from the mean equals zero. This balancing effect is visually apparent in the graph, where positive deviations are offset by negative ones.</p>
-<p>To address this issue, variance squares each deviation from the mean before averaging them. This squaring eliminates negative values, ensuring a non-zero measure of spread. The table below illustrates these calculations:</p>
+<p>Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. However, because the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This “balancing” effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones.</p>
+<p>To address this issue, the variance squares each deviation from the mean before finding their average. This squaring eliminates negative values, ensuring a non-zero measure of spread. The table below illustrates these calculations:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -383,17 +383,17 @@ details summary {
 </div>
 </div>
 </div>
-<p>The table shows the deviations from the mean in the second column. You can convince yourself that these add up to zero. The third column squares the deviation. The variance, averages the numbers in the third column. The result is <span class="math inline">\(s^2=977594\)</span>, which means that the price of Ether varies on average 977,594 squared deviations from the mean. The result by itself is not very intuitive, however if we compare with another variable, we can assess whether Ether is more or less variable.</p>
+<p>The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The variance, averages the numbers in the third column. The result is <span class="math inline">\(s^2=977594\)</span>, which means that the price of Ether varies on average 977,594 squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.</p>
 </section>
 <section id="the-standard-deviation" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">4.3</span> The Standard Deviation</h2>
-<p>The standard deviation is derived by taking the square root of the variance. Remember, variance employs squared deviations to eliminate negative values and calculate spread. By taking the square root of this variance, the standard deviation reverts the measure of dispersion back to the original units of the variable. This transformation makes the standard deviation more intuitive; it directly quantifies how much each data point deviates from the mean in the same units as the variable itself. Consequently, the standard deviation is a clear and intuitive measure of variability.</p>
+<p>The standard deviation is derived by taking the square root of the variance. Remember, the variance employs squared deviations to eliminate negative values and calculate spread. By taking the square root, the standard deviation reverts the measure of dispersion back to the original units of the variable. This transformation makes the standard deviation more intuitive; it directly quantifies how much each data point deviates from the mean in the same units as the variable itself. Consequently, the standard deviation is a clear and intuitive measure of variability.</p>
 <p>To find the standard deviation, take the square root of the variance. For the population parameter use <span class="math inline">\(\sigma=\sqrt{\sigma^2}\)</span> and <span class="math inline">\(s=\sqrt{s^2}\)</span> for the sample statistic.</p>
-<p>*Ex: Consider once more the price of Ether. That is. <span class="math inline">\(x={480, 1050, 1400, 2500, 3200}\)</span>. In the previous section we found that the variance <span class="math inline">\(s^2=977594\)</span>. Using the squared root we find that <span class="math inline">\(s=\sqrt{977594}=988.73\)</span>. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.</p>
+<p>*Ex: Consider once more the price of Ether. That is. <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. In the previous section we found that the variance <span class="math inline">\(s^2=977594\)</span>. Using the squared root we find that <span class="math inline">\(s=\sqrt{977594}=988.73\)</span>. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.</p>
 </section>
 <section id="mean-absolute-deviation" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</h2>
-<p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using the absolute deviations from the mean, rather than squaring them like variance does. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to outliers. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by <span class="math inline">\(MAD=\frac{\sum |x_i-\mu|}{N}\)</span> for the population and <span class="math inline">\(mad=\frac{\sum |x_i-\bar{x}|}{n}\)</span> for the sample.</p>
+<p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by <span class="math inline">\(MAD=\frac{\sum |x_i-\mu|}{N}\)</span> for the population and <span class="math inline">\(mad=\frac{\sum |x_i-\bar{x}|}{n}\)</span> for the sample.</p>
 <p><strong>Example:</strong> Let’s consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -404,7 +404,7 @@ details summary {
 </div>
 </div>
 </div>
-<p>For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals <span class="math inline">\(MAD=899.2\)</span>. This means, on average, each data point is roughly 900 dollars away from the mean. Note that the standard deviation is higher (<span class="math inline">\(988.73\)</span>) because squaring deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.</p>
+<p>For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals <span class="math inline">\(MAD=899.2\)</span>. This result states that, on average, each data point is roughly 900 dollars away from the mean. Note that the standard deviation is higher (<span class="math inline">\(988.73\)</span>) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.</p>
 </section>
 <section id="coefficient-of-variation" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</h2>
