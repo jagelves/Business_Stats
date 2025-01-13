@@ -139,9 +139,9 @@ Below is a list of the functions used:
 
 - The `diff()` function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.
 
-The `var()` function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of $(n-1)/n$.
+- The `var()` function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of $(n-1)/n$.
 
-The `sd()` function calculates the sample standard deviation.
+- The `sd()` function calculates the sample standard deviation.
 
 ## Exercises
 
