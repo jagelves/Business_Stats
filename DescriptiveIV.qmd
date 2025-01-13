@@ -133,7 +133,8 @@ returns %>% group_by(Stock) %>%
 ```
 In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the `range()` function. The `diff()` function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.
 
-Below is a list of the functions used:
+Below is a list of the functions used:  
+
 - The `range()` function returns the maximum and minimum of a vector of values.
 
 - The `diff()` function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.
