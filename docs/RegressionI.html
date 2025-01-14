@@ -290,12 +290,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">6.1</span> Concepts</a>
+  <li><a href="#the-covariance" id="toc-the-covariance" class="nav-link active" data-scroll-target="#the-covariance"><span class="header-section-number">6.1</span> The Covariance</a></li>
+  <li><a href="#the-coefficient-of-determination-r2" id="toc-the-coefficient-of-determination-r2" class="nav-link" data-scroll-target="#the-coefficient-of-determination-r2"><span class="header-section-number">6.2</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</a></li>
+  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">6.3</span> Scatter Plot</a>
   <ul class="collapse">
-  <li><a href="#measures-of-association" id="toc-measures-of-association" class="nav-link" data-scroll-target="#measures-of-association">Measures of Association</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.2</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.4</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -326,27 +327,53 @@ window.Quarto = {
 </header>
 
 
-<section id="concepts" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">6.1</span> Concepts</h2>
-<section id="measures-of-association" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="measures-of-association">Measures of Association</h3>
-<p>Measures of association determine whether there is a linear relationship between two variables. They also determine the strength of the relationship.</p>
-<ul>
-<li><p>The <strong>covariance</strong> is a measure that determines the direction of the relationship between two variables. It is calculated by <span class="math inline">\(s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}\)</span>. If <span class="math inline">\(s_{xy}&gt;0\)</span> there is a direct relationship, if <span class="math inline">\(s_{xy}&lt;0\)</span> there is an inverse relationship, and if <span class="math inline">\(s_{xy}=0\)</span> there is no relationship.</p></li>
-<li><p>The <strong>correlation</strong> measures the strength of the linear relationship. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p></li>
-<li><p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The next chapter expands on this measure.</p></li>
-<li><p>A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot provides a visual aid to determine the relationship between two variables.</p></li>
-</ul>
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+<p>Measures of association are essential tools in business statistics for analyzing relationships between variables. They help determine whether changes in one variable are linked to changes in another, providing valuable insights into patterns and dependencies. Understanding these relationships is critical for making informed decisions. By quantifying the strength and direction of associations, businesses can better interpret data, optimize strategies, and drive meaningful outcomes. Below we study important measures of association.</p>
+<section id="the-covariance" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="the-covariance"><span class="header-section-number">6.1</span> The Covariance</h2>
+<p>The <strong>covariance</strong> is a measure that determines the direction of the relationship between two variables. It is calculated by <span class="math inline">\(s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}\)</span>. The result of the covariance indicates the relationship between the two variables. If <span class="math inline">\(s_{xy}&gt;0\)</span> there is a direct relationship, if <span class="math inline">\(s_{xy}&lt;0\)</span> there is an inverse relationship, and if <span class="math inline">\(s_{xy}=0\)</span> there is no relationship.</p>
+<p><strong>Example:</strong> Let’s consider the following data that captures the price of stocks (SPY) and bonds (BND):</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/StocksBonds.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. ## The Correlation The <strong>correlation</strong> measures the strength of the linear relationship. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
 </section>
+<section id="the-coefficient-of-determination-r2" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.2</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
+<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The next chapter expands on this measure.</p>
+</section>
+<section id="scatter-plot" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="scatter-plot"><span class="header-section-number">6.3</span> Scatter Plot</h2>
+<ul>
+<li>A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot provides a visual aid to determine the relationship between two variables.</li>
+</ul>
 <section id="useful-r-functions" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
 <p>To calculate the covariance use the <code>cov()</code> function.</p>
 <p>The correlation coefficient can be calculated using the <code>cor()</code> function.</p>
-<p>The <code>plot()</code> function will create scatter plots.</p>
+<p>The <code>geom_point()</code> function will create scatter plots.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.2</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises</h2>
 <p>The following exercises will help you understand statistical measures that establish the relationship between two variables. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating covariance and correlation.</p></li>
@@ -547,7 +574,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -597,7 +624,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
