@@ -60,9 +60,112 @@ For the following exercises, make your calculations by hand and verify results u
 |:-----:|:---:|:---:|:---:|:---:|:---:|
 | **y** | 17  | 19  | 12  | 13  | 22  |
 
+<details>
+
+<summary>Answer</summary>
+*The regression lines is $\hat{y}=-4.93+1.09x$. For each unit increase in x, y increases on average $1.09$.*
+
+*Start by generating the deviations from the mean for each variable. For x the deviations are:*
+
+```{r}
+x<-c(20,21,15,18,25)
+(devx<-x-mean(x))
+```
+
+*Next, find the deviations for y:*
+
+```{r}
+y<-c(17,19,12,13,22)
+(devy<-y-mean(y))
+```
+
+*For the slope we need to find the deviation squared of the x's. This can easily be done in R:*
+
+```{r}
+(devx2<-devx^2)
+```
+
+*The slope is calculated by $\frac{\sum_{i=i}^{n} (x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=i}^{n} (x_{i}-\bar{x})^2}$. In R we can just find the ratio between the summations of (devx)(devy) and devx2.*
+
+```{r}
+(slope<-sum(devx*devy)/sum(devx2))
+```
+
+*The intercept is given by $\bar{y}-\beta(\bar{x})$. In R we find that the intercept is equal to:*
+
+```{r}
+(intercept<-mean(y)-slope*mean(x))
+```
+
+*Our results can be easily verified by using the `lm()` and `coef()` functions in R.*
+
+```{r}
+fitEx1<-lm(y~x)
+coef(fitEx1)
+```
+
+
+</details>
+
 2.  Calculate *SST*, *SSR*, and *SSE*. Confirm your results in R. What is the $R^2$? What is the Standard Error estimate? Is the regression line a good fit for the data?
 
+<details>
+
+<summary>Answer</summary>
+*SST is $69.2$, SSR is $64.82$ and SSE is $4.38$ (note that $SSR+SSE=SST$). The $R^2$ is just $\frac{SSR}{SST}=0.94$ and the Standard Error estimate is $1.21$. They both indicate a great fit of the regression line to the data.*
+
+*Let's start by calculating the SST. This is just $\sum{(y_{i}-\bar{y})^2}$.*
+
+```{r}
+(SST<-sum((y-mean(y))^2))
+```
+
+*Next, we can calculate SSR. This is calculated by the following formula $\sum{(\hat{y_{i}}-\bar{y})^2}$. To obtain the predicted values in R, we can use the output of the `lm()` function. Recall our fitEx1 object created in Exercise 1. It has fitted.values included:*
+
+```{r}
+(SSR<-sum((fitEx1$fitted.values-mean(y))^2))
+```
+
+*The ratio of SSR to SST is the $R^2$:*
+
+```{r}
+(R2<-SSR/SST)
+```
+
+*Finally, let's calculate SSE $\sum{(y_{i}-\hat{y_{i}})^2}$:*
+
+```{r}
+(SSE<-sum((y-fitEx1$fitted.values)^2))
+```
+
+*With the SSE we can calculate the Standard Error estimate:*
+
+```{r}
+sqrt(SSE/3)
+```
+
+*We can confirm these results using the `summary()` function.*
+
+```{r}
+summary(fitEx1)
+```
+
+
+</details>
 3.  Assume that *x* is observed to be *32*, what is your prediction of *y*? How confident are you in this prediction?
+
+<details>
+
+<summary>Answer</summary>
+*If $x=32$ then $\hat{y}=29.87$. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the sample size of the data.*
+
+*In R we can obtain a prediction by using the `predict()` function. This function requires a data frame as an input for new data.*
+
+```{r}
+predict(fitEx1, newdata = data.frame(x=c(32)))
+```
+
+</details>
 
 ### Exercise 2 {.unnumbered}
 
@@ -70,17 +173,77 @@ You will need the **Education** data set to answer this question. You can find t
 
 1.  Estimate the regression line using R. By how much does an extra year of education increase the annual salary on average? What is the salary of someone without any education?
 
+<details>
+
+<summary>Answer</summary>
+*An extra year of education increases the annual salary about $5,300$ dollars (slope). A person that has no education would be expected to earn $17,2582$ dollars (intercept).*
+
+*Start by loading the data in R:*
+
+```{r message=FALSE}
+library(tidyverse)
+Education<-read_csv("https://jagelves.github.io/Data/Education.csv")
+```
+
+*Next, let's use the `lm()` function to estimate the regression line and obtain the coefficients:*
+
+```{r}
+fitEducation<-lm(Salary~Education, data = Education)
+coefficients(fitEducation)
+```
+</details>
+
 2.  Confirm that the regression line is a good fit for the data. What is the estimated salary of a person with $16$ years of education?
 
+<details>
+
+<summary>Answer</summary>
+*The $R^2$ is $0.668$ and the standard error is $21$. The line is a moderately good fit. If someone has $16$ years of experience, the regression line would predict a salary of $102,000$ dollars.*
+
+*Let's get the $R^2$ and the Standard Error estimate by using the `summary()` function and fitEx1 object.*
+
+```{r}
+summary(fitEducation)
+```
+
+*Lastly, let's use the regression line to predict the salary for someone who has $16$ years of education.*
+
+```{r}
+predict(fitEducation, newdata = data.frame(Education=c(16)))
+```
+
+
+</details>
 ### Exercise 3 {.unnumbered}
 
 You will need the **FoodSpend** data set to answer this question. You can find this data set at https://jagelves.github.io/Data/FoodSpend.csv .
 
 1.  Omit any NA's that the data has. Create a dummy variable that is equal to $1$ if an individual owns a home and $0$ if the individual doesn't. Find the mean of your dummy variable. What proportion of the sample owns a home?
 
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 2.  Run a regression with *Food* being the dependent variable and your dummy variable as the independent variable. What is the interpretation of the intercept and slope?
 
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 3.  Now run a regression with *Food* being the independent variable and your dummy variable as the dependent variable. What is the interpretation of the intercept and slope? Hint: you might want to plot the scatter diagram and the regression line.
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
 
 ### Exercise 4 {.unnumbered}
 
@@ -88,9 +251,30 @@ You will need the **Population** data set to answer this question. You can find 
 
 1.  Run a regression of *Population* on *Year*. How well does the regression line fit the data?
 
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 2.  Create a prediction for Japan's population in 2030. What is your prediction?
 
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
+
 3.  Create a scatter diagram and include the regression line. How confident are you of your prediction after looking at the diagram?
+
+<details>
+
+<summary>Answer</summary>
+
+
+</details>
 
 ## Answers
 
@@ -312,4 +496,3 @@ axis(side=2, labels=TRUE, font=1,las=1)
 abline(fit,
        col="darkgray",lwd=2)
 ```
-
