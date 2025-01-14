@@ -78,7 +78,7 @@ When working with numerical data, building a frequency distributions requires ad
 
 **Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
+```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/dow.png")
 ```
 
