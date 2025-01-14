@@ -44,11 +44,100 @@ For the following exercises, make your calculations by hand and verify results u
 |:-----:|:---:|:---:|:---:|:---:|:---:|
 | **y** | 17  | 19  | 12  | 13  | 22  |
 
+<details>
+
+<summary>Answer</summary>
+*The covariance is $14.9$ and the correlation is $0.96$. The results indicate that there is a strong direct relationship between the two variables.*
+
+*Let's start by finding the deviations from the mean for the x variable in R.*
+
+```{r}
+x<-c(20,21,15,18,25)
+(devx<-x-mean(x))
+```
+
+*We will do the same with y:*
+
+```{r}
+y<-c(17,19,12,13,22)
+(devy<-y-mean(y))
+```
+
+*Note that when the deviations in x are negative (positive), they are also negative (positive) in y. This is indicative of a direct relationship between the two variables. The covariance is given by:*
+
+```{r}
+(Ex1Cov<-sum(devx*devy)/(length(devx)-1))
+```
+
+*We can verify this by using `cov()` function in R.*
+
+```{r}
+cov(x,y)
+```
+
+*The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:*
+
+```{r}
+(Ex1Cor<-Ex1Cov/(sd(x)*sd(y)))
+```
+
+*We can once more verify the result in R with the built in function `cor()`.*
+
+```{r}
+cor(x,y)
+```
+</details>
+
 2.  Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?
 
 | **w** | 19  | 16  | 14  | 11  | 18  |
 |:-----:|:---:|:---:|:---:|:---:|:---:|
 | **z** | 17  | 20  | 20  | 16  | 18  |
+
+<details>
+
+<summary>Answer</summary>
+*The covariance is $0.85$ and the correlation is $0.148$. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.*
+
+*Let's start with w and finding the deviations from the mean in R.*
+
+```{r}
+w<-c(19,16,14,11,18)
+(devw<-w-mean(w))
+```
+
+*We will do the same with z:*
+
+```{r}
+z<-c(17,20,20,16,18)
+(devz<-z-mean(z))
+```
+
+*The covariance is given by:*
+
+```{r}
+(Ex2Cov<-sum(devw*devz)/(length(devz)-1))
+```
+
+*We can verify this with the `cov()` function in R.*
+
+```{r}
+cov(w,z)
+```
+
+*The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:*
+
+```{r}
+(Ex2Cor<-Ex2Cov/(sd(z)*sd(w)))
+```
+
+*We can once more verify the result in R with the built in function `cor()`.*
+
+```{r}
+cor(w,z)
+```
+
+</details>
 
 ### Exercise 2 {.unnumbered}
 
@@ -56,9 +145,51 @@ You will need the **mtcars** data set to answer this question. This data set is 
 
 1.  Calculate the correlation coefficient between *hp* and *mpg*. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.
 
+<details>
+
+<summary>Answer</summary>
+*The correlation coefficient is $-0.78$. This is indicative of a moderately strong inverse relationship between mpg and mp.*
+
+*In R we can easily calculate the correlation coefficient with the `cor()` function.*
+
+```{r}
+cor(mtcars$mpg,mtcars$hp)
+```
+</details>
+
 2.  Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?
 
+<details>
+
+<summary>Answer</summary>
+The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of $-0.78$.
+
+```{r message=FALSE}
+library(tidyverse)
+library(ggthemes)
+mtcars %>% ggplot() + 
+  geom_point(aes(y=mpg,x=hp), col="black",
+             bg="grey", pch=21) +
+  geom_smooth(aes(y=mpg,x=hp), formula=y~x,
+              method="lm", se=F) +
+  theme_clean()
+```
+</details>
+
 3.  Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the *mpg*? Let your dependent variable be *mpg*.
+
+<details>
+
+<summary>Answer</summary>
+*The coefficient of determination is $0.6$. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains $60$% of the total variation.*
+
+*In R we can calculate the coefficient of determination by squaring the correlation coefficient.*
+
+```{r}
+cor(mtcars$mpg,mtcars$hp)^2
+```
+
+</details>
 
 ### Exercise 3 {.unnumbered}
 
@@ -66,152 +197,49 @@ You will need the **College** data set to answer this question. You can find thi
 
 1.  Create a scatter diagram between *GRAD_DEBT_MDN* (Median Debt) and *MD_EARN_WNE_P10* (Median Earnings). What type of relationship do you observe between the variables?
 
-2.  Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?
+<details>
 
-## Answers
+<summary>Answer</summary>
+*It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.*
 
-### Exercise 1 {.unnumbered}
+*Start by loading the data. We'll use the `read_csv()` function:*
 
-
-1.  The covariance is $14.9$ and the correlation is $0.96$. The results indicate that there is a strong direct relationship between the two variables.
-
-
-Let's start by finding the deviations from the mean for the *x* variable in R.
-
-```{r}
-x<-c(20,21,15,18,25)
-(devx<-x-mean(x))
-```
-
-We will do the same with y:
-
-```{r}
-y<-c(17,19,12,13,22)
-(devy<-y-mean(y))
-```
-
-Note that when the deviations in *x* are negative (positive), they are also negative (positive) in *y*. This is indicative of a direct relationship between the two variables. The covariance is given by:
-
-```{r}
-(Ex1Cov<-sum(devx*devy)/(length(devx)-1))
-```
-
-We can verify this by using `cov()` function in R.
-
-```{r}
-cov(x,y)
-```
-
-The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:
-
-```{r}
-(Ex1Cor<-Ex1Cov/(sd(x)*sd(y)))
-```
-
-We can once more verify the result in R with the built in function `cor()`.
-
-```{r}
-cor(x,y)
-```
-
-
-2.  The covariance is $0.85$ and the correlation is $0.148$. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.
-
-
-Let's start with *w* and finding the deviations from the mean in R.
-
-```{r}
-w<-c(19,16,14,11,18)
-(devw<-w-mean(w))
-```
-
-We will do the same with *z*:
-
-```{r}
-z<-c(17,20,20,16,18)
-(devz<-z-mean(z))
-```
-
-The covariance is given by:
-
-```{r}
-(Ex2Cov<-sum(devw*devz)/(length(devz)-1))
-```
-
-We can verify this with the `cov()` function in R.
-
-```{r}
-cov(w,z)
-```
-
-The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:
-
-```{r}
-(Ex2Cor<-Ex2Cov/(sd(z)*sd(w)))
-```
-
-We can once more verify the result in R with the built in function `cor()`.
-
-```{r}
-cor(w,z)
-```
-
-### Exercise 2 {.unnumbered}
-
-
-1.  The correlation coefficient is $-0.78$. This is indicative of a moderately strong inverse relationship between *mpg* and *mp*.
-
-
-In R we can easily calculate the correlation coefficient with the `cor()` function.
-
-```{r}
-cor(mtcars$mpg,mtcars$hp)
-```
-
-
-2.  The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of $-0.78$.
-
-
-```{r}
-plot(y=mtcars$mpg,x=mtcars$hp, main="", 
-     axes=F,pch=21, bg="blue",
-     xlab="Horse Power",
-     ylab="Miles Per Gallon", ylim=c(10,40),xlim=c(50,400))
-axis(side=1, labels=TRUE, font=1,las=1)
-axis(side=2, labels=TRUE, font=1,las=1)
-abline(lm(mtcars$mpg~mtcars$hp),
-       col="darkgray",lwd=2)
-```
-
-
-3.  The coefficient of determination is $0.6$. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the *hp* only explains $60$% of the total variation.
-
-
-In R we can calculate the coefficient of determination by squaring the correlation coefficient.
-
-```{r}
-cor(mtcars$mpg,mtcars$hp)^2
-```
-
-### Exercise 3 {.unnumbered}
-
-
-1.  It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.
-
-
-Start by loading the data. We'll use the `read.csv()` function:
-
-```{r}
-College<-read.csv("https://jagelves.github.io/Data/College.csv")
+```{r message=FALSE}
+library(tidyverse)
+College<-read_csv("https://jagelves.github.io/Data/College.csv")
 ```
 
 The two variables of interest are *GRAD_DEBT_MDN* and *MD_EARN_WNE_P10*. The following code creates the scatter plot:
 
+```{r warning=FALSE}
+College %>% ggplot() + 
+  geom_point(aes(y=GRAD_DEBT_MDN,x=MD_EARN_WNE_P10), col="black",
+             bg="grey", pch=21) +
+  geom_smooth(aes(y=GRAD_DEBT_MDN,x=MD_EARN_WNE_P10), formula=y~x,
+              method="lm", se=F) +
+  theme_clean()
+```
 
+</details>
 
-2.  The correlation coefficient shows a moderate direct relationship between earnings and debt $0.43$. The coefficient of determination indicates that only $19$% of the variation in earnings can be explained by debt.
+2.  Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?
 
+<details>
 
-In R we can start with the correlation coefficient:
+<summary>Answer</summary>
+*The correlation coefficient shows a moderate direct relationship between earnings and debt $0.46$. The coefficient of determination indicates that only $21$% of the variation in earnings can be explained by debt.*
 
-The coefficient of determination is:
+*In R we can start with the correlation coefficient:*
+
+```{r}
+(Correlation<-cor(College$GRAD_DEBT_MDN,
+                  College$MD_EARN_WNE_P10,"complete.obs"))
+```
+
+*We can simply square the correlation to obtain the coefficient of determination:*
+
+```{r}
+Correlation^2
+```
+</details>
+

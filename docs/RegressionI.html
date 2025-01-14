@@ -301,12 +301,6 @@ window.Quarto = {
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">6.3</span> Answers</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
-  <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
-  <li><a href="#exercise-3-1" id="toc-exercise-3-1" class="nav-link" data-scroll-target="#exercise-3-1">Exercise 3</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -388,6 +382,56 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The covariance is <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</em></p>
+<p><em>Let’s start by finding the deviations from the mean for the x variable in R.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
+</div>
+</div>
+<p><em>We will do the same with y:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
+</div>
+</div>
+<p><em>Note that when the deviations in x are negative (positive), they are also negative (positive) in y. This is indicative of a direct relationship between the two variables. The covariance is given by:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span>(<span class="fu">length</span>(devx)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.9</code></pre>
+</div>
+</div>
+<p><em>We can verify this by using <code>cov()</code> function in R.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.9</code></pre>
+</div>
+</div>
+<p><em>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cor<span class="ot">&lt;-</span>Ex1Cov<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9678386</code></pre>
+</div>
+</div>
+<p><em>We can once more verify the result in R with the built in function <code>cor()</code>.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9678386</code></pre>
+</div>
+</div>
+</details>
 <ol start="2" type="1">
 <li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
 </ol>
@@ -413,80 +457,12 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-</section>
-<section id="exercise-2" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>You will need the <strong>mtcars</strong> data set to answer this question. This data set is part of R. You don’t need to download any files to access it.</p>
-<ol type="1">
-<li><p>Calculate the correlation coefficient between <em>hp</em> and <em>mpg</em>. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.</p></li>
-<li><p>Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?</p></li>
-<li><p>Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the <em>mpg</em>? Let your dependent variable be <em>mpg</em>.</p></li>
-</ol>
-</section>
-<section id="exercise-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>College</strong> data set to answer this question. You can find this data set here: https://jagelves.github.io/Data/College.csv</p>
-<ol type="1">
-<li><p>Create a scatter diagram between <em>GRAD_DEBT_MDN</em> (Median Debt) and <em>MD_EARN_WNE_P10</em> (Median Earnings). What type of relationship do you observe between the variables?</p></li>
-<li><p>Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?</p></li>
-</ol>
-</section>
-</section>
-<section id="answers" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">6.3</span> Answers</h2>
-<section id="exercise-1-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
-<ol type="1">
-<li>The covariance is <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</li>
-</ol>
-<p>Let’s start by finding the deviations from the mean for the <em>x</em> variable in R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
-</div>
-</div>
-<p>We will do the same with y:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
-</div>
-</div>
-<p>Note that when the deviations in <em>x</em> are negative (positive), they are also negative (positive) in <em>y</em>. This is indicative of a direct relationship between the two variables. The covariance is given by:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span>(<span class="fu">length</span>(devx)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.9</code></pre>
-</div>
-</div>
-<p>We can verify this by using <code>cov()</code> function in R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.9</code></pre>
-</div>
-</div>
-<p>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cor<span class="ot">&lt;-</span>Ex1Cov<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9678386</code></pre>
-</div>
-</div>
-<p>We can once more verify the result in R with the built in function <code>cor()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9678386</code></pre>
-</div>
-</div>
-<ol start="2" type="1">
-<li>The covariance is <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</li>
-</ol>
-<p>Let’s start with <em>w</em> and finding the deviations from the mean in R.</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The covariance is <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</em></p>
+<p><em>Let’s start with w and finding the deviations from the mean in R.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>w<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(devw<span class="ot">&lt;-</span>w<span class="sc">-</span><span class="fu">mean</span>(w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -494,7 +470,7 @@ window.Quarto = {
 <pre><code>[1]  3.4  0.4 -1.6 -4.6  2.4</code></pre>
 </div>
 </div>
-<p>We will do the same with <em>z</em>:</p>
+<p><em>We will do the same with z:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">18</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(devz<span class="ot">&lt;-</span>z<span class="sc">-</span><span class="fu">mean</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -502,59 +478,72 @@ window.Quarto = {
 <pre><code>[1] -1.2  1.8  1.8 -2.2 -0.2</code></pre>
 </div>
 </div>
-<p>The covariance is given by:</p>
+<p><em>The covariance is given by:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devw<span class="sc">*</span>devz)<span class="sc">/</span>(<span class="fu">length</span>(devz)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.85</code></pre>
 </div>
 </div>
-<p>We can verify this with the <code>cov()</code> function in R.</p>
+<p><em>We can verify this with the <code>cov()</code> function in R.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.85</code></pre>
 </div>
 </div>
-<p>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</p>
+<p><em>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cor<span class="ot">&lt;-</span>Ex2Cov<span class="sc">/</span>(<span class="fu">sd</span>(z)<span class="sc">*</span><span class="fu">sd</span>(w)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1480558</code></pre>
 </div>
 </div>
-<p>We can once more verify the result in R with the built in function <code>cor()</code>.</p>
+<p><em>We can once more verify the result in R with the built in function <code>cor()</code>.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1480558</code></pre>
 </div>
 </div>
+</details>
 </section>
-<section id="exercise-2-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-2-1">Exercise 2</h3>
+<section id="exercise-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+<p>You will need the <strong>mtcars</strong> data set to answer this question. This data set is part of R. You don’t need to download any files to access it.</p>
 <ol type="1">
-<li>The correlation coefficient is <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between <em>mpg</em> and <em>mp</em>.</li>
+<li>Calculate the correlation coefficient between <em>hp</em> and <em>mpg</em>. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.</li>
 </ol>
-<p>In R we can easily calculate the correlation coefficient with the <code>cor()</code> function.</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The correlation coefficient is <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between mpg and mp.</em></p>
+<p><em>In R we can easily calculate the correlation coefficient with the <code>cor()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.7761684</code></pre>
 </div>
 </div>
+</details>
 <ol start="2" type="1">
-<li>The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of <span class="math inline">\(-0.78\)</span>.</li>
+<li>Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+<p>The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of <span class="math inline">\(-0.78\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">y=</span>mtcars<span class="sc">$</span>mpg,<span class="at">x=</span>mtcars<span class="sc">$</span>hp, <span class="at">main=</span><span class="st">""</span>, </span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes=</span>F,<span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"blue"</span>,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">"Horse Power"</span>,</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Miles Per Gallon"</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">40</span>),<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">400</span>))</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">1</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">axis</span>(<span class="at">side=</span><span class="dv">2</span>, <span class="at">labels=</span><span class="cn">TRUE</span>, <span class="at">font=</span><span class="dv">1</span>,<span class="at">las=</span><span class="dv">1</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(mtcars<span class="sc">$</span>mpg<span class="sc">~</span>mtcars<span class="sc">$</span>hp),</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">col=</span><span class="st">"darkgray"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">col=</span><span class="st">"black"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -563,32 +552,81 @@ window.Quarto = {
 </div>
 </div>
 </div>
+</details>
 <ol start="3" type="1">
-<li>The coefficient of determination is <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the <em>hp</em> only explains <span class="math inline">\(60\)</span>% of the total variation.</li>
+<li>Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the <em>mpg</em>? Let your dependent variable be <em>mpg</em>.</li>
 </ol>
-<p>In R we can calculate the coefficient of determination by squaring the correlation coefficient.</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The coefficient of determination is <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains <span class="math inline">\(60\)</span>% of the total variation.</em></p>
+<p><em>In R we can calculate the coefficient of determination by squaring the correlation coefficient.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6024373</code></pre>
 </div>
 </div>
+</details>
 </section>
-<section id="exercise-3-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-3-1">Exercise 3</h3>
+<section id="exercise-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<p>You will need the <strong>College</strong> data set to answer this question. You can find this data set here: https://jagelves.github.io/Data/College.csv</p>
 <ol type="1">
-<li>It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.</li>
+<li>Create a scatter diagram between <em>GRAD_DEBT_MDN</em> (Median Debt) and <em>MD_EARN_WNE_P10</em> (Median Earnings). What type of relationship do you observe between the variables?</li>
 </ol>
-<p>Start by loading the data. We’ll use the <code>read.csv()</code> function:</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.</em></p>
+<p><em>Start by loading the data. We’ll use the <code>read_csv()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>College<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/College.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>College<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/College.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The two variables of interest are <em>GRAD_DEBT_MDN</em> and <em>MD_EARN_WNE_P10</em>. The following code creates the scatter plot:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>College <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">col=</span><span class="st">"black"</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
 <ol start="2" type="1">
-<li>The correlation coefficient shows a moderate direct relationship between earnings and debt <span class="math inline">\(0.43\)</span>. The coefficient of determination indicates that only <span class="math inline">\(19\)</span>% of the variation in earnings can be explained by debt.</li>
+<li>Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?</li>
 </ol>
-<p>In R we can start with the correlation coefficient:</p>
-<p>The coefficient of determination is:</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The correlation coefficient shows a moderate direct relationship between earnings and debt <span class="math inline">\(0.46\)</span>. The coefficient of determination indicates that only <span class="math inline">\(21\)</span>% of the variation in earnings can be explained by debt.</em></p>
+<p><em>In R we can start with the correlation coefficient:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(Correlation<span class="ot">&lt;-</span><span class="fu">cor</span>(College<span class="sc">$</span>GRAD_DEBT_MDN,</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                  College<span class="sc">$</span>MD_EARN_WNE_P10,<span class="st">"complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4615361</code></pre>
+</div>
+</div>
+<p><em>We can simply square the correlation to obtain the coefficient of determination:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Correlation<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2130155</code></pre>
+</div>
+</div>
+</details>
 
 
 </section>
