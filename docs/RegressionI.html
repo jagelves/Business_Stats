@@ -291,12 +291,13 @@ window.Quarto = {
    
   <ul>
   <li><a href="#the-covariance" id="toc-the-covariance" class="nav-link active" data-scroll-target="#the-covariance"><span class="header-section-number">6.1</span> The Covariance</a></li>
-  <li><a href="#the-coefficient-of-determination-r2" id="toc-the-coefficient-of-determination-r2" class="nav-link" data-scroll-target="#the-coefficient-of-determination-r2"><span class="header-section-number">6.2</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</a></li>
-  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">6.3</span> Scatter Plot</a>
+  <li><a href="#the-correlation" id="toc-the-correlation" class="nav-link" data-scroll-target="#the-correlation"><span class="header-section-number">6.2</span> The Correlation</a></li>
+  <li><a href="#the-coefficient-of-determination-r2" id="toc-the-coefficient-of-determination-r2" class="nav-link" data-scroll-target="#the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</a></li>
+  <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">6.4</span> Scatter Plot</a>
   <ul class="collapse">
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.4</span> Exercises</a>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.5</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -354,14 +355,39 @@ details summary {
 </div>
 </div>
 </div>
-<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. ## The Correlation The <strong>correlation</strong> measures the strength of the linear relationship. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
+<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let’s start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations in columns 3 and 4.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cov1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Column 5 calculates the product between column 3 and column 4. The covariance is simply the average of the numbers of column 5. Hence, <span class="math inline">\(s_{xy}=-71\)</span>. Since <span class="math inline">\(s_{xy}\)</span> is negative we can establish that there is an inverse relationship between SPY and BND.</p>
+<p>Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. The image below explains the intuition.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cov.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean. So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. You’ll notice that the product of the deviations in these cases is negative, and ultimately reflected in the measure of covariance.</p>
 </section>
-<section id="the-coefficient-of-determination-r2" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.2</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
+<section id="the-correlation" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="the-correlation"><span class="header-section-number">6.2</span> The Correlation</h2>
+<p>The <strong>correlation</strong> measures the strength of the linear relationship. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
+</section>
+<section id="the-coefficient-of-determination-r2" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
 <p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The next chapter expands on this measure.</p>
 </section>
-<section id="scatter-plot" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="scatter-plot"><span class="header-section-number">6.3</span> Scatter Plot</h2>
+<section id="scatter-plot" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="scatter-plot"><span class="header-section-number">6.4</span> Scatter Plot</h2>
 <ul>
 <li>A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot provides a visual aid to determine the relationship between two variables.</li>
 </ul>
@@ -372,8 +398,8 @@ details summary {
 <p>The <code>geom_point()</code> function will create scatter plots.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.4</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.5</span> Exercises</h2>
 <p>The following exercises will help you understand statistical measures that establish the relationship between two variables. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating covariance and correlation.</p></li>
@@ -574,7 +600,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -624,7 +650,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
