@@ -40,5 +40,8 @@ format:
     include-in-header: custom-head.html
   pdf:
     documentclass: scrreprt
-
+execute:
+  shiny: true
+  
 editor: visual
+
