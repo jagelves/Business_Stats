@@ -4,7 +4,7 @@ library(ggthemes)
 
 # Define UI for the Shiny App
 ui <- fluidPage(
-  titlePanel("Effect of Correlation Coefficient (r) on Scatterplot and Regression Line"),
+  titlePanel("Correlation Coefficient (r), Scatterplot, and Regression Line"),
   sidebarLayout(
     sidebarPanel(
       sliderInput(
