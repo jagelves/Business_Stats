@@ -35,7 +35,7 @@ Column 5 calculates the product between column 3 and column 4. The covariance is
 Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. The image below explains the intuition.
 
 ```{r echo=FALSE, fig.align='center'}
-knitr::include_graphics("images/cov.png")
+knitr::include_graphics("images/cor.png")
 ```
 The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You'll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.
 
