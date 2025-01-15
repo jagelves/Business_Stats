@@ -378,10 +378,22 @@ details summary {
 <section id="the-correlation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="the-correlation"><span class="header-section-number">6.2</span> The Correlation</h2>
 <p>The <strong>correlation</strong> measures the strength of the linear relationship between two variables. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cov.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship.</p>
+<p><em>Ex: Consider the SPY and BND data. The standard deviation of SPY is <span class="math inline">\(1.58\)</span> and that of BDN is <span class="math inline">\(50.37\)</span>. Substituting into the correlation formula we get a correlation coefficient of <span class="math inline">\(r= \frac {-71}{1.58 \times 50.37}=-0.89\)</span>. This indicates that the relationship between SPY and BND is inverse and strong.</em></p>
 </section>
 <section id="the-coefficient-of-determination-r2" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
-<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The next chapter expands on this measure.</p>
+<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The number that we get from the <span class="math inline">\(R^2\)</span> tells us how well a variable (x) explains the variation in the another variable (y). The number could be anywhere from zero (indicating that the two variables are unrelated), to one (indicating that one variable explains entirely the variation of the other variable).</p>
+<p><em>Ex: Consider once more the SPY and BND example. The correlation coefficient is given by <span class="math inline">\(r=-0.89\)</span>. The <span class="math inline">\(R^2=(-0.89)^2=0.79\)</span>. This indicates that about 80% of the variation in the SPY can be explained by the changes in BND. Hence, these two variables are closely related.</em></p>
 </section>
 <section id="measures-of-association-in-r" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="measures-of-association-in-r"><span class="header-section-number">6.4</span> Measures of Association in R</h2>
@@ -399,7 +411,7 @@ details summary {
 <pre><code>[1] -71</code></pre>
 </div>
 </div>
-<p>We confirm that the covariance is -71 and that there is an inverse realtionship between the variables. To verify the correlation coefficient, we use the code below:</p>
+<p>We confirm that the covariance is -71 and that there is an inverse relationship between the variables. To verify the correlation coefficient, we use the code below:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>SPY,data<span class="sc">$</span>BND)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -422,18 +434,18 @@ details summary {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The visualization above is called a scatter plot. A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot acts as a visual aid to determine the relationship between two variables. We can see that the points are inversely related to eachother.</p>
+<p>The visualization above is called a scatter plot. A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot acts as a visual aid to determine the relationship between two variables. We can see that the points are inversely related to each other.</p>
 <p>Here are some useful functions in r:</p>
 <ul>
 <li><p>To calculate the covariance use the <code>cov()</code> function. The input must be two vectors (variables).</p></li>
 <li><p>The correlation coefficient can be calculated using the <code>cor()</code> function.The input must be two vectors (variables).</p></li>
+<li><p>The <code>geom_point()</code> function will create scatter plots. Make sure you include two variables in the <code>aes()</code> function. The argument <em>cex</em> increases the size of the points, <em>pch</em> changes the point character, <em>bg</em> selects the color, and <em>alpha</em> adjusts the transparency of the background color (bg).</p></li>
 </ul>
-<p>The <code>geom_point()</code> function will create scatter plots. Make sure you include two variables in the <code>aes()</code> function. The argument <em>cex</em> increases the size of the points, <em>pch</em> changes the point character, <em>bg</em> selects the color, and <em>alpha</em> adjusts the transparency of the background color (bg).</p>
 </section>
 <section id="exercises" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.5</span> Exercises</h2>
@@ -637,7 +649,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -687,7 +699,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
