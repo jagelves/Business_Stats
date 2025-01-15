@@ -1,30 +1,40 @@
 # Regression II
 
-Quantifying relationships between variables is an important skill in business. The regression line represents the best linear fit between two variables. This technique, allows businesses to make predictions, identify trends, and optimize strategies based on data-driven evidence. Below, we study how to generate and analyze the regression line output.
+Quantifying relationships between variables is a critical skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides a foundation for analyzing key business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line.
 
 ## The Regression Line
-The regression line is fitted so that the average distance between the line and the sample points is as small as possible. The line is defined by a **slope** ($\beta$) and an **intercept** ($\alpha$). Mathematically, the regression line is expressed as $\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i$, where $\hat{y_i}$ are the predicted values of $y$ given the $x$'s.
+The regression line is calculated to minimize the average distance (or errors) between the line and the observed data points. It is defined by two key components: a **slope** ($\beta$) and an **intercept** ($\alpha$). Mathematically, the regression line is expressed as $\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i$, where $\hat{y_i}$ are the predicted values of $y$ given the $x$'s.
 
 The **slope** determines the steepness of the line. The estimate quantifies how much a unit increase in $x$ changes $y$. The estimate is given by $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$.
 
 The **intercept** determines where the line crosses the $y$ axis. It returns the value of $y$ when $x$ is zero. The estimate is given by $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$.
 
-**Example: Let's consider some data on Price and Advertisement. Below you can see the data:
+**Example: Let’s examine a dataset on Price and Advertisement. Below is the data used to calculate the regression line, followed by its interpretation.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/reg1.png")
 ```
-The data shows how the two variables are related. Since, the data set is small, we can observe that when advertisement is high price tends to be also high. There is a direct relationship. In our previous chapter we learned how to quantify this relationship with the covariance and the correlation coefficient. 
+The data shows a clear relationship between advertisement and price: when advertisement spending is high, price also tends to be high. This suggests a direct relationship. In a previous chapter, we learned to quantify such relationships using covariance and the correlation coefficient.
 
-In this section, we want to quantify to things. First, if we have a budget of 6 for advertisement, what is the price? Second, how much are we able to increase price for every extra dollar spent in advertisement? The regression line allows us to answer these questions. 
+In this section, we aim to answer two key questions:
 
-Let's start by calculating the regression line. To do this we will need the variance of advertisement, the covariance between the two variables, and the means for both variables. The slope of the regression line is given by $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$. Given that the covariance is 3.67m and the variance of x is 1.67, the slope of the regression line is $\hat{\beta}= \frac{3.67}{1.67}=2.2$. This means that for every dollar increase in advertisement, we can increase the price by 2.2.
+1.	Prediction: What is the predicted price if we have a budget of 6 for advertisement?
+2.	Effectiveness: How much can we increase the price for every additional dollar spent on advertisement?
 
-Next, let's calculate the intercept so that we can complete the regression line. The intercept is given by $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$. Since the mean of advertisement is 2.5 and the mean of price is 7, the intercept is $\hat{\alpha}=7-2.2(2.5)=1.5$. This means that if we do not advertise, the predicted price is zero. 
+The regression line allows us to answer these questions by quantifying the relationship between the two variables.
 
-The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is $\hat{y_i}=1.5+2.2x_i$. With this equation we can now establish that if we had a budget of 6 for advertisement, our predicted price would be $\hat{y_i}=1.5+2.2(6)=14.7$.
 
-In conclusion, the regression line has helped us predict what prices would be given a budget, and helped us quantify how effective is advertisement at increases the price.
+Let’s start by calculating the slope of the regression line, as this will help us answer the effectiveness question. The slope measures how much the price increases for every additional dollar spent on advertisement. It is calculated using the formula: $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$. Given that the covariance is 3.67 and the variance of x is 1.67, the slope of the regression line is $\hat{\beta}= \frac{3.67}{1.67}=2.2$. This tells us that for every additional dollar spent on advertisement, the price increases by 2.2. Thus, we have answered the effectiveness question.
+
+Next, we calculate the intercept to complete the regression line and answer the prediction question. The intercept represents the predicted price when advertisement spending is zero. It is calculated as: $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$. Since the mean of advertisement is 2.5 and the mean of price is 7, the intercept is $\hat{\alpha}=7-2.2(2.5)=1.5$. This means that if we do not advertise, the predicted price is zero. 
+
+The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is $\hat{y_i}=1.5+2.2x_i$. With this equation we can now establish that if we had a budget of 6 for advertisement, our predicted price would be $\hat{y_i}=1.5+2.2(6)=14.7$. This answers our prediction question.
+
+In conclusion regression line has allowed us to answer both questions:
+1. The effectiveness of advertisement: For every dollar spent, the price increases by 2.2.
+2. The predicted price: With an advertisement budget of 6, the predicted price is 14.7.
+
+This demonstrates the value of regression analysis in quantifying relationships and making informed predictions.
 
 ## Measures of Goodness of Fit
 
