@@ -38,7 +38,7 @@ This demonstrates the value of regression analysis in quantifying relationships 
 
 ## Measures of Goodness of Fit
 
-There are a couple of popular measures that determine the goodness of fit of the regression line.
+When analyzing the effectiveness of a regression model, it is crucial to assess how well the model fits the data. This is where measures of goodness of fit come into play. Below we explore some measures.
 
 -   The **coefficient of determination** or $R^2$ is the percent of the variation in $y$ that is explained by changes in $x$. The higher the $R^2$ the better the explanatory power of the model. The $R^2$ is always between \[0,1\]. To calculate use $R^2=SSR/SST$.
 
