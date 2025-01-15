@@ -35,7 +35,7 @@ Column 5 calculates the product between column 3 and column 4. The covariance is
 Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. The image below explains the intuition.
 
 ```{r echo=FALSE, fig.align='center'}
-knitr::include_graphics("images/cor.png")
+knitr::include_graphics("images/cov.png")
 ```
 The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You'll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.
 
@@ -44,7 +44,7 @@ The image plots the SPY and BDN in a scatter plot. You can see that there is an 
 The **correlation** measures the strength of the linear relationship between two variables. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
 
 ```{r echo=FALSE, fig.align='center'}
-knitr::include_graphics("images/cov.png")
+knitr::include_graphics("images/cor.png")
 ```
 
 The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship.
