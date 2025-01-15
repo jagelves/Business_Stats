@@ -1054,7 +1054,7 @@
     "href": "RegressionI.html#the-correlation",
     "title": "6  Regression I",
     "section": "6.2 The Correlation",
-    "text": "6.2 The Correlation\nThe correlation measures the strength of the linear relationship between two variables. It is calculated by \\(r= \\frac {s_{xy}}{s_x s_y}\\). The correlation coefficient is between \\([-1,1]\\). When the correlation coefficient is \\(1\\) (\\(-1\\)), there is a perfect direct (inverse) relationship between the two variables.",
+    "text": "6.2 The Correlation\nThe correlation measures the strength of the linear relationship between two variables. It is calculated by \\(r= \\frac {s_{xy}}{s_x s_y}\\). The correlation coefficient is between \\([-1,1]\\). When the correlation coefficient is \\(1\\) (\\(-1\\)), there is a perfect direct (inverse) relationship between the two variables.\n\nsource: app.R",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Regression I</span>"
     ]

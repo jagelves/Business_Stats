@@ -1,5 +1,6 @@
 library(shiny)
 library(ggplot2)
+library(ggthemes)
 
 # Define UI for the Shiny App
 ui <- fluidPage(
@@ -41,20 +42,16 @@ server <- function(input, output) {
     data <- generate_data()
     
     ggplot(data, aes(x = x, y = y)) +
-      geom_point(color = "blue", alpha = 0.6) +
-      geom_smooth(method = "lm", color = "red", se = FALSE) +
+      geom_point(color = "blue", alpha = 0.6, cex=2) +
+      geom_smooth(method = "lm", color = "black", se = FALSE) +
       labs(
-        title = "Scatterplot with Regression Line",
-        x = "X Values",
-        y = "Y Values"
+        title = "",
+        x = "",
+        y = ""
       ) +
-      theme_minimal()
+      theme_clean()
   })
   
-  # Display the correlation coefficient
-  output$correlationText <- renderText({
-    paste("Selected Correlation Coefficient (r):", round(input$correlation, 2))
-  })
 }
 
 # Run the Shiny App
