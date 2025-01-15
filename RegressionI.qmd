@@ -25,7 +25,7 @@ The **covariance** is a measure that determines the direction of the relationshi
 knitr::include_graphics("images/StocksBonds.png")
 ```
 
-The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let's start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations in columns 3 and 4.
+The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let's start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations from the mean  for each variable in columns 3 and 4.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/cov1.png")
@@ -37,11 +37,15 @@ Intuitively, the covariance checks whether on average the products of the deviat
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/cov.png")
 ```
-The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean. So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. You'll notice that the product of the deviations in these cases is negative, and ultimately reflected in the measure of covariance.
+The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You'll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.
 
 ## The Correlation
 
-The **correlation** measures the strength of the linear relationship. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
+The **correlation** measures the strength of the linear relationship between two variables. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
+
+```{shinylive}
+source: app.R
+```
 
 ## The Coefficient of Determination ($R^2$)
 The **coefficient of determination** or $R^2$, measures the percent of variation in $y$ explained by variations in $x$. It is calculated by $R^2=r^2$. The next chapter expands on this measure.

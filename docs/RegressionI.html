@@ -355,7 +355,7 @@ details summary {
 </div>
 </div>
 </div>
-<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let’s start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations in columns 3 and 4.</p>
+<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let’s start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations from the mean for each variable in columns 3 and 4.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -376,11 +376,14 @@ details summary {
 </div>
 </div>
 </div>
-<p>The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean. So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. You’ll notice that the product of the deviations in these cases is negative, and ultimately reflected in the measure of covariance.</p>
+<p>The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You’ll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.</p>
 </section>
 <section id="the-correlation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="the-correlation"><span class="header-section-number">6.2</span> The Correlation</h2>
-<p>The <strong>correlation</strong> measures the strength of the linear relationship. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
+<p>The <strong>correlation</strong> measures the strength of the linear relationship between two variables. It is calculated by <span class="math inline">\(r= \frac {s_{xy}}{s_x s_y}\)</span>. The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
+<div class="cell">
+<pre class="shinylive cell-code"><code>source: app.R</code></pre>
+</div>
 </section>
 <section id="the-coefficient-of-determination-r2" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
@@ -442,44 +445,44 @@ Answer
 <p><em>The covariance is <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</em></p>
 <p><em>Let’s start by finding the deviations from the mean for the x variable in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
 </div>
 </div>
 <p><em>We will do the same with y:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
 </div>
 </div>
 <p><em>Note that when the deviations in x are negative (positive), they are also negative (positive) in y. This is indicative of a direct relationship between the two variables. The covariance is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span>(<span class="fu">length</span>(devx)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span>(<span class="fu">length</span>(devx)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.9</code></pre>
 </div>
 </div>
 <p><em>We can verify this by using <code>cov()</code> function in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.9</code></pre>
 </div>
 </div>
 <p><em>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cor<span class="ot">&lt;-</span>Ex1Cov<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cor<span class="ot">&lt;-</span>Ex1Cov<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9678386</code></pre>
 </div>
 </div>
 <p><em>We can once more verify the result in R with the built in function <code>cor()</code>.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9678386</code></pre>
 </div>
@@ -517,44 +520,44 @@ Answer
 <p><em>The covariance is <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</em></p>
 <p><em>Let’s start with w and finding the deviations from the mean in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>w<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>(devw<span class="ot">&lt;-</span>w<span class="sc">-</span><span class="fu">mean</span>(w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>w<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(devw<span class="ot">&lt;-</span>w<span class="sc">-</span><span class="fu">mean</span>(w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  3.4  0.4 -1.6 -4.6  2.4</code></pre>
 </div>
 </div>
 <p><em>We will do the same with z:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">18</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>(devz<span class="ot">&lt;-</span>z<span class="sc">-</span><span class="fu">mean</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">18</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>(devz<span class="ot">&lt;-</span>z<span class="sc">-</span><span class="fu">mean</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -1.2  1.8  1.8 -2.2 -0.2</code></pre>
 </div>
 </div>
 <p><em>The covariance is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devw<span class="sc">*</span>devz)<span class="sc">/</span>(<span class="fu">length</span>(devz)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devw<span class="sc">*</span>devz)<span class="sc">/</span>(<span class="fu">length</span>(devz)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.85</code></pre>
 </div>
 </div>
 <p><em>We can verify this with the <code>cov()</code> function in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.85</code></pre>
 </div>
 </div>
 <p><em>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cor<span class="ot">&lt;-</span>Ex2Cov<span class="sc">/</span>(<span class="fu">sd</span>(z)<span class="sc">*</span><span class="fu">sd</span>(w)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cor<span class="ot">&lt;-</span>Ex2Cov<span class="sc">/</span>(<span class="fu">sd</span>(z)<span class="sc">*</span><span class="fu">sd</span>(w)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1480558</code></pre>
 </div>
 </div>
 <p><em>We can once more verify the result in R with the built in function <code>cor()</code>.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1480558</code></pre>
 </div>
@@ -574,7 +577,7 @@ Answer
 <p><em>The correlation coefficient is <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between mpg and mp.</em></p>
 <p><em>In R we can easily calculate the correlation coefficient with the <code>cor()</code> function.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.7761684</code></pre>
 </div>
@@ -589,18 +592,18 @@ Answer
 </summary>
 <p>The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of <span class="math inline">\(-0.78\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">col=</span><span class="st">"black"</span>,</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">col=</span><span class="st">"black"</span>,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -616,7 +619,7 @@ Answer
 <p><em>The coefficient of determination is <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains <span class="math inline">\(60\)</span>% of the total variation.</em></p>
 <p><em>In R we can calculate the coefficient of determination by squaring the correlation coefficient.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6024373</code></pre>
 </div>
@@ -636,21 +639,21 @@ Answer
 <p><em>It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.</em></p>
 <p><em>Start by loading the data. We’ll use the <code>read_csv()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>College<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/College.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>College<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/College.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The two variables of interest are <em>GRAD_DEBT_MDN</em> and <em>MD_EARN_WNE_P10</em>. The following code creates the scatter plot:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>College <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">col=</span><span class="st">"black"</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>College <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">col=</span><span class="st">"black"</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionI_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -666,15 +669,15 @@ Answer
 <p><em>The correlation coefficient shows a moderate direct relationship between earnings and debt <span class="math inline">\(0.46\)</span>. The coefficient of determination indicates that only <span class="math inline">\(21\)</span>% of the variation in earnings can be explained by debt.</em></p>
 <p><em>In R we can start with the correlation coefficient:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>(Correlation<span class="ot">&lt;-</span><span class="fu">cor</span>(College<span class="sc">$</span>GRAD_DEBT_MDN,</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                  College<span class="sc">$</span>MD_EARN_WNE_P10,<span class="st">"complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(Correlation<span class="ot">&lt;-</span><span class="fu">cor</span>(College<span class="sc">$</span>GRAD_DEBT_MDN,</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                  College<span class="sc">$</span>MD_EARN_WNE_P10,<span class="st">"complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4615361</code></pre>
 </div>
 </div>
 <p><em>We can simply square the correlation to obtain the coefficient of determination:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Correlation<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Correlation<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2130155</code></pre>
 </div>
