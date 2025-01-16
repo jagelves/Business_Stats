@@ -29,7 +29,7 @@ book:
     - InferenceII.qmd
     - InferenceIII.qmd
     - InfReg.qmd
-    - ObjectsVectors.qmd
+    - R Basics.qmd
     - references.qmd
     
 bibliography: references.bib
