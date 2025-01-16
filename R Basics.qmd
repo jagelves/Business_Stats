@@ -21,15 +21,15 @@ Use the `c()` function to concatenate (combine) elements and store them in a vec
 ScreenTimeDays<-c(110,115,120,98,60)
 ```
 
-### Data Frames and Tibbles {.unnumbered}
-
-A data frame in R is a two-dimensional structure used for storing data in a tabular format. It is one of the most common data structures in R, similar to a spreadsheet. Columns, represent variables and rows represent observations or records. You can use the `data.frame()` function to create a data frame:
+### Data Frames {.unnumbered}
+A **data frame** in R is a two-dimensional structure used for storing data in a tabular format. It is one of the most common data structures in R, similar to a spreadsheet. Columns, represent variables and rows represent observations or records. You can use the `data.frame()` function to create a data frame:
 
 ```{r}
 (data<-data.frame(x=c(1,2,3),y=c(10,9,8)))
 ```
 
-A tibble is an enhanced version of a data frame in R, introduced by the `tibble` package, which is part of the `tidyverse` collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:
+## Tibbles {.unnumbered}
+A **tibble** is an enhanced version of a data frame in R, introduced by the `tibble` package, which is part of the `tidyverse` collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:
 
 ```{r message=FALSE}
 library(tidyverse)
@@ -38,7 +38,7 @@ tibble(w=c(1,3,5,8),z=c(1,2,3,5))
 
 ### Importing data {.unnumbered}
 
-To import data into R you can use the `read_csv()` function. This command from the `tidyverse` package imports data as a tsibble. Below we import data on dog intelligence and preview it with the `glimpse()` function.
+To **import** data into R you can use the `read_csv()` function. This command from the `tidyverse` package imports data as a tsibble. Below we import data on dog intelligence and preview it with the `glimpse()` function.
 
 ```{r}
 di<-read_csv("https://jagelves.github.io/Data/dog_intelligence.csv")
@@ -58,12 +58,24 @@ To learn more about a function you can use `?`. For example, to learn more about
 
 ### Data Types {.unnumbered}
 
-The main data types are numeric, character, logical, date, and complex. To identify the data type stored in a vector use the `class()` function.
+The main data types are numeric, character, logical, date, and complex. 
+- The numeric type includes all numbers, whether integers or real numbers with decimal points. It is the default type for numbers in R. If a number has no explicit decimal, R still treats it as numeric unless explicitly declared as an integer.
+- The character type is used to represent text or string data. Strings are enclosed in either single (') or double (") quotes.
+- The logical type is used for boolean values: TRUE or FALSE. It is commonly used in comparisons and conditional statements.
+- The date type represents calendar dates and is stored as the number of days since January 1, 1970 (known as the Unix epoch). 
+- The complex type allows numbers that have a real and imaginary component, commonly used in advanced mathematics.
+
+To identify the data type stored in a vector use the `class()` function.
 
 ```{r}
 class(SleepingHours)
 ```
 
-### Useful R Functions {.unnumbered}
+## Comparison Operators
+In R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.
 
-## Exercises
+Here are the primary comparison operators in R:
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/op.png")
+```
+

@@ -265,13 +265,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects">Objects</a></li>
   <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
-  <li><a href="#data-frames-and-tibbles" id="toc-data-frames-and-tibbles" class="nav-link" data-scroll-target="#data-frames-and-tibbles">Data Frames and Tibbles</a></li>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
+  </ul></li>
+  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles">Tibbles</a>
+  <ul class="collapse">
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">15.2</span> Exercises</a></li>
+  <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators"><span class="header-section-number">15.2</span> Comparison Operators</a></li>
   </ul>
 </nav>
     </div>
@@ -316,9 +318,9 @@ Use the <code>c()</code> function to concatenate (combine) elements and store th
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ScreenTimeDays<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">110</span>,<span class="dv">115</span>,<span class="dv">120</span>,<span class="dv">98</span>,<span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="data-frames-and-tibbles" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="data-frames-and-tibbles">Data Frames and Tibbles</h3>
-<p>A data frame in R is a two-dimensional structure used for storing data in a tabular format. It is one of the most common data structures in R, similar to a spreadsheet. Columns, represent variables and rows represent observations or records. You can use the <code>data.frame()</code> function to create a data frame:</p>
+<section id="data-frames" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="data-frames">Data Frames</h3>
+<p>A <strong>data frame</strong> in R is a two-dimensional structure used for storing data in a tabular format. It is one of the most common data structures in R, similar to a spreadsheet. Columns, represent variables and rows represent observations or records. You can use the <code>data.frame()</code> function to create a data frame:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(data<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>),<span class="at">y=</span><span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">8</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -328,7 +330,11 @@ Use the <code>c()</code> function to concatenate (combine) elements and store th
 3 3  8</code></pre>
 </div>
 </div>
-<p>A tibble is an enhanced version of a data frame in R, introduced by the <code>tibble</code> package, which is part of the <code>tidyverse</code> collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:</p>
+</section>
+</section>
+<section id="tibbles" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="tibbles">Tibbles</h2>
+<p>A <strong>tibble</strong> is an enhanced version of a data frame in R, introduced by the <code>tibble</code> package, which is part of the <code>tidyverse</code> collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">w=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>),<span class="at">z=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -342,10 +348,9 @@ Use the <code>c()</code> function to concatenate (combine) elements and store th
 4     8     5</code></pre>
 </div>
 </div>
-</section>
 <section id="importing-data" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="importing-data">Importing data</h3>
-<p>To import data into R you can use the <code>read_csv()</code> function. This command from the <code>tidyverse</code> package imports data as a tsibble. Below we import data on dog intelligence and preview it with the <code>glimpse()</code> function.</p>
+<p>To <strong>import</strong> data into R you can use the <code>read_csv()</code> function. This command from the <code>tidyverse</code> package imports data as a tsibble. Below we import data on dog intelligence and preview it with the <code>glimpse()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>di<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/dog_intelligence.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -384,7 +389,8 @@ $ reps_upper     &lt;dbl&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 15, 15, 15, 15, 15, 1
 </section>
 <section id="data-types" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="data-types">Data Types</h3>
-<p>The main data types are numeric, character, logical, date, and complex. To identify the data type stored in a vector use the <code>class()</code> function.</p>
+<p>The main data types are numeric, character, logical, date, and complex. - The numeric type includes all numbers, whether integers or real numbers with decimal points. It is the default type for numbers in R. If a number has no explicit decimal, R still treats it as numeric unless explicitly declared as an integer. - The character type is used to represent text or string data. Strings are enclosed in either single (’) or double (“) quotes. - The logical type is used for boolean values: TRUE or FALSE. It is commonly used in comparisons and conditional statements. - The date type represents calendar dates and is stored as the number of days since January 1, 1970 (known as the Unix epoch). - The complex type allows numbers that have a real and imaginary component, commonly used in advanced mathematics.</p>
+<p>To identify the data type stored in a vector use the <code>class()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(SleepingHours)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -392,12 +398,20 @@ $ reps_upper     &lt;dbl&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 15, 15, 15, 15, 15, 1
 </div>
 </div>
 </section>
-<section id="useful-r-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
 </section>
-</section>
-<section id="exercises" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">15.2</span> Exercises</h2>
+<section id="comparison-operators" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="comparison-operators"><span class="header-section-number">15.2</span> Comparison Operators</h2>
+<p>In R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.</p>
+<p>Here are the primary comparison operators in R:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/op.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
