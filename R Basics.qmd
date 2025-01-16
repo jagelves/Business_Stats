@@ -71,7 +71,7 @@ To identify the data type stored in a vector use the `class()` function.
 class(SleepingHours)
 ```
 
-## Comparison Operators
+## Comparison Operators {.unnumbered}
 In R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.
 
 Here are the primary comparison operators in R:

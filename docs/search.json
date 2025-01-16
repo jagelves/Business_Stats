@@ -1133,8 +1133,8 @@
     "objectID": "R Basics.html#comparison-operators",
     "href": "R Basics.html#comparison-operators",
     "title": "15  Objects and Vectors",
-    "section": "15.2 Comparison Operators",
-    "text": "15.2 Comparison Operators\nIn R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.\nHere are the primary comparison operators in R:",
+    "section": "Comparison Operators",
+    "text": "Comparison Operators\nIn R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.\nHere are the primary comparison operators in R:",
     "crumbs": [
       "<span class='chapter-number'>15</span>  <span class='chapter-title'>Objects and Vectors</span>"
     ]
