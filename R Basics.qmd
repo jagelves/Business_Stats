@@ -1,6 +1,6 @@
-# Objects and Vectors
+# R Basics
 
-## Concepts
+Below you will find a collection of R basic concepts.
 
 ### Objects {.unnumbered}
 
