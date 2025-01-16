@@ -22,18 +22,22 @@ ScreenTimeDays<-c(110,115,120,98,60)
 ```
 
 ### Data Frames and Tibbles {.unnumbered}
+
 A data frame in R is a two-dimensional structure used for storing data in a tabular format. It is one of the most common data structures in R, similar to a spreadsheet. Columns, represent variables and rows represent observations or records. You can use the `data.frame()` function to create a data frame:
 
 ```{r}
 (data<-data.frame(x=c(1,2,3),y=c(10,9,8)))
 ```
+
 A tibble is an enhanced version of a data frame in R, introduced by the `tibble` package, which is part of the `tidyverse` collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:
 
 ```{r message=FALSE}
 library(tidyverse)
 tibble(w=c(1,3,5,8),z=c(1,2,3,5))
 ```
+
 ### Importing data {.unnumbered}
+
 To import data into R you can use the `read_csv()` function. This command from the `tidyverse` package imports data as a tsibble. Below we import data on dog intelligence and preview it with the `glimpse()` function.
 
 ```{r}
