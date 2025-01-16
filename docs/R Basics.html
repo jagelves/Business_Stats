@@ -266,14 +266,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects">Objects</a></li>
   <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a></li>
   <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
-  </ul></li>
-  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles">Tibbles</a>
-  <ul class="collapse">
+  <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles">Tibbles</a></li>
   <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing data</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
-  </ul></li>
   <li><a href="#comparison-operators" id="toc-comparison-operators" class="nav-link" data-scroll-target="#comparison-operators">Comparison Operators</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -331,9 +329,8 @@ Use the <code>c()</code> function to concatenate (combine) elements and store th
 </div>
 </div>
 </section>
-</section>
-<section id="tibbles" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="tibbles">Tibbles</h2>
+<section id="tibbles" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="tibbles">Tibbles</h3>
 <p>A <strong>tibble</strong> is an enhanced version of a data frame in R, introduced by the <code>tibble</code> package, which is part of the <code>tidyverse</code> collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -348,6 +345,7 @@ Use the <code>c()</code> function to concatenate (combine) elements and store th
 4     8     5</code></pre>
 </div>
 </div>
+</section>
 <section id="importing-data" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="importing-data">Importing data</h3>
 <p>To <strong>import</strong> data into R you can use the <code>read_csv()</code> function. This command from the <code>tidyverse</code> package imports data as a tsibble. Below we import data on dog intelligence and preview it with the <code>glimpse()</code> function.</p>
@@ -398,9 +396,8 @@ $ reps_upper     &lt;dbl&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 15, 15, 15, 15, 15, 1
 </div>
 </div>
 </section>
-</section>
-<section id="comparison-operators" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="comparison-operators">Comparison Operators</h2>
+<section id="comparison-operators" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="comparison-operators">Comparison Operators</h3>
 <p>In R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.</p>
 <p>Here are the primary comparison operators in R:</p>
 <div class="cell" data-layout-align="center">
@@ -414,6 +411,7 @@ $ reps_upper     &lt;dbl&gt; 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 15, 15, 15, 15, 15, 1
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

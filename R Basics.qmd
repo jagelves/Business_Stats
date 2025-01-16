@@ -28,7 +28,7 @@ A **data frame** in R is a two-dimensional structure used for storing data in a 
 (data<-data.frame(x=c(1,2,3),y=c(10,9,8)))
 ```
 
-## Tibbles {.unnumbered}
+### Tibbles {.unnumbered}
 A **tibble** is an enhanced version of a data frame in R, introduced by the `tibble` package, which is part of the `tidyverse` collection of packages. It provides a modern approach to working with tabular data, improving usability, readability, and consistency. Below we create a tibble to store data:
 
 ```{r message=FALSE}
@@ -71,7 +71,7 @@ To identify the data type stored in a vector use the `class()` function.
 class(SleepingHours)
 ```
 
-## Comparison Operators {.unnumbered}
+### Comparison Operators {.unnumbered}
 In R, comparison operators are used to compare two values or objects. They return a logical value (TRUE or FALSE) based on whether the comparison is true or false.
 
 Here are the primary comparison operators in R:
