@@ -388,12 +388,12 @@ details summary {
 </div>
 </div>
 <p>The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship.</p>
-<p><em>Ex: Consider the SPY and BND data. The standard deviation of SPY is <span class="math inline">\(1.58\)</span> and that of BDN is <span class="math inline">\(50.37\)</span>. Substituting into the correlation formula we get a correlation coefficient of <span class="math inline">\(r= \frac {-71}{1.58 \times 50.37}=-0.89\)</span>. This indicates that the relationship between SPY and BND is inverse and strong.</em></p>
+<p><em>Ex: Consider the SPY and BND data. The standard deviation of SPY is</em> <span class="math inline">\(1.58\)</span> and that of BDN is <span class="math inline">\(50.37\)</span>. Substituting into the correlation formula we get a correlation coefficient of <span class="math inline">\(r= \frac {-71}{1.58 \times 50.37}=-0.89\)</span>. This indicates that the relationship between SPY and BND is inverse and strong.</p>
 </section>
 <section id="the-coefficient-of-determination-r2" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
 <p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by <span class="math inline">\(R^2=r^2\)</span>. The number that we get from the <span class="math inline">\(R^2\)</span> tells us how well a variable (x) explains the variation in the another variable (y). The number could be anywhere from zero (indicating that the two variables are unrelated), to one (indicating that one variable explains entirely the variation of the other variable).</p>
-<p><em>Ex: Consider once more the SPY and BND example. The correlation coefficient is given by <span class="math inline">\(r=-0.89\)</span>. The <span class="math inline">\(R^2=(-0.89)^2=0.79\)</span>. This indicates that about 80% of the variation in the SPY can be explained by the changes in BND. Hence, these two variables are closely related.</em></p>
+<p><em>Ex: Consider once more the SPY and BND example. The correlation coefficient is given by</em> <span class="math inline">\(r=-0.89\)</span>. The <span class="math inline">\(R^2=(-0.89)^2=0.79\)</span>. This indicates that about 80% of the variation in the SPY can be explained by the changes in BND. Hence, these two variables are closely related.</p>
 </section>
 <section id="measures-of-association-in-r" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="measures-of-association-in-r"><span class="header-section-number">6.4</span> Measures of Association in R</h2>
@@ -488,7 +488,7 @@ details summary {
 <summary>
 Answer
 </summary>
-<p><em>The covariance is <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</em></p>
+<p><em>The covariance is</em> <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</p>
 <p><em>Let’s start by finding the deviations from the mean for the x variable in R.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
@@ -563,7 +563,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The covariance is <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</em></p>
+<p><em>The covariance is</em> <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</p>
 <p><em>Let’s start with w and finding the deviations from the mean in R.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>w<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
@@ -620,7 +620,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The correlation coefficient is <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between mpg and mp.</em></p>
+<p><em>The correlation coefficient is</em> <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between mpg and mp.</p>
 <p><em>In R we can easily calculate the correlation coefficient with the <code>cor()</code> function.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -662,7 +662,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The coefficient of determination is <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains <span class="math inline">\(60\)</span>% of the total variation.</em></p>
+<p><em>The coefficient of determination is</em> <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains <span class="math inline">\(60\)</span>% of the total variation.</p>
 <p><em>In R we can calculate the coefficient of determination by squaring the correlation coefficient.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -712,7 +712,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The correlation coefficient shows a moderate direct relationship between earnings and debt <span class="math inline">\(0.46\)</span>. The coefficient of determination indicates that only <span class="math inline">\(21\)</span>% of the variation in earnings can be explained by debt.</em></p>
+<p><em>The correlation coefficient shows a moderate direct relationship between earnings and debt</em> <span class="math inline">\(0.46\)</span>. The coefficient of determination indicates that only <span class="math inline">\(21\)</span>% of the variation in earnings can be explained by debt.</p>
 <p><em>In R we can start with the correlation coefficient:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(Correlation<span class="ot">&lt;-</span><span class="fu">cor</span>(College<span class="sc">$</span>GRAD_DEBT_MDN,</span>
