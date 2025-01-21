@@ -1,3 +1,4 @@
+```{=html}
 <style>
 details {
   background-color: #F8F9FA;
@@ -11,6 +12,7 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
+```
 
 # Descriptive Stats I
 
@@ -142,7 +144,13 @@ A bookstore has compiled data set on their current inventory. A portion of the d
 
 <summary>Answer</summary>
 
-*The "Title" variable represents the names of books. Therefore, this is a categorical variable. "Price" represents the cost of each book in a numeric format, making it a numerical variable. "Year Published" indicates the publication year of each book. It is numerical. If "Rating" represents a numerical score based on a continuous scale (e.g., average user ratings on a platform like Goodreads), it is numerical because arithmetic operations like averaging or comparing differences are meaningful. If "Rating" represents predefined categories (e.g., "Excellent," "Good," "Fair," "Poor") or is interpreted as ranks without meaningful differences between values, it would be categorical.*
+-  *The "Title" variable represents the names of books. Therefore, this is a categorical variable.*
+
+-  *"Price" represents the cost of each book in a numeric format, making it a numerical variable.* 
+-  *"Year Published" indicates the publication year of each book. It is numerical.*
+
+-  *If "Rating" represents a numerical score based on a continuous scale (e.g., average user ratings on a platform like Goodreads), it is numerical because arithmetic operations like averaging or comparing differences are meaningful.*
+*If "Rating" represents predefined categories (e.g., "Excellent," "Good," "Fair," "Poor") or is interpreted as ranks without meaningful differences between values, it would be categorical.*
 
 </details>
 
@@ -152,7 +160,13 @@ A bookstore has compiled data set on their current inventory. A portion of the d
 
 <summary>Answer</summary>
 
-*The measurement scale is nominal for Title since these are labels used to identify each book and do not have a numerical meaning or order. If Rating represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not "twice as good" as one rated 2.0). Price is a measurable quantity with a meaningful zero (e.g., a book priced at \$0 means it is free), making it ratio data. Year is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).*
+-  *The measurement scale is nominal for "Title" since these are labels used to identify each book and do not have a numerical meaning or order.* 
+
+-  *If "Rating" represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not "twice as good" as one rated 2.0).*
+
+-  *"Price" is a measurable quantity with a meaningful zero (e.g., a book priced at \$0 means it is free), making it ratio data.*
+
+-  *"Year" is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).*
 
 </details>
 
