@@ -1,3 +1,4 @@
+```{=html}
 <style>
 details {
   background-color: #F8F9FA;
@@ -11,14 +12,15 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
+```
 
 # Descriptive Stats II
 
-Understanding and visualizing data distributions is a fundamental step in data analysis. A frequency distribution organizes data into non-overlapping classes, allowing for insights into patterns and trends. Complementary to this, relative frequency, cumulative frequency, and cumulative relative frequency offer deeper perspectives on the proportions and accumulation of data within these classes. Visualization techniques play a crucial role in representing these distributions, with bar plots suited for qualitative data and histograms tailored for quantitative data. The R package `ggplot2`, has functions like `geom_bar()` and `geom_hist()` to plot distributions efficiently. By leveraging these methods, data can be transformed into clear and meaningful insights.
+Understanding and visualizing data distributions is a fundamental step in data analysis. It provides critical insights into the underlying characteristics of the data, which directly impact decision-making, model performance, and interpretation. Below, we introduce tabular and visual techniques to describe your data.
 
 ## Frequency Distributions (Categorical)
 
-A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. The **relative frequency**, which quantifies the proportion of items in each category relative to the total number of observations is often used as an alternative to showing raw frequencies. You can calculate it by taking the frequency of a particular class ($f_{i}$), and dividing it by the total frequency $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
+A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. An alternative known as the **relative frequency** quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}$), and dividing it by the number of observations $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
 
 **Example:** Consider data on students' answers to the question, what is your favorite food? You can see the data below:
 
