@@ -53,9 +53,14 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 
 **Example:** Let's consider data on the Weight (y) and Exercise (x) of a particular person.
 
-```{r echo=FALSE, out.width="50%", out.height="50%", fig.align='center'}
-knitr::include_graphics("images/rs1.png")
-```
+|y|x|
+|:-:|:-:|
+|165|45|
+|170|10|
+|168|25|
+|164|30|
+|165|40|
+
 
 Now, if we were to predict the weight of this person, we could think about just using the mean value (i.e., 166.4). If this were our guess, then the mistakes (errors) we would have made with this prediction is quantified by the $SST=25.2$. Below you can see these mistakes visually.
 
