@@ -112,14 +112,14 @@ Here we define a vector called food by assigning (`<-`) the combination (`c`) of
 table(food)
 ```
 
-As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the `prop.table()` function. This function requires as an input a frequency distribution created by the `table()` function. Hence, we can first create the frequency distribution, save it into an object, and the generate the relative frequency. The code is below:
+As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the `prop.table()` function. This function requires the frequency distribution created by the `table()` function. Hence, we can first create the frequency distribution, save it into an object, and then generate the relative frequency. The code is below:
 
 ```{r}
 freq<-table(food)
 prop.table(freq)
 ```
 
-As a last modification. If you want percent frequencies, you can multiply the prop.table by 100, as shown below:
+As a last modification. If you want percent frequencies, you can multiply the `prop.table()` function by 100, as shown below:
 
 ```{r}
 prop.table(freq)*100
@@ -133,7 +133,7 @@ To create the bar plot we will be using the `geom_bar()` function within the `ti
 library(tidyverse)
 ```
 
-Now R will identify the functions `ggplot()` and `geom_bar()` from the `ggplot` library. To construct the plot we will first call on `ggplot` and then specify the type of graph we want by calling on `geom_bar()`. In the `aes()` function we will specify which variable (or vector) we want to plot.
+Now R will identify the functions `ggplot()` and `geom_bar()` from the `ggplot` library. To construct the plot we will first call on `ggplot()` and then specify the type of graph we want by calling on `geom_bar()`. In the `aes()` function we will specify which variable (or vector) we want to plot.
 
 ```{r}
 ggplot() + geom_bar(aes(food))
@@ -150,11 +150,11 @@ ggplot() + geom_bar(aes(food), col="black", alpha=0.5, bg="blue") +
   
 ```
 
-A few arguments are worth explaining in the code above. The arguments in the `geom_bar()` function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the `labs()` function. To omit label we can just open and close quotations. Hence, `x=""` omits the x label.
+A few arguments are worth explaining in the code above. The arguments in the `geom_bar()` function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the `labs()` function. To omit labels we can just open and close quotations. Hence, `x=""` omits the x label.
 
 ## Frequency Distribution in R (Numerical)
 
-To construct the frequency distribution in R we will be first generating the classes and the using the `table()` function as we did in the categorical case. Let's first get the data into R:
+To construct the frequency distribution in R we will be first generating the classes and then using the `table()` function as we did in the categorical case. Let's first get the data into R:
 
 ```{r}
 dow<-c(277,174,202,383,358,188,293,156,
@@ -194,7 +194,7 @@ ggplot() +
   theme_clean()
 ```
 
-Within the `geom_histogram()` command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are price between 20 and 220 dollars.
+Within the `geom_histogram()` command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are priced between 20 and 220 dollars.
 
 ## Exercises
 
