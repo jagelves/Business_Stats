@@ -20,7 +20,7 @@ Understanding the nature and classification of data is crucial for effective ana
 
 ## Data and Types of Data
 
-**Data** are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:
+Let's start by defining data and the types of data structures that you might encounter when conducting analysis. **Data** are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:
 
 -   **Cross Sectional Data** refers to data collected at the same (or approximately the same) point in time. *Ex: NFL standings in 1980 or Country GDP in 2015.*
 
@@ -34,7 +34,7 @@ Understanding the nature and classification of data is crucial for effective ana
 
 ## Data Sets
 
-A **data set** contains all data collected for a particular study. Data sets are composed of:
+A **data set** contains all data collected for a particular study. Understanding the structure the data set aids in communicating findings to stakeholders clearly and effectively. Data sets are composed of:
 
 -   **Elements** are the entities on which data are collected. *Ex: Football teams, countries, and individuals.*
 
