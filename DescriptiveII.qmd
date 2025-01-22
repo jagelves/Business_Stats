@@ -76,7 +76,7 @@ When working with numerical data, building a frequency distributions requires ad
 *Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is* $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10.
 
 **3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.\
-*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80).*
+*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.*
 
 **Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
 
