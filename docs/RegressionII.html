@@ -294,9 +294,15 @@ window.Quarto = {
   <li><a href="#measures-of-goodness-of-fit" id="toc-measures-of-goodness-of-fit" class="nav-link" data-scroll-target="#measures-of-goodness-of-fit"><span class="header-section-number">7.2</span> Measures of Goodness of Fit</a>
   <ul class="collapse">
   <li><a href="#coefficient-of-determination" id="toc-coefficient-of-determination" class="nav-link" data-scroll-target="#coefficient-of-determination">Coefficient of Determination</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
+  <li><a href="#residual-standard-error" id="toc-residual-standard-error" class="nav-link" data-scroll-target="#residual-standard-error">Residual Standard Error</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.3</span> Exercises</a>
+  <li><a href="#multiple-regression" id="toc-multiple-regression" class="nav-link" data-scroll-target="#multiple-regression"><span class="header-section-number">7.3</span> Multiple Regression</a>
+  <ul class="collapse">
+  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova">Anova</a></li>
+  <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2">Adjusted <span class="math inline">\(R^2\)</span></a></li>
+  </ul></li>
+  <li><a href="#regression-in-r" id="toc-regression-in-r" class="nav-link" data-scroll-target="#regression-in-r"><span class="header-section-number">7.4</span> Regression in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.5</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -438,22 +444,179 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The image highlights how the regression line can reduce the errors of our prediction. Consider the point with y coordinate 168. The error made (i.e., the distance between) by using the mean is 1.6. However, if we update our prediction by using the regression line the mistake is reduced to <span class="math inline">\(168-167.17=0.83\)</span>. Squaring all of these deviations from the mean and adding them gives us <span class="math inline">\(SSE=0.81+0.29+0.69+5.76+0.02=7.57\)</span>. Note how using the regression line has helped us reduce the errors in our prediction.</p>
+<p>The image highlights how the regression line can reduce the errors in our prediction. Consider the point with y coordinate 168. The error (i.e., the distance between) using the mean is 1.6. However, if we update our prediction using the regression line, the mistake is reduced to <span class="math inline">\(168-167.17=0.83\)</span>. Squaring all these deviations from the mean and adding them gives us <span class="math inline">\(SSE=0.81+0.29+0.69+5.76+0.02=7.57\)</span>. Note how using the regression line has helped us reduce the errors in our prediction.</p>
+<p>Conversely, the regression line has helped us explain more of the variation in Weight (y). In the graph, the gap between the mean and the point has been reduced by the amount highlighted in yellow (0.77). If we square and add up all of the “improvements,” we get <span class="math inline">\(SSR=5.29+9.4+0.59+0+2.35=17.63\)</span>. In sum, the regression line has closed the gap of the prediction errors made by the mean by <span class="math inline">\(R^2=\frac{SSR}{SST} \approx 0.7\)</span> or 70%.</p>
+</section>
+<section id="residual-standard-error" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="residual-standard-error">Residual Standard Error</h3>
+<p>The <strong>Residual Standard Error</strong> estimates the average dispersion of the data points around the regression line. Recall, that we have calculated the squared deviation from the regression line by using <span class="math inline">\(SSE\)</span>. Hence if we want to find an average deviation we can divide using the number of observations and then find a square root to go back to linear values. In particular you can use <span class="math inline">\(s_e =\sqrt{\frac{SSE}{n-k-1}}\)</span>, where <span class="math inline">\(k\)</span> is the number of independent variables used in your regression.</p>
+</section>
+</section>
+<section id="multiple-regression" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="multiple-regression"><span class="header-section-number">7.3</span> Multiple Regression</h2>
+<p>If we were to predict weight we could use several other variables that are related to get a better prediction. <em>Multiple regression</em> is a technique used predict a variable using more than one independent variable. Mathematically, you would be estimating <span class="math inline">\(\hat{y_i}=\hat{\beta_0}+\hat{\beta_1}x_1+\hat{\beta_2}x_2...+\hat{\beta_k}x_k\)</span>, where <span class="math inline">\(k\)</span> is the total number of independent variables included in the regression model.</p>
+<p><strong>Example:</strong> Let’s consider an additional variable in our Weight and Exercise example. The table below includes information on Calories (z).</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Weight (y)</th>
+<th style="text-align: center;">Exercise (x)</th>
+<th style="text-align: center;">Calories (z)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">165</td>
+<td style="text-align: center;">45</td>
+<td style="text-align: center;">1200</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">170</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1260</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">168</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">1220</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">164</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;">1180</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">165</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">1190</td>
+</tr>
+</tbody>
+</table>
+<p>The regression line can be estimated using computer software and is given by <span class="math inline">\(\hat{y_i}=83.96-0.025x+0.069z\)</span>. A few things can be concluded from the regression line. First, as the amount of exercise increases our weith tends to go down, but as we consume more calories the weight tends to go up. Second, the effectiveness of calories seems to be better that that of exercise. For every minute exercise our weight goes down on average by 0.025 pounds. However, if we reduce our calorie consumption by 1, then our weight goes down by 0.069 pounds.</p>
+<section id="anova" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="anova">Anova</h3>
+<p>We can further explore the importance of each variable using the Anova table. This table helps us understand how well our regression model explains the dependent variable. For now, we will use this table to show the <span class="math inline">\(SSR\)</span> generated by each variable as well as to track the errors. Using computer software we get the following table:</p>
+<p>|Source|Sum Squares| |:-:||:-:| |x|17.63| |z|6.55| |Residuals|1.01|</p>
+<p>The table shows that x “closes the gap” with respect to the mean prediction 17.63. If we add the calories model, we further decrease the gap by about 6.55. In sum, using them together reduces the <span class="math inline">\(SSE\)</span> to 1.01 relative to when only exercise (x) is used (7.57). Finally, the <span class="math inline">\(R^2\)</span> also increases from 0.7 to now 0.96, <span class="math inline">\(R^2= \frac{17.63+6.55}{25.5}\)</span>.</p>
+</section>
+<section id="adjusted-r2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="adjusted-r2">Adjusted <span class="math inline">\(R^2\)</span></h3>
+<p>The <strong>adjusted</strong> <span class="math inline">\(R^2\)</span> recognizes that the <span class="math inline">\(R^2\)</span> is a non-decreasing function of the number of independent variables included in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by <span class="math inline">\(1-(1-R^2) \frac {n-1}{n-k-1}\)</span>, where <span class="math inline">\(k\)</span> is the number of explanatory variables used in the model and <span class="math inline">\(n\)</span> is the sample size. For our weight example <span class="math inline">\(adjusted R^2=1-(1-0.96) \frac{5-1}{5-2-1}=0.9196\)</span>.</p>
+</section>
+</section>
+<section id="regression-in-r" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="regression-in-r"><span class="header-section-number">7.4</span> Regression in R</h2>
+<p>Below we conduct regression analysis in R, using the weight data. Let’s start by creating a tibble to store the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">tibble</span>(<span class="at">y=</span><span class="fu">c</span>(<span class="dv">165</span>,<span class="dv">170</span>,<span class="dv">168</span>,<span class="dv">164</span>,<span class="dv">165</span>),</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">x=</span><span class="fu">c</span>(<span class="dv">45</span>,<span class="dv">10</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">40</span>),</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">z=</span><span class="fu">c</span>(<span class="dv">1200</span>,<span class="dv">1260</span>,<span class="dv">1220</span>,<span class="dv">1180</span>,<span class="dv">1190</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can first visualize the relationship between x and y using <code>ggplot</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>d <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>y,<span class="at">x=</span>x),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">pch=</span><span class="dv">21</span>, <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>y,<span class="at">x=</span>x),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>,<span class="at">se=</span>F,<span class="at">formula=</span>y<span class="sc">~</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The regression line is estimated using the <code>lm()</code> command as shown below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(y<span class="sc">~</span>x, <span class="at">data=</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can retrieve the coefficients by either using the <code>coef()</code> function or the <code>summary()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ x, data = d)
+
+Residuals:
+      1       2       3       4       5 
+ 0.9000  0.5333  0.8333 -2.4000  0.1333 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 171.00000    1.87913  91.000 2.93e-06 ***
+x            -0.15333    0.05799  -2.644   0.0774 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.588 on 3 degrees of freedom
+Multiple R-squared:  0.6997,    Adjusted R-squared:  0.5996 
+F-statistic: 6.991 on 1 and 3 DF,  p-value: 0.07738</code></pre>
+</div>
+</div>
+<p>The summary function confirms our results for the <span class="math inline">\(R^2\)</span> and coefficients. If we wanted to make a prediction we can use the <code>predict()</code> function with the fit object as input. Below we predict y when x is equal to 4.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit,<span class="at">newdata =</span> <span class="fu">tibble</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">4</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+170.3867 </code></pre>
+</div>
+</div>
+<p>We can run multiple regression by just adding z to our fit object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(y<span class="sc">~</span>x<span class="sc">+</span>z, <span class="at">data=</span>d)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = y ~ x + z, data = d)
+
+Residuals:
+      1       2       3       4       5 
+-0.3375 -0.3375  0.7875 -0.3375  0.2250 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) 83.96250   24.20433   3.469   0.0740 .
+x           -0.02500    0.04413  -0.567   0.6281  
+z            0.06875    0.01911   3.598   0.0693 .
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.7115 on 2 degrees of freedom
+Multiple R-squared:  0.9598,    Adjusted R-squared:  0.9196 
+F-statistic: 23.89 on 2 and 2 DF,  p-value: 0.04018</code></pre>
+</div>
+</div>
+<p>Lastly, to obtain the Anova table we can use the <code>anova()</code> command.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: y
+          Df  Sum Sq Mean Sq F value  Pr(&gt;F)  
+x          1 17.6333 17.6333  34.831 0.02753 *
+z          1  6.5542  6.5542  12.947 0.06931 .
+Residuals  2  1.0125  0.5062                  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<p>Below we summarize the R functions: - The <code>lm()</code> function to estimates the linear regression model.</p>
 <ul>
-<li><p>The <strong>adjusted</strong> <span class="math inline">\(R^2\)</span> recognizes that the <span class="math inline">\(R^2\)</span> is a non-decreasing function of the number of explanatory variables in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by <span class="math inline">\(1-(1-R^2) \frac {n-1}{n-k-1}\)</span>, where <span class="math inline">\(k\)</span> is the number of explanatory variables used in the model and <span class="math inline">\(n\)</span> is the sample size.</p></li>
-<li><p>The <strong>Residual Standard Error</strong> estimates the average dispersion of the data points around the regression line. It is calculated by <span class="math inline">\(s_e =\sqrt{\frac{SSE}{n-k-1}}\)</span>.</p></li>
+<li><p>The <code>predict()</code> function uses the linear model object to predict values. New data is entered as a data frame or tibble.</p></li>
+<li><p>The <code>coef()</code> function returns the model’s coefficients.</p></li>
+<li><p>The <code>summary()</code> function returns the model’s coefficients, and goodness of fit measures.</p></li>
+<li><p>The <code>Anova()</code> function creates the anova table for a regression. you must provide an object that contains the result of the <code>lm()</code> function.</p></li>
 </ul>
 </section>
-<section id="useful-r-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
-<p>The <code>lm()</code> function to estimates the linear regression model.</p>
-<p>The <code>predict()</code> function uses the linear model object to predict values. New data is entered as a data frame.</p>
-<p>The <code>coef()</code> function returns the model’s coefficients.</p>
-<p>The <code>summary()</code> function returns the model’s coefficients, and goodness of fit measures.</p>
-</section>
-</section>
-<section id="exercises" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.3</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.5</span> Exercises</h2>
 <p>The following exercises will help you get practice on Regression Line estimation and interpretation. In particular, the exercises work on:</p>
 <ul>
 <li><p>Estimating the slope and intercept.</p></li>
@@ -496,45 +659,45 @@ Answer
 <p><em>The regression lines is</em> <span class="math inline">\(\hat{y}=-4.93+1.09x\)</span>. For each unit increase in x, y increases on average <span class="math inline">\(1.09\)</span>.</p>
 <p><em>Start by generating the deviations from the mean for each variable. For x the deviations are:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
 </div>
 </div>
 <p><em>Next, find the deviations for y:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
 </div>
 </div>
 <p><em>For the slope we need to find the deviation squared of the x’s. This can easily be done in R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(devx2<span class="ot">&lt;-</span>devx<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(devx2<span class="ot">&lt;-</span>devx<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.04  1.44 23.04  3.24 27.04</code></pre>
 </div>
 </div>
 <p><em>The slope is calculated by</em> <span class="math inline">\(\frac{\sum_{i=i}^{n} (x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=i}^{n} (x_{i}-\bar{x})^2}\)</span>. In R we can just find the ratio between the summations of (devx)(devy) and devx2.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(slope<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span><span class="fu">sum</span>(devx2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(slope<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span><span class="fu">sum</span>(devx2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.087591</code></pre>
 </div>
 </div>
 <p><em>The intercept is given by</em> <span class="math inline">\(\bar{y}-\beta(\bar{x})\)</span>. In R we find that the intercept is equal to:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(intercept<span class="ot">&lt;-</span><span class="fu">mean</span>(y)<span class="sc">-</span>slope<span class="sc">*</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(intercept<span class="ot">&lt;-</span><span class="fu">mean</span>(y)<span class="sc">-</span>slope<span class="sc">*</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -4.934307</code></pre>
 </div>
 </div>
 <p><em>Our results can be easily verified by using the <code>lm()</code> and <code>coef()</code> functions in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fitEx1<span class="ot">&lt;-</span><span class="fu">lm</span>(y<span class="sc">~</span>x)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fitEx1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fitEx1<span class="ot">&lt;-</span><span class="fu">lm</span>(y<span class="sc">~</span>x)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fitEx1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)           x 
   -4.934307    1.087591 </code></pre>
@@ -551,42 +714,42 @@ Answer
 <p><em>SST is</em> <span class="math inline">\(69.2\)</span>, SSR is <span class="math inline">\(64.82\)</span> and SSE is <span class="math inline">\(4.38\)</span> (note that <span class="math inline">\(SSR+SSE=SST\)</span>). The <span class="math inline">\(R^2\)</span> is just <span class="math inline">\(\frac{SSR}{SST}=0.94\)</span> and the Standard Error estimate is <span class="math inline">\(1.21\)</span>. They both indicate a great fit of the regression line to the data.</p>
 <p><em>Let’s start by calculating the SST. This is just</em> <span class="math inline">\(\sum{(y_{i}-\bar{y})^2}\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(SST<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(SST<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 69.2</code></pre>
 </div>
 </div>
 <p><em>Next, we can calculate SSR. This is calculated by the following formula</em> <span class="math inline">\(\sum{(\hat{y_{i}}-\bar{y})^2}\)</span>. To obtain the predicted values in R, we can use the output of the <code>lm()</code> function. Recall our fitEx1 object created in Exercise 1. It has fitted.values included:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(SSR<span class="ot">&lt;-</span><span class="fu">sum</span>((fitEx1<span class="sc">$</span>fitted.values<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(SSR<span class="ot">&lt;-</span><span class="fu">sum</span>((fitEx1<span class="sc">$</span>fitted.values<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 64.82044</code></pre>
 </div>
 </div>
 <p><em>The ratio of SSR to SST is the</em> <span class="math inline">\(R^2\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(R2<span class="ot">&lt;-</span>SSR<span class="sc">/</span>SST)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(R2<span class="ot">&lt;-</span>SSR<span class="sc">/</span>SST)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9367115</code></pre>
 </div>
 </div>
 <p><em>Finally, let’s calculate SSE</em> <span class="math inline">\(\sum{(y_{i}-\hat{y_{i}})^2}\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(SSE<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span>fitEx1<span class="sc">$</span>fitted.values)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(SSE<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span>fitEx1<span class="sc">$</span>fitted.values)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 4.379562</code></pre>
 </div>
 </div>
 <p><em>With the SSE we can calculate the Standard Error estimate:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(SSE<span class="sc">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(SSE<span class="sc">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.208244</code></pre>
 </div>
 </div>
 <p><em>We can confirm these results using the <code>summary()</code> function.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitEx1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitEx1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -619,7 +782,7 @@ Answer
 <p><em>If</em> <span class="math inline">\(x=32\)</span> then <span class="math inline">\(\hat{y}=29.87\)</span>. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the sample size of the data.</p>
 <p><em>In R we can obtain a prediction by using the <code>predict()</code> function. This function requires a data frame as an input for new data.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fitEx1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">32</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fitEx1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">32</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 29.86861 </code></pre>
@@ -640,13 +803,13 @@ Answer
 <p><em>An extra year of education increases the annual salary about</em> <span class="math inline">\(5,300\)</span> dollars (slope). A person that has no education would be expected to earn <span class="math inline">\(17,2582\)</span> dollars (intercept).</p>
 <p><em>Start by loading the data in R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>Education<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Education.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>Education<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Education.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Next, let’s use the <code>lm()</code> function to estimate the regression line and obtain the coefficients:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fitEducation<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education, <span class="at">data =</span> Education)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(fitEducation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fitEducation<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education, <span class="at">data =</span> Education)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(fitEducation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)   Education 
   17.258190    5.301149 </code></pre>
@@ -663,7 +826,7 @@ Answer
 <p><em>The</em> <span class="math inline">\(R^2\)</span> is <span class="math inline">\(0.668\)</span> and the standard error is <span class="math inline">\(21\)</span>. The line is a moderately good fit. If someone has <span class="math inline">\(16\)</span> years of experience, the regression line would predict a salary of <span class="math inline">\(102,000\)</span> dollars.</p>
 <p><em>Let’s get the</em> <span class="math inline">\(R^2\)</span> and the Standard Error estimate by using the <code>summary()</code> function and fitEx1 object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitEducation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitEducation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -687,7 +850,7 @@ F-statistic: 199.8 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p><em>Lastly, let’s use the regression line to predict the salary for someone who has</em> <span class="math inline">\(16\)</span> years of education.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fitEducation, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Education=</span><span class="fu">c</span>(<span class="dv">16</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fitEducation, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Education=</span><span class="fu">c</span>(<span class="dv">16</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 102.0766 </code></pre>
@@ -708,7 +871,7 @@ Answer
 <p><em>Approximately,</em> <span class="math inline">\(36\)</span>% of the sample owns a home.</p>
 <p><em>Start by loading the data into R and removing all NA’s:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/FoodSpend.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/FoodSpend.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 80 Columns: 2
 ── Column specification ────────────────────────────────────────────────────────
@@ -719,15 +882,15 @@ dbl (1): Food
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="ot">&lt;-</span><span class="fu">na.omit</span>(Spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="ot">&lt;-</span><span class="fu">na.omit</span>(Spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>To create a dummy variable for OwnHome we can use the <code>ifelse()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="sc">$</span>dummyOH<span class="ot">&lt;-</span><span class="fu">ifelse</span>(Spend<span class="sc">$</span>OwnHome<span class="sc">==</span><span class="st">"Yes"</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="sc">$</span>dummyOH<span class="ot">&lt;-</span><span class="fu">ifelse</span>(Spend<span class="sc">$</span>OwnHome<span class="sc">==</span><span class="st">"Yes"</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>The average of the dummy variable is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Spend<span class="sc">$</span>dummyOH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Spend<span class="sc">$</span>dummyOH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3625</code></pre>
 </div>
@@ -743,7 +906,7 @@ Answer
 <p><em>The intercept is the average food expenditure of individuals without homes (</em><span class="math inline">\(6417\)</span>). The slope, is the difference in food expenditures between individuals that do have homes minus those who don’t. We then conclude that individuals that do have a home spend about <span class="math inline">\(-2516\)</span> less on food than those who don’t have homes.</p>
 <p><em>To run the regression use the <code>lm()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Food<span class="sc">~</span>dummyOH,<span class="at">data=</span>Spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Food<span class="sc">~</span>dummyOH,<span class="at">data=</span>Spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -765,8 +928,8 @@ Answer
 <p><em>The scatter plot shows that most of the points for home owners are below</em> <span class="math inline">\(6000\)</span>. For non-home owners they are mainly above <span class="math inline">\(6000\)</span>. The line can be used to predict the likelihood of owning a home given someones food expenditure. The intercept is above one, but still it gives us the indication that it is likely that low food expenditures are highly predictive of owning a home. The slope tells us how that likelihood changes as the food expenditures increase by 1. In general, the likelihood of owning a home decreases as the food expenditure increases.</p>
 <p><em>Run the <code>lm()</code> function once again:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fitFood<span class="ot">&lt;-</span><span class="fu">lm</span>(dummyOH<span class="sc">~</span>Food,<span class="at">data=</span>Spend)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(fitFood)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>fitFood<span class="ot">&lt;-</span><span class="fu">lm</span>(dummyOH<span class="sc">~</span>Food,<span class="at">data=</span>Spend)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(fitFood)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  (Intercept)          Food 
  1.4320766616 -0.0002043632 </code></pre>
@@ -774,17 +937,17 @@ Answer
 </div>
 <p><em>For the scatter plot use the following code:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>Spend <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>dummyOH,<span class="at">x=</span>Food), </span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>dummyOH,<span class="at">x=</span>Food), <span class="at">method=</span><span class="st">"lm"</span>,</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula=</span>y<span class="sc">~</span>x, <span class="at">se=</span>F) <span class="sc">+</span> </span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>Spend <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>dummyOH,<span class="at">x=</span>Food), </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>dummyOH,<span class="at">x=</span>Food), <span class="at">method=</span><span class="st">"lm"</span>,</span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula=</span>y<span class="sc">~</span>x, <span class="at">se=</span>F) <span class="sc">+</span> </span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -804,7 +967,7 @@ Answer
 <p><em>If we follow the</em> <span class="math inline">\(R^2=0.81\)</span> the model fits the data very well.</p>
 <p><em>Let’s load the data from the web:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Population<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>Population<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>New names:
 Rows: 16492 Columns: 4
@@ -818,12 +981,12 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </div>
 <p><em>Now let’s filter the data so that we can focus on the population for Japan.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>Japan<span class="ot">&lt;-</span><span class="fu">filter</span>(Population,Country.Name<span class="sc">==</span><span class="st">"Japan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>Japan<span class="ot">&lt;-</span><span class="fu">filter</span>(Population,Country.Name<span class="sc">==</span><span class="st">"Japan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Next, we can run the regression of Population against the Year. Let’s also run the <code>summary()</code> function to obtain the fit and the coefficients.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Population<span class="sc">~</span>Year,<span class="at">data=</span>Japan)</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Population<span class="sc">~</span>Year,<span class="at">data=</span>Japan)</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -856,7 +1019,7 @@ Answer
 <p><em>The prediction for</em> <span class="math inline">\(2030\)</span> is about <span class="math inline">\(140\)</span> million people.</p>
 <p><em>Let’s use the <code>predict()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit,<span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">Year=</span><span class="fu">c</span>(<span class="dv">2030</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit,<span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">Year=</span><span class="fu">c</span>(<span class="dv">2030</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        1 
 140268585 </code></pre>
@@ -873,16 +1036,16 @@ Answer
 <p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. Population has been decreasing in Japan!</p>
 <p><em>Use the <code>plot()</code> and <code>abline()</code> functions to create the figure.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>Japan <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>Population,<span class="at">x=</span>Year), </span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>Population,<span class="at">x=</span>Year), </span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula=</span>y<span class="sc">~</span>x, <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>Japan <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>Population,<span class="at">x=</span>Year), </span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>Population,<span class="at">x=</span>Year), </span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula=</span>y<span class="sc">~</span>x, <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
