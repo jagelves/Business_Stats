@@ -335,15 +335,32 @@ window.Quarto = {
 <p>The <strong>slope</strong> determines the steepness of the line. The estimate quantifies how much a unit increase in <span class="math inline">\(x\)</span> changes <span class="math inline">\(y\)</span>. The estimate is given by <span class="math inline">\(\hat{\beta}= \frac {s_{xy}}{s_{x}^2}\)</span>.</p>
 <p>The <strong>intercept</strong> determines where the line crosses the <span class="math inline">\(y\)</span> axis. It returns the value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> is zero. The estimate is given by <span class="math inline">\(\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}\)</span>.</p>
 <p><strong>Example:</strong> Let’s examine a data set on Price and Advertisement. Below is the data used to calculate the regression line, followed by its interpretation.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/reg1.png" class="quarto-figure quarto-figure-center figure-img" style="width:50.0%;height:50.0%"></p>
-</figure>
-</div>
-</div>
-</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Advertisement (x)</th>
+<th style="text-align: center;">Price (y)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">10</td>
+</tr>
+</tbody>
+</table>
 <p>The data shows a clear relationship between advertisement and price: when advertisement spending is high, price also tends to be high. This suggests a direct relationship between the two variables. In a previous chapter, we learned to quantify such relationships using covariance and the correlation coefficient.</p>
 <p>In this section, we aim to answer two key questions:</p>
 <ol type="1">
@@ -373,8 +390,8 @@ window.Quarto = {
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">y</th>
-<th style="text-align: center;">x</th>
+<th style="text-align: center;">Weight (y)</th>
+<th style="text-align: center;">Exercise (x)</th>
 </tr>
 </thead>
 <tbody>
@@ -400,7 +417,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>Now, if we were to predict the weight of this person, we could think about just using the mean value (i.e., 166.4). If this were our guess, then the mistakes (errors) we would have made with this prediction is quantified by the <span class="math inline">\(SST=25.2\)</span>. Below you can see these mistakes visually.</p>
+<p>Now, if we were to predict the weight of this person, we could consider just using the mean value (i.e., 166.4). If this were our guess, then the mistakes (errors) we would have made with this prediction are quantified by the <span class="math inline">\(SST=25.2\)</span>. Below, you can see these mistakes visually.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -410,8 +427,8 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The measure adds up all of the squared error made by using the mean as a prediction. Hence, <span class="math inline">\(SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2\)</span>.</p>
-<p>The idea behind using regression, is that another variable that is related to weight can help us make a better prediction. So let’s consider exercise. Generally speaking, if you exercise you burn calories and so your weight should be lower. The <span class="math inline">\(SSE\)</span> quantifies the mistakes made by a prediction that involves using the regression line. To understand this let’s start by looking at the regression line.</p>
+<p>The measure adds up all of the squared errors made by using the mean as a prediction. Hence, <span class="math inline">\(SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2\)</span>.</p>
+<p>The idea behind regression is that another variable related to weight can help us make a better prediction. Generally speaking, you burn calories if you exercise, so your weight should be lower. Hence, adding information on how many minutes a person exercises in a day should allow us to predict someone’s weight better. The <span class="math inline">\(SSE\)</span> quantifies the mistakes made by a prediction that uses another variable through regression. To understand this, let’s start by looking at the regression line for Weight and Exercise.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -421,7 +438,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The image highlights how the regression line can reduce the errors of our prediction. For the two points highlighted in the graph, the distance to the regression line is shorter than the distance to the mean. Hence, the inclusion of exercise in our analysis has improved our prediction of the weight. Formally, <span class="math inline">\(SSE=7.57\)</span>.</p>
+<p>The image highlights how the regression line can reduce the errors of our prediction. Consider the point with y coordinate 168. The error made (i.e., the distance between) by using the mean is 1.6. However, if we update our prediction by using the regression line the mistake is reduced to <span class="math inline">\(168-167.17=0.83\)</span>. Squaring all of these deviations from the mean and adding them gives us <span class="math inline">\(SSE=0.81+0.29+0.69+5.76+0.02=7.57\)</span>. Note how using the regression line has helped us reduce the errors in our prediction.</p>
 <ul>
 <li><p>The <strong>adjusted</strong> <span class="math inline">\(R^2\)</span> recognizes that the <span class="math inline">\(R^2\)</span> is a non-decreasing function of the number of explanatory variables in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by <span class="math inline">\(1-(1-R^2) \frac {n-1}{n-k-1}\)</span>, where <span class="math inline">\(k\)</span> is the number of explanatory variables used in the model and <span class="math inline">\(n\)</span> is the sample size.</p></li>
 <li><p>The <strong>Residual Standard Error</strong> estimates the average dispersion of the data points around the regression line. It is calculated by <span class="math inline">\(s_e =\sqrt{\frac{SSE}{n-k-1}}\)</span>.</p></li>
@@ -767,7 +784,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -865,7 +882,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-31-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

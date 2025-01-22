@@ -12,9 +12,12 @@ The **intercept** determines where the line crosses the $y$ axis. It returns the
 
 **Example:** Let’s examine a data set on Price and Advertisement. Below is the data used to calculate the regression line, followed by its interpretation.
 
-```{r echo=FALSE, out.width="50%", out.height="50%", fig.align='center'}
-knitr::include_graphics("images/reg1.png")
-```
+| Advertisement (x) | Price (y) |
+|:-:|:-:|
+|2|7|
+|1|3|
+|3|8|
+|4|10|
 
 The data shows a clear relationship between advertisement and price: when advertisement spending is high, price also tends to be high. This suggests a direct relationship between the two variables. In a previous chapter, we learned to quantify such relationships using covariance and the correlation coefficient.
 
@@ -53,7 +56,7 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 
 **Example:** Let's consider data on the Weight (y) and Exercise (x) of a particular person.
 
-|y|x|
+| Weight (y) | Exercise (x) |
 |:-:|:-:|
 |165|45|
 |170|10|
@@ -62,20 +65,20 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 |165|40|
 
 
-Now, if we were to predict the weight of this person, we could think about just using the mean value (i.e., 166.4). If this were our guess, then the mistakes (errors) we would have made with this prediction is quantified by the $SST=25.2$. Below you can see these mistakes visually.
+Now, if we were to predict the weight of this person, we could consider just using the mean value (i.e., 166.4). If this were our guess, then the mistakes (errors) we would have made with this prediction are quantified by the $SST=25.2$. Below, you can see these mistakes visually.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/rs2.png")
 ```
-The measure adds up all of the squared error made by using the mean as a prediction. Hence, $SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2$.
+The measure adds up all of the squared errors made by using the mean as a prediction. Hence, $SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2$.
 
-The idea behind using regression, is that another variable that is related to weight can help us make a better prediction. So let's consider exercise. Generally speaking, if you exercise you burn calories and so your weight should be lower. The $SSE$ quantifies the mistakes made by a prediction that involves using the regression line. To understand this let's start by looking at the regression line.
+The idea behind regression is that another variable related to weight can help us make a better prediction. Generally speaking, you burn calories if you exercise, so your weight should be lower. Hence, adding information on how many minutes a person exercises in a day should allow us to predict someone’s weight better. The $SSE$ quantifies the mistakes made by a prediction that uses another variable through regression. To understand this, let's start by looking at the regression line for Weight and Exercise.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/rs3.png")
 ```
 
-The image highlights how the regression line can reduce the errors of our prediction. For the two points highlighted in the graph, the distance to the regression line is shorter than the distance to the mean. Hence, the inclusion of exercise in our analysis has improved our prediction of the weight. Formally, $SSE=7.57$.
+The image highlights how the regression line can reduce the errors of our prediction. Consider the point with y coordinate 168. The error made (i.e., the distance between) by using the mean is 1.6. However, if we update our prediction by using the regression line the mistake is reduced to $168-167.17=0.83$. Squaring all of these deviations from the mean and adding them gives us $SSE=0.81+0.29+0.69+5.76+0.02=7.57$. Note how using the regression line has helped us reduce the errors in our prediction.
 
 -   The **adjusted** $R^2$ recognizes that the $R^2$ is a non-decreasing function of the number of explanatory variables in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by $1-(1-R^2) \frac {n-1}{n-k-1}$, where $k$ is the number of explanatory variables used in the model and $n$ is the sample size.
 
