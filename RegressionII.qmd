@@ -1,16 +1,16 @@
 # Regression II
 
-Quantifying relationships between variables is a critical skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides a foundation for analyzing key business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line.
+Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line.
 
 ## The Regression Line
 
 The regression line is calculated to minimize the average distance (or errors) between the line and the observed data points. It is defined by two key components: a **slope** ($\beta$) and an **intercept** ($\alpha$). Mathematically, the regression line is expressed as $\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i$, where $\hat{y_i}$ are the predicted values of $y$ given the $x$'s.
 
-The **slope** determines the steepness of the line. The estimate quantifies how much a unit increase in $x$ changes $y$. The estimate is given by $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$.
+The **slope** determines the steepness of the line. The estimate quantifies how much a unit increase in $x$ changes $y$. We can easily calculate the slope by using the covariance between $y$ and $x$, and the variance of $x$. Mathematically, $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$.
 
-The **intercept** determines where the line crosses the $y$ axis. It returns the value of $y$ when $x$ is zero. The estimate is given by $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$.
+The **intercept** determines where the line crosses the $y$ axis. In other words it returns the value of $y$ when $x$ is zero. Once we have the slope of the regression line we can estimate the intercept by $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$.
 
-**Example:** Let’s examine a data set on Price and Advertisement. Below is the data used to calculate the regression line, followed by its interpretation.
+**Example:** Let’s examine a data set on Price and Advertisement. In general, one expects that when a company advertises, it can convince consumers to pay more for their product. Below is the data used to calculate the regression line, followed by its interpretation.
 
 | Advertisement (x) | Price (y) |
 |:-:|:-:|
@@ -23,24 +23,24 @@ The data shows a clear relationship between advertisement and price: when advert
 
 In this section, we aim to answer two key questions:
 
-1.  Prediction: What is the predicted price if we have a budget of 6 for advertisement?
-2.  Effectiveness: How much can we increase the price for every additional dollar spent on advertisement?
+1.  Effectiveness: How much can we increase the price for every additional dollar spent on advertisement?
+2.  Prediction: What is the predicted price if we have a budget of 6 for advertisement?
 
 The regression line allows us to answer these questions by quantifying the relationship between the two variables.
 
-Let’s start by calculating the slope of the regression line, as this will help us answer the effectiveness question. The slope measures how much the price increases for every additional dollar spent on advertisement. It is calculated using the formula: $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$. Given that the covariance is 3.67 and the variance of x is 1.67, the slope of the regression line is $\hat{\beta}= \frac{3.67}{1.67}=2.2$. This tells us that for every additional dollar spent on advertisement, the price increases by 2.2. Thus, we have answered the effectiveness question.
+Let’s start by calculating the slope of the regression line, as this will help us answer the effectiveness question. The slope measures how much the price increases for every additional dollar spent on advertisement. It is calculated using the formula: $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$. Given that the covariance is $3.67$ and the variance of $x$ is $1.67$, the slope of the regression line is $\hat{\beta}= \frac{3.67}{1.67}=2.2$. This tells us that for every additional dollar spent on advertisement, price increases by $2.2$ on average. Thus, we have answered the effectiveness question.
 
-Next, we calculate the intercept to complete the regression line and answer the prediction question. The intercept represents the predicted price when advertisement spending is zero. It is calculated as: $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$. Since the mean of advertisement is 2.5 and the mean of price is 7, the intercept is $\hat{\alpha}=7-2.2(2.5)=1.5$. This means that if we do not advertise, the predicted price is zero.
+Next, we calculate the intercept to complete the regression line and answer the prediction question. The intercept represents the predicted price when advertisement spending is zero. It is calculated as: $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$. Since the mean of advertisement is $2.5$ and the mean of price is $7$, the intercept is $\hat{\alpha}=7-2.2(2.5)=1.5$. This means that if we do not advertise, the predicted price is zero.
 
-The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is $\hat{y_i}=1.5+2.2x_i$. With this equation we can now establish that if we had a budget of 6 for advertisement, our predicted price would be $\hat{y_i}=1.5+2.2(6)=14.7$. This answers our prediction question.
+The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is $\hat{y_i}=1.5+2.2x_i$. With this equation we can now establish that if we had a budget of $6$ for advertisement, our predicted price would be $\hat{y_i}=1.5+2.2(6)=14.7$. This answers our prediction question.
 
-In conclusion regression line has allowed us to answer both questions: 1. The effectiveness of advertisement: For every dollar spent, the price increases by 2.2. 2. The predicted price: With an advertisement budget of 6, the predicted price is 14.7.
+In conclusion regression line has allowed us to answer both questions: 1. The effectiveness of advertisement: For every dollar spent, the price increases by $2.2$. 2. The predicted price: With an advertisement budget of $6$, the predicted price is $14.7$.
 
 This demonstrates the value of regression analysis in quantifying relationships and making informed predictions.
 
 ## Measures of Goodness of Fit
 
-When analyzing the effectiveness of a regression model, it is crucial to assess how well the model fits the data. This is where measures of goodness of fit come into play. Below we explore some measures.
+When analyzing the effectiveness of a regression model, it is crucial to assess how well the model fits the data. This is where measures of goodness of fit come into play. Below we revisit the coefficient of determination or $R^2$.
 
 ### Coefficient of Determination {.unnumbered}
 The **coefficient of determination** or $R^2$ is the percent of the variation in $y$ that is explained by changes in $x$. The higher the $R^2$ the better the explanatory power of the model. The $R^2$ is always between \[0,1\]. To calculate use $R^2=SSR/SST$. Below you can find how to calculate each component of the $R^2$.
@@ -54,7 +54,7 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 -   Note that $SST=SSR+SSE$.
 
 
-**Example:** Let's consider data on the Weight (y) and Exercise (x) of a particular person.
+**Example:** Let's consider data on the Weight ($y$) and Exercise ($x$) of a particular person.
 
 | Weight (y) | Exercise (x) |
 |:-:|:-:|
@@ -65,25 +65,23 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 |165|40|
 
 
-Now, if we were to predict the weight of this person, we could consider just using the mean value (i.e., 166.4). If this were our guess, then the mistakes (errors) we would have made with this prediction are quantified by the $SST=25.2$. Below, you can see these mistakes visually.
+Now, if we were to predict the weight of this person, we could consider just using the mean value (i.e., $166.4$). If this were our guess, then the mistakes (errors) we would have made with this prediction are quantified by the $SST=25.2$. Below, you can see these mistakes visually.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/rs2.png")
 ```
-The measure adds up all of the squared errors made by using the mean as a prediction. Hence, $SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2$.
+For example, in day $1$ the mean prediction is $166.4$, but the actual measure is $165$. We have made a mistake of $-1.4$ by using the mean as our predicted weight. To get a sense of the overall mistake we have made, we add up all of the squared errors made by using the mean as a prediction. Hence, $SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2$.
 
-The idea behind regression is that another variable related to weight can help us make a better prediction. Generally speaking, you burn calories if you exercise, so your weight should be lower. Hence, adding information on how many minutes a person exercises in a day should allow us to predict someone’s weight better. The $SSE$ quantifies the mistakes made by a prediction that uses another variable through regression. To understand this, let's start by looking at the regression line for Weight and Exercise.
+The idea behind regression is that another variable related to weight can help us make a better prediction. Generally speaking, you burn calories if you exercise, so your weight should be lower when exercising. Hence, adding information on how many minutes a person exercises in a day should allow us to predict someone’s weight better. The $SSE$ quantifies the mistakes made by a prediction generated from regression. To understand this, let's start by looking at the regression line for Weight and Exercise.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/rs3.png")
 ```
 
-The image highlights how the regression line can reduce the errors in our prediction. Consider the point with y coordinate 168. The error (i.e., the distance between) using the mean is 1.6. However, if we update our prediction using the regression line, the mistake is reduced to $168-167.17=0.83$. Squaring all these deviations from the mean and adding them gives us $SSE=0.81+0.29+0.69+5.76+0.02=7.57$. Note how using the regression line has helped us reduce the errors in our prediction.
+The image highlights how the regression line can reduce the errors in our prediction. Consider the point with $y$ coordinate $168$. The error using the mean is $1.6$ (the green and yellow lines). However, if we update our prediction using the regression line, the mistake is reduced to $168-167.17=0.83$ (the green line). Squaring all these deviations from the line and adding them gives us $SSE=0.81+0.29+0.69+5.76+0.02=7.57$. Note how using the regression line has helped us reduce the errors in our prediction.
 
-Conversely, the regression line has helped us explain more of the variation in Weight (y). In the graph, the gap between the mean and the point has been reduced by the amount highlighted in yellow (0.77). If we square and add up all of the "improvements," we get $SSR=5.29+9.4+0.59+0+2.35=17.63$. In sum, the regression line has closed the gap of the prediction errors made by the mean by $R^2=\frac{SSR}{SST} \approx 0.7$ or 70%.
+If regression has helped us make smaller mistakes, it has also helped us explain more of the variation in Weight ($y$). In the graph, the gap between the mean and the $168$ point has been reduced by the amount highlighted in yellow ($0.77$). If we square and add up all of the "improvements," we get $SSR=5.29+9.4+0.59+0+2.35=17.63$. In sum, the regression line has closed the gap of the prediction errors made by using the mean by $R^2=\frac{SSR}{SST} \approx 0.7$ or 70%.
 
-### Residual Standard Error {.unnumbered}
-The **Residual Standard Error** estimates the average dispersion of the data points around the regression line. Recall, that we have calculated the squared deviation from the regression line by using $SSE$. Hence if we want to find an average deviation we can divide using the number of observations and then find a square root to go back to linear values.  In particular you can use $s_e =\sqrt{\frac{SSE}{n-k-1}}$, where $k$ is the number of independent variables used in your regression.
 
 ## Multiple Regression
 
@@ -93,13 +91,13 @@ If we were to predict weight we could use several other variables that are relat
 
 | Weight (y) | Exercise (x) | Calories (z)|
 |:-:|:-:|:-:|
-|165|45| 1200|
-|170|10| 1260|
-|168|25| 1220|
+|165|45|1200|
+|170|10|1260|
+|168|25|1220|
 |164|30|1180|
 |165|40|1190|
 
-The regression line can be estimated using computer software and is given by $\hat{y_i}=83.96-0.025x+0.069z$. A few things can be concluded from the regression line. First, as the amount of exercise increases our weith tends to go down, but as we consume more calories the weight tends to go up. Second, the effectiveness of calories seems to be better that that of exercise. For every minute exercise our weight goes down on average by 0.025 pounds. However, if we reduce our calorie consumption by 1, then our weight goes down by 0.069 pounds.
+The regression line can be estimated using computer software and is given by $\hat{y_i}=83.96-0.025x+0.069z$. A few things can be concluded from the regression line. First, as the amount of exercise increases our weight tends to go down, but as we consume more calories the weight tends to go up. Second, the effectiveness of calories seems to be better that that of exercise. For every minute exercise our weight goes down on average by 0.025 pounds. However, if we reduce our calorie consumption by 1, then our weight goes down by 0.069 pounds.
 
 ### Anova {.unnumbered}
 
@@ -111,10 +109,15 @@ We can further explore the importance of each variable using the Anova table. Th
 |z|6.55|
 |Residuals|1.01|
 
-The table shows that x "closes the gap" with respect to the mean prediction 17.63. If we add the calories model, we further decrease the gap by about 6.55. In sum, using them together reduces the $SSE$ to 1.01 relative to when only exercise (x) is used (7.57). Finally, the $R^2$ also increases from 0.7 to now 0.96, $R^2= \frac{17.63+6.55}{25.5}$.
+The table shows that x "closes the gap" with respect to the mean prediction by $17.63$. If we add calories to our model, we further decrease the gap by another $6.55$. In sum, using them together reduces the $SST$ by $24.18$, which in turn reduced the $SSE$ to only $1.01$. Finally, the $R^2$ also increases from $0.7$ to now $0.96$, $R^2= \frac{17.63+6.55}{25.5}$.
 
 ### Adjusted $R^2$ {.unnumbered}
 The **adjusted** $R^2$ recognizes that the $R^2$ is a non-decreasing function of the number of independent variables included in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by $1-(1-R^2) \frac {n-1}{n-k-1}$, where $k$ is the number of explanatory variables used in the model and $n$ is the sample size. For our weight example $adjusted R^2=1-(1-0.96) \frac{5-1}{5-2-1}=0.9196$.
+
+
+### Residual Standard Error {.unnumbered}
+The **Residual Standard Error** estimates the average dispersion of the data points around the regression line. Recall, that we have calculated the squared deviation from the regression line by using $SSE$. Hence if we want to find an average deviation we can divide using the number of observations and then find a square root to go back to linear values.  In particular you can use $s_e =\sqrt{\frac{SSE}{n-k-1}}$, where $k$ is the number of independent variables used in your regression. For our example with only exercise in our model $s_e=\sqrt{\frac{7.57}{5-1-1}}=1.59$. If we include both calories and exercise then $s_e=\sqrt{\frac{1.01}{5-2-1}}=0.71$.
+
 
 ## Regression in R
 
@@ -154,7 +157,7 @@ The summary function confirms our results for the $R^2$ and coefficients. If we 
 ```{r}
 predict(fit,newdata = tibble(x=c(4)))
 ```
-We can run multiple regression by just adding z to our fit object.
+Note that the values of $x$ must be entered as a tibble in the function. We can run multiple regression by just adding z to our fit object.
 
 ```{r}
 fit<-lm(y~x+z, data=d)
