@@ -24,13 +24,13 @@ The **covariance** is a measure that determines the direction of the relationshi
 
 **Example:** Let's consider the following data that captures the price of stocks (SPY) and bonds (BND):
 
-```{r echo=FALSE, fig.align='center'}
+```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/StocksBonds.png")
 ```
 
 The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let's start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations from the mean for each variable in columns 3 and 4.
 
-```{r echo=FALSE, fig.align='center'}
+```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/cov1.png")
 ```
 
