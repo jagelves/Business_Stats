@@ -22,7 +22,7 @@ Understanding where the "center" of a dataset lies is popular step used to inter
 
 The **mean** is the average value for a numerical variable. It is a widely understood and straightforward measure to calculate. It incorporates all data points, providing a comprehensive representation of the data set. However, its reliance on every value also makes it sensitive to outliers or skewed distributions, which may cause it to not accurately reflect the true center of the data.
 
-The sample statistic is estimated by: 
+The sample statistic is estimated by:
 
 $$
 \bar{x}=\sum x_{i}/n
@@ -32,8 +32,7 @@ where $x_i$ is observation $i$, and $n$ is the number of observations. In words,
 
 $$
 \mu=\sum x_{i}/N.
-$$
-where $N$ is the population size.
+$$ where $N$ is the population size.
 
 *Ex: Consider the following sample of numbers* $x=\{1,4,2,1\}$. *The mean would be equal to* $\bar{x}=\frac{1+4+2+1}{4}$ *or* $\bar{x}=2$.
 
@@ -49,21 +48,35 @@ The **median** is the value in the middle when data is organized in ascending or
 
 The **mode** is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data, as it helps determine popularity or commonality, and it can be applied to both numerical and non-numerical data sets. However, the mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.
 
-*Ex: Consider the following numbers* $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
+*Ex 1: Consider the following numbers* $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
+
+*Ex 2: Consider the following numbers* $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,2\}$. $x$ is said to be bimodal.
 
 ## The Weighted Mean
 
-The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. However, this measure requires additional information in the form of weights, which may not always be available or accurate. Furthermore, it is sensitive to errors in weighting, which can distort the results and lead to misleading conclusions. It is calculated by calculating the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$.
+The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. However, this measure requires additional information in the form of weights, which may not always be available or accurate. Furthermore, it is sensitive to errors in weighting, which can distort the results and lead to misleading conclusions. It is calculated by calculating the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
+
+$$
+\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
+$$
 
 *Ex: Consider three different stocks* $S=\{T, C, X\}$ with stock returns of $R=\{2,4,10\}$. Each stock has a weight in the portfolio of $W=\{0.3,0.2,0.5\}$. The average return of the portfolio is $\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}$ or $\bar{x}_{weighted}=6.4$.
 
 ## The Geometric Mean
 
-The **geometric mean** is a multiplicative average that is less sensitive to outliers. It is useful when averaging growth rates or rates of return. It is calculated by $\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1$, where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
+The **geometric mean** is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is useful when averaging growth rates or rates of return. It is calculated by:
 
-For most all other values there is no need to add 1 because proportions already reflect a standalone quantity, not a relative change. In this case the geometric mean simplifies to $\sqrt[n]{(x_1) \times (x_2)...(x_n)}$
+$$
+\bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
+$$
+where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
 
-*Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or 0.156.
+When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:
+
+$$
+\bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
+$$
+*Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
 
 ## Measures of Central Location in R
 
