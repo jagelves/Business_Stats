@@ -6,7 +6,7 @@ Decision-making under uncertainty is at the core of business strategy, risk mana
 
 There are two interpretations of probability. The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes' Theorem— which provide a consistent mathematical foundation for making probabilistic inferences. 
 
-*Ex:* A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.
+*Ex: A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.*
 
 ## Experiments and Sets
 
@@ -16,7 +16,7 @@ The following concepts form the foundation of probability theory. They provide a
 
 -  An **outcome** is the result of an experiment. *Ex: A coin landing on heads, drawing the ace of spades.*
 
--  The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. *Ex: $S={1,2,3,4,5,6\} is the sample space for tossing a die.*
+-  The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. *Ex: $S=\{1,2,3,4,5,6\}$ is the sample space for tossing a die.*
 
 -  An **event** is a subset of the sample space. *Ex: $A=\{2,4,6\}$ is the event of tossing an even number when rolling a die. $B=\{1A,1D,1S,1H\}$ is the event of drawing an ace from a deck of cards.*
 
@@ -26,19 +26,38 @@ The following concepts form the foundation of probability theory. They provide a
 A **probability** is a numerical value that measures the likelihood that an event occurs. To calculate **probabilities**, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:
 
 $$
-p(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
+P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
 $$
 
--   The probability of an event $A$ is a value between $0$ and $1$ inclusive. Formally, $0\leq P(A) \leq1$. When the probability of the event is $0$ then the event is impossible. When the probability is $1$ then the event is certain.
+Since the number of elements in the event $A$ is at most the same as the number of elements in $S$, the probability of event $A$ is a value between $0$ and $1$ inclusive. Formally, $0\leq P(A) \leq1$. When the probability of the event is $0$ then the event is impossible. When the probability is $1$ then the event is certain.
 
--   The sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state:
+In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.**Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
+
+Given these concepts if follows that the sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state:
 
 $$
 \sum P(x_i)=1
 $$
 where $x_i$ is outcome $i$.
 
-**Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
+
+**Example:** Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.  
+
+If we randomly draw one card from a standard deck, the sample space $S$ consists of all 52 cards. Suppose we define event $A$ as *drawing a red card*. Since there are 26 red cards, the probability is:  
+
+$$
+P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5
+$$
+
+Since $( 0 \leq P(A) \leq 1)$, this follows the basic probability rule. Next let's consider mutually exclusive events. Let event $B$ be drawing a heart and event $C$ be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.
+
+The four suits (**hearts, diamonds, clubs, spades**) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:  
+
+$$
+P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1
+$$
+
+Note the this also satisfies the rule $\sum P(x_i) = 1$, where $x_i $ represents each possible outcome (suit).
 
 ## Probability Rules
 

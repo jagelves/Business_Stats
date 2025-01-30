@@ -343,7 +343,7 @@ window.Quarto = {
 <section id="frequentist-vs.-bayesian-statistics" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</h2>
 <p>There are two interpretations of probability. The <strong>frequentist</strong> interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the <strong>Bayesian</strong> interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes’ Theorem— which provide a consistent mathematical foundation for making probabilistic inferences.</p>
-<p><em>Ex:</em> A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.</p>
+<p><em>Ex: A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.</em></p>
 </section>
 <section id="experiments-and-sets" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</h2>
@@ -351,7 +351,7 @@ window.Quarto = {
 <ul>
 <li><p>An <strong>experiment</strong> is a process that leads to one of several outcomes. <em>Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.</em></p></li>
 <li><p>An <strong>outcome</strong> is the result of an experiment. <em>Ex: A coin landing on heads, drawing the ace of spades.</em></p></li>
-<li><p>The <strong>sample space</strong> <span class="math inline">\((S)\)</span> of an experiment contains all possible outcomes of the experiment. <em>Ex: $S={1,2,3,4,5,6} is the sample space for tossing a die.</em></p></li>
+<li><p>The <strong>sample space</strong> <span class="math inline">\((S)\)</span> of an experiment contains all possible outcomes of the experiment. <em>Ex: <span class="math inline">\(S=\{1,2,3,4,5,6\}\)</span> is the sample space for tossing a die.</em></p></li>
 <li><p>An <strong>event</strong> is a subset of the sample space. <em>Ex: <span class="math inline">\(A=\{2,4,6\}\)</span> is the event of tossing an even number when rolling a die. <span class="math inline">\(B=\{1A,1D,1S,1H\}\)</span> is the event of drawing an ace from a deck of cards.</em></p></li>
 </ul>
 </section>
@@ -359,16 +359,25 @@ window.Quarto = {
 <h2 data-number="8.3" class="anchored" data-anchor-id="basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</h2>
 <p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs. To calculate <strong>probabilities</strong>, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:</p>
 <p><span class="math display">\[
-p(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
+P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
 \]</span></p>
-<ul>
-<li><p>The probability of an event <span class="math inline">\(A\)</span> is a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> inclusive. Formally, <span class="math inline">\(0\leq P(A) \leq1\)</span>. When the probability of the event is <span class="math inline">\(0\)</span> then the event is impossible. When the probability is <span class="math inline">\(1\)</span> then the event is certain.</p></li>
-<li><p>The sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state:</p></li>
-</ul>
+<p>Since the number of elements in the event <span class="math inline">\(A\)</span> is at most the same as the number of elements in <span class="math inline">\(S\)</span>, the probability of event <span class="math inline">\(A\)</span> is a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> inclusive. Formally, <span class="math inline">\(0\leq P(A) \leq1\)</span>. When the probability of the event is <span class="math inline">\(0\)</span> then the event is impossible. When the probability is <span class="math inline">\(1\)</span> then the event is certain.</p>
+<p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.<strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
+<p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state:</p>
 <p><span class="math display">\[
 \sum P(x_i)=1
 \]</span> where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
-<p><strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
+<p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
+<p>If we randomly draw one card from a standard deck, the sample space <span class="math inline">\(S\)</span> consists of all 52 cards. Suppose we define event <span class="math inline">\(A\)</span> as <em>drawing a red card</em>. Since there are 26 red cards, the probability is:</p>
+<p><span class="math display">\[
+P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5
+\]</span></p>
+<p>Since <span class="math inline">\(( 0 \leq P(A) \leq 1)\)</span>, this follows the basic probability rule. Next let’s consider mutually exclusive events. Let event <span class="math inline">\(B\)</span> be drawing a heart and event <span class="math inline">\(C\)</span> be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.</p>
+<p>The four suits (<strong>hearts, diamonds, clubs, spades</strong>) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:</p>
+<p><span class="math display">\[
+P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1
+\]</span></p>
+<p>Note the this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where $x_i $ represents each possible outcome (suit).</p>
 </section>
 <section id="probability-rules" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.4</span> Probability Rules</h2>
