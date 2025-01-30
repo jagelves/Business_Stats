@@ -305,15 +305,6 @@ window.Quarto = {
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">8.8</span> Answers</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
-  <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
-  <li><a href="#exercise-3-1" id="toc-exercise-3-1" class="nav-link" data-scroll-target="#exercise-3-1">Exercise 3</a></li>
-  <li><a href="#exercise-4-1" id="toc-exercise-4-1" class="nav-link" data-scroll-target="#exercise-4-1">Exercise 4</a></li>
-  <li><a href="#exercise-5-1" id="toc-exercise-5-1" class="nav-link" data-scroll-target="#exercise-5-1">Exercise 5</a></li>
-  <li><a href="#exercise-6-1" id="toc-exercise-6-1" class="nav-link" data-scroll-target="#exercise-6-1">Exercise 6</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
@@ -339,6 +330,19 @@ window.Quarto = {
 </header>
 
 
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
 <p>Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below.</p>
 <section id="frequentist-vs.-bayesian-statistics" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</h2>
@@ -425,19 +429,71 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
 <p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
 <ol type="1">
-<li><p>A sample space <span class="math inline">\(S\)</span> yields five equally likely events, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. Find <span class="math inline">\(P(D)\)</span>, <span class="math inline">\(P(B^c)\)</span>, and <span class="math inline">\(P(A \cup C \cup E)\)</span>.</p></li>
-<li><p>Consider the roll of a die. Define <span class="math inline">\(A\)</span> as {1,2,3}, <span class="math inline">\(B\)</span> as {1,2,3,5,6}, <span class="math inline">\(C\)</span> as {4,6}, and <span class="math inline">\(D\)</span> as {4,5,6}. Are the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> mutually exclusive, exhaustive, both or none? What about events <span class="math inline">\(A\)</span> and <span class="math inline">\(D\)</span>?</p></li>
-<li><p>A recent study suggests that <span class="math inline">\(33.1\)</span>% of the adult U.S. population is overweight and <span class="math inline">\(35.7\)</span>% obese. What is the probability that a randomly selected adult in the U.S. is either obese or overweight? What is the probability that their weight is normal? Are the events mutually exclusive and exhaustive?</p></li>
+<li>A sample space <span class="math inline">\(S\)</span> yields five equally likely events, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. Find <span class="math inline">\(P(D)\)</span>, <span class="math inline">\(P(B^c)\)</span>, and <span class="math inline">\(P(A \cup C \cup E)\)</span>.</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+<em><span class="math inline">\(P(D)=1/5=0.2\)</span> since all events are equally likely. <span class="math inline">\(P(B^c)=4/5=0.8\)</span>, and <span class="math inline">\(P(A \cup C \cup E)=P(A + C + E)=3/5=0.6\)</span>.</em>
+</details>
+<ol start="2" type="1">
+<li>Consider the roll of a die. Define <span class="math inline">\(A\)</span> as {1,2,3}, <span class="math inline">\(B\)</span> as {1,2,3,5,6}, <span class="math inline">\(C\)</span> as {4,6}, and <span class="math inline">\(D\)</span> as {4,5,6}. Are the events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> mutually exclusive, exhaustive, both or none? What about events <span class="math inline">\(A\)</span> and <span class="math inline">\(D\)</span>?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<em>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not mutually exclusive since they share some of the same elements. They are not exhaustive since the union of both doesn’t create the sample space.</em>
+</details>
+<ol start="3" type="1">
+<li>A recent study suggests that <span class="math inline">\(33.1\)</span>% of the adult U.S. population is overweight and <span class="math inline">\(35.7\)</span>% obese. What is the probability that a randomly selected adult in the U.S. is either obese or overweight? What is the probability that their weight is normal? Are the events mutually exclusive and exhaustive?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<em>The probability is <span class="math inline">\(68.8\)</span>%. The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight. The events are not exhaustive since there are people in the U.S. that have a normal weight. The probability that the person drawn has normal weight is <span class="math inline">\(31.2\)</span>%.</em>
+</details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
 <ol type="1">
-<li><p>Let <span class="math inline">\(P(A)=0.65\)</span>, <span class="math inline">\(P(B)=0.3\)</span>, and <span class="math inline">\(P(A|B)=0.45\)</span>. Calculate <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A \cup B)\)</span>, and <span class="math inline">\(P(B|A)\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.5\)</span>, and <span class="math inline">\(P(A^c \cap B^c)=0.24\)</span>. Calculate <span class="math inline">\(P(A^c|B^c)\)</span>, <span class="math inline">\(P(A^c \cup B^c)\)</span>, and <span class="math inline">\(P(A \cup B)\)</span>.</p></li>
-<li><p>Stock <span class="math inline">\(A\)</span> will rise in price with a probability of <span class="math inline">\(0.4\)</span>, stock <span class="math inline">\(B\)</span> will rise with a probability of <span class="math inline">\(0.6\)</span>. If stock <span class="math inline">\(B\)</span> rises in price, then <span class="math inline">\(A\)</span> will also rise with a probability of <span class="math inline">\(0.5\)</span>. What is the probability that at least one of the stocks will rise in price? Prove that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are (are not) mutually exclusive (independent).</p></li>
+<li>Let <span class="math inline">\(P(A)=0.65\)</span>, <span class="math inline">\(P(B)=0.3\)</span>, and <span class="math inline">\(P(A|B)=0.45\)</span>. Calculate <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A \cup B)\)</span>, and <span class="math inline">\(P(B|A)\)</span>.</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>From the multiplication rule,</em> <span class="math display">\[
+P(A|B)*P(B)=P(A \cap B)
+\]</span></p>
+<p><em>substituting values yields: </em> <span class="math display">\[
+P(A \cap B)=0.45*0.3=0.135
+\]</span> <em>From the addition rule,</em> <span class="math display">\[
+P(A \cup B)=P(A)+P(B)-P(A \cap B)
+\]</span> <em>substituting yields:</em> <span class="math display">\[P(A \cup B)=0.65+0.3-0.135=0.815\]</span> <em>From the multiplication rule once again,</em> <span class="math display">\[P(B|A)=\frac{P(A \cap B)}{P(A)}\]</span> <em>substituting values yields,</em> <span class="math display">\[P(B|A)=0.135/0.65=0.2076923\]</span></p>
+</details>
+<ol start="2" type="1">
+<li>Let <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.5\)</span>, and <span class="math inline">\(P(A^c \cap B^c)=0.24\)</span>. Calculate <span class="math inline">\(P(A^c|B^c)\)</span>, <span class="math inline">\(P(A^c \cup B^c)\)</span>, and <span class="math inline">\(P(A \cup B)\)</span>.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>From the complement rule we have that <span class="math inline">\(P(A^c)=0.6\)</span> and <span class="math inline">\(P(B^c)=0.5\)</span>.</em><br>
+<em>Using the multiplication rule,</em> <span class="math display">\[P(A^c|B^c)=\frac{P(A^c \cap B^c)}{P(B^c)}\]</span> <em>substituting yields:</em> <span class="math display">\[P(A^c|B^c)=0.24/0.5=0.48\]</span> <em>From the addition rule,</em> <span class="math display">\[P(A^c \cup B^c)=P(A^c)+P(B^c)-P(A^c \cap B^c)\]</span> <em>substituting yields:</em> <span class="math display">\[P(A^c \cup B^c)=0.6+0.5-0.24=0.86\]</span> <em>The event that has no elements of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is given by <span class="math inline">\(P(A^c \cap B^c)\)</span>. Therefore <span class="math inline">\(P(A \cup B)=1-0.24=0.76\)</span> has all the elements of A and B.</em></p>
+</details>
+<ol start="3" type="1">
+<li>Stock <span class="math inline">\(A\)</span> will rise in price with a probability of <span class="math inline">\(0.4\)</span>, stock <span class="math inline">\(B\)</span> will rise with a probability of <span class="math inline">\(0.6\)</span>. If stock <span class="math inline">\(B\)</span> rises in price, then <span class="math inline">\(A\)</span> will also rise with a probability of <span class="math inline">\(0.5\)</span>. What is the probability that at least one of the stocks will rise in price? Prove that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are (are not) mutually exclusive (independent).</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>In short, the problem states <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.6\)</span>, and <span class="math inline">\(P(A|B)=0.5\)</span>. Where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events of stocks rising in price. The question asks for:</em> <span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> <em>Using the multiplication rule,</em> <span class="math display">\[P(A \cap B)=0.5*0.6=0.3\]</span> <em>Hence,</em> <span class="math display">\[P(A \cup B)=0.4+0.6-0.3=0.7\]</span> <em>The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.3 \neq 0\)</span>. The events are also not independent since <span class="math inline">\(P(A|B)=0.5 \neq 0.4=P(A)\)</span>.</em></p>
+</details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
@@ -463,66 +519,11 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </tr>
 </tbody>
 </table>
-</section>
-<section id="exercise-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>You will need the <strong>Crash</strong> data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv</p>
-<ol type="1">
-<li><p>Create a contingency table.</p></li>
-<li><p>Find the probability that a) a car crash is Head-On, b) a car crash is in daylight c) a car crash is Head-On given that there is daylight.</p></li>
-<li><p>Show that Crashes and Light are dependent.</p></li>
-</ol>
-</section>
-<section id="exercise-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
-<ol type="1">
-<li><p>Use Bayes’ Theorem in the following question. Let <span class="math inline">\(P(A)=0.7\)</span>, <span class="math inline">\(P(B|A)=0.55\)</span>, and <span class="math inline">\(P(B|A^c)=0.10\)</span>. Find <span class="math inline">\(P(A^c)\)</span>, <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A^c \cap B)\)</span>, <span class="math inline">\(P(B)\)</span>, and <span class="math inline">\(P(A|B)\)</span>.</p></li>
-<li><p>Some find tutors helpful when taking a course. Julia has a 40% chance to fail a course if she does not have a tutor. With a tutor, the probability of failing is only 10%. There is a 50% chance that Julia finds an available tutor. What is the probability that Julia will fail the course? If she ends up failing the course, what is the probability that she had a tutor?</p></li>
-</ol>
-</section>
-<section id="exercise-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h3>
-<ol type="1">
-<li><p>Calculate the following values and verify your results using R. a) 3!, b) 4!, c) <span class="math inline">\(C_6^8\)</span>, d) <span class="math inline">\(P_6^8\)</span>.</p></li>
-<li><p>There are 10 players in a local basketball team. If we chose 5 players to randomly start a game, in how many ways can we select the five players if order doesn’t matter? What if order matters?</p></li>
-</ol>
-</section>
-</section>
-<section id="answers" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="answers"><span class="header-section-number">8.8</span> Answers</h2>
-<section id="exercise-1-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
-<ol type="1">
-<li><p><span class="math inline">\(P(D)=1/5=0.2\)</span> since all events are equally likely. <span class="math inline">\(P(B^c)=4/5=0.8\)</span>, and <span class="math inline">\(P(A \cup C \cup E)=P(A + C + E)=3/5=0.6\)</span>.</p></li>
-<li><p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not mutually exclusive since they share some of the same elements. They are not exhaustive since the union of both doesn’t create the sample space.</p></li>
-<li><p>The probability is <span class="math inline">\(68.8\)</span>%. The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight. The events are not exhaustive since there are people in the U.S. that have a normal weight. The probability that the person drawn has normal weight is <span class="math inline">\(31.2\)</span>%.</p></li>
-</ol>
-</section>
-<section id="exercise-2-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-2-1">Exercise 2</h3>
-<ol type="1">
-<li><p>From the multiplication rule, <span class="math inline">\(P(A|B)*P(B)=P(A \cap B)\)</span>.<br>
-Substituting values yields, <span class="math inline">\(P(A \cap B)=0.45*0.3=0.135\)</span>.<br>
-From the addition rule, <span class="math inline">\(P(A \cup B)=P(A)+P(B)-P(A \cap B)\)</span>.<br>
-Substituting yields, <span class="math inline">\(P(A \cup B)=0.65+0.3-0.135=0.815\)</span>.<br>
-From the multiplication rule once again, <span class="math inline">\(P(B|A)=\frac{P(A \cap B)}{P(A)}\)</span>. Substituting yields, <span class="math inline">\(P(B|A)=0.135/0.65=0.2076923\)</span>.</p></li>
-<li><p>From the complement rule we have that <span class="math inline">\(P(A^c)=0.6\)</span> and <span class="math inline">\(P(B^c)=0.5\)</span>.<br>
-Using the multiplication rule, <span class="math inline">\(P(A^c|B^c)=\frac{P(A^c \cap B^c)}{P(B^c)}\)</span>. Substituting yields <span class="math inline">\(P(A^c|B^c)=0.24/0.5=0.48\)</span>.<br>
-From the addition rule <span class="math inline">\(P(A^c \cup B^c)=P(A^c)+P(B^c)-P(A^c \cap B^c)\)</span>.<br>
-Substituting yields <span class="math inline">\(P(A^c \cup B^c)=0.6+0.5-0.24=0.86\)</span>.<br>
-The event that has no elements of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is given by <span class="math inline">\(P(A^c \cap B^c)\)</span>. Therefore <span class="math inline">\(P(A \cup B)=1-0.24=0.76\)</span> has all the elements of A and B.</p></li>
-<li><p>In short the problem states <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.6\)</span>, and <span class="math inline">\(P(A|B)=0.5\)</span>. Where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events of stocks rising in price. The question asks for <span class="math inline">\(P(A \cup B)=P(A)+P(B)-P(A \cap B)\)</span>.<br>
-Using the multiplication rule <span class="math inline">\(P(A \cap B)=0.5*0.6=0.3\)</span>.<br>
-Hence, <span class="math inline">\(P(A \cup B)=0.4+0.6-0.3=0.7\)</span>.<br>
-The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.3 \neq 0\)</span>.<br>
-The events are also not independent since <span class="math inline">\(P(A|B)=0.5 \neq 0.4=P(A)\)</span>.</p></li>
-</ol>
-</section>
-<section id="exercise-3-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-3-1">Exercise 3</h3>
-<ol type="1">
-<li>Below is the joint probability table. The <span class="math inline">\(P(A)=0.26+0.34=0.6\)</span>, <span class="math inline">\(P(A \cap B)=0.26\)</span>, <span class="math inline">\(P(A|B)=0.26/0.4=0.65\)</span>, and <span class="math inline">\(P(B|A^c)=0.14/0.4=0.35\)</span>. Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent since <span class="math inline">\(P(A) \neq P(A|B)\)</span>. The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.26 \neq 0\)</span>.</li>
-</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Below is the joint probability table. The <span class="math inline">\(P(A)=0.26+0.34=0.6\)</span>, <span class="math inline">\(P(A \cap B)=0.26\)</span>, <span class="math inline">\(P(A|B)=0.26/0.4=0.65\)</span>, and <span class="math inline">\(P(B|A^c)=0.14/0.4=0.35\)</span>. Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent since <span class="math inline">\(P(A) \neq P(A|B)\)</span>. The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.26 \neq 0\)</span>.</em></p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -551,19 +552,27 @@ The events are also not independent since <span class="math inline">\(P(A|B)=0.5
 </tr>
 </tbody>
 </table>
+</details>
 </section>
-<section id="exercise-4-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-4-1">Exercise 4</h3>
+<section id="exercise-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<p>You will need the <strong>Crash</strong> data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv</p>
 <ol type="1">
-<li>The probability of a Head-On crash is <span class="math inline">\((166+108)/4858=0.056\)</span>. The probability of a daylight crash is <span class="math inline">\((166+3258)/4858=0.70\)</span>. The probability that the car crash is Head-On given daylight is <span class="math inline">\(166/(166+3258)=0.048\)</span>.</li>
+<li>Create a contingency table.</li>
 </ol>
-<p>Start by loading the data into R.</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The probability of a Head-On crash is <span class="math inline">\((166+108)/4858=0.056\)</span>. The probability of a daylight crash is <span class="math inline">\((166+3258)/4858=0.70\)</span>. The probability that the car crash is Head-On given daylight is <span class="math inline">\(166/(166+3258)=0.048\)</span>.</em></p>
+<p><em>Start by loading the data into R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Crash<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Crash.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Crash<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Crash.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To create a contingency table use the <code>table()</code> command in R.</p>
+<p><em>To create a contingency table use the <code>table()</code> command in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(freq<span class="ot">&lt;-</span><span class="fu">table</span>(Crash<span class="sc">$</span>Crash.Type,Crash<span class="sc">$</span>Light.Condition))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(freq<span class="ot">&lt;-</span><span class="fu">table</span>(Crash<span class="sc">$</span><span class="st">`</span><span class="at">Crash Type</span><span class="st">`</span>,Crash<span class="sc">$</span><span class="st">`</span><span class="at">Light Condition</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>             
               Daylight Not Daylight
@@ -571,7 +580,7 @@ The events are also not independent since <span class="math inline">\(P(A|B)=0.5
   Not Head-On     3258         1326</code></pre>
 </div>
 </div>
-<p>This table is used to calculate probabilities. We can pass it through the <code>prop.table()</code> function to get the contingency table.</p>
+<p><em>This table is used to calculate probabilities. We can pass it through the <code>prop.table()</code> function to get the contingency table.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(freq),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -581,37 +590,74 @@ The events are also not independent since <span class="math inline">\(P(A|B)=0.5
   Not Head-On     0.67         0.27</code></pre>
 </div>
 </div>
+</details>
 <ol start="2" type="1">
-<li>The two variables are dependent since <span class="math inline">\(P(Head-On|Daylight) \neq P(Head-On)\)</span>, that is <span class="math inline">\(0.048 \neq 0.56\)</span>.</li>
+<li>Find the probability that a) a car crash is Head-On, b) a car crash is in daylight c) a car crash is Head-On given that there is daylight.</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The probability of a head-on crash is:</em></p>
+<p><span class="math display">\[P(\text{Head-on})=0.03+0.02=0.05\]</span> <em>The probability that the crash is in daylight is:</em></p>
+<span class="math display">\[P(Daylight)=0.03+0.67=0.70\]</span> <span class="math display">\[P(Daylight)=\frac{P(\text{Head-on})}{P(Daylight)}=\frac{0.03}{0.70}\]</span>
+</details>
+<ol start="3" type="1">
+<li>Show that Crashes and Light are dependent.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<em>The two variables are dependent since <span class="math inline">\(P(Head-On|Daylight) \neq P(Head-On)\)</span>, that is <span class="math inline">\(0.048 \neq 0.56\)</span>.</em>
+</details>
 </section>
-<section id="exercise-5-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-5-1">Exercise 5</h3>
+<section id="exercise-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
 <ol type="1">
-<li><p><span class="math inline">\(P(A^c)=1-P(A)=1-0.7=0.3\)</span>, <span class="math inline">\(P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) = 0.385\)</span>, <span class="math inline">\(P(A^c \cap B)=𝑃(B|A^c)𝑃(A^c) = 0.10(0.30) = 0.03\)</span>, <span class="math inline">\(P(B)= 𝑃(A \cap B) + 𝑃(𝐴^c \cap 𝐵) = 0.385 + 0.03 = 0.415\)</span>, and <span class="math inline">\(P(A|B)= \frac{𝑃(A \cap B)}{P(B)}=0.385/0.415=0.9277\)</span>.</p></li>
-<li><p>Let the event of failing be <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span></p></li>
+<li>Use Bayes’ Theorem in the following question. Let <span class="math inline">\(P(A)=0.7\)</span>, <span class="math inline">\(P(B|A)=0.55\)</span>, and <span class="math inline">\(P(B|A^c)=0.10\)</span>. Find <span class="math inline">\(P(A^c)\)</span>, <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A^c \cap B)\)</span>, <span class="math inline">\(P(B)\)</span>, and <span class="math inline">\(P(A|B)\)</span>.</li>
 </ol>
+<details>
+<summary>
+Answer
+</summary>
+<em><span class="math inline">\(P(A^c)=1-P(A)=1-0.7=0.3\)</span>, <span class="math inline">\(P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) = 0.385\)</span>, <span class="math inline">\(P(A^c \cap B)=𝑃(B|A^c)𝑃(A^c) = 0.10(0.30) = 0.03\)</span>, <span class="math inline">\(P(B)= 𝑃(A \cap B) + 𝑃(𝐴^c \cap 𝐵) = 0.385 + 0.03 = 0.415\)</span>, and <span class="math inline">\(P(A|B)= \frac{𝑃(A \cap B)}{P(B)}=0.385/0.415=0.9277\)</span>.</em>
+</details>
+<ol start="2" type="1">
+<li>Some find tutors helpful when taking a course. Julia has a 40% chance to fail a course if she does not have a tutor. With a tutor, the probability of failing is only 10%. There is a 50% chance that Julia finds an available tutor. What is the probability that Julia will fail the course? If she ends up failing the course, what is the probability that she had a tutor?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<em>Let the event of failing be <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span>.</em>
+</details>
 </section>
-<section id="exercise-6-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-6-1">Exercise 6</h3>
+<section id="exercise-6" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h3>
 <ol type="1">
-<li><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=6 \times 4=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20,160\)</span></li>
+<li>Calculate the following values and verify your results using R. a) 3!, b) 4!, c) <span class="math inline">\(C_6^8\)</span>, d) <span class="math inline">\(P_6^8\)</span>.</li>
 </ol>
-<p>In R we can just use the factorial command. So <span class="math inline">\(3!\)</span> is:</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=6 \times 4=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20,160\)</span></em></p>
+<p><em>In R we can just use the factorial command. So <span class="math inline">\(3!\)</span> is:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
-<p>and <span class="math inline">\(4!\)</span> is:</p>
+<p><em>and <span class="math inline">\(4!\)</span> is:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 24</code></pre>
 </div>
 </div>
-<p>For combinations and permutations we can use the <code>gtools</code> package:</p>
+<p><em>For combinations and permutations we can use the <code>gtools</code> package:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtools)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>C<span class="ot">&lt;-</span><span class="fu">combinations</span>(<span class="dv">8</span>,<span class="dv">6</span>)</span>
@@ -620,10 +666,16 @@ The events are also not independent since <span class="math inline">\(P(A|B)=0.5
 <pre><code>[1] 28</code></pre>
 </div>
 </div>
+</details>
 <ol start="2" type="1">
-<li>If order doesn’t matter, there are <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30,240\)</span> ways.</li>
+<li>There are 10 players in a local basketball team. If we chose 5 players to randomly start a game, in how many ways can we select the five players if order doesn’t matter? What if order matters?</li>
 </ol>
-<p>In R we can once more use the combination and permutation functions:</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>If order doesn’t matter, there are <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30,240\)</span> ways.</em></p>
+<p><em>In R we can once more use the combination and permutation functions:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>B1<span class="ot">&lt;-</span><span class="fu">combinations</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(B1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -638,6 +690,7 @@ The events are also not independent since <span class="math inline">\(P(A|B)=0.5
 <pre><code>[1] 30240</code></pre>
 </div>
 </div>
+</details>
 
 
 </section>
