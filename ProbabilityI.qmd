@@ -1,48 +1,46 @@
 # Probability I
 
-## Concepts
+Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below.
 
-### Frequentist Vs. Bayesian {.unnumbered}
+## Frequentist Vs. Bayesian Statistics
 
-The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials.
+There are two interpretations of probability. The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes' Theorem— which provide a consistent mathematical foundation for making probabilistic inferences. 
 
-The **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events.
+*Ex:* A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.
 
-### Experiments and Sets {.unnumbered}
+## Experiments and Sets
 
-An **experiment** is a process that leads to one of several outcomes. Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.
+The following concepts form the foundation of probability theory. They provide a structure that is useful when analyzing uncertainty and randomness.
 
-An **outcome** is the result of an experiment. Ex: A coin landing on heads, drawing the ace of spades.
+-  An **experiment** is a process that leads to one of several outcomes. *Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.*
 
-The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. Ex: $S$={$1$,$2$,$3$,$4$,$5$,$6$} is the sample space for tossing a die.
+-  An **outcome** is the result of an experiment. *Ex: A coin landing on heads, drawing the ace of spades.*
 
-An **event** is a subset of the sample space. $A$={$2$,$4$,$6$} is the event of tossing an even number when rolling a die.
+-  The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. *Ex: $S={1,2,3,4,5,6\} is the sample space for tossing a die.*
 
-### Basic Probability Concepts {.unnumbered}
+-  An **event** is a subset of the sample space. *Ex: $A=\{2,4,6\}$ is the event of tossing an even number when rolling a die. $B=\{1A,1D,1S,1H\}$ is the event of drawing an ace from a deck of cards.*
 
-A **probability** is a numerical value that measures the likelihood that an event occurs.
 
-To calculate **probabilities**, find the ratio between favorable outcomes and total outcomes. $p=favorable/total$.
+## Basic Probability Concepts
 
--   The probability of any event $A$ is a value between $0$ and $1$ inclusive. Formally, $0\leq P(A) \leq1$.
+A **probability** is a numerical value that measures the likelihood that an event occurs. To calculate **probabilities**, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:
 
--   When the probability of the event is $0$ then the event is impossible. When the probability is $1$ then the event is certain.
+$$
+p(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
+$$
 
--   The sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, $\sum P(x_i)=1$.
+-   The probability of an event $A$ is a value between $0$ and $1$ inclusive. Formally, $0\leq P(A) \leq1$. When the probability of the event is $0$ then the event is impossible. When the probability is $1$ then the event is certain.
 
-    -   **Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others.
+-   The sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state:
 
-    -   **Exhaustive** events include all outcomes in the sample space.
+$$
+\sum P(x_i)=1
+$$
+where $x_i$ is outcome $i$.
 
-To assign probabilities you can use the Empirical, Classical, or Subjective Methods.
+**Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
 
--   **Empirical**: calculated as a relative frequency of occurrence.
-
--   **Classical**: based on logical analysis.
-
--   **Subjective**: calculated by drawing on personal and subjective judgement.
-
-### Probability Rules {.unnumbered}
+## Probability Rules
 
 The **Complement Rule**: $P(A^c)=1-P(A)$, where $A^c$ is the complement of $A$.
 
@@ -58,7 +56,9 @@ The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.
 
 **Bayes' Theorem**: $P(A|B)=P(B|A)P(A)/P(B)$.
 
-### Counting Rules {.unnumbered}
+**Example:**
+
+## Counting Rules
 
 The **Combination** function counts the number of ways to choose $x$ objects from a total of $n$ objects. The order in which the $x$ objects are listed does not matter.
 
@@ -72,7 +72,9 @@ The **Permutation** function also counts the number of ways to choose $x$ object
 
 -   If repetition is allowed use $n^x$.
 
-### Useful R Functions {.unnumbered}
+**Example:**
+
+## Probability in R
 
 The `table()` function can be used to construct frequency distributions.
 
@@ -116,15 +118,15 @@ For the following exercises, make your calculations by hand and verify results w
 
 1.  Create a joint probability table from the contingency table below. Find $P(A)$, $P(A \cap B)$, $P(A|B)$, and $P(B|A^c)$. Determine whether the events are independent or mutually exclusive.
 
-|     |       |       |
-|-----|-------|-------|
-|     | $B$ | $B^c$ |
-| $A$ | 26    | 34    |
-| $A^c$ | 14    | 26    |
+|       |     |       |
+|-------|-----|-------|
+|       | $B$ | $B^c$ |
+| $A$   | 26  | 34    |
+| $A^c$ | 14  | 26    |
 
 ### Exercise 4 {.unnumbered}
 
-You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv 
+You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv
 
 1.  Create a contingency table.
 
@@ -145,6 +147,7 @@ You will need the **Crash** data set and R to answer this question. The data sho
 2.  There are 10 players in a local basketball team. If we chose 5 players to randomly start a game, in how many ways can we select the five players if order doesn't matter? What if order matters?
 
 ## Answers
+
 ### Exercise 1 {.unnumbered}
 
 1.  $P(D)=1/5=0.2$ since all events are equally likely. $P(B^c)=4/5=0.8$, and $P(A \cup C \cup E)=P(A + C + E)=3/5=0.6$.

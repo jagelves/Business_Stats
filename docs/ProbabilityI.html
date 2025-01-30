@@ -290,16 +290,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">8.1</span> Concepts</a>
-  <ul class="collapse">
-  <li><a href="#frequentist-vs.-bayesian" id="toc-frequentist-vs.-bayesian" class="nav-link" data-scroll-target="#frequentist-vs.-bayesian">Frequentist Vs. Bayesian</a></li>
-  <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets">Experiments and Sets</a></li>
-  <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts">Basic Probability Concepts</a></li>
-  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules">Probability Rules</a></li>
-  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules">Counting Rules</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
-  </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.2</span> Exercises</a>
+  <li><a href="#frequentist-vs.-bayesian-statistics" id="toc-frequentist-vs.-bayesian-statistics" class="nav-link active" data-scroll-target="#frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</a></li>
+  <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</a></li>
+  <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</a></li>
+  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.4</span> Probability Rules</a></li>
+  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.5</span> Counting Rules</a></li>
+  <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.6</span> Probability in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -308,7 +305,7 @@ window.Quarto = {
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   </ul></li>
-  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">8.3</span> Answers</a>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="header-section-number">8.8</span> Answers</a>
   <ul class="collapse">
   <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
   <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
@@ -342,42 +339,39 @@ window.Quarto = {
 </header>
 
 
-<section id="concepts" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">8.1</span> Concepts</h2>
-<section id="frequentist-vs.-bayesian" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="frequentist-vs.-bayesian">Frequentist Vs. Bayesian</h3>
-<p>The <strong>frequentist</strong> interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials.</p>
-<p>The <strong>Bayesian</strong> interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events.</p>
+<p>Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below.</p>
+<section id="frequentist-vs.-bayesian-statistics" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</h2>
+<p>There are two interpretations of probability. The <strong>frequentist</strong> interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the <strong>Bayesian</strong> interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes’ Theorem— which provide a consistent mathematical foundation for making probabilistic inferences.</p>
+<p><em>Ex:</em> A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.</p>
 </section>
-<section id="experiments-and-sets" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="experiments-and-sets">Experiments and Sets</h3>
-<p>An <strong>experiment</strong> is a process that leads to one of several outcomes. Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.</p>
-<p>An <strong>outcome</strong> is the result of an experiment. Ex: A coin landing on heads, drawing the ace of spades.</p>
-<p>The <strong>sample space</strong> <span class="math inline">\((S)\)</span> of an experiment contains all possible outcomes of the experiment. Ex: <span class="math inline">\(S\)</span>={<span class="math inline">\(1\)</span>,<span class="math inline">\(2\)</span>,<span class="math inline">\(3\)</span>,<span class="math inline">\(4\)</span>,<span class="math inline">\(5\)</span>,<span class="math inline">\(6\)</span>} is the sample space for tossing a die.</p>
-<p>An <strong>event</strong> is a subset of the sample space. <span class="math inline">\(A\)</span>={<span class="math inline">\(2\)</span>,<span class="math inline">\(4\)</span>,<span class="math inline">\(6\)</span>} is the event of tossing an even number when rolling a die.</p>
-</section>
-<section id="basic-probability-concepts" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="basic-probability-concepts">Basic Probability Concepts</h3>
-<p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs.</p>
-<p>To calculate <strong>probabilities</strong>, find the ratio between favorable outcomes and total outcomes. <span class="math inline">\(p=favorable/total\)</span>.</p>
+<section id="experiments-and-sets" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</h2>
+<p>The following concepts form the foundation of probability theory. They provide a structure that is useful when analyzing uncertainty and randomness.</p>
 <ul>
-<li><p>The probability of any event <span class="math inline">\(A\)</span> is a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> inclusive. Formally, <span class="math inline">\(0\leq P(A) \leq1\)</span>.</p></li>
-<li><p>When the probability of the event is <span class="math inline">\(0\)</span> then the event is impossible. When the probability is <span class="math inline">\(1\)</span> then the event is certain.</p></li>
-<li><p>The sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, <span class="math inline">\(\sum P(x_i)=1\)</span>.</p>
-<ul>
-<li><p><strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others.</p></li>
-<li><p><strong>Exhaustive</strong> events include all outcomes in the sample space.</p></li>
-</ul></li>
-</ul>
-<p>To assign probabilities you can use the Empirical, Classical, or Subjective Methods.</p>
-<ul>
-<li><p><strong>Empirical</strong>: calculated as a relative frequency of occurrence.</p></li>
-<li><p><strong>Classical</strong>: based on logical analysis.</p></li>
-<li><p><strong>Subjective</strong>: calculated by drawing on personal and subjective judgement.</p></li>
+<li><p>An <strong>experiment</strong> is a process that leads to one of several outcomes. <em>Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.</em></p></li>
+<li><p>An <strong>outcome</strong> is the result of an experiment. <em>Ex: A coin landing on heads, drawing the ace of spades.</em></p></li>
+<li><p>The <strong>sample space</strong> <span class="math inline">\((S)\)</span> of an experiment contains all possible outcomes of the experiment. <em>Ex: $S={1,2,3,4,5,6} is the sample space for tossing a die.</em></p></li>
+<li><p>An <strong>event</strong> is a subset of the sample space. <em>Ex: <span class="math inline">\(A=\{2,4,6\}\)</span> is the event of tossing an even number when rolling a die. <span class="math inline">\(B=\{1A,1D,1S,1H\}\)</span> is the event of drawing an ace from a deck of cards.</em></p></li>
 </ul>
 </section>
-<section id="probability-rules" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="probability-rules">Probability Rules</h3>
+<section id="basic-probability-concepts" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</h2>
+<p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs. To calculate <strong>probabilities</strong>, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:</p>
+<p><span class="math display">\[
+p(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
+\]</span></p>
+<ul>
+<li><p>The probability of an event <span class="math inline">\(A\)</span> is a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> inclusive. Formally, <span class="math inline">\(0\leq P(A) \leq1\)</span>. When the probability of the event is <span class="math inline">\(0\)</span> then the event is impossible. When the probability is <span class="math inline">\(1\)</span> then the event is certain.</p></li>
+<li><p>The sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state:</p></li>
+</ul>
+<p><span class="math display">\[
+\sum P(x_i)=1
+\]</span> where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
+<p><strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
+</section>
+<section id="probability-rules" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.4</span> Probability Rules</h2>
 <p>The <strong>Complement Rule</strong>: <span class="math inline">\(P(A^c)=1-P(A)\)</span>, where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>.</p>
 <p>The <strong>Addition Rule</strong>: <span class="math inline">\(P(A \cup B)=P(A)+P(B)-P(A \cap B)\)</span>, where <span class="math inline">\(\cap\)</span> is intersection and <span class="math inline">\(\cup\)</span> is union.</p>
 <p>The <strong>Multiplication Rule</strong>:</p>
@@ -387,9 +381,10 @@ window.Quarto = {
 </ul>
 <p>The <strong>Law of Total Probability</strong>: <span class="math inline">\(P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)\)</span>.</p>
 <p><strong>Bayes’ Theorem</strong>: <span class="math inline">\(P(A|B)=P(B|A)P(A)/P(B)\)</span>.</p>
+<p><strong>Example:</strong></p>
 </section>
-<section id="counting-rules" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="counting-rules">Counting Rules</h3>
+<section id="counting-rules" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.5</span> Counting Rules</h2>
 <p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter.</p>
 <ul>
 <li><p>If repetition is not allowed use <span class="math inline">\(C_n^x= \frac{n!}{(n-x)!x!}\)</span>.</p></li>
@@ -400,16 +395,16 @@ window.Quarto = {
 <li><p>If repetition is not allowed use <span class="math inline">\(P_n^x= \frac{n!}{(n-x)!}\)</span>.</p></li>
 <li><p>If repetition is allowed use <span class="math inline">\(n^x\)</span>.</p></li>
 </ul>
+<p><strong>Example:</strong></p>
 </section>
-<section id="useful-r-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
+<section id="probability-in-r" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.6</span> Probability in R</h2>
 <p>The <code>table()</code> function can be used to construct frequency distributions.</p>
 <p>The <code>factorial()</code> function returns the factorial of a number.</p>
 <p>The <code>gtools</code> package contains the <code>combinations()</code> and <code>permutations()</code> functions used to calculate combinations and permutations. Use the <em>repeats.allowed</em> argument to specify counting with repetition or no repetition. The <em>v</em> argument allows you to specify a vector of elements.</p>
 </section>
-</section>
-<section id="exercises" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.2</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.7</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating simple probabilities.</p></li>
@@ -484,8 +479,8 @@ window.Quarto = {
 </ol>
 </section>
 </section>
-<section id="answers" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">8.3</span> Answers</h2>
+<section id="answers" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="answers"><span class="header-section-number">8.8</span> Answers</h2>
 <section id="exercise-1-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
 <ol type="1">
