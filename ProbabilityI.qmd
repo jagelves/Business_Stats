@@ -151,19 +151,27 @@ The image shows how event $A$ can occur. Essentially, when $B$ occurs $A$ is pos
 
 Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.
 
-The **Combination** function counts the number of ways to choose $x$ objects from a total of $n$ objects. The order in which the $x$ objects are listed does not matter.
+The **Combination** function counts the number of ways to choose $x$ objects from a total of $n$ objects. The order in which the $x$ objects are listed does not matter. If repetition is not allowed use:
+$$C(n, x)= \frac{n!}{(n-x)!x!}$$
+Ex: Consider the starting three batters for a baseball team. In how many 
 
--   If repetition is not allowed use $C_n^x= \frac{n!}{(n-x)!x!}$.
 
--   If repetition is allowed use $\frac{(x+n-1)!}{(n-1)!x!}$.
+If repetition is allowed use:
+$$C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}$$
 
-The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter.
+Ex: Ice Cream
 
--   If repetition is not allowed use $P_n^x= \frac{n!}{(n-x)!}$.
+The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. If repetition is not allowed use 
 
--   If repetition is allowed use $n^x$.
+$$P(n,x)= \frac{n!}{(n-x)!}$$
 
-**Example:**
+Ex: Olympic Medals
+
+If repetition is allowed use 
+$$P(n,x)=n^x$$
+
+Ex: Combination Lock
+
 
 ## Probability in R
 

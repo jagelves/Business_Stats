@@ -460,17 +460,14 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <section id="counting-rules" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.6</span> Counting Rules</h2>
 <p>Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.</p>
-<p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter.</p>
-<ul>
-<li><p>If repetition is not allowed use <span class="math inline">\(C_n^x= \frac{n!}{(n-x)!x!}\)</span>.</p></li>
-<li><p>If repetition is allowed use <span class="math inline">\(\frac{(x+n-1)!}{(n-1)!x!}\)</span>.</p></li>
-</ul>
-<p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter.</p>
-<ul>
-<li><p>If repetition is not allowed use <span class="math inline">\(P_n^x= \frac{n!}{(n-x)!}\)</span>.</p></li>
-<li><p>If repetition is allowed use <span class="math inline">\(n^x\)</span>.</p></li>
-</ul>
-<p><strong>Example:</strong></p>
+<p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter. If repetition is not allowed use: <span class="math display">\[C(n, x)= \frac{n!}{(n-x)!x!}\]</span> Ex: Consider the starting three batters for a baseball team. In how many</p>
+<p>If repetition is allowed use: <span class="math display">\[C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}\]</span></p>
+<p>Ex: Ice Cream</p>
+<p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. If repetition is not allowed use</p>
+<p><span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
+<p>Ex: Olympic Medals</p>
+<p>If repetition is allowed use <span class="math display">\[P(n,x)=n^x\]</span></p>
+<p>Ex: Combination Lock</p>
 </section>
 <section id="probability-in-r" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.7</span> Probability in R</h2>
