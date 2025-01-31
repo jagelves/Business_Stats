@@ -72,15 +72,13 @@ Note the this also satisfies the rule $\sum P(x_i) = 1$, where $x_i$ represents 
 
 ## Venn Diagram
 
-A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set, and helps illustrate concepts in probability. Below is an example:
+A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set. Below is an example:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/venn.png")
 ```
 
-The rectangle enclosing the circles represents the sample set (i.e., the 52 playing cards). Each circle represents a set or even. The heart circle contains all 13 hearts; the same holds for the clubs circle. The area outside the circle that has hearts represents its complement, meaning elements that are clubs, spades, or diamonds. Since the two sets do not overlap, they are mutually exclusive. If a card is a heart, it can't be a spade.
-
-The total area covered by both sets represents the **union** denoted by $\cup$. This is the set that contains all elements that belong to at least one of the sets. Formally, we would represent this set as $(Hearts \cup Spades)$.
+The rectangle enclosing the circles represents the sample set (i.e., the 52 playing cards). Each circle represents a set or event The heart circle contains all 13 hearts; the same holds for the clubs circle. The area outside the circle that has hearts represents its complement, meaning elements that are clubs, spades, or diamonds. Since the two sets do not overlap, they are mutually exclusive (i.e., if a card is a heart, it can't be a spade). The total area covered by both sets represents the **union** denoted by $\cup$. This is the set that contains all elements that belong to at least one of the sets. Formally, we would represent this set as $(Hearts \cup Spades)$.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/venn2.png")
@@ -98,7 +96,7 @@ The **Complement Rule** state that:
 $$P(A^c)=1-P(A)$$ 
 where $A^c$ is the complement of $A$. This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.
 
-*Ex: In a quality control scenario, if the probability of a product passing inspection is $P(Pass)=0.95$, then the probability of it failing is $P(Fail)=1-P(Pass)=0.05$.*
+*Ex: The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is $P(Heart)=\frac{13}{52}$, then using the complement rule, $P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}$*
 
 ### Addition Rule {.unnumbered}
 The **Addition Rule** states:
@@ -131,7 +129,18 @@ Hence, we can define independence as: events $A$ and $B$ are independent if the 
 *Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent*
 
 ### Law of Total Probability {.unnumbered}
-The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.
+The **Law of Total Probability** states:
+$$P(A)=P(A \cap B)+P(A\cap B^c)$$
+The formula mainly states that If an event $A$ can occur in multiple mutually exclusive scenarios (or conditions), then the total probability of $A$ is the sum of its probabilities under each scenario, weighted by how often those scenarios occur. By using the multiplication rule we can alternately show the law of total probability as:
+$$P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$$
+The Venn diagram helps us visualize the law of total probability. 
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/venn3.png")
+```
+The image shows how event $A$ can occur. Essentially, when $B$ occurs $A$ is possible in the left semicircle. When $B^c$, then $A$ is possible in the right semicircle. The addition of both semicircles, complete set $A$.
+
+*Ex: Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) and hearts.*
 
 ### Bayes' Theorem {.unnumbered}
 **Bayes' Theorem**: $P(A|B)=P(B|A)P(A)/P(B)$.
@@ -139,6 +148,8 @@ The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.
 **Example:**
 
 ## Counting Rules
+
+Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.
 
 The **Combination** function counts the number of ways to choose $x$ objects from a total of $n$ objects. The order in which the $x$ objects are listed does not matter.
 

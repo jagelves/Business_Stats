@@ -390,7 +390,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </section>
 <section id="venn-diagram" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</h2>
-<p>A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set, and helps illustrate concepts in probability. Below is an example:</p>
+<p>A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set. Below is an example:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -400,8 +400,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </div>
 </div>
 </div>
-<p>The rectangle enclosing the circles represents the sample set (i.e., the 52 playing cards). Each circle represents a set or even. The heart circle contains all 13 hearts; the same holds for the clubs circle. The area outside the circle that has hearts represents its complement, meaning elements that are clubs, spades, or diamonds. Since the two sets do not overlap, they are mutually exclusive. If a card is a heart, it can’t be a spade.</p>
-<p>The total area covered by both sets represents the <strong>union</strong> denoted by <span class="math inline">\(\cup\)</span>. This is the set that contains all elements that belong to at least one of the sets. Formally, we would represent this set as <span class="math inline">\((Hearts \cup Spades)\)</span>.</p>
+<p>The rectangle enclosing the circles represents the sample set (i.e., the 52 playing cards). Each circle represents a set or event The heart circle contains all 13 hearts; the same holds for the clubs circle. The area outside the circle that has hearts represents its complement, meaning elements that are clubs, spades, or diamonds. Since the two sets do not overlap, they are mutually exclusive (i.e., if a card is a heart, it can’t be a spade). The total area covered by both sets represents the <strong>union</strong> denoted by <span class="math inline">\(\cup\)</span>. This is the set that contains all elements that belong to at least one of the sets. Formally, we would represent this set as <span class="math inline">\((Hearts \cup Spades)\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -419,7 +418,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <section id="complement-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="complement-rule">Complement Rule</h3>
 <p>The <strong>Complement Rule</strong> state that: <span class="math display">\[P(A^c)=1-P(A)\]</span> where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>. This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.</p>
-<p><em>Ex: In a quality control scenario, if the probability of a product passing inspection is <span class="math inline">\(P(Pass)=0.95\)</span>, then the probability of it failing is <span class="math inline">\(P(Fail)=1-P(Pass)=0.05\)</span>.</em></p>
+<p><em>Ex: The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is <span class="math inline">\(P(Heart)=\frac{13}{52}\)</span>, then using the complement rule, <span class="math inline">\(P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}\)</span></em></p>
 </section>
 <section id="addition-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="addition-rule">Addition Rule</h3>
@@ -439,7 +438,18 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </section>
 <section id="law-of-total-probability" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="law-of-total-probability">Law of Total Probability</h3>
-<p>The <strong>Law of Total Probability</strong>: <span class="math inline">\(P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)\)</span>.</p>
+<p>The <strong>Law of Total Probability</strong> states: <span class="math display">\[P(A)=P(A \cap B)+P(A\cap B^c)\]</span> The formula mainly states that If an event <span class="math inline">\(A\)</span> can occur in multiple mutually exclusive scenarios (or conditions), then the total probability of <span class="math inline">\(A\)</span> is the sum of its probabilities under each scenario, weighted by how often those scenarios occur. By using the multiplication rule we can alternately show the law of total probability as: <span class="math display">\[P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)\]</span> The Venn diagram helps us visualize the law of total probability.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/venn3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The image shows how event <span class="math inline">\(A\)</span> can occur. Essentially, when <span class="math inline">\(B\)</span> occurs <span class="math inline">\(A\)</span> is possible in the left semicircle. When <span class="math inline">\(B^c\)</span>, then <span class="math inline">\(A\)</span> is possible in the right semicircle. The addition of both semicircles, complete set <span class="math inline">\(A\)</span>.</p>
+<p><em>Ex: Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) and hearts.</em></p>
 </section>
 <section id="bayes-theorem" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h3>
@@ -449,6 +459,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </section>
 <section id="counting-rules" class="level2" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.6</span> Counting Rules</h2>
+<p>Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.</p>
 <p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter.</p>
 <ul>
 <li><p>If repetition is not allowed use <span class="math inline">\(C_n^x= \frac{n!}{(n-x)!x!}\)</span>.</p></li>
