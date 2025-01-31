@@ -92,11 +92,30 @@ where $\cap$ is intersection and $\cup$ is union. This formula prevents double-c
 $$P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}$$
 
 ### Multiplication Rule {.unnumbered}
-The **Multiplication Rule**:
+The **Multiplication Rule** states:
+$$P(A \cap B)= P(A|B)P(B)$$
+where $P(A|B)$ is the conditional probability. **Conditional probability** measures the likelihood of an event occurring given that another event has already happened. If we reorganize the formula above we can get:
 
--   if events are dependent $P(A \cap B)= P(A|B)P(B)$, where $P(A|B)$ is the conditional probability.
+$$P(A|B)=\frac{P(A \cap B)}{P(B)}$$
+Note that his formula focuses on cases where Event B has already occurred. We can then find the fraction the cases where Event A also happens. 
 
--   if events are independent $P(A \cap B)= P(A)P(B)$.
+
+*Ex: Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by:*
+
+$$P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}$$
+
+
+Lastly, if events $A$ and $B$ are independent, we can simplify the multiplication rule to:
+
+$$P(A \cap B)= P(A)P(B)$$
+Hence, we can define independence as: events $A$ and $B$ are independent if the occurrence (or non occurrence) of one does not affect the probability of the other occurring.
+
+*Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is $13/52$, the probability of drawing a spade in the second draw is also $13/52$.*
+
+*Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent*
+
+
+
 
 ### Law of Total Probability {.unnumbered}
 The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.

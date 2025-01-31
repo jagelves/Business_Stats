@@ -403,11 +403,14 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </section>
 <section id="multiplication-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="multiplication-rule">Multiplication Rule</h3>
-<p>The <strong>Multiplication Rule</strong>:</p>
-<ul>
-<li><p>if events are dependent <span class="math inline">\(P(A \cap B)= P(A|B)P(B)\)</span>, where <span class="math inline">\(P(A|B)\)</span> is the conditional probability.</p></li>
-<li><p>if events are independent <span class="math inline">\(P(A \cap B)= P(A)P(B)\)</span>.</p></li>
-</ul>
+<p>The <strong>Multiplication Rule</strong> states: <span class="math display">\[P(A \cap B)= P(A|B)P(B)\]</span> where <span class="math inline">\(P(A|B)\)</span> is the conditional probability. <strong>Conditional probability</strong> measures the likelihood of an event occurring given that another event has already happened. If we reorganize the formula above we can get:</p>
+<p><span class="math display">\[P(A|B)=\frac{P(A \cap B)}{P(B)}\]</span> Note that his formula focuses on cases where Event B has already occurred. We can then find the fraction the cases where Event A also happens.</p>
+<p><em>Ex: Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by:</em></p>
+<p><span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span></p>
+<p>Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
+<p><span class="math display">\[P(A \cap B)= P(A)P(B)\]</span> Hence, we can define independence as: events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurrence (or non occurrence) of one does not affect the probability of the other occurring.</p>
+<p><em>Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is <span class="math inline">\(13/52\)</span>, the probability of drawing a spade in the second draw is also <span class="math inline">\(13/52\)</span>.</em></p>
+<p><em>Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent</em></p>
 </section>
 <section id="law-of-total-probability" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="law-of-total-probability">Law of Total Probability</h3>
