@@ -70,6 +70,24 @@ $$
 
 Note the this also satisfies the rule $\sum P(x_i) = 1$, where $x_i$ represents each possible outcome (suit).
 
+## Venn Diagram
+
+A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set, and helps illustrate concepts in probability. Below is an example:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/venn.png")
+```
+
+The rectangle enclosing the circles represents the sample set (i.e., the 52 playing cards). Each circle represents a set or even. The heart circle contains all 13 hearts; the same holds for the clubs circle. The area outside the circle that has hearts represents its complement, meaning elements that are clubs, spades, or diamonds. Since the two sets do not overlap, they are mutually exclusive. If a card is a heart, it can't be a spade.
+
+The total area covered by both sets represents the **union** denoted by $\cup$. This is the set that contains all elements that belong to at least one of the sets. Formally, we would represent this set as $(Hearts \cup Spades)$.
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/venn2.png")
+```
+
+The overlapping region of two sets contains elements that belong to both sets. This region is called the **intersection**. The intersection contains elements that are Hearts and Jacks (i.e., the jack of hearts). Formally, we denote the intersection by $(Hearts \cap Jacks)$.
+
 ## Probability Rules
 
 Probability rules help us quantify uncertainty, avoid cognitive biases, and make rational predictions based on available data. These rules allow us to make reliable decisions. Below we introduce some useful rules.
@@ -103,8 +121,6 @@ Note that his formula focuses on cases where Event B has already occurred. We ca
 *Ex: Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by:*
 
 $$P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}$$
-
-
 Lastly, if events $A$ and $B$ are independent, we can simplify the multiplication rule to:
 
 $$P(A \cap B)= P(A)P(B)$$
@@ -113,9 +129,6 @@ Hence, we can define independence as: events $A$ and $B$ are independent if the 
 *Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is $13/52$, the probability of drawing a spade in the second draw is also $13/52$.*
 
 *Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent*
-
-
-
 
 ### Law of Total Probability {.unnumbered}
 The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.

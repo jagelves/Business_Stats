@@ -293,7 +293,8 @@ window.Quarto = {
   <li><a href="#frequentist-vs.-bayesian-statistics" id="toc-frequentist-vs.-bayesian-statistics" class="nav-link active" data-scroll-target="#frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</a></li>
   <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</a></li>
   <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</a></li>
-  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.4</span> Probability Rules</a>
+  <li><a href="#venn-diagram" id="toc-venn-diagram" class="nav-link" data-scroll-target="#venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</a></li>
+  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.5</span> Probability Rules</a>
   <ul class="collapse">
   <li><a href="#complement-rule" id="toc-complement-rule" class="nav-link" data-scroll-target="#complement-rule">Complement Rule</a></li>
   <li><a href="#addition-rule" id="toc-addition-rule" class="nav-link" data-scroll-target="#addition-rule">Addition Rule</a></li>
@@ -301,9 +302,9 @@ window.Quarto = {
   <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
   <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
   </ul></li>
-  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.5</span> Counting Rules</a></li>
-  <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.6</span> Probability in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.7</span> Exercises</a>
+  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.6</span> Counting Rules</a></li>
+  <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.7</span> Probability in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.8</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -387,8 +388,33 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 \]</span></p>
 <p>Note the this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where <span class="math inline">\(x_i\)</span> represents each possible outcome (suit).</p>
 </section>
-<section id="probability-rules" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.4</span> Probability Rules</h2>
+<section id="venn-diagram" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</h2>
+<p>A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set, and helps illustrate concepts in probability. Below is an example:</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/venn.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The rectangle enclosing the circles represents the sample set (i.e., the 52 playing cards). Each circle represents a set or even. The heart circle contains all 13 hearts; the same holds for the clubs circle. The area outside the circle that has hearts represents its complement, meaning elements that are clubs, spades, or diamonds. Since the two sets do not overlap, they are mutually exclusive. If a card is a heart, it can’t be a spade.</p>
+<p>The total area covered by both sets represents the <strong>union</strong> denoted by <span class="math inline">\(\cup\)</span>. This is the set that contains all elements that belong to at least one of the sets. Formally, we would represent this set as <span class="math inline">\((Hearts \cup Spades)\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/venn2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The overlapping region of two sets contains elements that belong to both sets. This region is called the <strong>intersection</strong>. The intersection contains elements that are Hearts and Jacks (i.e., the jack of hearts). Formally, we denote the intersection by <span class="math inline">\((Hearts \cap Jacks)\)</span>.</p>
+</section>
+<section id="probability-rules" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.5</span> Probability Rules</h2>
 <p>Probability rules help us quantify uncertainty, avoid cognitive biases, and make rational predictions based on available data. These rules allow us to make reliable decisions. Below we introduce some useful rules.</p>
 <section id="complement-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="complement-rule">Complement Rule</h3>
@@ -406,8 +432,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p>The <strong>Multiplication Rule</strong> states: <span class="math display">\[P(A \cap B)= P(A|B)P(B)\]</span> where <span class="math inline">\(P(A|B)\)</span> is the conditional probability. <strong>Conditional probability</strong> measures the likelihood of an event occurring given that another event has already happened. If we reorganize the formula above we can get:</p>
 <p><span class="math display">\[P(A|B)=\frac{P(A \cap B)}{P(B)}\]</span> Note that his formula focuses on cases where Event B has already occurred. We can then find the fraction the cases where Event A also happens.</p>
 <p><em>Ex: Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by:</em></p>
-<p><span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span></p>
-<p>Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
+<p><span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span> Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
 <p><span class="math display">\[P(A \cap B)= P(A)P(B)\]</span> Hence, we can define independence as: events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurrence (or non occurrence) of one does not affect the probability of the other occurring.</p>
 <p><em>Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is <span class="math inline">\(13/52\)</span>, the probability of drawing a spade in the second draw is also <span class="math inline">\(13/52\)</span>.</em></p>
 <p><em>Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent</em></p>
@@ -422,8 +447,8 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p><strong>Example:</strong></p>
 </section>
 </section>
-<section id="counting-rules" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.5</span> Counting Rules</h2>
+<section id="counting-rules" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.6</span> Counting Rules</h2>
 <p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter.</p>
 <ul>
 <li><p>If repetition is not allowed use <span class="math inline">\(C_n^x= \frac{n!}{(n-x)!x!}\)</span>.</p></li>
@@ -436,14 +461,14 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </ul>
 <p><strong>Example:</strong></p>
 </section>
-<section id="probability-in-r" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.6</span> Probability in R</h2>
+<section id="probability-in-r" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.7</span> Probability in R</h2>
 <p>The <code>table()</code> function can be used to construct frequency distributions.</p>
 <p>The <code>factorial()</code> function returns the factorial of a number.</p>
 <p>The <code>gtools</code> package contains the <code>combinations()</code> and <code>permutations()</code> functions used to calculate combinations and permutations. Use the <em>repeats.allowed</em> argument to specify counting with repetition or no repetition. The <em>v</em> argument allows you to specify a vector of elements.</p>
 </section>
-<section id="exercises" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.8</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating simple probabilities.</p></li>
