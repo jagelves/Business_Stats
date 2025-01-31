@@ -151,7 +151,9 @@ For the following exercises, make your calculations by hand and verify results w
 <details>
 
 <summary>Answer</summary>
-*$P(D)=1/5=0.2$ since all events are equally likely. $P(B^c)=4/5=0.8$, and $P(A \cup C \cup E)=P(A + C + E)=3/5=0.6$.*
+-  *$P(D)=1/5=0.2$ since all events are equally likely.*
+-  *$P(B^c)=4/5=0.8$* 
+-  *$P(A \cup C \cup E)=P(A + C + E)=3/5=0.6$.*
 </details>
 
 2.  Consider the roll of a die. Define $A$ as {1,2,3}, $B$ as {1,2,3,5,6}, $C$ as {4,6}, and $D$ as {4,5,6}. Are the events $A$ and $B$ mutually exclusive, exhaustive, both or none? What about events $A$ and $D$?
@@ -159,15 +161,19 @@ For the following exercises, make your calculations by hand and verify results w
 <details>
 
 <summary>Answer</summary>
-*Events $A$ and $B$ are not mutually exclusive since they share some of the same elements. They are not exhaustive since the union of both doesn't create the sample space.*
+-  *Events $A$ and $B$ are not mutually exclusive since they share some of the same elements.* 
+-  *The events are not exhaustive since the union of both doesn't create the sample space.*
 </details>
 
-3.  A recent study suggests that $33.1$% of the adult U.S. population is overweight and $35.7$% obese. What is the probability that a randomly selected adult in the U.S. is either obese or overweight? What is the probability that their weight is normal? Are the events mutually exclusive and exhaustive?
+3.  A recent study suggests that $33.1$% of the adult U.S. population is overweight and $35.7$% obese. What is the probability that a randomly selected adult in the U.S. is either obese or overweight? Are the events mutually exclusive and exhaustive? What is the probability that their weight is normal?
 
 <details>
 
 <summary>Answer</summary>
-*The probability is $68.8$%. The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight. The events are not exhaustive since there are people in the U.S. that have a normal weight. The probability that the person drawn has normal weight is $31.2$%.*
+-  *The probability is $68.8$%.*
+-  *The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight.* 
+-  *The events are not exhaustive since there are people in the U.S. that have a normal weight.* 
+-  *The probability that the person drawn has normal weight is $31.2$%.*
 </details>
 
 ### Exercise 2 {.unnumbered}
