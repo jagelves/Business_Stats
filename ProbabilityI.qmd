@@ -49,12 +49,7 @@ Since the number of elements in the event $A$ is at most the same as the number 
 
 In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.**Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
 
-Given these concepts if follows that the sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state:
-
-$$
-\sum P(x_i)=1
-$$
-where $x_i$ is outcome $i$.
+Given these concepts if follows that the sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state: $\sum P(x_i)=1$, where $x_i$ is outcome $i$.
 
 
 **Example:** Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.  
@@ -67,28 +62,46 @@ $$
 
 Since $( 0 \leq P(A) \leq 1)$, this follows the basic probability rule. Next let's consider mutually exclusive events. Let event $B$ be drawing a heart and event $C$ be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.
 
-The four suits (**hearts, diamonds, clubs, spades**) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:  
+The four suits (*hearts, diamonds, clubs, spades*) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:  
 
 $$
 P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1
 $$
 
-Note the this also satisfies the rule $\sum P(x_i) = 1$, where $x_i $ represents each possible outcome (suit).
+Note the this also satisfies the rule $\sum P(x_i) = 1$, where $x_i$ represents each possible outcome (suit).
 
 ## Probability Rules
 
-The **Complement Rule**: $P(A^c)=1-P(A)$, where $A^c$ is the complement of $A$.
+Probability rules help us quantify uncertainty, avoid cognitive biases, and make rational predictions based on available data. These rules allow us to make reliable decisions. Below we introduce some useful rules.
 
-The **Addition Rule**: $P(A \cup B)=P(A)+P(B)-P(A \cap B)$, where $\cap$ is intersection and $\cup$ is union.
+### Complement Rule {.unnumbered}
 
+The **Complement Rule** state that: 
+$$P(A^c)=1-P(A)$$ 
+where $A^c$ is the complement of $A$. This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.
+
+*Ex: In a quality control scenario, if the probability of a product passing inspection is $P(Pass)=0.95$, then the probability of it failing is $P(Fail)=1-P(Pass)=0.05$.*
+
+### Addition Rule {.unnumbered}
+The **Addition Rule** states:
+
+$$P(A \cup B)=P(A)+P(B)-P(A \cap B)$$
+where $\cap$ is intersection and $\cup$ is union. This formula prevents double-counting when events overlap by including the intersection of events. 
+
+*Ex: Let's calculate the probability of drawing either a heart or a face card. If we let event $A$, be drawing a heart, and event $B$ be drawing a face card, the probability is given by:*
+$$P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}$$
+
+### Multiplication Rule {.unnumbered}
 The **Multiplication Rule**:
 
 -   if events are dependent $P(A \cap B)= P(A|B)P(B)$, where $P(A|B)$ is the conditional probability.
 
 -   if events are independent $P(A \cap B)= P(A)P(B)$.
 
+### Law of Total Probability {.unnumbered}
 The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.
 
+### Bayes' Theorem {.unnumbered}
 **Bayes' Theorem**: $P(A|B)=P(B|A)P(A)/P(B)$.
 
 **Example:**

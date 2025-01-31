@@ -293,7 +293,14 @@ window.Quarto = {
   <li><a href="#frequentist-vs.-bayesian-statistics" id="toc-frequentist-vs.-bayesian-statistics" class="nav-link active" data-scroll-target="#frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</a></li>
   <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</a></li>
   <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</a></li>
-  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.4</span> Probability Rules</a></li>
+  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.4</span> Probability Rules</a>
+  <ul class="collapse">
+  <li><a href="#complement-rule" id="toc-complement-rule" class="nav-link" data-scroll-target="#complement-rule">Complement Rule</a></li>
+  <li><a href="#addition-rule" id="toc-addition-rule" class="nav-link" data-scroll-target="#addition-rule">Addition Rule</a></li>
+  <li><a href="#multiplication-rule" id="toc-multiplication-rule" class="nav-link" data-scroll-target="#multiplication-rule">Multiplication Rule</a></li>
+  <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
+  </ul></li>
   <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.5</span> Counting Rules</a></li>
   <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.6</span> Probability in R</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.7</span> Exercises</a>
@@ -367,34 +374,50 @@ P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Spac
 \]</span></p>
 <p>Since the number of elements in the event <span class="math inline">\(A\)</span> is at most the same as the number of elements in <span class="math inline">\(S\)</span>, the probability of event <span class="math inline">\(A\)</span> is a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> inclusive. Formally, <span class="math inline">\(0\leq P(A) \leq1\)</span>. When the probability of the event is <span class="math inline">\(0\)</span> then the event is impossible. When the probability is <span class="math inline">\(1\)</span> then the event is certain.</p>
 <p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.<strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
-<p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state:</p>
-<p><span class="math display">\[
-\sum P(x_i)=1
-\]</span> where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
+<p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
 <p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
 <p>If we randomly draw one card from a standard deck, the sample space <span class="math inline">\(S\)</span> consists of all 52 cards. Suppose we define event <span class="math inline">\(A\)</span> as <em>drawing a red card</em>. Since there are 26 red cards, the probability is:</p>
 <p><span class="math display">\[
 P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5
 \]</span></p>
 <p>Since <span class="math inline">\(( 0 \leq P(A) \leq 1)\)</span>, this follows the basic probability rule. Next let’s consider mutually exclusive events. Let event <span class="math inline">\(B\)</span> be drawing a heart and event <span class="math inline">\(C\)</span> be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.</p>
-<p>The four suits (<strong>hearts, diamonds, clubs, spades</strong>) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:</p>
+<p>The four suits (<em>hearts, diamonds, clubs, spades</em>) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:</p>
 <p><span class="math display">\[
 P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1
 \]</span></p>
-<p>Note the this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where $x_i $ represents each possible outcome (suit).</p>
+<p>Note the this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where <span class="math inline">\(x_i\)</span> represents each possible outcome (suit).</p>
 </section>
 <section id="probability-rules" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.4</span> Probability Rules</h2>
-<p>The <strong>Complement Rule</strong>: <span class="math inline">\(P(A^c)=1-P(A)\)</span>, where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>.</p>
-<p>The <strong>Addition Rule</strong>: <span class="math inline">\(P(A \cup B)=P(A)+P(B)-P(A \cap B)\)</span>, where <span class="math inline">\(\cap\)</span> is intersection and <span class="math inline">\(\cup\)</span> is union.</p>
+<p>Probability rules help us quantify uncertainty, avoid cognitive biases, and make rational predictions based on available data. These rules allow us to make reliable decisions. Below we introduce some useful rules.</p>
+<section id="complement-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="complement-rule">Complement Rule</h3>
+<p>The <strong>Complement Rule</strong> state that: <span class="math display">\[P(A^c)=1-P(A)\]</span> where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>. This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.</p>
+<p><em>Ex: In a quality control scenario, if the probability of a product passing inspection is <span class="math inline">\(P(Pass)=0.95\)</span>, then the probability of it failing is <span class="math inline">\(P(Fail)=1-P(Pass)=0.05\)</span>.</em></p>
+</section>
+<section id="addition-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="addition-rule">Addition Rule</h3>
+<p>The <strong>Addition Rule</strong> states:</p>
+<p><span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> where <span class="math inline">\(\cap\)</span> is intersection and <span class="math inline">\(\cup\)</span> is union. This formula prevents double-counting when events overlap by including the intersection of events.</p>
+<p><em>Ex: Let’s calculate the probability of drawing either a heart or a face card. If we let event <span class="math inline">\(A\)</span>, be drawing a heart, and event <span class="math inline">\(B\)</span> be drawing a face card, the probability is given by:</em> <span class="math display">\[P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}\]</span></p>
+</section>
+<section id="multiplication-rule" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="multiplication-rule">Multiplication Rule</h3>
 <p>The <strong>Multiplication Rule</strong>:</p>
 <ul>
 <li><p>if events are dependent <span class="math inline">\(P(A \cap B)= P(A|B)P(B)\)</span>, where <span class="math inline">\(P(A|B)\)</span> is the conditional probability.</p></li>
 <li><p>if events are independent <span class="math inline">\(P(A \cap B)= P(A)P(B)\)</span>.</p></li>
 </ul>
+</section>
+<section id="law-of-total-probability" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="law-of-total-probability">Law of Total Probability</h3>
 <p>The <strong>Law of Total Probability</strong>: <span class="math inline">\(P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)\)</span>.</p>
+</section>
+<section id="bayes-theorem" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h3>
 <p><strong>Bayes’ Theorem</strong>: <span class="math inline">\(P(A|B)=P(B|A)P(A)/P(B)\)</span>.</p>
 <p><strong>Example:</strong></p>
+</section>
 </section>
 <section id="counting-rules" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.5</span> Counting Rules</h2>
