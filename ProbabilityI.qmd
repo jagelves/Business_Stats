@@ -173,6 +173,7 @@ where the operator $!$ means to take the product of all positive integers from $
 
 
 ### Combinations {.unnumbered}
+
 The **Combination** function counts the number of ways to choose $x$ objects from a total of $n$ objects. The order in which the $x$ objects are listed does not matter. If repetition is not allowed use:
 $$C(n, x)= \frac{n!}{(n-x)!x!}$$
 *Ex: Let's imaging visiting the Mexican restaurant Chipotle. We are choosing a bowl for lunch and we can choose from the following items: beans, chicken, rice, pico, guac, and beef. If we are only allowed to select four items out of the six, in how many ways can we construct a bowl? Below we use the combination formula to show that there are $15$ possible bowls.*
@@ -187,18 +188,19 @@ $$C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}$$
 
 $$C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35$$
 ### Permutations {.unnumbered}
-The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. If repetition is not allowed we use:
+
+The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:
 
 $$P(n,x)= \frac{n!}{(n-x)!}$$
 
-Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of . Below you can see the calculation.
+*Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of $336$. Below you can see the calculation.*
 
 $$P(8,3)= \frac{8!}{5!}= 8 \times 7 \times 6=336$$
 
 As with combinations, there might be situations were we wish to count when repetition is allowed. If this is this case, use:
 $$P(n,x)=n^x$$
 
-Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are $10^3=1000$ possible permutations.
+*Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are $10^3=1000$ possible permutations.*
 
 
 ## Probability in R

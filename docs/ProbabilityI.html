@@ -513,12 +513,13 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p>There are situations when we wish to count all possible combinations inclusive of repetition of elements. If repetition is allowed we use the following formula:</p>
 <p><span class="math display">\[C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}\]</span></p>
 <p><em>Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is <span class="math inline">\(35\)</span>.</em></p>
-<p><span class="math display">\[C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35\]</span> ### Permutations {.unnumbered} The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. If repetition is not allowed we use:</p>
+<p><span class="math display">\[C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35\]</span> ### Permutations {.unnumbered}</p>
+<p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:</p>
 <p><span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
-<p>Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of . Below you can see the calculation.</p>
+<p><em>Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of <span class="math inline">\(336\)</span>. Below you can see the calculation.</em></p>
 <p><span class="math display">\[P(8,3)= \frac{8!}{5!}= 8 \times 7 \times 6=336\]</span></p>
 <p>As with combinations, there might be situations were we wish to count when repetition is allowed. If this is this case, use: <span class="math display">\[P(n,x)=n^x\]</span></p>
-<p>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
+<p><em>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</em></p>
 </section>
 </section>
 <section id="probability-in-r" class="level2" data-number="8.7">
