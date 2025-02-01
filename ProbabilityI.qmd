@@ -151,26 +151,54 @@ The image shows how event $A$ can occur. Essentially, when $B$ occurs $A$ is pos
 
 Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.
 
+### Factorial {.unnumbered}
+To illustrate our first counting rule, consider the number of ways that we can organize a group of three people (Ann, Beth, Charlie). The enumeration of all the possible orderings in this case is not that tedious and it can be shown in a table:
+
+|Ordering|Order|
+|:------:|:---:|
+|1|(Ann, Beth, Charlie)|
+|2|(Ann, Charlie, Beth)|
+|3|(Beth, Ann, Charlie)|
+|4|(Beth, Charlie, Ann)|
+|5|(Charlie, Ann, Beth)|
+|6|(Charlie, Beth, Ann)|
+
+The table shows that there are six possible ways to organize a group of three people. The **Factorial** counts how many ways a group of $N$ objects can be organized. Formally, we write:
+
+$$Factorial=N!$$
+
+where the operator $!$ means to take the product of all positive integers from $N$ down to $1$. Additionally, $0!$ is equal to zero. If we then try to find in how many ways we can organize a group of three people, we can avoid enumeration by calculating $3!=3 \times 2 \times 1=6$.
+
+*Ex: Let's assume that a manager has locked down the first five batters in a given game, but is undecided on the batting order. The number of ways that he can organize the five batters is given by $5!=5 \times 4 \times 3 \times 2 \times 1=120$.*
+
+
+### Combinations {.unnumbered}
 The **Combination** function counts the number of ways to choose $x$ objects from a total of $n$ objects. The order in which the $x$ objects are listed does not matter. If repetition is not allowed use:
 $$C(n, x)= \frac{n!}{(n-x)!x!}$$
-Ex: Consider the starting three batters for a baseball team. In how many 
+*Ex: Let's imaging visiting the Mexican restaurant Chipotle. We are choosing a bowl for lunch and we can choose from the following items: beans, chicken, rice, pico, guac, and beef. If we are only allowed to select four items out of the six, in how many ways can we construct a bowl? Below we use the combination formula to show that there are $15$ possible bowls.*
 
+$$C(6, 4)= \frac{6!}{(6-4)!4!}=\frac{6 \times 5}{2}=15$$
 
-If repetition is allowed use:
+There are situations when we wish to count all possible combinations inclusive of repetition of elements. If repetition is allowed we use the following formula:
+
 $$C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}$$
 
-Ex: Ice Cream
+*Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is $35$.*
 
-The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. If repetition is not allowed use 
+$$C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35$$
+### Permutations {.unnumbered}
+The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. If repetition is not allowed we use:
 
 $$P(n,x)= \frac{n!}{(n-x)!}$$
 
-Ex: Olympic Medals
+Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of . Below you can see the calculation.
 
-If repetition is allowed use 
+$$P(8,3)= \frac{8!}{5!}= 8 \times 7 \times 6=336$$
+
+As with combinations, there might be situations were we wish to count when repetition is allowed. If this is this case, use:
 $$P(n,x)=n^x$$
 
-Ex: Combination Lock
+Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are $10^3=1000$ possible permutations.
 
 
 ## Probability in R
