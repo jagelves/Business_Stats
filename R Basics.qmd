@@ -71,17 +71,42 @@ SleepingHours<-c(10,9,6,8)
 sum(SleepingHours)
 ```
 
-To learn more about a function you can use `?`. For example, to learn more about the `sum()` function, write `?sum` in the console.
+Functions also have optional arguments that are usually set to a default value. Consider the new *SleepingHours* data below that includes a missing value:
+```{r}
+SleepingHours<-c(10,9,6,NA,8)
+```
+
+If you were to try to calculate the sum of the numbers, you would get a mistake. To avoid the mistake, specify the additional argument *na.rm* and set it to TRUE, which is set to FALSE by default.
+
+```{r}
+sum(SleepingHours, na.rm=TRUE)
+```
+
+The argument, removes any missing values in the data (NA) and then estimates the sum. To learn more about a function and its arguments you can use `?`. For example, to learn more about the `sum()` function, write `?sum` in the console.
 
 ### Useful Base R Functions {.unnumbered}
 
-Understanding and using Base R functions is essential for efficiently managing and analyzing data. Functions like `na.omit()` help clean datasets by removing rows with missing values, ensuring your analyses are accurate and complete. `nrow()` and `ncol()` quickly provide insights into the size of your dataset, while `is.na()` allows you to identify and address missing data. The `summary()` function is a powerful way to generate descriptive statistics and assess the overall structure of your data at a glance. Additionally, coercion functions like `as.integer()`, `as.factor()`, and `as.double()` enable you to convert variables to appropriate data types, ensuring compatibility with different analysis methods.
+Understanding and using Base R functions is essential for efficiently managing and analyzing data.
+
+-   The `rm()` function removes a specified object from the environment. *Input: A object in the environment.*
+
+-   The `ls()` function lists all of the objects in the environments. *Input: none*
+
+-   The `rep()` function repeats a number or vector a given amount of times. *Input: A number or a vector.*
+
+-   The `seq()` function creates a vector with a sequence of numbers that range from a starting number to an ending number. *Input: A number or a vector.*
 
 -   The `na.omit()` function removes any observations that have a missing value (NA). The resulting data frame has only complete cases. *Input: A data frame (tibble) or vector.*
+
 -   The `nrow()` and `ncol()` functions return the number of rows and columns respectively from a data frame. *Input: A data frame (tibble).*
+
 -   The `is.na()` function returns a vector of *True* and *False* that specify if an entry is missing (NA) or not. *Input: A data frame (tibble) or vector.*
+
 -   The `summary()` function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. *Input: A data frame (tibble) or vector.*
+
 -   The `as.integer()`, `as.factor()`, `as.double()`, are functions used to coerce your data into a different scale of measurement. *Input: A vector or column of a data frame (tibble).*
+
+-   The `library()` function loads an R package. *Input: An R library found in CRAN.*
 
 ### Data Types {.unnumbered}
 
@@ -115,8 +140,11 @@ knitr::include_graphics("images/op.png")
 
 ### Useful dplyr Functions {.unnumbered}
 
-The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to @R4DS. To install, run the following command in the console `install.packages("dplyr")`.
+The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to @R4DS. To install, run the following command in the console `install.packages("tidyverse")`.
 
+-   The `read_csv()` function imports data from a csv file.
+-   The `write_csv()` exports a data frame in the environment as a csv file.
+-   The `glimpse()` function returns a preview of a tibble or a data frame. 
 -   The `arrange()` function allows you to sort data frames in ascending order. Pair with the `desc()` function to sort the data in descending order.
 -   The `filter()` function allows you to subset the rows of your data based on a condition.
 -   The `select()` function allows you to select a subset of variables from your data frame.
@@ -318,4 +346,3 @@ sum(Packers2$Experience)
 ```
 
 </details>
-
