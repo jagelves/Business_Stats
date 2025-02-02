@@ -302,14 +302,15 @@ window.Quarto = {
   <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
   <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ Theorem</a></li>
   </ul></li>
-  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.6</span> Counting Rules</a>
+  <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables"><span class="header-section-number">8.6</span> Contingency Tables</a></li>
+  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.7</span> Counting Rules</a>
   <ul class="collapse">
   <li><a href="#factorial" id="toc-factorial" class="nav-link" data-scroll-target="#factorial">Factorial</a></li>
   <li><a href="#combinations" id="toc-combinations" class="nav-link" data-scroll-target="#combinations">Combinations</a></li>
   <li><a href="#permutations" id="toc-permutations" class="nav-link" data-scroll-target="#permutations">Permutations</a></li>
   </ul></li>
-  <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.7</span> Probability in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.8</span> Exercises</a>
+  <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.8</span> Probability in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.9</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -458,12 +459,38 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 </section>
 <section id="bayes-theorem" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h3>
-<p><strong>Bayes’ Theorem</strong>: <span class="math inline">\(P(A|B)=P(B|A)P(A)/P(B)\)</span>.</p>
+<p><strong>Bayes’ Theorem</strong> states:</p>
+<p><span class="math display">\[P(A|B)=P(B|A)P(A)/P(B)\]</span> In essence, Bayes’ theorem is a way of updating probabilities in light of new evidence. The theorem tells us that the probability of an event A given that we have observed some evidence is equal to the prior probability (<span class="math inline">\(P(A)\)</span>) times a factor that measures the informativeness of the observed evidence <span class="math inline">\(P(B|A)/P(B)\)</span>.</p>
 <p><strong>Example:</strong></p>
 </section>
 </section>
-<section id="counting-rules" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.6</span> Counting Rules</h2>
+<section id="contingency-tables" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="contingency-tables"><span class="header-section-number">8.6</span> Contingency Tables</h2>
+<p>A <strong>contingency table</strong> (or cross-tabulation) summarizes the relationship between two or events (or variables). It is particularly helpful when analyzing frequencies of events and there relationship to other events.</p>
+<p>The contingency table below shows the frequency of event A and B occurring/not occurring.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cont.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by divinding each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the <strong>joint probability table</strong>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/joint.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the middle of the table we have the joint probabilities or intersections of events (i.e., <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cap B^c\)</span>, etc.). The values in the totals columns are the probabilities of each event happening (i.e., <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(B^c)\)</span>, etc.). We call these probabilities <strong>marginal probabilities</strong> since they reside at the margin of the table.</p>
+</section>
+<section id="counting-rules" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.7</span> Counting Rules</h2>
 <p>Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.</p>
 <section id="factorial" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="factorial">Factorial</h3>
@@ -526,14 +553,14 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p><em>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</em></p>
 </section>
 </section>
-<section id="probability-in-r" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.7</span> Probability in R</h2>
+<section id="probability-in-r" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.8</span> Probability in R</h2>
 <p>The <code>table()</code> function can be used to construct frequency distributions.</p>
 <p>The <code>factorial()</code> function returns the factorial of a number.</p>
 <p>The <code>gtools</code> package contains the <code>combinations()</code> and <code>permutations()</code> functions used to calculate combinations and permutations. Use the <em>repeats.allowed</em> argument to specify counting with repetition or no repetition. The <em>v</em> argument allows you to specify a vector of elements.</p>
 </section>
-<section id="exercises" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.8</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.9</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating simple probabilities.</p></li>

@@ -143,9 +143,29 @@ The image shows how event $A$ can occur. Essentially, when $B$ occurs $A$ is pos
 *Ex: Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) and hearts.*
 
 ### Bayes' Theorem {.unnumbered}
-**Bayes' Theorem**: $P(A|B)=P(B|A)P(A)/P(B)$.
+**Bayes' Theorem** states: 
+
+$$P(A|B)=P(B|A)P(A)/P(B)$$
+In essence, Bayes' theorem is a way of updating probabilities in light of new evidence. The theorem tells us that the probability of an event A given that we have observed some evidence is equal to the prior probability ($P(A)$) times a factor that measures the informativeness of the observed evidence $P(B|A)/P(B)$.
 
 **Example:**
+
+## Contingency Tables
+
+A **contingency table** (or cross-tabulation) summarizes the relationship between two or events (or variables). It is particularly helpful when analyzing frequencies of events and there relationship to other events.
+
+The contingency table below shows the frequency of event A and B occurring/not occurring.
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/cont.png")
+```
+We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by divinding each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the **joint probability table**.
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/joint.png")
+```
+
+In the middle of the table we have the joint probabilities or intersections of events (i.e., $A \cap B$, $A \cap B^c$, etc.). The values in the totals columns are the probabilities of each event happening (i.e., $P(A)$, $P(B^c)$, etc.). We call these probabilities **marginal probabilities** since they reside at the margin of the table.
 
 ## Counting Rules
 
