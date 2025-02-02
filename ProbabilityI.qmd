@@ -187,7 +187,9 @@ $$C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}$$
 *Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is $35$.*
 
 $$C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35$$
+
 ### Permutations {.unnumbered}
+
 
 The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:
 

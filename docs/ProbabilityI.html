@@ -306,6 +306,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#factorial" id="toc-factorial" class="nav-link" data-scroll-target="#factorial">Factorial</a></li>
   <li><a href="#combinations" id="toc-combinations" class="nav-link" data-scroll-target="#combinations">Combinations</a></li>
+  <li><a href="#permutations" id="toc-permutations" class="nav-link" data-scroll-target="#permutations">Permutations</a></li>
   </ul></li>
   <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.7</span> Probability in R</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.8</span> Exercises</a>
@@ -513,7 +514,10 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p>There are situations when we wish to count all possible combinations inclusive of repetition of elements. If repetition is allowed we use the following formula:</p>
 <p><span class="math display">\[C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}\]</span></p>
 <p><em>Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is <span class="math inline">\(35\)</span>.</em></p>
-<p><span class="math display">\[C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35\]</span> ### Permutations {.unnumbered}</p>
+<p><span class="math display">\[C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35\]</span></p>
+</section>
+<section id="permutations" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="permutations">Permutations</h3>
 <p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:</p>
 <p><span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
 <p><em>Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of <span class="math inline">\(336\)</span>. Below you can see the calculation.</em></p>
