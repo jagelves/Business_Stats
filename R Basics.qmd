@@ -53,7 +53,7 @@ A **tibble** is an enhanced version of a data frame in R, introduced by the `tib
 tibble(w=c(1,3,5,8),z=c(1,2,3,5))
 ```
 
-### Importing data {.unnumbered}
+### Importing Data and Preview {.unnumbered}
 
 To **import** data into R you can use the `read_csv()` function. This command from the `tidyverse` package imports data as a tsibble. Below we import data on dog intelligence and preview it with the `glimpse()` function.
 
@@ -62,6 +62,11 @@ di<-read_csv("https://jagelves.github.io/Data/dog_intelligence.csv")
 glimpse(di)
 ```
 
+You can also use the head() and tail() functions to preview the observations at the start or end of your data. For example, the command below asks for the first three observations of the di data set.
+
+```{r}
+head(di,3)
+```
 ### Functions {.unnumbered}
 
 In general, **functions** relate an input (arguments) to an output. For example, the `sum()` function takes as an input a vector with numeric values and returns the sum of the elements.
@@ -72,6 +77,7 @@ sum(SleepingHours)
 ```
 
 Functions also have optional arguments that are usually set to a default value. Consider the new *SleepingHours* data below that includes a missing value:
+
 ```{r}
 SleepingHours<-c(10,9,6,NA,8)
 ```
@@ -144,7 +150,7 @@ The `dplyr` package has a collection of functions that are useful for data manip
 
 -   The `read_csv()` function imports data from a csv file.
 -   The `write_csv()` exports a data frame in the environment as a csv file.
--   The `glimpse()` function returns a preview of a tibble or a data frame. 
+-   The `glimpse()` function returns a preview of a tibble or a data frame.
 -   The `arrange()` function allows you to sort data frames in ascending order. Pair with the `desc()` function to sort the data in descending order.
 -   The `filter()` function allows you to subset the rows of your data based on a condition.
 -   The `select()` function allows you to select a subset of variables from your data frame.
