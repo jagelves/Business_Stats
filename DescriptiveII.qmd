@@ -72,7 +72,7 @@ When working with numerical data, building a frequency distributions requires ad
 **1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.\
 *Ex: If a data set has 50 observations, we would choose six classes since* $2^6=64$ is greater than $50$ by the least amount.
 
-**2. Calculate the Width of Each Class:** The width of a class is determined using the formula: 
+**2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
 
 $$
 Width = \frac{Max-Min}{Number\ of\ Classes}
@@ -80,7 +80,7 @@ $$
 
 *Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is* $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
 
-**3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.  
+**3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.
 
 *Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.*
 
@@ -172,12 +172,11 @@ dow<-c(277,174,202,383,358,188,293,156,
 To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is we will be using five classes, of width 100. Below is the code to do this:
 
 ```{r}
-thresh<-seq(20,520,100)
-price.cut<-cut(dow,thresh,right=F)
-(dowfreq<-table(price.cut))
+intervals<-cut_width(dow, boundary=20, width=100)
+(dowfreq<-table(intervals))
 ```
 
-The process involves three steps. First we generate a sequence that captures the thresholds for our bins. We start at the minimum 20 and each class is generated at an increment of 100 (the class width). Next, we place each observation in the dow, into the bins by using the `cut()` function. This involve using, the data (dow), the thresholds for each class (thresh), and specifying if the right limit should be included in the bins. The last step is to tally the results with the `table()` function.
+The process involves two steps. First we place each observation in the dow, into the bins by using the `cut_width()` function. This involves specifying where we want to start our first bin (*boundary=20*) and the width of each bin (*width 100*). The function creates the bins and places each observation in the respective bin. The last step is to tally the results with the `table()` function.
 
 To obtain the cumulative distribution, we can use the `cumsum()` function. Below we just wrap the frequency distribution (freq) into the `cumsum()` function.
 
