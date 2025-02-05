@@ -295,22 +295,18 @@ You will need the **airquality** data set (in base R) to answer this question.
 
 *The highest frequency is in the* $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
 
-*Create a vector containing the intervals desired by using the `seq()` function.*
+*We can create the intervals using the `cut_width()` function:*
 
 ```{r}
-intervals <- seq(50, 100, by=10)
+intervals <- cut_width(airquality$Temp, width = 10,
+                       boundary=50)
 ```
 
-*Next use the `cut()` function to create the cuts for the histogram.*
-
-```{r}
-intervals.cut <- cut(airquality$Temp, intervals, left=FALSE, right=TRUE)
-```
 
 *The frequency distribution can be obtained by using the `table()` function on the interval.cut object created above.*
 
 ```{r}
-table(intervals.cut)
+table(intervals)
 ```
 
 </details>
@@ -326,7 +322,7 @@ table(intervals.cut)
 *To get the relative frequency table, start by saving the proportion table into an object.Then you can use the `prop.table()` function.*
 
 ```{r}
-freq<-table(intervals.cut) 
+freq<-table(intervals) 
 prop.table(freq)
 ```
 
