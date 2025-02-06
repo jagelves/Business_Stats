@@ -36,7 +36,7 @@ $$ where $N$ is the population size.
 
 *Ex 1: Consider the following sample of numbers* $x=\{1,4,2,1\}$. *The mean would be equal to* $\bar{x}=\frac{1+4+2+1}{4}$ *or* $\bar{x}=2$.
 
-*Ex 2: Consider the following sample of numbers $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.*
+*Ex 2: Consider the following sample of numbers* $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.
 
 ## The Median
 
@@ -70,7 +70,7 @@ The **geometric mean** is a multiplicative average that is less sensitive to out
 
 $$
 \bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
-$$ 
+$$
 
 where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
 
@@ -78,7 +78,7 @@ When dealing with proportions, these already reflect a standalone quantity, not 
 
 $$
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
-$$ 
+$$
 
 *Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
 
@@ -132,6 +132,19 @@ The `summary()` calculates a collection of summary statistics for a vector or da
 summary(poll)
 ```
 
+Below a list of the functions used:
+
+-  The `mean()` function calculates the average for a vector of numbers.
+
+-  The `median()` function calculates the median for a vector of numbers.
+
+-  The `table()` function generates the frequency distribution so that we can identify the mode or modes.
+
+-  The `weighted.mean()` function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.
+
+-  The `lenght()` function calculates the length of a vector.
+
+-  The `summary()` function provides measures of location for a vector of numbers.
 ## Exercises
 
 The following exercises will help you practice the measures of central location. In particular, the exercises work on:

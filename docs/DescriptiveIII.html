@@ -295,8 +295,7 @@ window.Quarto = {
   <li><a href="#the-mode" id="toc-the-mode" class="nav-link" data-scroll-target="#the-mode"><span class="header-section-number">3.3</span> The Mode</a></li>
   <li><a href="#the-weighted-mean" id="toc-the-weighted-mean" class="nav-link" data-scroll-target="#the-weighted-mean"><span class="header-section-number">3.4</span> The Weighted Mean</a></li>
   <li><a href="#the-geometric-mean" id="toc-the-geometric-mean" class="nav-link" data-scroll-target="#the-geometric-mean"><span class="header-section-number">3.5</span> The Geometric Mean</a></li>
-  <li><a href="#measures-of-central-location-in-r" id="toc-measures-of-central-location-in-r" class="nav-link" data-scroll-target="#measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.7</span> Exercises</a>
+  <li><a href="#measures-of-central-location-in-r" id="toc-measures-of-central-location-in-r" class="nav-link" data-scroll-target="#measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -354,7 +353,7 @@ details summary {
 \mu=\frac{\sum x_{i}}{N}
 \]</span> where <span class="math inline">\(N\)</span> is the population size.</p>
 <p><em>Ex 1: Consider the following sample of numbers</em> <span class="math inline">\(x=\{1,4,2,1\}\)</span>. <em>The mean would be equal to</em> <span class="math inline">\(\bar{x}=\frac{1+4+2+1}{4}\)</span> <em>or</em> <span class="math inline">\(\bar{x}=2\)</span>.</p>
-<p><em>Ex 2: Consider the following sample of numbers <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. The mean is <span class="math inline">\(\bar{x}=21.6\)</span>. Although most of the numbers are in the range <span class="math inline">\((1,4)\)</span>, the <span class="math inline">\(100\)</span> biases the mean to <span class="math inline">\(21.6\)</span>.</em></p>
+<p><em>Ex 2: Consider the following sample of numbers</em> <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. The mean is <span class="math inline">\(\bar{x}=21.6\)</span>. Although most of the numbers are in the range <span class="math inline">\((1,4)\)</span>, the <span class="math inline">\(100\)</span> biases the mean to <span class="math inline">\(21.6\)</span>.</p>
 </section>
 <section id="the-median" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="the-median"><span class="header-section-number">3.2</span> The Median</h2>
@@ -456,9 +455,15 @@ details summary {
                     Max.   :250.0   Max.   :0.8500  </code></pre>
 </div>
 </div>
-</section>
-<section id="exercises" class="level2" data-number="3.7">
-<h2 data-number="3.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.7</span> Exercises</h2>
+<p>Below a list of the functions used:</p>
+<ul>
+<li><p>The <code>mean()</code> function calculates the average for a vector of numbers.</p></li>
+<li><p>The <code>median()</code> function calculates the median for a vector of numbers.</p></li>
+<li><p>The <code>table()</code> function generates the frequency distribution so that we can identify the mode or modes.</p></li>
+<li><p>The <code>weighted.mean()</code> function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.</p></li>
+<li><p>The <code>lenght()</code> function calculates the length of a vector.</p></li>
+<li><p>The <code>summary()</code> function provides measures of location for a vector of numbers. ## Exercises</p></li>
+</ul>
 <p>The following exercises will help you practice the measures of central location. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the mean, median, and the mode.</p></li>
