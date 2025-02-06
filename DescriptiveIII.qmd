@@ -48,7 +48,7 @@ The **median** is the value in the middle when data is organized in ascending or
 
 ## The Mode
 
-The **mode** is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data, as it helps determine popularity or commonality, and it can be applied to both numerical and non-numerical data sets. However, the mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.
+The **mode** is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data as it helps determine popularity of values. It can be applied to both numerical and non-numerical data sets. The mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.
 
 *Ex 1: Consider the following numbers* $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
 
@@ -56,7 +56,7 @@ The **mode** is the value with highest frequency from a set of observations. Thi
 
 ## The Weighted Mean
 
-The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. However, this measure requires additional information in the form of weights, which may not always be available or accurate. Furthermore, it is sensitive to errors in weighting, which can distort the results and lead to misleading conclusions. It is calculated by calculating the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
+The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights ($w_i$), which may not always be available or accurate. It is calculated the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
 
 $$
 \bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
