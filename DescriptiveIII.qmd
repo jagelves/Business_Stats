@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Statistics III
 
-Understanding where the "center" of a dataset lies is popular step used to interpret and summarize data effectively. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations.
+Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations.
 
 ## The Mean
 
@@ -25,16 +25,18 @@ The **mean** is the average value for a numerical variable. It is a widely under
 The sample statistic is estimated by:
 
 $$
-\bar{x}=\sum x_{i}/n
+\bar{x}=\frac{\sum x_{i}}{n}
 $$
 
 where $x_i$ is observation $i$, and $n$ is the number of observations. In words, the formula instruct you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
 
 $$
-\mu=\sum x_{i}/N.
+\mu=\frac{\sum x_{i}}{N}
 $$ where $N$ is the population size.
 
-*Ex: Consider the following sample of numbers* $x=\{1,4,2,1\}$. *The mean would be equal to* $\bar{x}=\frac{1+4+2+1}{4}$ *or* $\bar{x}=2$.
+*Ex 1: Consider the following sample of numbers* $x=\{1,4,2,1\}$. *The mean would be equal to* $\bar{x}=\frac{1+4+2+1}{4}$ *or* $\bar{x}=2$.
+
+*Ex 2: Consider the following sample of numbers $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.*
 
 ## The Median
 
@@ -68,15 +70,13 @@ The **geometric mean** is a multiplicative average that is less sensitive to out
 
 $$
 \bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
-$$
-where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
+$$ where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
 
 When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:
 
 $$
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
-$$
-*Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
+$$ *Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
 
 ## Measures of Central Location in R
 
