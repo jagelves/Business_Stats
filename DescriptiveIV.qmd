@@ -1,3 +1,4 @@
+```{=html}
 <style>
 details {
   background-color: #F8F9FA;
@@ -11,48 +12,60 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
+```
 
 # Descriptive Stats IV
 
-Understanding the spread or variability of data is important when making informed decisions with data. Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency Below, we explore the main statistics that help us quantify variability:
+Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. Below, we explore the main statistics that help us quantify variability.
 
-## The Range 
+## The Range
 
-This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by $Range=largest-smallest$.  
+This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by $Range=largest-smallest$.
 
-*Ex: Consider the data $x=\{480, 1050, 1400, 2500, 3200\}$. The range is given by $Range=3200-480=2720$.*
+*Ex: Consider the data* $x=\{480, 1050, 1400, 2500, 3200\}$. The range is given by $Range=3200-480=2720$.
 
 ## The Variance
 
-Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The population parameter is given by $\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$, while the sample statistic is $s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$.  
+Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The population parameter is given by: 
+
+$$\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$$
+
+while the sample statistic is 
+
+$$s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$$
 
 **Example:** Let's consider a sample of the price of Ether (a famous crypto currency). Below is a graph of the prices:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Ether.png")
 ```
+
 The y axis represents the price, while the x axis represents the period of time. The red line is the average price of Ether. The way the variance calculates dispersion, is by first finding the distance between each point and the average. The image below illustrates these distances:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Ether2.png")
 ```
 
-Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. However, because the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This "balancing" effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones.
+Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. Since the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This "balancing" effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones.
 
 To address this issue, the variance squares each deviation from the mean before finding their average. This squaring eliminates negative values, ensuring a non-zero measure of spread. The table below illustrates these calculations:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Var1.png")
 ```
-The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The variance, averages the numbers in the third column. The result is $s^2=977594$, which means that the price of Ether varies on average 977,594 squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.
+
+The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The variance, averages the numbers in the third column. The result is $s^2=977594$, which means that the price of Ether varies on average $977,594$ squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.
 
 ## The Standard Deviation
 
 The standard deviation is derived by taking the square root of the variance. Remember, the variance employs squared deviations to eliminate negative values and calculate spread. By taking the square root, the standard deviation reverts the measure of dispersion back to the original units of the variable. This transformation makes the standard deviation more intuitive; it directly quantifies how much each data point deviates from the mean in the same units as the variable itself. Consequently, the standard deviation is a clear and intuitive measure of variability.
 
-To find the standard deviation, take the square root of the variance. For the population parameter use $\sigma=\sqrt{\sigma^2}$ and $s=\sqrt{s^2}$ for the sample statistic.
+To find the standard deviation, take the square root of the variance. For the population parameter use: $$\sigma=\sqrt{\sigma^2}$$ 
 
-*Ex: Consider once more the price of Ether. That is. $x=\{480, 1050, 1400, 2500, 3200\}$. In the previous section we found that the variance $s^2=977594$. Using the squared root we find that $s=\sqrt{977594}=988.73$. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.
+For the sample standard deviation use:
+$$s=\sqrt{s^2}$$ 
+
+*Ex: Consider once more the price of Ether. That is. $x=\{480, 1050, 1400, 2500, 3200\}$. In the previous section we found that the variance $s^2=977594$. Using the squared root we find that $s=\sqrt{977594}=988.73$. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.*
 
 ## Mean Absolute Deviation
 
@@ -64,11 +77,11 @@ Another measure of data variability is the Mean Absolute Deviation (MAD), which 
 knitr::include_graphics("images/Mad.png")
 ```
 
-For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals $MAD=899.2$. This result states that, on average, each data point is roughly 900 dollars away from the mean. Note that the standard deviation is higher ($988.73$) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.
+For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals $MAD=899.2$. This result states that, on average, each data point is roughly $900$ dollars away from the mean. Note that the standard deviation is higher ($988.73$) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.
 
 ## Coefficient of Variation
 
-The **Coefficient of Variation** simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by $CV=s/\bar{x}$. 
+The **Coefficient of Variation** simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by $CV=s/\bar{x}$.
 
 **Example:** Consider the table below, that shows information on two different stocks:
 
@@ -78,13 +91,13 @@ knitr::include_graphics("images/CV.png")
 
 The third column shows the standard deviation of each stock. One could conclude that both stocks vary the same as they have the same standard deviation of one. Recall that the coefficient of variation considers the variable's scale by incorporating the mean into its calculation. Since one stock is centered around 1 dollar and the other around 100 dollars (second column), it is clear that they do not vary similarly percentage-wise. Stock A varies 100% from the mean, whereas Stock B only varies 1%. Hence, the coefficient of variation would identify Stock A as the more variable stock.
 
-
 ## The Sharpe Ratio
+
 The Sharpe Ratio measures how much excess return an investor receives for the extra volatility (risk) taken on beyond the risk-free rate. It essentially uses the same principle of normalization as the CV but adds the dimension of risk-adjusted performance. If the CV tells you the variability of returns in relation to their mean, the Sharpe Ratio tells you if that variability is worth it by comparing it against what you could safely earn without risk. In essence, while the CV highlights variability, the Sharpe Ratio motivates investment choices by rewarding higher returns per unit of risk taken.
 
 In sum, the **Sharpe ratio** quantifies the excess return of an investment over the risk free return. It is calculated by $\frac{\bar{R_p}-R_f}{s}$, where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
 
-**Example:** Consider the table below that includes a collection of investments. 
+**Example:** Consider the table below that includes a collection of investments.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Sharpe.png")
@@ -106,12 +119,14 @@ Use the `glimpse()` fucntion to view the data:
 ```{r}
 glimpse(returns)
 ```
+
 It seems like the data is stock returns for different companies. We can start by finding the average return of each stock. To do this, let's use the `group_by()` and `summarise()` functions.
 
 ```{r}
 returns %>% group_by(Stock) %>% 
   summarise(Mean=mean(Return))
 ```
+
 The `group_by()` function makes a group out of every unique entry in the Stock variable. Since, there are three unique entries (AAPL, SPY and TSLA), it created three groups. The `summarise()` function allows us to combine (or use) all of the entries of a particular stock to find a summary statistic. Since we specified `mean()`, the command returns the mean of the particular stock returns. It seems like TSLA has the highest mean return at 0.5%.
 
 We can keep adding to the table by specifying other measures. To calculate the variance we can use the `var()` function, for the standard deviation we can use the `sd()` function, and for the coefficient of variation we can find the ratio between the standard deviation and the mean.
@@ -123,6 +138,7 @@ returns %>% group_by(Stock) %>%
             SD=sd(Return),
             CV=SD/Mean*100)
 ```
+
 TSLA seems to have the highest variation when following the standard deviation. However, if we look at the variation as a percentage of the mean, SPY seems to have the highest variation for the period considered. In the table below we once more use the `group_by()` and `summarise()` functions to calculate the other measures of dispersion.
 
 ```{r}
@@ -131,17 +147,18 @@ returns %>% group_by(Stock) %>%
             MAD=mean(abs(Return-mean(Return))),
             Sharpe=(mean(Return)-0.0001)/sd(Return))
 ```
+
 In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the `range()` function. The `diff()` function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.
 
-Below is a list of the functions used:  
+Below is a list of the functions used:
 
-- The `range()` function returns the maximum and minimum of a vector of values.
+-   The `range()` function returns the maximum and minimum of a vector of values.
 
-- The `diff()` function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.
+-   The `diff()` function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.
 
-- The `var()` function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of $(n-1)/n$.
+-   The `var()` function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of $(n-1)/n$.
 
-- The `sd()` function calculates the sample standard deviation.
+-   The `sd()` function calculates the sample standard deviation.
 
 ## Exercises
 
@@ -168,7 +185,8 @@ For the following exercises, make your calculations by hand and verify results u
 <details>
 
 <summary>Answer</summary>
-*The mean is $60$, the Range is $94$, the MAD is $28$, the variance is $1186$ and the variance is $34.44$.*
+
+*The mean is* $60$, the Range is $94$, the MAD is $28$, the variance is $1186$ and the variance is $34.44$.
 
 *Start by crating a vector to hold the values:*
 
@@ -197,7 +215,7 @@ Ex1<-c(70,68,4,98)
 |    4    |       -56       |        3136         |        56         |
 |   98    |       38        |        1444         |        38         |
 
-*The variance averages out the squared deviations $(x_{i}-\bar{x})^2$, the MAD averages out the absolute deviations $|x_{i}-\bar{x}|$, and the standard deviation is the square root of the variance.*
+*The variance averages out the squared deviations* $(x_{i}-\bar{x})^2$, the MAD averages out the absolute deviations $|x_{i}-\bar{x}|$, and the standard deviation is the square root of the variance.
 
 *Let's verify the variance in R:*
 
@@ -207,22 +225,20 @@ AverageDeviations1<-mean(SquaredDeviations1)
 var(Ex1)*3/4
 ```
 
-*Note that R calculates the sample variance. Hence, we must multiply the result by $3/4$ to get the population variance. The standard deviation is just the square root of the variance:*
+*Note that R calculates the sample variance. Hence, we must multiply the result by* $3/4$ to get the population variance. The standard deviation is just the square root of the variance:
 
 ```{r}
 sqrt(AverageDeviations1)
 ```
 
-*Lastly, the MAD is calculated by averaging the absolute deviations $|x_{i}-\bar{x}|$.*
+*Lastly, the MAD is calculated by averaging the absolute deviations* $|x_{i}-\bar{x}|$.
 
 ```{r}
 AbsoluteDeviations1<-abs(Ex1-Average1)
 mean(AbsoluteDeviations1)
 ```
 
-
 </details>
-
 
 2.  Use the following observations to calculate the Range, MAD, Variance and Standard Deviation. Assume that the data below is a sample from the population.
 
@@ -233,7 +249,8 @@ mean(AbsoluteDeviations1)
 <details>
 
 <summary>Answer</summary>
-*The mean is $-2$, Range is $7$, the MAD is $2.33$, the variance is $7.6$ and the standard deviation is $2.76$.*
+
+*The mean is* $-2$, Range is $7$, the MAD is $2.33$, the variance is $7.6$ and the standard deviation is $2.76$.
 
 *Here is the table of deviations from the mean:*
 
@@ -282,7 +299,8 @@ You will need the **Stocks** data set to answer this question. You can find this
 <details>
 
 <summary>Answer</summary>
-*For the sample taken, GBTC has the less variation. The standard deviation of GBTC is $9.43$, which is less than $16.57$ for VTI or $50.38$ for TSLA.*
+
+*For the sample taken, GBTC has the less variation. The standard deviation of GBTC is* $9.43$, which is less than $16.57$ for VTI or $50.38$ for TSLA.
 
 *Start by loading the data set from the website. Since the file is in csv format, we will use the `read.csv()` function.*
 
@@ -316,7 +334,7 @@ sd(StockPrices$GBTC)
 
 <summary>Answer</summary>
 
-*The answer is the same, since the MAD for GBTC is $8.46$ which is lower than $14.27$ for VTI or $41.67$ for TSLA.*
+*The answer is the same, since the MAD for GBTC is* $8.46$ which is lower than $14.27$ for VTI or $41.67$ for TSLA.
 
 *To calculate the MAD for TSLA we can use the following command:*
 
@@ -343,7 +361,8 @@ sd(StockPrices$GBTC)
 <details>
 
 <summary>Answer</summary>
-*By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of $0.08$ which is lower than $0.44$ for GBTC or $0.18$ for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.*
+
+*By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of* $0.08$ which is lower than $0.44$ for GBTC or $0.18$ for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.
 
 *The coefficients of variations are as follows. For TSLA the CV is:*
 
@@ -374,7 +393,8 @@ Install the `ISLR2` package. You will need the **Portfolio** data set to answer 
 <details>
 
 <summary>Answer</summary>
-*The best performing stock on average is stock X. It has an average return of $-0.078$% vs. $0.097$% for stock Y. The safest stock is stock X as well, since the standard deviation is $1.062$ percentage points vs. $1.14$ percentage points for stock Y.*
+
+*The best performing stock on average is stock X. It has an average return of* $-0.078$% vs. $0.097$% for stock Y. The safest stock is stock X as well, since the standard deviation is $1.062$ percentage points vs. $1.14$ percentage points for stock Y.
 
 *Start by loading the `ISLR2` package:*
 
@@ -406,7 +426,6 @@ sd(Portfolio$X)
 sd(Portfolio$Y)
 ```
 
-
 </details>
 
 2.  Use a Risk Free rate of return of 3.5% to calculate the Sharpe ratio for each stock. Which stock would you recommend?
@@ -414,7 +433,8 @@ sd(Portfolio$Y)
 <details>
 
 <summary>Answer</summary>
-*The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio. $-0.106$ vs. $-0.115$. Stock X is recommended since it provides a higher excess return per unit of risk taken.*
+
+*The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio.* $-0.106$ vs. $-0.115$. Stock X is recommended since it provides a higher excess return per unit of risk taken.
 
 *To calculate Sharpe Ratios use both the average return, and the standard deviation. For stock X, the Sharpe Ratio is:*
 
@@ -428,7 +448,6 @@ sd(Portfolio$Y)
 (mean(Portfolio$Y)-0.035)/sd(Portfolio$Y)
 ```
 
-
 </details>
 
 3.  Calculate the average return for a portfolio that has 30% of stock X and 70% of stock Y. What is the standard deviation of the portfolio?
@@ -437,7 +456,7 @@ sd(Portfolio$Y)
 
 <summary>Answer</summary>
 
-*The portfolio has an average return of $-0.091$ which is worse than stock X but better than stock Y. The standard deviation is $1.00$. This is better than stock X and Y separately. The Sharpe ratio of $-0.091$ is also better for the portfolio than for each stock individually.*
+*The portfolio has an average return of* $-0.091$ which is worse than stock X but better than stock Y. The standard deviation is $1.00$. This is better than stock X and Y separately. The Sharpe ratio of $-0.091$ is also better for the portfolio than for each stock individually.
 
 *The mean of the portfolio is given by:*
 
