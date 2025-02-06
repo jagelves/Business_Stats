@@ -381,11 +381,13 @@ details summary {
 <p>The <strong>geometric mean</strong> is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is useful when averaging growth rates or rates of return. It is calculated by:</p>
 <p><span class="math display">\[
 \bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
-\]</span> where <span class="math inline">\(\sqrt[n]{}\)</span> is the <span class="math inline">\(n_{th}\)</span> root, and <span class="math inline">\(r_i\)</span> are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.</p>
+\]</span></p>
+<p>where <span class="math inline">\(\sqrt[n]{}\)</span> is the <span class="math inline">\(n_{th}\)</span> root, and <span class="math inline">\(r_i\)</span> are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.</p>
 <p>When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:</p>
 <p><span class="math display">\[
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
-\]</span> <em>Ex: Consider the variable</em> <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</p>
+\]</span></p>
+<p><em>Ex: Consider the variable</em> <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</p>
 </section>
 <section id="measures-of-central-location-in-r" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</h2>

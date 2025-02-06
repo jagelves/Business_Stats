@@ -70,13 +70,17 @@ The **geometric mean** is a multiplicative average that is less sensitive to out
 
 $$
 \bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
-$$ where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
+$$ 
+
+where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
 
 When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:
 
 $$
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
-$$ *Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
+$$ 
+
+*Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
 
 ## Measures of Central Location in R
 
