@@ -373,7 +373,16 @@ window.Quarto = {
 <li>Effectiveness: How much can we increase the price for every additional dollar spent on advertisement?</li>
 <li>Prediction: What is the predicted price if we have a budget of 6 for advertisement?</li>
 </ol>
-<p>The regression line allows us to answer these questions by quantifying the relationship between the two variables.</p>
+<p>The regression line allows us to answer these questions by quantifying the relationship between the two variables. Specifically, if we can estimate the regression line, as shown below, we can answer these questions.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/reg.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Let’s start by calculating the slope of the regression line, as this will help us answer the effectiveness question. The slope measures how much the price increases for every additional dollar spent on advertisement. It is calculated using the formula: <span class="math inline">\(\hat{\beta}= \frac {s_{xy}}{s_{x}^2}\)</span>. Given that the covariance is <span class="math inline">\(3.67\)</span> and the variance of <span class="math inline">\(x\)</span> is <span class="math inline">\(1.67\)</span>, the slope of the regression line is <span class="math inline">\(\hat{\beta}= \frac{3.67}{1.67}=2.2\)</span>. This tells us that for every additional dollar spent on advertisement, price increases by <span class="math inline">\(2.2\)</span> on average. Thus, we have answered the effectiveness question.</p>
 <p>Next, we calculate the intercept to complete the regression line and answer the prediction question. The intercept represents the predicted price when advertisement spending is zero. It is calculated as: <span class="math inline">\(\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}\)</span>. Since the mean of advertisement is <span class="math inline">\(2.5\)</span> and the mean of price is <span class="math inline">\(7\)</span>, the intercept is <span class="math inline">\(\hat{\alpha}=7-2.2(2.5)=1.5\)</span>. This means that if we do not advertise, the predicted price is zero.</p>
 <p>The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is <span class="math inline">\(\hat{y_i}=1.5+2.2x_i\)</span>. With this equation we can now establish that if we had a budget of <span class="math inline">\(6\)</span> for advertisement, our predicted price would be <span class="math inline">\(\hat{y_i}=1.5+2.2(6)=14.7\)</span>. This answers our prediction question.</p>
@@ -546,7 +555,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -968,7 +977,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1066,7 +1075,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="RegressionII_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

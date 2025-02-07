@@ -13,20 +13,24 @@ The **intercept** determines where the line crosses the $y$ axis. In other words
 **Example:** Let’s examine a data set on Price and Advertisement. In general, one expects that when a company advertises, it can convince consumers to pay more for their product. Below is the data used to calculate the regression line, followed by its interpretation.
 
 | Advertisement (x) | Price (y) |
-|:-:|:-:|
-|2|7|
-|1|3|
-|3|8|
-|4|10|
+|:-----------------:|:---------:|
+|         2         |     7     |
+|         1         |     3     |
+|         3         |     8     |
+|         4         |    10     |
 
-The data shows a clear relationship between advertisement and price: when advertisement spending is high, price also tends to be high. This suggests a direct relationship between the two variables. In a previous chapter, we learned to quantify such relationships using covariance and the correlation coefficient.
+The data shows a clear relationship between advertisement and price: when advertisement spending is high, price also tends to be high. This suggests a direct relationship between the two variables. In a previous chapter, we learned to quantify such relationships using covariance and the correlation coefficient. 
 
 In this section, we aim to answer two key questions:
 
 1.  Effectiveness: How much can we increase the price for every additional dollar spent on advertisement?
 2.  Prediction: What is the predicted price if we have a budget of 6 for advertisement?
 
-The regression line allows us to answer these questions by quantifying the relationship between the two variables.
+The regression line allows us to answer these questions by quantifying the relationship between the two variables. Specifically, if we can estimate the regression line, as shown below, we can answer these questions.
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/reg.png")
+```
 
 Let’s start by calculating the slope of the regression line, as this will help us answer the effectiveness question. The slope measures how much the price increases for every additional dollar spent on advertisement. It is calculated using the formula: $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$. Given that the covariance is $3.67$ and the variance of $x$ is $1.67$, the slope of the regression line is $\hat{\beta}= \frac{3.67}{1.67}=2.2$. This tells us that for every additional dollar spent on advertisement, price increases by $2.2$ on average. Thus, we have answered the effectiveness question.
 
@@ -43,6 +47,7 @@ This demonstrates the value of regression analysis in quantifying relationships 
 When analyzing the effectiveness of a regression model, it is crucial to assess how well the model fits the data. This is where measures of goodness of fit come into play. Below we revisit the coefficient of determination or $R^2$.
 
 ### Coefficient of Determination {.unnumbered}
+
 The **coefficient of determination** or $R^2$ is the percent of the variation in $y$ that is explained by changes in $x$. The higher the $R^2$ the better the explanatory power of the model. The $R^2$ is always between \[0,1\]. To calculate use $R^2=SSR/SST$. Below you can find how to calculate each component of the $R^2$.
 
 -   $SSR$ (Sum of Squares due to Regression) is the part of the variation in $y$ explained by the model. Mathematically, $SSR=\sum{(\hat{y_i}-\bar{y})^2}$.
@@ -53,23 +58,22 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 
 -   Note that $SST=SSR+SSE$.
 
-
 **Example:** Let's consider data on the Weight ($y$) and Exercise ($x$) of a particular person.
 
 | Weight (y) | Exercise (x) |
-|:-:|:-:|
-|165|45|
-|170|10|
-|168|25|
-|164|30|
-|165|40|
-
+|:----------:|:------------:|
+|    165     |      45      |
+|    170     |      10      |
+|    168     |      25      |
+|    164     |      30      |
+|    165     |      40      |
 
 Now, if we were to predict the weight of this person, we could consider just using the mean value (i.e., $166.4$). If this were our guess, then the mistakes (errors) we would have made with this prediction are quantified by the $SST=25.2$. Below, you can see these mistakes visually.
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/rs2.png")
 ```
+
 For example, in day $1$ the mean prediction is $166.4$, but the actual measure is $165$. We have made a mistake of $-1.4$ by using the mean as our predicted weight. To get a sense of the overall mistake we have made, we add up all of the squared errors made by using the mean as a prediction. Hence, $SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2$.
 
 The idea behind regression is that another variable related to weight can help us make a better prediction. Generally speaking, you burn calories if you exercise, so your weight should be lower when exercising. Hence, adding information on how many minutes a person exercises in a day should allow us to predict someone’s weight better. The $SSE$ quantifies the mistakes made by a prediction generated from regression. To understand this, let's start by looking at the regression line for Weight and Exercise.
@@ -82,20 +86,19 @@ The image highlights how the regression line can reduce the errors in our predic
 
 If regression has helped us make smaller mistakes, it has also helped us explain more of the variation in Weight ($y$). In the graph, the gap between the mean and the $168$ point has been reduced by the amount highlighted in yellow ($0.77$). If we square and add up all of the "improvements," we get $SSR=5.29+9.4+0.59+0+2.35=17.63$. In sum, the regression line has closed the gap of the prediction errors made by using the mean by $R^2=\frac{SSR}{SST} \approx 0.7$ or 70%.
 
-
 ## Multiple Regression
 
 If we were to predict weight we could use several other variables that are related to get a better prediction. *Multiple regression* is a technique used predict a variable using more than one independent variable. Mathematically, you would be estimating $\hat{y_i}=\hat{\beta_0}+\hat{\beta_1}x_1+\hat{\beta_2}x_2...+\hat{\beta_k}x_k$, where $k$ is the total number of independent variables included in the regression model.
 
-**Example:** Let's consider an additional variable in our Weight and Exercise example. The table below includes information on Calories (z). 
+**Example:** Let's consider an additional variable in our Weight and Exercise example. The table below includes information on Calories (z).
 
-| Weight (y) | Exercise (x) | Calories (z)|
-|:-:|:-:|:-:|
-|165|45|1200|
-|170|10|1260|
-|168|25|1220|
-|164|30|1180|
-|165|40|1190|
+| Weight (y) | Exercise (x) | Calories (z) |
+|:----------:|:------------:|:------------:|
+|    165     |      45      |     1200     |
+|    170     |      10      |     1260     |
+|    168     |      25      |     1220     |
+|    164     |      30      |     1180     |
+|    165     |      40      |     1190     |
 
 The regression line can be estimated using computer software and is given by $\hat{y_i}=83.96-0.025x+0.069z$. A few things can be concluded from the regression line. First, as the amount of exercise increases our weight tends to go down, but as we consume more calories the weight tends to go up. Second, the effectiveness of calories seems to be better that that of exercise. For every minute exercise our weight goes down on average by 0.025 pounds. However, if we reduce our calorie consumption by 1, then our weight goes down by 0.069 pounds.
 
@@ -103,21 +106,21 @@ The regression line can be estimated using computer software and is given by $\h
 
 We can further explore the importance of each variable using the Anova table. This table helps us understand how well our regression model explains the dependent variable. For now, we will use this table to show the $SSR$ generated by each variable as well as to track the errors. Using computer software we get the following table:
 
-|Source|Sum Squares|
-|:-:|:-:|
-|x|17.63|
-|z|6.55|
-|Residuals|1.01|
+|  Source   | Sum Squares |
+|:---------:|:-----------:|
+|     x     |    17.63    |
+|     z     |    6.55     |
+| Residuals |    1.01     |
 
 The table shows that x "closes the gap" with respect to the mean prediction by $17.63$. If we add calories to our model, we further decrease the gap by another $6.55$. In sum, using them together reduces the $SST$ by $24.18$, which in turn reduced the $SSE$ to only $1.01$. Finally, the $R^2$ also increases from $0.7$ to now $0.96$, $R^2= \frac{17.63+6.55}{25.5}$.
 
 ### Adjusted $R^2$ {.unnumbered}
+
 The **adjusted** $R^2$ recognizes that the $R^2$ is a non-decreasing function of the number of independent variables included in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by $1-(1-R^2) \frac {n-1}{n-k-1}$, where $k$ is the number of explanatory variables used in the model and $n$ is the sample size. For our weight example $adjusted R^2=1-(1-0.96) \frac{5-1}{5-2-1}=0.9196$.
 
-
 ### Residual Standard Error {.unnumbered}
-The **Residual Standard Error** estimates the average dispersion of the data points around the regression line. Recall, that we have calculated the squared deviation from the regression line by using $SSE$. Hence if we want to find an average deviation we can divide using the number of observations and then find a square root to go back to linear values.  In particular you can use $s_e =\sqrt{\frac{SSE}{n-k-1}}$, where $k$ is the number of independent variables used in your regression. For our example with only exercise in our model $s_e=\sqrt{\frac{7.57}{5-1-1}}=1.59$. If we include both calories and exercise then $s_e=\sqrt{\frac{1.01}{5-2-1}}=0.71$.
 
+The **Residual Standard Error** estimates the average dispersion of the data points around the regression line. Recall, that we have calculated the squared deviation from the regression line by using $SSE$. Hence if we want to find an average deviation we can divide using the number of observations and then find a square root to go back to linear values. In particular you can use $s_e =\sqrt{\frac{SSE}{n-k-1}}$, where $k$ is the number of independent variables used in your regression. For our example with only exercise in our model $s_e=\sqrt{\frac{7.57}{5-1-1}}=1.59$. If we include both calories and exercise then $s_e=\sqrt{\frac{1.01}{5-2-1}}=0.71$.
 
 ## Regression in R
 
@@ -143,6 +146,7 @@ d %>% ggplot() +
 ```
 
 The regression line is estimated using the `lm()` command as shown below:
+
 ```{r}
 fit<-lm(y~x, data=d)
 ```
@@ -152,33 +156,35 @@ We can retrieve the coefficients by either using the `coef()` function or the `s
 ```{r}
 summary(fit)
 ```
+
 The summary function confirms our results for the $R^2$ and coefficients. If we wanted to make a prediction we can use the `predict()` function with the fit object as input. Below we predict y when x is equal to 4.
 
 ```{r}
 predict(fit,newdata = tibble(x=c(4)))
 ```
+
 Note that the values of $x$ must be entered as a tibble in the function. We can run multiple regression by just adding z to our fit object.
 
 ```{r}
 fit<-lm(y~x+z, data=d)
 summary(fit)
 ```
+
 Lastly, to obtain the Anova table we can use the `anova()` command.
 
 ```{r}
 anova(fit)
 ```
 
-Below we summarize the R functions: 
--  The `lm()` function to estimates the linear regression model.
+Below we summarize the R functions: - The `lm()` function to estimates the linear regression model.
 
--  The `predict()` function uses the linear model object to predict values. New data is entered as a data frame or tibble.
+-   The `predict()` function uses the linear model object to predict values. New data is entered as a data frame or tibble.
 
--  The `coef()` function returns the model's coefficients.
+-   The `coef()` function returns the model's coefficients.
 
--  The `summary()` function returns the model's coefficients, and goodness of fit measures.
+-   The `summary()` function returns the model's coefficients, and goodness of fit measures.
 
--  The `Anova()` function creates the anova table for a regression. you must provide an object that contains the result of the `lm()` function.
+-   The `Anova()` function creates the anova table for a regression. you must provide an object that contains the result of the `lm()` function.
 
 ## Exercises
 
