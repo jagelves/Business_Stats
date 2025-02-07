@@ -295,7 +295,8 @@ window.Quarto = {
   <li><a href="#the-mode" id="toc-the-mode" class="nav-link" data-scroll-target="#the-mode"><span class="header-section-number">3.3</span> The Mode</a></li>
   <li><a href="#the-weighted-mean" id="toc-the-weighted-mean" class="nav-link" data-scroll-target="#the-weighted-mean"><span class="header-section-number">3.4</span> The Weighted Mean</a></li>
   <li><a href="#the-geometric-mean" id="toc-the-geometric-mean" class="nav-link" data-scroll-target="#the-geometric-mean"><span class="header-section-number">3.5</span> The Geometric Mean</a></li>
-  <li><a href="#measures-of-central-location-in-r" id="toc-measures-of-central-location-in-r" class="nav-link" data-scroll-target="#measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</a>
+  <li><a href="#measures-of-central-location-in-r" id="toc-measures-of-central-location-in-r" class="nav-link" data-scroll-target="#measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -348,24 +349,25 @@ details summary {
 <p><span class="math display">\[
 \bar{x}=\frac{\sum x_{i}}{n}
 \]</span></p>
-<p>where <span class="math inline">\(x_i\)</span> is observation <span class="math inline">\(i\)</span>, and <span class="math inline">\(n\)</span> is the number of observations. In words, the formula instruct you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:</p>
+<p>where <span class="math inline">\(x_i\)</span> is observation <span class="math inline">\(i\)</span>, and <span class="math inline">\(n\)</span> is the number of observations in the sample. The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:</p>
 <p><span class="math display">\[
 \mu=\frac{\sum x_{i}}{N}
-\]</span> where <span class="math inline">\(N\)</span> is the population size.</p>
+\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is the population size.</p>
 <p><em>Ex 1: Consider the following sample of numbers</em> <span class="math inline">\(x=\{1,4,2,1\}\)</span>. <em>The mean would be equal to</em> <span class="math inline">\(\bar{x}=\frac{1+4+2+1}{4}\)</span> <em>or</em> <span class="math inline">\(\bar{x}=2\)</span>.</p>
 <p><em>Ex 2: Consider the following sample of numbers</em> <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. The mean is <span class="math inline">\(\bar{x}=21.6\)</span>. Although most of the numbers are in the range <span class="math inline">\((1,4)\)</span>, the <span class="math inline">\(100\)</span> biases the mean to <span class="math inline">\(21.6\)</span>.</p>
 </section>
 <section id="the-median" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="the-median"><span class="header-section-number">3.2</span> The Median</h2>
 <p>The <strong>median</strong> is the value in the middle when data is organized in ascending order. When <span class="math inline">\(n\)</span> is even, the median is the average between the two middle values. The median is resistant to outliers, making it an ideal measure for skewed data or data sets with irregular distributions. It is particularly useful for ordinal data, where precise ranking is important. However, the median does not utilize all data points, which can lead to less precise comparisons compared to other measures like the mean.</p>
-<p><em>Ex 1: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1\}\)</span>. We first sort the data to obtain <span class="math inline">\(x_{sorted}=\{1,1,2,4\}\)</span>. <em>Since the number of observations is even (</em><span class="math inline">\(n=4\)</span>), the median is the average of the two middle numbers (1,2). <span class="math inline">\(median_x=\frac{1+2}{2}\)</span> or <span class="math inline">\(1.5\)</span>.</p>
-<p><em>Ex 2: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. We once again sort the number obtaining <span class="math inline">\(x_{sorted}=\{1,1,2,4,100\}\)</span>. Since <span class="math inline">\(n=5\)</span> in this case we can identify the median as the third value in <span class="math inline">\(x_{sorted}\)</span>. <span class="math inline">\(median_x=2\)</span>. Note that the inclusion of <span class="math inline">\(100\)</span> in the data did not change much the measure of central location.</p>
+<p><em>Ex 1: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1\}\)</span>. We first sort the data to obtain <span class="math inline">\(x_{sorted}=\{1,1,2,4\}\)</span>. Since the number of observations is even (<span class="math inline">\(n=4\)</span>), the median is the average of the two middle numbers <span class="math inline">\((1,2)\)</span>. <span class="math inline">\(median_x=\frac{1+2}{2}\)</span> or <span class="math inline">\(1.5\)</span>.</em></p>
+<p><em>Ex 2: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. We once again sort the number obtaining <span class="math inline">\(x_{sorted}=\{1,1,2,4,100\}\)</span>. Since <span class="math inline">\(n=5\)</span> in this case we can identify the median as the third value in <span class="math inline">\(x_{sorted}\)</span>. <span class="math inline">\(median_x=2\)</span>. Note that the inclusion of <span class="math inline">\(100\)</span> in the data did not change much the measure of central location.</em></p>
 </section>
 <section id="the-mode" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="the-mode"><span class="header-section-number">3.3</span> The Mode</h2>
 <p>The <strong>mode</strong> is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data as it helps determine popularity of values. It can be applied to both numerical and non-numerical data sets. The mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.</p>
-<p><em>Ex 1: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1\}\)</span>. Since <span class="math inline">\(1\)</span> is repeated twice and all other numbers just repeated once, <span class="math inline">\(x_{mode}=1\)</span>.</p>
-<p><em>Ex 2: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1,4\}\)</span>. Now <span class="math inline">\(4\)</span> is also repeated twice. The variable has two modes <span class="math inline">\(x_{mode}=\{1,2\}\)</span>. <span class="math inline">\(x\)</span> is said to be bimodal.</p>
+<p><em>Ex 1: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1\}\)</span>. Since <span class="math inline">\(1\)</span> is repeated twice and all other numbers just repeated once, <span class="math inline">\(x_{mode}=1\)</span>.</em></p>
+<p><em>Ex 2: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1,4\}\)</span>. Now <span class="math inline">\(4\)</span> is also repeated twice. The variable has two modes <span class="math inline">\(x_{mode}=\{1,2\}\)</span>. <span class="math inline">\(x\)</span> is said to be bimodal.</em></p>
 </section>
 <section id="the-weighted-mean" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="the-weighted-mean"><span class="header-section-number">3.4</span> The Weighted Mean</h2>
@@ -373,7 +375,7 @@ details summary {
 <p><span class="math display">\[
 \bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
 \]</span></p>
-<p><em>Ex: Consider three different stocks</em> <span class="math inline">\(S=\{T, C, X\}\)</span> with stock returns of <span class="math inline">\(R=\{2,4,10\}\)</span>. Each stock has a weight in the portfolio of <span class="math inline">\(W=\{0.3,0.2,0.5\}\)</span>. The average return of the portfolio is <span class="math inline">\(\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}\)</span> or <span class="math inline">\(\bar{x}_{weighted}=6.4\)</span>.</p>
+<p><em>Ex: Consider three different stocks <span class="math inline">\(S=\{T, C, X\}\)</span> with stock returns of <span class="math inline">\(R=\{2,4,10\}\)</span>. Each stock has a weight in the portfolio of <span class="math inline">\(W=\{0.3,0.2,0.5\}\)</span>. The average return of the portfolio is <span class="math inline">\(\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}\)</span> or <span class="math inline">\(\bar{x}_{weighted}=6.4\)</span>.</em></p>
 </section>
 <section id="the-geometric-mean" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="the-geometric-mean"><span class="header-section-number">3.5</span> The Geometric Mean</h2>
@@ -386,7 +388,7 @@ details summary {
 <p><span class="math display">\[
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
 \]</span></p>
-<p><em>Ex: Consider the variable</em> <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</p>
+<p><em>Ex: Consider the variable <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</em></p>
 </section>
 <section id="measures-of-central-location-in-r" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</h2>
@@ -462,8 +464,11 @@ details summary {
 <li><p>The <code>table()</code> function generates the frequency distribution so that we can identify the mode or modes.</p></li>
 <li><p>The <code>weighted.mean()</code> function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.</p></li>
 <li><p>The <code>lenght()</code> function calculates the length of a vector.</p></li>
-<li><p>The <code>summary()</code> function provides measures of location for a vector of numbers. ## Exercises</p></li>
+<li><p>The <code>summary()</code> function provides measures of location for a vector of numbers.</p></li>
 </ul>
+</section>
+<section id="exercises" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.7</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of central location. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the mean, median, and the mode.</p></li>
