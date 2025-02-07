@@ -341,19 +341,20 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. Below, we explore the main statistics that help us quantify variability.</p>
+<p>Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions.</p>
 <section id="the-range" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="the-range"><span class="header-section-number">4.1</span> The Range</h2>
-<p>This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The <strong>range</strong> is calculated by <span class="math inline">\(Range=largest-smallest\)</span>.</p>
-<p><em>Ex: Consider the data</em> <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. The range is given by <span class="math inline">\(Range=3200-480=2720\)</span>.</p>
+<p>This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The <strong>range</strong> is calculated by:</p>
+<p><span class="math display">\[Range=Maximum-Minimum\]</span></p>
+<p><em>Ex: Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. The range is given by <span class="math inline">\(Range=3200-480=2720\)</span>.</em></p>
 </section>
 <section id="the-variance" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">4.2</span> The Variance</h2>
-<p>Variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The population parameter is given by:</p>
+<p>The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average. The population parameter is given by:</p>
 <p><span class="math display">\[\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\]</span></p>
 <p>while the sample statistic is</p>
 <p><span class="math display">\[s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\]</span></p>
-<p><strong>Example:</strong> Let’s consider a sample of the price of Ether (a famous crypto currency). Below is a graph of the prices:</p>
+<p><strong>Example:</strong> Let’s consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -391,11 +392,13 @@ details summary {
 <p>The standard deviation is derived by taking the square root of the variance. Remember, the variance employs squared deviations to eliminate negative values and calculate spread. By taking the square root, the standard deviation reverts the measure of dispersion back to the original units of the variable. This transformation makes the standard deviation more intuitive; it directly quantifies how much each data point deviates from the mean in the same units as the variable itself. Consequently, the standard deviation is a clear and intuitive measure of variability.</p>
 <p>To find the standard deviation, take the square root of the variance. For the population parameter use: <span class="math display">\[\sigma=\sqrt{\sigma^2}\]</span></p>
 <p>For the sample standard deviation use: <span class="math display">\[s=\sqrt{s^2}\]</span></p>
-<p><em>Ex: Consider once more the price of Ether. That is. <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. In the previous section we found that the variance <span class="math inline">\(s^2=977594\)</span>. Using the squared root we find that <span class="math inline">\(s=\sqrt{977594}=988.73\)</span>. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.</em></p>
+<p><em>Ex: Consider once more the price of Ether. That is.</em> <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. In the previous section we found that the variance <span class="math inline">\(s^2=977594\)</span>. Using the squared root we find that <span class="math inline">\(s=\sqrt{977594}=988.73\)</span>. If the price of Ether is in dollars, then, the price varies from the mean 988.73 dollars on average.</p>
 </section>
 <section id="mean-absolute-deviation" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</h2>
-<p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by <span class="math inline">\(MAD=\frac{\sum |x_i-\mu|}{N}\)</span> for the population and <span class="math inline">\(mad=\frac{\sum |x_i-\bar{x}|}{n}\)</span> for the sample.</p>
+<p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by:</p>
+<p><span class="math display">\[MAD=\frac{\sum |x_i-\mu|}{N}\]</span> where the | | operator indicates absolute value. You can estimates the mad for a sample with:</p>
+<p><span class="math display">\[mad=\frac{\sum |x_i-\bar{x}|}{n}\]</span></p>
 <p><strong>Example:</strong> Let’s consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -410,7 +413,8 @@ details summary {
 </section>
 <section id="coefficient-of-variation" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</h2>
-<p>The <strong>Coefficient of Variation</strong> simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by <span class="math inline">\(CV=s/\bar{x}\)</span>.</p>
+<p>The <strong>Coefficient of Variation</strong> simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by:</p>
+<p><span class="math display">\[CV=\frac{s}{\bar{x}}\]</span></p>
 <p><strong>Example:</strong> Consider the table below, that shows information on two different stocks:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -426,7 +430,8 @@ details summary {
 <section id="the-sharpe-ratio" class="level2" data-number="4.6">
 <h2 data-number="4.6" class="anchored" data-anchor-id="the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</h2>
 <p>The Sharpe Ratio measures how much excess return an investor receives for the extra volatility (risk) taken on beyond the risk-free rate. It essentially uses the same principle of normalization as the CV but adds the dimension of risk-adjusted performance. If the CV tells you the variability of returns in relation to their mean, the Sharpe Ratio tells you if that variability is worth it by comparing it against what you could safely earn without risk. In essence, while the CV highlights variability, the Sharpe Ratio motivates investment choices by rewarding higher returns per unit of risk taken.</p>
-<p>In sum, the <strong>Sharpe ratio</strong> quantifies the excess return of an investment over the risk free return. It is calculated by <span class="math inline">\(\frac{\bar{R_p}-R_f}{s}\)</span>, where <span class="math inline">\(\bar{R_p}\)</span> is the mean return of the portfolio, <span class="math inline">\(R_f\)</span> is the risk free return, and <span class="math inline">\(s\)</span> is the standard deviation.</p>
+<p>In sum, the <strong>Sharpe ratio</strong> quantifies the excess return of an investment over the risk free return. It is calculated by:</p>
+<p><span class="math display">\[\frac{\bar{R_p}-R_f}{s}\]</span> where <span class="math inline">\(\bar{R_p}\)</span> is the mean return of the portfolio, <span class="math inline">\(R_f\)</span> is the risk free return, and <span class="math inline">\(s\)</span> is the standard deviation.</p>
 <p><strong>Example:</strong> Consider the table below that includes a collection of investments.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
