@@ -497,9 +497,9 @@ details summary {
 <summary>
 Answer
 </summary>
-<p><em>To find the mean we will use the following formula</em> <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</p>
+<p><em>To find the mean we will use the following formula <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</em></p>
 <p><em>The median is found by locating the middle value when data is sorted in ascending order. The median in this example is</em> <span class="math inline">\(10\)</span>.</p>
-<p><em>The mode is the value with the highest frequency. In this example the mode is</em> <span class="math inline">\(12\)</span> since it is repeated twice and all other numbers appear only once.</p>
+<p><em>The mode is the value with the highest frequency. In this example the mode is <span class="math inline">\(12\)</span> since it is repeated twice and all other numbers appear only once.</em></p>
 <p><em>The mean can be easily verified in R by using the <code>mean()</code> function:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -590,7 +590,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean is</em> <span class="math inline">\(18.33\)</span>, the median is <span class="math inline">\(20\)</span>, the data is bimodal with both <span class="math inline">\(15\)</span> and <span class="math inline">\(20\)</span> being modes.</p>
+<p><em>The mean is <span class="math inline">\(18.33\)</span>, the median is <span class="math inline">\(20\)</span>, the data is bimodal with both <span class="math inline">\(15\)</span> and <span class="math inline">\(20\)</span> being modes.</em></p>
 <p><em>The mean is verified in R:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -626,7 +626,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean price for Country Hill is</em> <span class="math inline">\(1.87\)</span>. The mean price for Minute Maid is <span class="math inline">\(2.09\)</span>.</p>
+<p><em>The mean price for Country Hill is <span class="math inline">\(1.87\)</span>. The mean price for Minute Maid is <span class="math inline">\(2.09\)</span>.</em></p>
 <p><em>The means can be easily found with the <code>mean()</code> function:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
@@ -648,7 +648,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean price at store 1 for Country Hill is</em> <span class="math inline">\(1.80\)</span>. The juice is cheaper at store 1.</p>
+<p><em>The mean price at store 1 for Country Hill is <span class="math inline">\(1.80\)</span>. The juice is cheaper at store 1.</em></p>
 <p><em>The means for each store can be found by using <code>group_by()</code> and <code>summarise()</code>.The mean price at each store is:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>OJ <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(StoreID) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">MeanCH=</span><span class="fu">mean</span>(PriceCH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -671,7 +671,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>Purchasers of Country Hill at store 1 paid a median price of</em> <span class="math inline">\(1.76\)</span> for Country Hill juice. This once again was the lowest price.</p>
+<p><em>Purchasers of Country Hill at store 1 paid a median price of <span class="math inline">\(1.76\)</span> for Country Hill juice. This once again was the lowest price.</em></p>
 <p><em>The median price for Country Hill purchasers at each store is given by:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>OJ <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Purchase<span class="sc">==</span><span class="st">"CH"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(StoreID) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">MedianCH=</span><span class="fu">median</span>(PriceCH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -723,7 +723,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The average price of sale is found by using the weighted average formula.</em> <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span> The weights (<span class="math inline">\(w_{i}\)</span>) are given by the number of shares bought and the values (<span class="math inline">\(x_{i}\)</span>) are the prices. The weighted average is <span class="math inline">\(246.802\)</span>.</p>
+<p><em>The average price of sale is found by using the weighted average formula. <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span> The weights (<span class="math inline">\(w_{i}\)</span>) are given by the number of shares bought and the values (<span class="math inline">\(x_{i}\)</span>) are the prices. The weighted average is <span class="math inline">\(246.802\)</span>.</em></p>
 <p><em>In R you can create two vectors. One holds the share price and the other one the number of shares bought.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>PricePerShare<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">250.34</span>,<span class="fl">234.59</span>,<span class="fl">270.45</span>)</span>
@@ -830,7 +830,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>At the end of 4 years it is predicted that you would have</em> <span class="math inline">\(1621.17\)</span> dollars. Each year you would have gained <span class="math inline">\(12.84\)</span>% on average.</p>
+<p><em>At the end of 4 years it is predicted that you would have <span class="math inline">\(1621.17\)</span> dollars. Each year you would have gained <span class="math inline">\(12.84\)</span>% on average.</em></p>
 <p><em>In R include the annual rates in a vector:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>growth<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.173</span>,<span class="fl">0.196</span>,<span class="fl">0.068</span>,<span class="fl">0.082</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
