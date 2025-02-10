@@ -360,14 +360,14 @@ details summary {
 <section id="the-median" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="the-median"><span class="header-section-number">3.2</span> The Median</h2>
 <p>The <strong>median</strong> is the value in the middle when data is organized in ascending order. When <span class="math inline">\(n\)</span> is even, the median is the average between the two middle values. The median is resistant to outliers, making it an ideal measure for skewed data or data sets with irregular distributions. It is particularly useful for ordinal data, where precise ranking is important. However, the median does not utilize all data points, which can lead to less precise comparisons compared to other measures like the mean.</p>
-<p><em>Ex 1: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1\}\)</span>. We first sort the data to obtain <span class="math inline">\(x_{sorted}=\{1,1,2,4\}\)</span>. Since the number of observations is even (<span class="math inline">\(n=4\)</span>), the median is the average of the two middle numbers <span class="math inline">\((1,2)\)</span>. <span class="math inline">\(median_x=\frac{1+2}{2}\)</span> or <span class="math inline">\(1.5\)</span>.</em></p>
-<p><em>Ex 2: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. We once again sort the number obtaining <span class="math inline">\(x_{sorted}=\{1,1,2,4,100\}\)</span>. Since <span class="math inline">\(n=5\)</span> in this case we can identify the median as the third value in <span class="math inline">\(x_{sorted}\)</span>. <span class="math inline">\(median_x=2\)</span>. Note that the inclusion of <span class="math inline">\(100\)</span> in the data did not change much the measure of central location.</em></p>
+<p><em>Ex 1: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1\}\)</span>. We first sort the data to obtain <span class="math inline">\(x_{sorted}=\{1,1,2,4\}\)</span>. Since the number of observations is even (<span class="math inline">\(n=4\)</span>), the median is the average of the two middle numbers <span class="math inline">\((1,2)\)</span>. <span class="math inline">\(median_x=\frac{1+2}{2}\)</span> or <span class="math inline">\(1.5\)</span>.</p>
+<p><em>Ex 2: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1,100\}\)</span>. We once again sort the number obtaining <span class="math inline">\(x_{sorted}=\{1,1,2,4,100\}\)</span>. Since <span class="math inline">\(n=5\)</span> in this case we can identify the median as the third value in <span class="math inline">\(x_{sorted}\)</span>. <span class="math inline">\(median_x=2\)</span>. Note that the inclusion of <span class="math inline">\(100\)</span> in the data did not change much the measure of central location.</p>
 </section>
 <section id="the-mode" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="the-mode"><span class="header-section-number">3.3</span> The Mode</h2>
 <p>The <strong>mode</strong> is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data as it helps determine popularity of values. It can be applied to both numerical and non-numerical data sets. The mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.</p>
-<p><em>Ex 1: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1\}\)</span>. Since <span class="math inline">\(1\)</span> is repeated twice and all other numbers just repeated once, <span class="math inline">\(x_{mode}=1\)</span>.</em></p>
-<p><em>Ex 2: Consider the following numbers <span class="math inline">\(x=\{1,4,2,1,4\}\)</span>. Now <span class="math inline">\(4\)</span> is also repeated twice. The variable has two modes <span class="math inline">\(x_{mode}=\{1,2\}\)</span>. <span class="math inline">\(x\)</span> is said to be bimodal.</em></p>
+<p><em>Ex 1: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1\}\)</span>. Since <span class="math inline">\(1\)</span> is repeated twice and all other numbers just repeated once, <span class="math inline">\(x_{mode}=1\)</span>.</p>
+<p><em>Ex 2: Consider the following numbers</em> <span class="math inline">\(x=\{1,4,2,1,4\}\)</span>. Now <span class="math inline">\(4\)</span> is also repeated twice. The variable has two modes <span class="math inline">\(x_{mode}=\{1,2\}\)</span>. <span class="math inline">\(x\)</span> is said to be bimodal.</p>
 </section>
 <section id="the-weighted-mean" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="the-weighted-mean"><span class="header-section-number">3.4</span> The Weighted Mean</h2>
@@ -375,7 +375,7 @@ details summary {
 <p><span class="math display">\[
 \bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
 \]</span></p>
-<p><em>Ex: Consider three different stocks <span class="math inline">\(S=\{T, C, X\}\)</span> with stock returns of <span class="math inline">\(R=\{2,4,10\}\)</span>. Each stock has a weight in the portfolio of <span class="math inline">\(W=\{0.3,0.2,0.5\}\)</span>. The average return of the portfolio is <span class="math inline">\(\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}\)</span> or <span class="math inline">\(\bar{x}_{weighted}=6.4\)</span>.</em></p>
+<p><em>Ex: Consider three different stocks</em> <span class="math inline">\(S=\{T, C, X\}\)</span> with stock returns of <span class="math inline">\(R=\{2,4,10\}\)</span>. Each stock has a weight in the portfolio of <span class="math inline">\(W=\{0.3,0.2,0.5\}\)</span>. The average return of the portfolio is <span class="math inline">\(\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}\)</span> or <span class="math inline">\(\bar{x}_{weighted}=6.4\)</span>.</p>
 </section>
 <section id="the-geometric-mean" class="level2" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="the-geometric-mean"><span class="header-section-number">3.5</span> The Geometric Mean</h2>
@@ -388,7 +388,7 @@ details summary {
 <p><span class="math display">\[
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
 \]</span></p>
-<p><em>Ex: Consider the variable <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</em></p>
+<p><em>Ex: Consider the variable</em> <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</p>
 </section>
 <section id="measures-of-central-location-in-r" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="measures-of-central-location-in-r"><span class="header-section-number">3.6</span> Measures of Central Location in R</h2>
@@ -497,9 +497,9 @@ details summary {
 <summary>
 Answer
 </summary>
-<p><em>To find the mean we will use the following formula <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</em></p>
+<p><em>To find the mean we will use the following formula</em> <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</p>
 <p><em>The median is found by locating the middle value when data is sorted in ascending order. The median in this example is</em> <span class="math inline">\(10\)</span>.</p>
-<p><em>The mode is the value with the highest frequency. In this example the mode is <span class="math inline">\(12\)</span> since it is repeated twice and all other numbers appear only once.</em></p>
+<p><em>The mode is the value with the highest frequency. In this example the mode is</em> <span class="math inline">\(12\)</span> since it is repeated twice and all other numbers appear only once.</p>
 <p><em>The mean can be easily verified in R by using the <code>mean()</code> function:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">12</span>,<span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -590,7 +590,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean is <span class="math inline">\(18.33\)</span>, the median is <span class="math inline">\(20\)</span>, the data is bimodal with both <span class="math inline">\(15\)</span> and <span class="math inline">\(20\)</span> being modes.</em></p>
+<p><em>The mean is</em> <span class="math inline">\(18.33\)</span>, the median is <span class="math inline">\(20\)</span>, the data is bimodal with both <span class="math inline">\(15\)</span> and <span class="math inline">\(20\)</span> being modes.</p>
 <p><em>The mean is verified in R:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">25</span>,<span class="dv">20</span>,<span class="dv">15</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -626,7 +626,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean price for Country Hill is <span class="math inline">\(1.87\)</span>. The mean price for Minute Maid is <span class="math inline">\(2.09\)</span>.</em></p>
+<p><em>The mean price for Country Hill is</em> <span class="math inline">\(1.87\)</span>. The mean price for Minute Maid is <span class="math inline">\(2.09\)</span>.</p>
 <p><em>The means can be easily found with the <code>mean()</code> function:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
@@ -648,7 +648,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean price at store 1 for Country Hill is <span class="math inline">\(1.80\)</span>. The juice is cheaper at store 1.</em></p>
+<p><em>The mean price at store 1 for Country Hill is</em> <span class="math inline">\(1.80\)</span>. The juice is cheaper at store 1.</p>
 <p><em>The means for each store can be found by using <code>group_by()</code> and <code>summarise()</code>.The mean price at each store is:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>OJ <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(StoreID) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">MeanCH=</span><span class="fu">mean</span>(PriceCH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -671,7 +671,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>Purchasers of Country Hill at store 1 paid a median price of <span class="math inline">\(1.76\)</span> for Country Hill juice. This once again was the lowest price.</em></p>
+<p><em>Purchasers of Country Hill at store 1 paid a median price of</em> <span class="math inline">\(1.76\)</span> for Country Hill juice. This once again was the lowest price.</p>
 <p><em>The median price for Country Hill purchasers at each store is given by:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>OJ <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Purchase<span class="sc">==</span><span class="st">"CH"</span>) <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(StoreID) <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">MedianCH=</span><span class="fu">median</span>(PriceCH))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -723,7 +723,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The average price of sale is found by using the weighted average formula. <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span> The weights (<span class="math inline">\(w_{i}\)</span>) are given by the number of shares bought and the values (<span class="math inline">\(x_{i}\)</span>) are the prices. The weighted average is <span class="math inline">\(246.802\)</span>.</em></p>
+<p><em>The average price of sale is found by using the weighted average formula.</em> <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span> The weights (<span class="math inline">\(w_{i}\)</span>) are given by the number of shares bought and the values (<span class="math inline">\(x_{i}\)</span>) are the prices. The weighted average is <span class="math inline">\(246.802\)</span>.</p>
 <p><em>In R you can create two vectors. One holds the share price and the other one the number of shares bought.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>PricePerShare<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">250.34</span>,<span class="fl">234.59</span>,<span class="fl">270.45</span>)</span>
@@ -798,6 +798,22 @@ Answer
 </div>
 </details>
 <ol start="2" type="1">
+<li>What is the average growth rate for the inflation rate?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The average growth rate is <span class="math inline">\(31.61%\)</span></em></p>
+<p><em>We can use the geometric mean formula with compounding. In R:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(Growth<span class="ot">&lt;-</span><span class="fu">prod</span>(<span class="fl">1.3</span>,<span class="fl">1.2308</span>,<span class="fl">1.125</span>,<span class="fl">1.667</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.316148</code></pre>
+</div>
+</div>
+</details>
+<ol start="2" type="1">
 <li><p>Suppose that you want to invest $1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.</p>
 <table class="caption-top table">
 <thead>
@@ -830,28 +846,28 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>At the end of 4 years it is predicted that you would have <span class="math inline">\(1621.17\)</span> dollars. Each year you would have gained <span class="math inline">\(12.84\)</span>% on average.</em></p>
+<p><em>At the end of 4 years it is predicted that you would have</em> <span class="math inline">\(1621.17\)</span> dollars. Each year you would have gained <span class="math inline">\(12.84\)</span>% on average.</p>
 <p><em>In R include the annual rates in a vector:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>growth<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.173</span>,<span class="fl">0.196</span>,<span class="fl">0.068</span>,<span class="fl">0.082</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>growth<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.173</span>,<span class="fl">0.196</span>,<span class="fl">0.068</span>,<span class="fl">0.082</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>The arithmetic mean is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(growth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">*</span><span class="fu">mean</span>(growth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12.975</code></pre>
 </div>
 </div>
 <p><em>The geometric mean is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(geom<span class="ot">&lt;-</span>((<span class="fu">prod</span>(<span class="dv">1</span><span class="sc">+</span>growth))<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(growth))<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(geom<span class="ot">&lt;-</span>((<span class="fu">prod</span>(<span class="dv">1</span><span class="sc">+</span>growth))<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(growth))<span class="sc">-</span><span class="dv">1</span>)<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12.8384</code></pre>
 </div>
 </div>
 <p><em>At the end of the four years we would have:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>geom<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1000</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">+</span>geom<span class="sc">/</span><span class="dv">100</span>)<span class="sc">^</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1621.167</code></pre>
 </div>
