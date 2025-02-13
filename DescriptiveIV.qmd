@@ -24,7 +24,7 @@ This is the simplest measure of dispersion, defined as the difference between th
 
 $$Range=Maximum-Minimum$$
 
-*Ex: Consider the data $x=\{480, 1050, 1400, 2500, 3200\}$. The range is given by $Range=3200-480=2720$.*
+*Ex: Consider the data* $x=\{480, 1050, 1400, 2500, 3200\}$. The range is given by $Range=3200-480=2720$.
 
 ## The Variance
 
@@ -70,12 +70,11 @@ For the sample standard deviation use: $$s=\sqrt{s^2}$$
 
 ## Mean Absolute Deviation
 
-Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the **Mean Absolute Deviation** measures the average deviation from the mean, by using absolute deviations. It is calculated by: 
+Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the **Mean Absolute Deviation** measures the average deviation from the mean, by using absolute deviations. It is calculated by:
 
-$$MAD=\frac{\sum |x_i-\mu|}{N}$$ 
-where the | | operator indicates absolute value. You can estimates the mad for a sample with:
+$$MAD=\frac{\sum |x_i-\mu|}{N}$$ where the \| \| operator indicates absolute value. You can estimates the mad for a sample with:
 
-$$mad=\frac{\sum |x_i-\bar{x}|}{n}$$ 
+$$mad=\frac{\sum |x_i-\bar{x}|}{n}$$
 
 **Example:** Let's consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:
 
@@ -105,8 +104,7 @@ The Sharpe Ratio measures how much excess return an investor receives for the ex
 
 In sum, the **Sharpe ratio** quantifies the excess return of an investment over the risk free return. It is calculated by:
 
-$$\frac{\bar{R_p}-R_f}{s}$$
-where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
+$$\frac{\bar{R_p}-R_f}{s}$$ where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
 
 **Example:** Consider the table below that includes a collection of investments.
 
