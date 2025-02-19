@@ -68,7 +68,7 @@ The image below shows the different types of skew:
 knitr::include_graphics("images/Skew.png")
 ```
 
-*Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The pearson coefficient of skew is equal to* $Sk=3(10-8)/2=3$. Since the skew is positive, we expect the distribution to be right skewed.
+*Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The pearson coefficient of skew is equal to* $Sk=3(10-8)/3=2$. Since the skew is positive, we expect the distribution to be right skewed.
 
 ## Five Point Summary
 
