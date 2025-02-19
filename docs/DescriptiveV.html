@@ -352,9 +352,9 @@ details summary {
 <p><em>Ex: Imagine all your data points lined up from smallest to largest. If you say you’re looking at the 25th percentile, it means you’re finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It’s a way to see where a value stands in relation to the rest of the data in terms of percentage.</em></p>
 <p>To calculate a percentile we follow the steps below:</p>
 <ol type="1">
-<li><p>Sort the data in ascending order.</p></li>
-<li><p>Compute the location of the percentile desired using <span class="math inline">\(L_{p}=\frac{(n+1)P}{100}\)</span> where <span class="math inline">\(L_{p}\)</span> is the location of the <span class="math inline">\(P_{th}\)</span> percentile, and <span class="math inline">\(P\)</span> is the percentile desired.</p></li>
-<li><p>The value at <span class="math inline">\(L_p\)</span>, is the the <span class="math inline">\(P_{th}\)</span> percentile.</p></li>
+<li><p>Sort the data in ascending order. Each point has now a location. The smallest number will be first, the second smallest number will be second, etc.</p></li>
+<li><p>Compute the location of the percentile desired using <span class="math inline">\(L_{p}=\frac{(n+1)P}{100}\)</span> where <span class="math inline">\(L_{p}\)</span> is the location (in the sorted data) of the <span class="math inline">\(P_{th}\)</span> percentile, and <span class="math inline">\(P\)</span> is the percentile desired.</p></li>
+<li><p>The data point at location <span class="math inline">\(L_p\)</span>, is the the <span class="math inline">\(P_{th}\)</span> percentile.</p></li>
 </ol>
 <p><strong>Example:</strong> Let’s use the IQ scores for a group of students to find the 25th percentile. <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>.</p>
 <ol type="1">

@@ -26,11 +26,11 @@ A **quantile** is a location within a set of ranked numbers (or distribution), b
 
 To calculate a percentile we follow the steps below:
 
-1.  Sort the data in ascending order.
+1.  Sort the data in ascending order. Each point has now a location. The smallest number will be first, the second smallest number will be second, etc.
 
-2.  Compute the location of the percentile desired using $L_{p}=\frac{(n+1)P}{100}$ where $L_{p}$ is the location of the $P_{th}$ percentile, and $P$ is the percentile desired.
+2.  Compute the location of the percentile desired using $L_{p}=\frac{(n+1)P}{100}$ where $L_{p}$ is the location (in the sorted data) of the $P_{th}$ percentile, and $P$ is the percentile desired.
 
-3.  The value at $L_p$, is the the $P_{th}$ percentile.
+3.  The data point at location $L_p$, is the the $P_{th}$ percentile.
 
 **Example:** Let's use the IQ scores for a group of students to find the 25th percentile. $IQ=\{80,100,110,75,130,90\}$.
 
