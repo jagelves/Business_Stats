@@ -20,7 +20,9 @@ Measures of association are essential tools in business statistics for analyzing
 
 ## The Covariance
 
-The **covariance** is a measure that determines the direction of the relationship between two variables. It is calculated by $s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}$. The result of the covariance indicates the relationship between the two variables. If $s_{xy}>0$ there is a direct relationship, if $s_{xy}<0$ there is an inverse relationship, and if $s_{xy}=0$ there is no relationship.
+The **covariance** is a measure that determines the direction of the relationship between two variables. It is calculated by:
+$$s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}$$
+The result of the covariance indicates the relationship between the two variables. If $s_{xy}>0$ there is a direct relationship, if $s_{xy}<0$ there is an inverse relationship, and if $s_{xy}=0$ there is no relationship.
 
 **Example:** Let's consider the following data that captures the price of stocks (SPY) and bonds (BND):
 
@@ -38,7 +40,7 @@ Column 5 calculates the product between column 3 and column 4. The covariance is
 
 Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. The image below explains the intuition.
 
-```{r echo=FALSE, fig.align='center'}
+```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/cov.png")
 ```
 
@@ -48,17 +50,20 @@ The image plots the SPY and BDN in a scatter plot. You can see that there is an 
 
 The **correlation** measures the strength of the linear relationship between two variables. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
 
-```{r echo=FALSE, fig.align='center'}
+```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/cor.png")
 ```
 
-The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship.
+The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship. When the correlation is 1, then there is a perfect linear relationship between the two variables.
 
 *Ex: Consider the SPY and BND data. The standard deviation of SPY is* $1.58$ and that of BDN is $50.37$. Substituting into the correlation formula we get a correlation coefficient of $r= \frac {-71}{1.58 \times 50.37}=-0.89$. This indicates that the relationship between SPY and BND is inverse and strong.
 
 ## The Coefficient of Determination ($R^2$)
 
-The **coefficient of determination** or $R^2$, measures the percent of variation in $y$ explained by variations in $x$. It is calculated by $R^2=r^2$. The number that we get from the $R^2$ tells us how well a variable (x) explains the variation in the another variable (y). The number could be anywhere from zero (indicating that the two variables are unrelated), to one (indicating that one variable explains entirely the variation of the other variable).
+The **coefficient of determination** or $R^2$, measures the percent of variation in $y$ explained by variations in $x$. It is calculated by:
+
+$$R^2=r^2$$ 
+The number that we get from the $R^2$ tells us how well a variable (x) explains the variation in the another variable (y). The number could be anywhere from zero (indicating that the two variables are unrelated), to one (indicating that one variable explains entirely the variation of the other variable).
 
 *Ex: Consider once more the SPY and BND example. The correlation coefficient is given by* $r=-0.89$. The $R^2=(-0.89)^2=0.79$. This indicates that about 80% of the variation in the SPY can be explained by the changes in BND. Hence, these two variables are closely related.
 
@@ -103,11 +108,11 @@ data %>% ggplot() +
 
 The visualization above is called a scatter plot. A **scatter plot** displays pairs of \[$x$,$y$\] as points on the Cartesian plane. The plot acts as a visual aid to determine the relationship between two variables. We can see that the points are inversely related to each other.
 
-Here are some useful functions in r:
+Below is a list of the functions used:
 
 -   To calculate the covariance use the `cov()` function. The input must be two vectors (variables).
 
--   The correlation coefficient can be calculated using the `cor()` function.The input must be two vectors (variables).
+-   The correlation coefficient is calculated with the `cor()` function. The input must be two vectors (variables).
 
 -   The `geom_point()` function will create scatter plots. Make sure you include two variables in the `aes()` function. The argument *cex* increases the size of the points, *pch* changes the point character, *bg* selects the color, and *alpha* adjusts the transparency of the background color (bg).
 
