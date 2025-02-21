@@ -48,7 +48,9 @@ The image plots the SPY and BDN in a scatter plot. You can see that there is an 
 
 ## The Correlation
 
-The **correlation** measures the strength of the linear relationship between two variables. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
+The **correlation** measures the strength of the linear relationship between two variables. It is calculated by 
+$$r= \frac {s_{xy}}{s_x s_y}$$ 
+The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/cor.png")
