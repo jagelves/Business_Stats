@@ -387,9 +387,14 @@ details summary {
 <section id="binomial-distribution" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">9.4</span> Binomial Distribution</h2>
 <p>The binomial distribution is a probability distribution that describes the outcome of a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials. In a Bernoulli trial, there are only two possible outcomes: “success” and “failure”. The probability of success is denoted by <span class="math inline">\(p\)</span>, and the probability of failure is denoted by <span class="math inline">\(q = 1 - p\)</span>. In a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials, the number of successes (<span class="math inline">\(x\)</span>) is a random variable that follows a binomial distribution.</p>
-<p>The <strong>probability mass function</strong> is given by <span class="math inline">\(f(x)=C_x^n (p^x)(1-p)^{n-x}\)</span>, where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(p\)</span> is the probability of success, and <span class="math inline">\(C_x^n\)</span> is the number of ways there can be <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials.</p>
-<p>The <strong>expected value</strong> of the binomial distribution is <span class="math inline">\(E(x)=np\)</span>.</p>
-<p>The <strong>variance</strong> of the binomial distribution is <span class="math inline">\(var(x)=np(1-p)\)</span>.</p>
+<p>The <strong>probability mass function</strong> is given by: <span class="math display">\[f(x)=C_x^n (p^x)(1-p)^{n-x}\]</span> where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(p\)</span> is the probability of success, and <span class="math inline">\(C_x^n\)</span> is the number of ways there can be <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials.</p>
+<p>The <strong>expected value</strong> of the binomial distribution is</p>
+<p><span class="math display">\[E(x)=np\]</span></p>
+<p>The <strong>variance</strong> of the binomial distribution is</p>
+<p><span class="math display">\[var(x)=np(1-p)\]</span> <strong>Example:</strong> Consider the following scenario. Imagine your favorite team in the NBA Finals, trailing by 2 points with seconds left. Your star player, a 90% free-throw shooter, gets three shots. What’s the chance your team takes the lead?</p>
+<p>Since shooting free-throws can be thought as a binomial experiment, we can find the probability using the binomial probability mass function. To take the lead, the star player needs to make all three shots. We can substitute three into the function:</p>
+<p><span class="math display">\[f(3)=C_3^3 (0.9^3)(0.1)^{0}=0.9^3=0.729\]</span></p>
+<p>The function indicates that there is a 72.9% chance of taking the lead.</p>
 </section>
 <section id="the-hypergeometric-distribution" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="the-hypergeometric-distribution"><span class="header-section-number">9.5</span> The Hypergeometric Distribution</h2>
@@ -399,9 +404,14 @@ details summary {
 <li><p>trials are not independent.</p></li>
 <li><p>the probability of success changes from trial to trial.</p></li>
 </ul>
-<p>The <strong>probability mass function</strong> is given by <span class="math inline">\(f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}\)</span>, where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(r\)</span> is the number of elements in the population labeled as success, and <span class="math inline">\(N\)</span> is the number of elements in the population.</p>
-<p>The <strong>expected value</strong> of the hypergeometric distribution is <span class="math inline">\(E(x)=n \frac {r}{N}\)</span>.</p>
-<p>The <strong>variance</strong> of the hypergeometric distribution is <span class="math inline">\(var(x)= n \frac {r}{N} (1- \frac {r}{N}) (\frac {N-n}{N-1})\)</span>.</p>
+<p>The <strong>probability mass function</strong> is given by:</p>
+<p><span class="math display">\[f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}\]</span></p>
+<p>where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(r\)</span> is the number of elements in the population labeled as success, and <span class="math inline">\(N\)</span> is the number of elements in the population.</p>
+<p>The <strong>expected value</strong> of the hypergeometric distribution is: <span class="math display">\[E(x)=n \frac {r}{N}\]</span></p>
+<p>The <strong>variance</strong> of the hypergeometric distribution is: <span class="math display">\[var(x)= n \frac {r}{N} (1- \frac {r}{N}) (\frac {N-n}{N-1})\]</span> <strong>Example:</strong> Picture a box of 12 electric fuses from the manufacturer Ontario Electric. Five fuses are known to be defective. An inspector randomly picks 3 fuses to test. What is the probability that exactly one of the three chosen is defective?</p>
+<p>We can use the hypergeometric probability mass function to solve this problem. From the problem we know that <span class="math inline">\(N=12\)</span>, <span class="math inline">\(n=3\)</span>, <span class="math inline">\(r=5\)</span>, and <span class="math inline">\(x=1\)</span>. Substituting these values into the PMF yields:</p>
+<p><span class="math display">\[f(1)=\frac {C_1^5 C_{4}^{7}}{C_3^{12}}=0.4772\]</span></p>
+<p>There is a 47.72% chance that the inspector finds a defective fuse in his sample of three.</p>
 </section>
 <section id="poisson-distribution" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="poisson-distribution"><span class="header-section-number">9.6</span> Poisson Distribution</h2>
