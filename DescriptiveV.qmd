@@ -137,6 +137,23 @@ faithful %>%
 
 The boxplot highlights the minimum just below 2, the maximum around 5, the first quartile just above 2, the median at 4, and the third quartile just above 4. Any outlier would be shown as a point beyond the whiskers of the box plot.
 
+We can also overlay the data to the boxplot by using the `geom_jitter()` function. The data points allow us to see how the data is distributed. The code is below:
+
+```{r}
+faithful %>% 
+  ggplot() +
+  geom_boxplot(aes(y=eruptions),
+               fill="lightgrey", alpha=0.5,
+               col="black", width=0.3) +
+  theme_clean() +
+  scale_x_continuous(breaks = NULL, limits=c(-1,1))+
+  ylim(limits=c(0,6)) + labs(x="") +
+  geom_jitter(aes(y=eruptions,x=0.5), 
+              width=0.15, pch=21,
+              alpha=0.4, bg="grey")
+
+```
+
 ## Skewness in R
 
 Unfortunately, base R does not have a function to calculate the Pearson Coefficient of skewness. Hence, we will have to install the `e1071` package. The package contains the function `skewness()` which makes the estimation of skew simple. Below is the code to calculate the skewness for the eruptions variable.
@@ -145,6 +162,7 @@ Unfortunately, base R does not have a function to calculate the Pearson Coeffici
 library(e1071)
 skewness(faithful$eruptions)
 ```
+
 The result indicates that the distribution is mildly skewed to the left.
 
 Here is a summary of the functions used in this section:
