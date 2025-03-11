@@ -16,15 +16,15 @@ details summary {
 
 # Probability III
 
-## Concepts
+Studying continuous probability distributions is crucial for understanding and predicting outcomes in uncertain scenarios where variables can take on any value within a range, rather than being limited to distinct, countable outcomes. These distributions are widely used in fields such as engineering, economics, natural sciences, and machine learning to model phenomena like time to failure, stock prices, rainfall amounts, or human heights. By mastering continuous probability distributions, analysts and decision-makers can assess uncertainties, estimate probabilities of events, and develop data-driven strategies to address real-world challenges. Below, we introduce some popular continuous distributions and their practical applications.
 
-### Continuous Random Variables {.unnumbered}
+## Continuous Random Variables 
 
 Continuous random variables are characterized by their probability density function $f(x)$. The probability density function does not directly provide probabilities!
 
 The probability of a continuous random variable assuming a single value is zero. Instead, probabilities are defined for intervals. These are calculated by areas under the PDF curve (integral).
 
-### Uniform Distribution {.unnumbered}
+## Uniform Distribution
 
 The **uniform** probability density function is given by $f(x)= \frac {1}{b-a}$ when $a \leq x \leq b$ and $0$ otherwise.
 
@@ -32,7 +32,7 @@ The **expected value** of the uniform distribution is $E(x)= \frac {a+b}{2}$.
 
 The **variance** of the uniform distribution is $var(x)= \frac {(b-a)^2} {12}$
 
-### Normal Distribution {.unnumbered}
+## Normal Distribution 
 
 The **normal** PDF is given by $f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}$, where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
 
@@ -46,13 +46,13 @@ The **normal** PDF is given by $f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1
 
 The **standard normal** distribution has a mean of $0$ and a standard deviation of $1$.
 
-### Exponential Distribution {.unnumbered}
+## Exponential Distribution 
 
 The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.
 
 The probability density function is given by $f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}$.
 
-### Triangular Distribution {.unnumbered}
+## Triangular Distribution 
 
 The **triangular distribution** is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.
 
@@ -61,7 +61,7 @@ The probability density function is given by $f(x)=\frac {2(x-a)}{(b-a)(c-a)}$ f
 The **expected value** of the distribution is $E(x)= \frac {a+b+c}{3}$.\
 The **variance** of the triangular distribution is $var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$.
 
-### Useful R Functions {.unnumbered}
+## Useful R Functions 
 
 To calculate the density of continuous random variables use the `dunif()`, `dnorm()`, and `dexp()` functions. For the triangular distribution use the extraDistr package and the `dtriang()` function.
 
@@ -92,27 +92,28 @@ For the following exercises, make your calculations by hand and verify results w
 <details>
 
 <summary>Answer</summary>
-*The height of the density function $f(x)=0.1667$, the mean is $1$, standard deviation is $1.73$, and $P(X \leq -1)=0.1667$.*
 
-*$f(x)$ can be easily estimated by using the formula of the continuous uniform random variable. $f(x)=\frac{1}{b-a}$. Using R as a calculator we find:*
+*The height of the density function* $f(x)=0.1667$, the mean is $1$, standard deviation is $1.73$, and $P(X \leq -1)=0.1667$.
+
+$f(x)$ can be easily estimated by using the formula of the continuous uniform random variable. $f(x)=\frac{1}{b-a}$. Using R as a calculator we find:
 
 ```{r}
 1/(4-(-2))
 ```
 
-*The mean is given by $\mu = \frac{a+b}{2}$. In R we determine that the mean is:*
+*The mean is given by* $\mu = \frac{a+b}{2}$. In R we determine that the mean is:
 
 ```{r}
 (-2+4)/2
 ```
 
-*The standard deviation is $\sigma = \sqrt {\frac{(b-a)^2}{12}}$. Using R we find:*
+*The standard deviation is* $\sigma = \sqrt {\frac{(b-a)^2}{12}}$. Using R we find:
 
 ```{r}
 sqrt((4-(-2))^2/12)
 ```
 
-*Finally, we can find the probability of $Z$ being less than $-1$ by using the `punif()` function:*
+*Finally, we can find the probability of* $Z$ being less than $-1$ by using the `punif()` function:
 
 ```{r}
 punif(-1,-2,4)
@@ -125,15 +126,16 @@ punif(-1,-2,4)
 <details>
 
 <summary>Answer</summary>
-*The probability that you will arrive on time is $0.875$. If the time of the errand is 30 minutes, then the probability goes down to $0.75$.*
 
-*There is a $120$ minute interval in which the IP can arrive. The density function is given by $f(x)=1/120$. Using R we can find $P(X>15)$:*
+*The probability that you will arrive on time is* $0.875$. If the time of the errand is 30 minutes, then the probability goes down to $0.75$.
+
+*There is a* $120$ minute interval in which the IP can arrive. The density function is given by $f(x)=1/120$. Using R we can find $P(X>15)$:
 
 ```{r}
 punif(15,0,120,lower.tail=F)
 ```
 
-*Once more we can find $P(X>30)$:*
+*Once more we can find* $P(X>30)$:
 
 ```{r}
 punif(30,0,120,lower.tail=F)
@@ -148,27 +150,28 @@ punif(30,0,120,lower.tail=F)
 <details>
 
 <summary>Answer</summary>
-*$P(-0.67 \leq Z \leq -0.23)=0.158$, $P(0 \leq Z \leq 1.96)=0.475$, $P(-1.28 \leq Z \leq 0)=0.4$ and $P(Z > 4.2) \approx 0$.*
 
-*Use the `pnorm()` function to find the probabilities. $P(-0.67 \leq Z \leq -0.23)$:*
+$P(-0.67 \leq Z \leq -0.23)=0.158$, $P(0 \leq Z \leq 1.96)=0.475$, $P(-1.28 \leq Z \leq 0)=0.4$ and $P(Z > 4.2) \approx 0$.
+
+*Use the `pnorm()` function to find the probabilities.* $P(-0.67 \leq Z \leq -0.23)$:
 
 ```{r}
 pnorm(-0.23)-pnorm(-0.67)
 ```
 
-*$P(0 \leq Z \leq 1.96)$*
+$P(0 \leq Z \leq 1.96)$
 
 ```{r}
 pnorm(1.96)-pnorm(0)
 ```
 
-*$P(-1.28 \leq Z \leq 0)$*
+$P(-1.28 \leq Z \leq 0)$
 
 ```{r}
 pnorm(0)-pnorm(-1.28)
 ```
 
-*$P(Z > 4.2)$*
+$P(Z > 4.2)$
 
 ```{r}
 options(scipen=999)
@@ -182,29 +185,30 @@ pnorm(4.2,lower.tail = F)
 <details>
 
 <summary>Answer</summary>
-*$P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0.025$ is $6.42$, and a $y$ such that $P(y \leq Y \leq 2.5)$ is $-2.56$.*
+
+$P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0.025$ is $6.42$, and a $y$ such that $P(y \leq Y \leq 2.5)$ is $-2.56$.
 
 *Let's use once more the `pnorm()` function in R.*
 
-*$P(Y>7.6)$*
+$P(Y>7.6)$
 
 ```{r}
 pnorm(7.6,2.5,2,lower.tail = F)
 ```
 
-*$P(7.4 \leq Y \leq 10.6)$*
+$P(7.4 \leq Y \leq 10.6)$
 
 ```{r}
 pnorm(10.6,2.5,2)-pnorm(7.4,2.5,2)
 ```
 
-*$y$ such that $P(Y>y)=0.025$*
+$y$ such that $P(Y>y)=0.025$
 
 ```{r}
 qnorm(0.025,2.5,2,lower.tail = F)
 ```
 
-*$y$ such that $P(y \leq Y \leq 2.5)=0.4943$. Note that $2.5$ is the mean. Hence we are looking for a $y$ that has $0.5-0.4943=0.0057$ on the left:*
+$y$ such that $P(y \leq Y \leq 2.5)=0.4943$. Note that $2.5$ is the mean. Hence we are looking for a $y$ that has $0.5-0.4943=0.0057$ on the left:
 
 ```{r}
 qnorm(0.0057,2.5,2)
@@ -217,7 +221,8 @@ qnorm(0.0057,2.5,2)
 <details>
 
 <summary>Answer</summary>
-*The probability is $10.56$%. A game lasting no more than $2.069$ hours would be in the bottom $1$%.*
+
+*The probability is* $10.56$%. A game lasting no more than $2.069$ hours would be in the bottom $1$%.
 
 *Let's use `pnorm()` once more in R.*
 
@@ -231,7 +236,6 @@ pnorm(2.5,3,0.4)
 qnorm(0.01,3,0.4)
 ```
 
-
 </details>
 
 ### Exercise 3 {.unnumbered}
@@ -241,7 +245,8 @@ qnorm(0.01,3,0.4)
 <details>
 
 <summary>Answer</summary>
-*The standard deviation is equal to the mean $0.1$. $P(0.10 \leq S \leq 0.2)=0.2325$*
+
+*The standard deviation is equal to the mean* $0.1$. $P(0.10 \leq S \leq 0.2)=0.2325$
 
 *Let's use `pexp()` in R:*
 
@@ -256,7 +261,8 @@ pexp(0.2,rate = 10)-pexp(0.1,rate = 10)
 <details>
 
 <summary>Answer</summary>
-*The mean time between car arrivals is $1/360=0.002778$. The probability that the next car will arrive within the next 10 seconds is $0.6321$.*
+
+*The mean time between car arrivals is* $1/360=0.002778$. The probability that the next car will arrive within the next 10 seconds is $0.6321$.
 
 *Once more we use `pexp()` in R:*
 
@@ -265,4 +271,3 @@ pexp(1/360,360)
 ```
 
 </details>
-

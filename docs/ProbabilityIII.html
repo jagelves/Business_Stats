@@ -259,7 +259,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -290,16 +290,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="header-section-number">10.1</span> Concepts</a>
-  <ul class="collapse">
-  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link" data-scroll-target="#continuous-random-variables">Continuous Random Variables</a></li>
-  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution">Uniform Distribution</a></li>
-  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution">Normal Distribution</a></li>
-  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution">Exponential Distribution</a></li>
-  <li><a href="#triangular-distribution" id="toc-triangular-distribution" class="nav-link" data-scroll-target="#triangular-distribution">Triangular Distribution</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
-  </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.2</span> Exercises</a>
+  <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link active" data-scroll-target="#continuous-random-variables"><span class="header-section-number">10.1</span> Continuous Random Variables</a></li>
+  <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">10.2</span> Uniform Distribution</a></li>
+  <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">10.3</span> Normal Distribution</a></li>
+  <li><a href="#exponential-distribution" id="toc-exponential-distribution" class="nav-link" data-scroll-target="#exponential-distribution"><span class="header-section-number">10.4</span> Exponential Distribution</a></li>
+  <li><a href="#triangular-distribution" id="toc-triangular-distribution" class="nav-link" data-scroll-target="#triangular-distribution"><span class="header-section-number">10.5</span> Triangular Distribution</a></li>
+  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">10.6</span> Useful R Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -343,21 +340,20 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<section id="concepts" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">10.1</span> Concepts</h2>
-<section id="continuous-random-variables" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="continuous-random-variables">Continuous Random Variables</h3>
+<p>Studying continuous probability distributions is crucial for understanding and predicting outcomes in uncertain scenarios where variables can take on any value within a range, rather than being limited to distinct, countable outcomes. These distributions are widely used in fields such as engineering, economics, natural sciences, and machine learning to model phenomena like time to failure, stock prices, rainfall amounts, or human heights. By mastering continuous probability distributions, analysts and decision-makers can assess uncertainties, estimate probabilities of events, and develop data-driven strategies to address real-world challenges. Below, we introduce some popular continuous distributions and their practical applications.</p>
+<section id="continuous-random-variables" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="continuous-random-variables"><span class="header-section-number">10.1</span> Continuous Random Variables</h2>
 <p>Continuous random variables are characterized by their probability density function <span class="math inline">\(f(x)\)</span>. The probability density function does not directly provide probabilities!</p>
 <p>The probability of a continuous random variable assuming a single value is zero. Instead, probabilities are defined for intervals. These are calculated by areas under the PDF curve (integral).</p>
 </section>
-<section id="uniform-distribution" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="uniform-distribution">Uniform Distribution</h3>
+<section id="uniform-distribution" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">10.2</span> Uniform Distribution</h2>
 <p>The <strong>uniform</strong> probability density function is given by <span class="math inline">\(f(x)= \frac {1}{b-a}\)</span> when <span class="math inline">\(a \leq x \leq b\)</span> and <span class="math inline">\(0\)</span> otherwise.</p>
 <p>The <strong>expected value</strong> of the uniform distribution is <span class="math inline">\(E(x)= \frac {a+b}{2}\)</span>.</p>
 <p>The <strong>variance</strong> of the uniform distribution is <span class="math inline">\(var(x)= \frac {(b-a)^2} {12}\)</span></p>
 </section>
-<section id="normal-distribution" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="normal-distribution">Normal Distribution</h3>
+<section id="normal-distribution" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">10.3</span> Normal Distribution</h2>
 <p>The <strong>normal</strong> PDF is given by <span class="math inline">\(f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}\)</span>, where <span class="math inline">\(\mu\)</span> is the mean, <span class="math inline">\(\sigma\)</span> is the standard deviation, <span class="math inline">\(\pi\)</span> is 3.1415… , and <span class="math inline">\(e\)</span> is 2.7282… . The normal distribution has the following properties:</p>
 <ul>
 <li><p>The normal curve is symmetrical about the mean <span class="math inline">\(\mu\)</span>.</p></li>
@@ -367,28 +363,27 @@ details summary {
 </ul>
 <p>The <strong>standard normal</strong> distribution has a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span>.</p>
 </section>
-<section id="exponential-distribution" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exponential-distribution">Exponential Distribution</h3>
+<section id="exponential-distribution" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="exponential-distribution"><span class="header-section-number">10.4</span> Exponential Distribution</h2>
 <p>The <strong>exponential distribution</strong> is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.</p>
 <p>The probability density function is given by <span class="math inline">\(f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}\)</span>.</p>
 </section>
-<section id="triangular-distribution" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="triangular-distribution">Triangular Distribution</h3>
+<section id="triangular-distribution" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="triangular-distribution"><span class="header-section-number">10.5</span> Triangular Distribution</h2>
 <p>The <strong>triangular distribution</strong> is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.</p>
 <p>The probability density function is given by <span class="math inline">\(f(x)=\frac {2(x-a)}{(b-a)(c-a)}\)</span> for <span class="math inline">\(a \leq x &lt; c\)</span>; <span class="math inline">\(f(x)=\frac {2}{(b-a)}\)</span> for <span class="math inline">\(x=c\)</span>; <span class="math inline">\(f(x)=\frac {2(b-x)}{(b-a)(b-c)}\)</span> for <span class="math inline">\(c &lt; x \leq b\)</span>, and <span class="math inline">\(f(x)=0\)</span> otherwise.</p>
 <p>The <strong>expected value</strong> of the distribution is <span class="math inline">\(E(x)= \frac {a+b+c}{3}\)</span>.<br>
 The <strong>variance</strong> of the triangular distribution is <span class="math inline">\(var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}\)</span>.</p>
 </section>
-<section id="useful-r-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
+<section id="useful-r-functions" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">10.6</span> Useful R Functions</h2>
 <p>To calculate the density of continuous random variables use the <code>dunif()</code>, <code>dnorm()</code>, and <code>dexp()</code> functions. For the triangular distribution use the extraDistr package and the <code>dtriang()</code> function.</p>
 <p>To calculate probabilities of continuous random variables use the <code>punif()</code>, <code>pnorm()</code>, <code>pexp()</code>, and <code>ptriang()</code> functions.</p>
 <p>To calculate quartiles of continuous random variables use the <code>qunif()</code>, <code>qnorm()</code>,<code>qexp()</code>, and <code>qtriang()</code> functions.</p>
 <p>To calculate generate random variables based on continuous random variables use the <code>runif()</code>, <code>rnorm()</code>, <code>rexp()</code>, and <code>rtriang()</code> functions.</p>
 </section>
-</section>
-<section id="exercises" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.2</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.7</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating probabilities for continuous random variables.</p></li>
@@ -406,29 +401,29 @@ The <strong>variance</strong> of the triangular distribution is <span class="mat
 <summary>
 Answer
 </summary>
-<p><em>The height of the density function <span class="math inline">\(f(x)=0.1667\)</span>, the mean is <span class="math inline">\(1\)</span>, standard deviation is <span class="math inline">\(1.73\)</span>, and <span class="math inline">\(P(X \leq -1)=0.1667\)</span>.</em></p>
-<p><em><span class="math inline">\(f(x)\)</span> can be easily estimated by using the formula of the continuous uniform random variable. <span class="math inline">\(f(x)=\frac{1}{b-a}\)</span>. Using R as a calculator we find:</em></p>
+<p><em>The height of the density function</em> <span class="math inline">\(f(x)=0.1667\)</span>, the mean is <span class="math inline">\(1\)</span>, standard deviation is <span class="math inline">\(1.73\)</span>, and <span class="math inline">\(P(X \leq -1)=0.1667\)</span>.</p>
+<p><span class="math inline">\(f(x)\)</span> can be easily estimated by using the formula of the continuous uniform random variable. <span class="math inline">\(f(x)=\frac{1}{b-a}\)</span>. Using R as a calculator we find:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span>(<span class="dv">4</span><span class="sc">-</span>(<span class="sc">-</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1666667</code></pre>
 </div>
 </div>
-<p><em>The mean is given by <span class="math inline">\(\mu = \frac{a+b}{2}\)</span>. In R we determine that the mean is:</em></p>
+<p><em>The mean is given by</em> <span class="math inline">\(\mu = \frac{a+b}{2}\)</span>. In R we determine that the mean is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(<span class="sc">-</span><span class="dv">2</span><span class="sc">+</span><span class="dv">4</span>)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p><em>The standard deviation is <span class="math inline">\(\sigma = \sqrt {\frac{(b-a)^2}{12}}\)</span>. Using R we find:</em></p>
+<p><em>The standard deviation is</em> <span class="math inline">\(\sigma = \sqrt {\frac{(b-a)^2}{12}}\)</span>. Using R we find:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>((<span class="dv">4</span><span class="sc">-</span>(<span class="sc">-</span><span class="dv">2</span>))<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.732051</code></pre>
 </div>
 </div>
-<p><em>Finally, we can find the probability of <span class="math inline">\(Z\)</span> being less than <span class="math inline">\(-1\)</span> by using the <code>punif()</code> function:</em></p>
+<p><em>Finally, we can find the probability of</em> <span class="math inline">\(Z\)</span> being less than <span class="math inline">\(-1\)</span> by using the <code>punif()</code> function:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="sc">-</span><span class="dv">2</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -443,15 +438,15 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability that you will arrive on time is <span class="math inline">\(0.875\)</span>. If the time of the errand is 30 minutes, then the probability goes down to <span class="math inline">\(0.75\)</span>.</em></p>
-<p><em>There is a <span class="math inline">\(120\)</span> minute interval in which the IP can arrive. The density function is given by <span class="math inline">\(f(x)=1/120\)</span>. Using R we can find <span class="math inline">\(P(X&gt;15)\)</span>:</em></p>
+<p><em>The probability that you will arrive on time is</em> <span class="math inline">\(0.875\)</span>. If the time of the errand is 30 minutes, then the probability goes down to <span class="math inline">\(0.75\)</span>.</p>
+<p><em>There is a</em> <span class="math inline">\(120\)</span> minute interval in which the IP can arrive. The density function is given by <span class="math inline">\(f(x)=1/120\)</span>. Using R we can find <span class="math inline">\(P(X&gt;15)\)</span>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">15</span>,<span class="dv">0</span>,<span class="dv">120</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.875</code></pre>
 </div>
 </div>
-<p><em>Once more we can find <span class="math inline">\(P(X&gt;30)\)</span>:</em></p>
+<p><em>Once more we can find</em> <span class="math inline">\(P(X&gt;30)\)</span>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">30</span>,<span class="dv">0</span>,<span class="dv">120</span>,<span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -469,29 +464,29 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em><span class="math inline">\(P(-0.67 \leq Z \leq -0.23)=0.158\)</span>, <span class="math inline">\(P(0 \leq Z \leq 1.96)=0.475\)</span>, <span class="math inline">\(P(-1.28 \leq Z \leq 0)=0.4\)</span> and <span class="math inline">\(P(Z &gt; 4.2) \approx 0\)</span>.</em></p>
-<p><em>Use the <code>pnorm()</code> function to find the probabilities. <span class="math inline">\(P(-0.67 \leq Z \leq -0.23)\)</span>:</em></p>
+<p><span class="math inline">\(P(-0.67 \leq Z \leq -0.23)=0.158\)</span>, <span class="math inline">\(P(0 \leq Z \leq 1.96)=0.475\)</span>, <span class="math inline">\(P(-1.28 \leq Z \leq 0)=0.4\)</span> and <span class="math inline">\(P(Z &gt; 4.2) \approx 0\)</span>.</p>
+<p><em>Use the <code>pnorm()</code> function to find the probabilities.</em> <span class="math inline">\(P(-0.67 \leq Z \leq -0.23)\)</span>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.23</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.67</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.157617</code></pre>
 </div>
 </div>
-<p><em><span class="math inline">\(P(0 \leq Z \leq 1.96)\)</span></em></p>
+<p><span class="math inline">\(P(0 \leq Z \leq 1.96)\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.96</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4750021</code></pre>
 </div>
 </div>
-<p><em><span class="math inline">\(P(-1.28 \leq Z \leq 0)\)</span></em></p>
+<p><span class="math inline">\(P(-1.28 \leq Z \leq 0)\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">0</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.28</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3997274</code></pre>
 </div>
 </div>
-<p><em><span class="math inline">\(P(Z &gt; 4.2)\)</span></em></p>
+<p><span class="math inline">\(P(Z &gt; 4.2)\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">4.2</span>,<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -507,30 +502,30 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em><span class="math inline">\(P(Y&gt;7.6)=0.005386\)</span>, <span class="math inline">\(P(7.4 \leq Y \leq 10.6)=0.0071\)</span>, a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span> is <span class="math inline">\(6.42\)</span>, and a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)\)</span> is <span class="math inline">\(-2.56\)</span>.</em></p>
+<p><span class="math inline">\(P(Y&gt;7.6)=0.005386\)</span>, <span class="math inline">\(P(7.4 \leq Y \leq 10.6)=0.0071\)</span>, a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span> is <span class="math inline">\(6.42\)</span>, and a <span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)\)</span> is <span class="math inline">\(-2.56\)</span>.</p>
 <p><em>Let’s use once more the <code>pnorm()</code> function in R.</em></p>
-<p><em><span class="math inline">\(P(Y&gt;7.6)\)</span></em></p>
+<p><span class="math inline">\(P(Y&gt;7.6)\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">7.6</span>,<span class="fl">2.5</span>,<span class="dv">2</span>,<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.005386146</code></pre>
 </div>
 </div>
-<p><em><span class="math inline">\(P(7.4 \leq Y \leq 10.6)\)</span></em></p>
+<p><span class="math inline">\(P(7.4 \leq Y \leq 10.6)\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">10.6</span>,<span class="fl">2.5</span>,<span class="dv">2</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">7.4</span>,<span class="fl">2.5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.007117202</code></pre>
 </div>
 </div>
-<p><em><span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span></em></p>
+<p><span class="math inline">\(y\)</span> such that <span class="math inline">\(P(Y&gt;y)=0.025\)</span></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>,<span class="fl">2.5</span>,<span class="dv">2</span>,<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.419928</code></pre>
 </div>
 </div>
-<p><em><span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)=0.4943\)</span>. Note that <span class="math inline">\(2.5\)</span> is the mean. Hence we are looking for a <span class="math inline">\(y\)</span> that has <span class="math inline">\(0.5-0.4943=0.0057\)</span> on the left:</em></p>
+<p><span class="math inline">\(y\)</span> such that <span class="math inline">\(P(y \leq Y \leq 2.5)=0.4943\)</span>. Note that <span class="math inline">\(2.5\)</span> is the mean. Hence we are looking for a <span class="math inline">\(y\)</span> that has <span class="math inline">\(0.5-0.4943=0.0057\)</span> on the left:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.0057</span>,<span class="fl">2.5</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -545,7 +540,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability is <span class="math inline">\(10.56\)</span>%. A game lasting no more than <span class="math inline">\(2.069\)</span> hours would be in the bottom <span class="math inline">\(1\)</span>%.</em></p>
+<p><em>The probability is</em> <span class="math inline">\(10.56\)</span>%. A game lasting no more than <span class="math inline">\(2.069\)</span> hours would be in the bottom <span class="math inline">\(1\)</span>%.</p>
 <p><em>Let’s use <code>pnorm()</code> once more in R.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">2.5</span>,<span class="dv">3</span>,<span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -571,7 +566,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The standard deviation is equal to the mean <span class="math inline">\(0.1\)</span>. <span class="math inline">\(P(0.10 \leq S \leq 0.2)=0.2325\)</span></em></p>
+<p><em>The standard deviation is equal to the mean</em> <span class="math inline">\(0.1\)</span>. <span class="math inline">\(P(0.10 \leq S \leq 0.2)=0.2325\)</span></p>
 <p><em>Let’s use <code>pexp()</code> in R:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="fl">0.2</span>,<span class="at">rate =</span> <span class="dv">10</span>)<span class="sc">-</span><span class="fu">pexp</span>(<span class="fl">0.1</span>,<span class="at">rate =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -587,7 +582,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean time between car arrivals is <span class="math inline">\(1/360=0.002778\)</span>. The probability that the next car will arrive within the next 10 seconds is <span class="math inline">\(0.6321\)</span>.</em></p>
+<p><em>The mean time between car arrivals is</em> <span class="math inline">\(1/360=0.002778\)</span>. The probability that the next car will arrive within the next 10 seconds is <span class="math inline">\(0.6321\)</span>.</p>
 <p><em>Once more we use <code>pexp()</code> in R:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">360</span>,<span class="dv">360</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
