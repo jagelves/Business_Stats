@@ -59,7 +59,7 @@ where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... 
 
 The **standard normal** has a mean of $0$ and a standard deviation of $1$. Otherwise, it has the exact same properties as the normal distribution.
 
-**Example: Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles 75.8%. We can confirm this using R.
+**Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles 75.8%. We can confirm this using R.
 
 ```{r}
 pnorm(40000,36500,5000)
@@ -69,8 +69,8 @@ pnorm(40000,36500,5000)
 The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.
 
 The probability density function is given by 
-$$f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}$$
-**Example: Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.
+$$f(x)=1-e^{\frac{-x}{\mu}}=1-e^{-{\lambda} x}$$
+**Example:** Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.
 
 ```{r}
 pexp(6,1/15)
