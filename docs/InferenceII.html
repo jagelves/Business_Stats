@@ -541,168 +541,48 @@ details summary {
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
 <p>You will need the <strong>sleep</strong> data set for this problem. The data is built into R, and displays the effect of two sleep inducing drugs on students. Calculate a <span class="math inline">\(95\)</span>% confidence interval for group 1 and for group 2. Which drug would you expect to be more effective at increasing sleeping times?</p>
-<pre><code>&lt;details&gt;
-&lt;summary&gt;Answer&lt;/summary&gt;
-*1. The 95% confidence interval for group 1 is [-0.53, 2.03].*
-
-*Let's first calculate the standard error for group 1.*
-
-
-
-
-
-
-
-
-::: {.cell}
-
-```{.r .cell-code}
-(se1 &lt;- sd(sleep$extra[sleep$group == 1]) / sqrt(length(sleep$extra[sleep$group == 1])))
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] 0.5657345
-```
-
-
-:::
-:::
-
-
-
-
-
-
-
-
-*We can now use the standard error to estimate the lower and upper limits of the confidence interval.*
-
-
-
-
-
-
-
-
-::: {.cell}
-
-```{.r .cell-code}
-(ll1 &lt;- mean(sleep$extra[sleep$group == 1]) + qt(0.025, 9) * se1)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] -0.5297804
-```
-
-
-:::
-
-```{.r .cell-code}
-(ul1 &lt;- mean(sleep$extra[sleep$group == 1]) - qt(0.025, 9) * se1)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] 2.02978
-```
-
-
-:::
-:::
-
-
-
-
-
-
-
-
-*2. The 95% confidence interval for group 2 is [0.90, 3.76].*
-
-*Let's repeat the procedure for group 2. Start by finding the standard error.*
-
-
-
-
-
-
-
-
-::: {.cell}
-
-```{.r .cell-code}
-(se2 &lt;- sd(sleep$extra[sleep$group == 2]) / sqrt(length(sleep$extra[sleep$group == 2])))
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] 0.6331666
-```
-
-
-:::
-:::
-
-
-
-
-
-
-
-
-*Using the standard error we can complete the confidence interval.*
-
-
-
-
-
-
-
-
-::: {.cell}
-
-```{.r .cell-code}
-(ll2 &lt;- mean(sleep$extra[sleep$group == 2]) + qt(0.025, 9) * se2)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] 0.8976775
-```
-
-
-:::
-
-```{.r .cell-code}
-(ul2 &lt;- mean(sleep$extra[sleep$group == 2]) - qt(0.025, 9) * se2)
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-[1] 3.762322
-```
-
-
-:::
-:::
-
-
-
-
-
-
-
-
-*3. Drug 2. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students' sleeping time. Additionally, Drug 2's mean increase in sleeping hours is 2.33 vs. 0.75 for drug 1.*
-&lt;/details&gt;</code></pre>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The 95% confidence interval for group 1 is [-0.53, 2.03]. Let’s first calculate the standard error for group 1.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(se1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5657345</code></pre>
+</div>
+</div>
+<p><em>We can now use the standard error to estimate the lower and upper limits of the confidence interval.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(ll1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -0.5297804</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(ul1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2.02978</code></pre>
+</div>
+</div>
+<p><em>The 95% confidence interval for group 2 is [0.90, 3.76].Let’s repeat the procedure for group 2. Start by finding the standard error.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(se2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6331666</code></pre>
+</div>
+</div>
+<p><em>Using the standard error we can complete the confidence interval.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(ll2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8976775</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(ul2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.762322</code></pre>
+</div>
+</div>
+<em>Drug 2 is more effective. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students’ sleeping time. Additionally, Drug 2’s mean increase in sleeping hours is 2.33 vs.&nbsp;0.75 for drug 1.</em>
+</details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
@@ -715,33 +595,33 @@ details summary {
 <p><em>The 90% and 95% confidence intervals are [0.319, 0.481], and [0.304, 0.496] respectively. Since they do not include 0.5, we can conclude that the population proportion is significantly different from 0.5.</em></p>
 <p><em>We can create an object that stores the sample proportion and sample in R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(n <span class="ot">&lt;-</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(n <span class="ot">&lt;-</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 100</code></pre>
 </div>
 </div>
 <p><em>The 90% confidence interval is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(Ex1ll90 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(Ex1ll90 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.319419</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>(Ex1ul90 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>(Ex1ul90 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.480581</code></pre>
 </div>
 </div>
 <p><em>The 95% confidence interval is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>(Ex1ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(Ex1ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3039818</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(Ex1ul95 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>(Ex1ul95 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4960182</code></pre>
 </div>
@@ -755,7 +635,7 @@ details summary {
 <p><em>The 95% confidence interval is [0.128, 0.186].</em></p>
 <p><em>The data can easily be viewed by calling <code>HairEyeColor</code> in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>HairEyeColor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>HairEyeColor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>, , Sex = Male
 
@@ -778,18 +658,18 @@ Hair    Brown Blue Hazel Green
 </div>
 <p><em>Note that there are three dimensions to this table (Hair, Eye, Sex). We can calculate the proportion of Hazel eye colored students with the following command that makes use of indexing:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">1</span>]) <span class="sc">+</span> <span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">2</span>])) <span class="sc">/</span> <span class="fu">sum</span>(HairEyeColor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">1</span>]) <span class="sc">+</span> <span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">2</span>])) <span class="sc">/</span> <span class="fu">sum</span>(HairEyeColor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1570946</code></pre>
 </div>
 </div>
 <p><em>Now we can use this proportion to construct the intervals. Recall that for proportions the interval is calculated by ({p} z_{/2} ). The 95% confidence interval is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(Ex2ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(Ex2ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1277818</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(Ex2ul95 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>(Ex2ul95 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1864074</code></pre>
 </div>

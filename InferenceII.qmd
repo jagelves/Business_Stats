@@ -110,6 +110,7 @@ In this exercise you will be simulating confidence intervals.
 
     <details>
     <summary>Answer</summary>
+
     *The confidence interval is [47.71, 70.17]. Since the population mean is equal to 48.61, the confidence interval does include the population mean.*
 
     *Let's construct the upper and lower limits of the interval in R.*
@@ -198,40 +199,37 @@ In this exercise you will be simulating confidence intervals.
 
 You will need the **sleep** data set for this problem. The data is built into R, and displays the effect of two sleep inducing drugs on students. Calculate a $95$% confidence interval for group 1 and for group 2. Which drug would you expect to be more effective at increasing sleeping times?
 
-    <details>
-    <summary>Answer</summary>
-    *1. The 95% confidence interval for group 1 is [-0.53, 2.03].*
+<details>
+<summary>Answer</summary>
+*The 95% confidence interval for group 1 is [-0.53, 2.03]. Let's first calculate the standard error for group 1.*
+    
+    
+```{r}
+(se1 <- sd(sleep$extra[sleep$group == 1]) / sqrt(length(sleep$extra[sleep$group == 1])))
+```
 
-    *Let's first calculate the standard error for group 1.*
+*We can now use the standard error to estimate the lower and upper limits of the confidence interval.*
 
-    ```{r}
-    (se1 <- sd(sleep$extra[sleep$group == 1]) / sqrt(length(sleep$extra[sleep$group == 1])))
-    ```
+```{r}
+(ll1 <- mean(sleep$extra[sleep$group == 1]) + qt(0.025, 9) * se1)
+(ul1 <- mean(sleep$extra[sleep$group == 1]) - qt(0.025, 9) * se1)
+```
 
-    *We can now use the standard error to estimate the lower and upper limits of the confidence interval.*
+*The 95% confidence interval for group 2 is [0.90, 3.76].Let's repeat the procedure for group 2. Start by finding the standard error.*
 
-    ```{r}
-    (ll1 <- mean(sleep$extra[sleep$group == 1]) + qt(0.025, 9) * se1)
-    (ul1 <- mean(sleep$extra[sleep$group == 1]) - qt(0.025, 9) * se1)
-    ```
+```{r}
+(se2 <- sd(sleep$extra[sleep$group == 2]) / sqrt(length(sleep$extra[sleep$group == 2])))
+```
 
-    *2. The 95% confidence interval for group 2 is [0.90, 3.76].*
+*Using the standard error we can complete the confidence interval.*
 
-    *Let's repeat the procedure for group 2. Start by finding the standard error.*
+```{r}
+(ll2 <- mean(sleep$extra[sleep$group == 2]) + qt(0.025, 9) * se2)
+(ul2 <- mean(sleep$extra[sleep$group == 2]) - qt(0.025, 9) * se2)
+```
 
-    ```{r}
-    (se2 <- sd(sleep$extra[sleep$group == 2]) / sqrt(length(sleep$extra[sleep$group == 2])))
-    ```
-
-    *Using the standard error we can complete the confidence interval.*
-
-    ```{r}
-    (ll2 <- mean(sleep$extra[sleep$group == 2]) + qt(0.025, 9) * se2)
-    (ul2 <- mean(sleep$extra[sleep$group == 2]) - qt(0.025, 9) * se2)
-    ```
-
-    *3. Drug 2. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students' sleeping time. Additionally, Drug 2's mean increase in sleeping hours is 2.33 vs. 0.75 for drug 1.*
-    </details>
+*Drug 2 is more effective. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students' sleeping time. Additionally, Drug 2's mean increase in sleeping hours is 2.33 vs. 0.75 for drug 1.*
+</details>
 
 ### Exercise 4 {.unnumbered}
 
