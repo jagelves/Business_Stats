@@ -794,7 +794,7 @@
     "href": "InfReg.html",
     "title": "14  Regression and Inference",
     "section": "",
-    "text": "14.1 Correlation Significance\nTo determine the statistical significance of the correlation coefficient we test:\nThe test statistic for the correlation is given by \\(t_{df}= \\frac{r_{xy}\\sqrt{n-2}}{\\sqrt{1-r_{xy}^2}}\\), where \\(df=n-2\\) and \\(r_{xy}\\) is the sample correlation coefficient.\nRun the cor.test() function to perform the test on two vectors. Here is a list of arguments to use:",
+    "text": "14.1 Correlation Significance\nIn this chapter, you will begin mastering the concepts of correlation significance, difference of means tests, and regression inference, empowering you with the tools to uncover meaningful relationships and differences in data while assessing their statistical significance. These skills will enable you to make informed business decisions, such as evaluating the strength of market trends, comparing performance across groups, or determining the impact of variables in predictive models, ensuring your conclusions are robust and actionable.\nTo determine the statistical significance of the correlation coefficient we test:\nThe test statistic for the correlation is given by \\(t_{df}= \\frac{r_{xy}\\sqrt{n-2}}{\\sqrt{1-r_{xy}^2}}\\), where \\(df=n-2\\) and \\(r_{xy}\\) is the sample correlation coefficient.\nRun the cor.test() function to perform the test on two vectors. Here is a list of arguments to use:",
     "crumbs": [
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Regression and Inference</span>"
     ]
