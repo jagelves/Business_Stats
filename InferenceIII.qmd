@@ -15,6 +15,7 @@ details summary {
 ```
 
 # Inference III
+In this chapter, you will begin mastering the concepts of null and alternative hypotheses, equipping you with the skills to draw reliable conclusions from sample data, effectively manage risks, and confidently justify strategic decisions.
 
 ## Hypothesis Testing 
 
