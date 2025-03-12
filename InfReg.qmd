@@ -1,6 +1,20 @@
+```{=html}
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+```
+
 # Regression and Inference
-
-
 
 ## Correlation Significance 
 
