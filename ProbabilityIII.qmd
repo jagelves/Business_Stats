@@ -26,17 +26,30 @@ The probability of a continuous random variable assuming a single value is zero.
 
 ## Uniform Distribution
 
-The **uniform** probability density function is given by $f(x)= \frac {1}{b-a}$ when $a \leq x \leq b$ and $0$ otherwise.
+The **uniform** probability density function is given by: 
+$$f(x)= \frac {1}{b-a}$$ 
+when $a \leq x \leq b$ and $0$ otherwise. Here $b$ is the upper limit of the distribution and $a$ is the lower limit. The **expected value** of the uniform distribution is: 
 
-The **expected value** of the uniform distribution is $E(x)= \frac {a+b}{2}$.
+$$E(x)= \frac {a+b}{2}$$
 
-The **variance** of the uniform distribution is $var(x)= \frac {(b-a)^2} {12}$
+The **variance** of the uniform distribution is 
+
+$$var(x)= \frac {(b-a)^2} {12}$$
+**Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$
+We can confirm this result in R using the `punif()` function. Below is the code:
+
+```{r}
+punif(130,120,140)
+```
 
 ## Normal Distribution 
 
-The **normal** PDF is given by $f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}$, where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
+The **normal** PDF is given by 
 
--   The normal curve is symmetrical about the mean $\mu$.
+$$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}$$
+where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
+
+-   It is symmetrical about the mean $\mu$.
 
 -   The mean is at the middle and divides the area of the distribution into halves.
 
@@ -44,22 +57,54 @@ The **normal** PDF is given by $f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1
 
 -   The distribution is completely determined by its mean and standard deviation.
 
-The **standard normal** distribution has a mean of $0$ and a standard deviation of $1$.
+The **standard normal** has a mean of $0$ and a standard deviation of $1$. Otherwise, it has the exact same properties as the normal distribution.
 
+**Example: Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles 75.8%. We can confirm this using R.
+
+```{r}
+pnorm(40000,36500,5000)
+```
 ## Exponential Distribution 
 
 The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.
 
-The probability density function is given by $f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}$.
+The probability density function is given by 
+$$f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}$$
+**Example: Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.
 
+```{r}
+pexp(6,1/15)
+```
+We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%.
+
+```{r}
+pexp(18,1/15)-pexp(6,1/15)
+```
 ## Triangular Distribution 
 
 The **triangular distribution** is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.
 
-The probability density function is given by $f(x)=\frac {2(x-a)}{(b-a)(c-a)}$ for $a \leq x < c$; $f(x)=\frac {2}{(b-a)}$ for $x=c$; $f(x)=\frac {2(b-x)}{(b-a)(b-c)}$ for $c < x \leq b$, and $f(x)=0$ otherwise.
+The probability density function is given by 
+$$f(x)=\frac {2(x-a)}{(b-a)(c-a)}$$ 
+for $a \leq x < c$ 
 
-The **expected value** of the distribution is $E(x)= \frac {a+b+c}{3}$.\
-The **variance** of the triangular distribution is $var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$.
+$$f(x)=\frac {2}{(b-a)}$$ 
+for $x=c$ and 
+
+$$f(x)=\frac {2(b-x)}{(b-a)(b-c)}$$ 
+
+for $c < x \leq b$, and $f(x)=0$ otherwise. The **expected value** of the distribution is 
+$$E(x)= \frac {a+b+c}{3}$$
+The **variance** of the triangular distribution is 
+
+$$var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$$
+
+**Example:** Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%.
+
+```{r}
+library(extraDistr)
+ptriang(2500,1000,6000,3000)-ptriang(2000,1000,6000,3000)
+```
 
 ## Useful R Functions 
 
