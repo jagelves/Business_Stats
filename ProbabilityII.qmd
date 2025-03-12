@@ -132,21 +132,23 @@ $$f(5)= \frac {10 e^{-5}}{5!}=0.0378$$ There is a 3.78% chance of five cars arri
 
 To calculate probabilities based on discrete random variables use the `dbinom()`, `dhyper()`, and `dpois()` functions. For the uniform distribution use the `extraDistr` package and the `dunif()` function.
 
-We can confirm the result of the basketball example by using the `dibinom()` function. Below is the code:
+Let's confirm the results presented earlier in the chapter. We can confirm the result of the basketball example by using the `dibinom()` function. Below is the code:
 
 ```{r}
 dbinom(3,3,0.9)
 ```
 
-The first argument is x (number of successes), the second argument is n (the number of trials), and the last argument is p (the probability of success).
-
-Let's confirm now the result of the fuse box problem. Here we can use the `dhyper()` function in R:
+The first argument is x (number of successes), the second argument is n (the number of trials), and the last argument is p (the probability of success). To confirm the result of the fuse box problem we can use the `dhyper()` function in R:
 
 ```{r}
 dhyper(1,5,7,3)
 ```
 
-The first argument is one more time x (number of successes in the sample), the second argument is r (the number of successes in the population), the third argument is N-r (the total number of failures), and the fourth argument is n (the sample size).
+The first argument is one more time x (number of successes in the sample), the second argument is r (the number of successes in the population), the third argument is N-r (the total number of failures), and the fourth argument is n (the sample size). Finally, for the drive-thru example we use the `dpois()` function to confirm that the probability of five arrivals is 3.78%.
+
+```{r}
+dpois(5,10)
+```
 
 In R you can additionally calculate cumulative probabilities by using the `pbinom()`, `phyper()`, `ppois()`, and `pdunif()` functions. Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qdunif()` functions. Finally, to generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions.
 
