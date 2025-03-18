@@ -34,7 +34,7 @@ The idea behind calculating a covariance is to determine whether there is a rela
 knitr::include_graphics("images/cov1.png")
 ```
 
-Column 5 calculates the product between column 3 and column 4. The covariance is simply the average of the numbers of column 5. Hence, $s_{xy}=-71$. Since $s_{xy}$ is negative we can establish that there is an inverse relationship between SPY and BND.
+Column 5 calculates the product between column 3 and column 4. The covariance is simply the average of the numbers of column 5 by using the degrees of freedom $n-1$. Hence, $s_{xy}=-71$. Since $s_{xy}$ is negative we can establish that there is an inverse relationship between SPY and BND.
 
 Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. The image below explains the intuition.
 
