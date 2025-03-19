@@ -1,8 +1,8 @@
 # Introduction {.unnumbered}
 
-"Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else." *Epictetus*
+“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – *Epictetus*
 
-This course companion is designed to help you build mastery in statistics and its applications using R. Through practice, you will develop the skills and confidence needed to apply statistical concepts effectively. Each chapter begins with a list of key concepts to guide your learning, and the problems are crafted to reinforce these ideas through hands-on experience. If you need additional support while learning R, I encourage you to explore @HOP. Take your time, enjoy the process, and make practice a habit!
+This course companion aims to build your mastery of statistics and its applications in R through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. For extra R support, see @HOP. I thank my business statistics students and Haipei Liu for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!
 
 ## Why R?
 
@@ -57,16 +57,19 @@ Next, choose "R Studio IDE".
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/RStudio2.png")
 ```
-Scroll down until you see the products. You want to download "RStudio Desktop" and make sure it is the free version. 
+
+Scroll down until you see the products. You want to download "RStudio Desktop" and make sure it is the free version.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/RStudio3.png")
 ```
+
 Finally, select "Download RStudio" and follow the instructions for installation.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/RStudio4.png")
 ```
+
 It is important to note that RStudio will not work if R is not installed. You can think of R as the engine and RStudio as the interface.
 
 ## Posit Cloud
