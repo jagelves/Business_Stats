@@ -52,13 +52,7 @@ $$E(x)=(10 \times 0.15) + (6 \times 0.25) + (3 \times 0.4) + (0 \times 0.2)=4.2$
 
 The **discrete uniform distribution** is a probability distribution that assigns equal probability to each outcome in a finite set of possible outcomes. In other words, each outcome in the set is equally likely to occur.
 
-The **probability mass function** is given by:
-$$f(x)=1/n$$
-where $n$ is the number of elements in the sample space (all possible outcomes). The **expected value** is given by:
-$$E(x)=\frac {\sum x_i}{n}$$ 
-where $x_i$ are the possible values, and $n$ is the number of possible values. The **variance** is given by: 
-$$var(x)=\frac {\sum (x_i-E(x))^2}{n}$$
-**Example:** Consider tossing a fair die. Since all outcomes are equally likely, the probability of the die landing on 6 is $f(x)=1/6$. The expected value on a roll of a die is $E(x)=\frac {1+2+3+4+5+6}{6}=3.5$ and the variance is $var(x)=\frac {(-2.5)^2+(-1.5)^2+(-0.5)^2+0.5^2+1.5^2+2.5^2}{6}\approx 2.92$.
+The **probability mass function** is given by: $$f(x)=1/n$$ where $n$ is the number of elements in the sample space (all possible outcomes). The **expected value** is given by: $$E(x)=\frac {\sum x_i}{n}$$ where $x_i$ are the possible values, and $n$ is the number of possible values. The **variance** is given by: $$var(x)=\frac {\sum (x_i-E(x))^2}{n}$$ **Example:** Consider tossing a fair die. Since all outcomes are equally likely, the probability of the die landing on 6 is $f(x)=1/6$. The expected value on a roll of a die is $E(x)=\frac {1+2+3+4+5+6}{6}=3.5$ and the variance is $var(x)=\frac {(-2.5)^2+(-1.5)^2+(-0.5)^2+0.5^2+1.5^2+2.5^2}{6}\approx 2.92$.
 
 ## Binomial Distribution
 
@@ -128,11 +122,15 @@ We can use the Poisson PMF function for this problem. The arrival rate is 10 car
 
 $$f(5)= \frac {10 e^{-5}}{5!}=0.0378$$ There is a 3.78% chance of five cars arriving within a 15 minute interval.
 
-## Useful R Functions
+## Finding Probabilities in R
 
-To calculate probabilities based on discrete random variables use the `dbinom()`, `dhyper()`, and `dpois()` functions. For the uniform distribution use the `extraDistr` package and the `dunif()` function.
+To calculate probabilities based on discrete random variables use the `dbinom()`, `dhyper()`, and `dpois()` functions. For the uniform distribution use the `extraDistr` package and the `dunif()` function. For example, to confirm the results of the dice example use the following code:
 
-Let's confirm the results presented earlier in the chapter. We can confirm the result of the basketball example by using the `dibinom()` function. Below is the code:
+```{r}
+library(extraDistr)
+ddunif(2,1,6)
+```
+The probability of rolling a 2 on a die is 0.167. The function's first argument is $x$, the second argument is the lower limit (i.e., 1) and the third argument is the upper limit (i.e., 6). To confirm the result of the basketball example, use the `dibinom()` function. Below is the code:
 
 ```{r}
 dbinom(3,3,0.9)
@@ -150,7 +148,27 @@ The first argument is one more time x (number of successes in the sample), the s
 dpois(5,10)
 ```
 
-In R you can additionally calculate cumulative probabilities by using the `pbinom()`, `phyper()`, `ppois()`, and `pdunif()` functions. Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qdunif()` functions. Finally, to generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions.
+## Cumulative Probabilities in R.
+
+To calculate cumulative probabilities use the `pbinom()`, `phyper()`, `ppois()`, and `pdunif()` functions. For example, the probability of tossing a 3 or lower when tossing a die is 1/2. This is confirmed with the code:
+
+```{r}
+pdunif(3,1,6)
+```
+
+Likewise, the probability of making at least 2 shots in our basketball example is:
+
+```{r}
+pbinom(1,3,0.9, lower.tail = F)
+```
+Note the use of the *lower.tail* argument. This allows us to find the cumulative distribution to the right (i.e., upper tail of the distribution).
+
+## Finding quantiles in R
+
+Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qdunif()` functions.
+
+## Generating Random numbers using R
+To generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions.
 
 ## Exercises
 
