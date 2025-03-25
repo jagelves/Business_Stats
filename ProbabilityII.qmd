@@ -165,9 +165,22 @@ Note the use of the *lower.tail* argument. This allows us to find the cumulative
 
 ## Finding quantiles in R
 
-Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qdunif()` functions.
+Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qdunif()` functions. If we wanted to find the 70% percentile for the rolling die example we can write:
+
+```{r}
+qdunif(0.7,1,6)
+```
+This means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile. 
+
+Let's recall the fuse box problem where an inspector samples some boxes and determines whether they are defective or not. The inputs for the problem are $N=12$, $n=3$, and $r=5$. For this problem we can find the 80% percentile with the `qhyper()` function.
+
+```{r}
+qhyper(0.8,5,7,3)
+```
+That is, 80% of the outcomes are at two or less defective items.
 
 ## Generating Random numbers using R
+
 To generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions.
 
 ## Exercises

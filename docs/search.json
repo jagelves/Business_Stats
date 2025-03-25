@@ -1184,7 +1184,7 @@
     "href": "ProbabilityII.html#finding-quantiles-in-r",
     "title": "9  Probability II",
     "section": "9.9 Finding quantiles in R",
-    "text": "9.9 Finding quantiles in R\nQuantiles can be calculated using the qbinom(), qhyper(), qpois(), and qdunif() functions.",
+    "text": "9.9 Finding quantiles in R\nQuantiles can be calculated using the qbinom(), qhyper(), qpois(), and qdunif() functions. If we wanted to find the 70% percentile for the rolling die example we can write:\n\nqdunif(0.7,1,6)\n\n[1] 5\n\n\nThis means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile.\nLet’s recall the fuse box problem where an inspector samples some boxes and determines whether they are defective or not. The inputs for the problem are \\(N=12\\), \\(n=3\\), and \\(r=5\\). For this problem we can find the 80% percentile with the qhyper() function.\n\nqhyper(0.8,5,7,3)\n\n[1] 2\n\n\nThat is, 80% of the outcomes are at two or less defective items.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Probability II</span>"
     ]

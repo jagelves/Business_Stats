@@ -481,7 +481,22 @@ details summary {
 </section>
 <section id="finding-quantiles-in-r" class="level2" data-number="9.9">
 <h2 data-number="9.9" class="anchored" data-anchor-id="finding-quantiles-in-r"><span class="header-section-number">9.9</span> Finding quantiles in R</h2>
-<p>Quantiles can be calculated using the <code>qbinom()</code>, <code>qhyper()</code>, <code>qpois()</code>, and <code>qdunif()</code> functions.</p>
+<p>Quantiles can be calculated using the <code>qbinom()</code>, <code>qhyper()</code>, <code>qpois()</code>, and <code>qdunif()</code> functions. If we wanted to find the 70% percentile for the rolling die example we can write:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qdunif</span>(<span class="fl">0.7</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>This means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile.</p>
+<p>Let’s recall the fuse box problem where an inspector samples some boxes and determines whether they are defective or not. The inputs for the problem are <span class="math inline">\(N=12\)</span>, <span class="math inline">\(n=3\)</span>, and <span class="math inline">\(r=5\)</span>. For this problem we can find the 80% percentile with the <code>qhyper()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qhyper</span>(<span class="fl">0.8</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>That is, 80% of the outcomes are at two or less defective items.</p>
 </section>
 <section id="generating-random-numbers-using-r" class="level2" data-number="9.10">
 <h2 data-number="9.10" class="anchored" data-anchor-id="generating-random-numbers-using-r"><span class="header-section-number">9.10</span> Generating Random numbers using R</h2>
@@ -527,19 +542,19 @@ Answer
 <p><em>The expected value is</em> <span class="math inline">\(10.75\)</span> and the standard deviation is <span class="math inline">\(5.31\)</span>. The probability of <span class="math inline">\(x&lt;15\)</span> is <span class="math inline">\(0.65\)</span>.</p>
 <p><em>In R we can create vectors for both</em> <span class="math inline">\(x\)</span> and the probabilities <span class="math inline">\(P(X=x)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>px<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.35</span>,<span class="fl">0.3</span>,<span class="fl">0.2</span>,<span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>px<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.35</span>,<span class="fl">0.3</span>,<span class="fl">0.2</span>,<span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>The expected value is the sum product of probabilities and values. Formally,</em> <span class="math inline">\(\sum_{i=1}^{n}x_{i}p_{i}\)</span> and in R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(ex<span class="ot">&lt;-</span><span class="fu">sum</span>(x<span class="sc">*</span>px))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(ex<span class="ot">&lt;-</span><span class="fu">sum</span>(x<span class="sc">*</span>px))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.75</code></pre>
 </div>
 </div>
 <p><em>The standard deviation is given by</em> <span class="math inline">\(\sqrt{\sum_{i=1}^{n}(x_{i}-\mu)^2p_{i}}\)</span>. We can calculate it in R with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(sd<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>ex)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>px)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(sd<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>ex)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>px)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.30919</code></pre>
 </div>
@@ -573,19 +588,19 @@ Answer
 <p><em>The expected value is</em> <span class="math inline">\(-17.4\)</span> and the standard deviation is <span class="math inline">\(6.86\)</span>. The probability of is <span class="math inline">\(0.25\)</span>.</p>
 <p><em>Let’s create the vectors once more in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">23</span>,<span class="sc">-</span><span class="dv">17</span>,<span class="sc">-</span><span class="dv">9</span>,<span class="sc">-</span><span class="dv">3</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>py<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">23</span>,<span class="sc">-</span><span class="dv">17</span>,<span class="sc">-</span><span class="dv">9</span>,<span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>py<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>The expected value is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(ey<span class="ot">&lt;-</span><span class="fu">sum</span>(y<span class="sc">*</span>py))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(ey<span class="ot">&lt;-</span><span class="fu">sum</span>(y<span class="sc">*</span>py))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -17.4</code></pre>
 </div>
 </div>
 <p><em>The standard deviation is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(sdy<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((y<span class="sc">-</span>ey)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>py)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(sdy<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((y<span class="sc">-</span>ey)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>py)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6.858571</code></pre>
 </div>
@@ -627,44 +642,44 @@ Answer
 <p><em>Both funds have the same expected return of</em> <span class="math inline">\(6\)</span>. The safest return comes from fund 1 since the standard deviation is only <span class="math inline">\(11.14\)</span> vs.&nbsp;<span class="math inline">\(31.05\)</span> for fund 2.</p>
 <p><em>In R we can create a data frame with probabilities and the performance of the funds.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>funds<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.3</span>),<span class="at">fund1=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="sc">-</span><span class="dv">10</span>), <span class="at">fund2=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">20</span>,<span class="sc">-</span><span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>funds<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.3</span>),<span class="at">fund1=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="sc">-</span><span class="dv">10</span>), <span class="at">fund2=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">20</span>,<span class="sc">-</span><span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Let’s create a function for the expected value and standard deviation. For the expected value:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Expected_Value<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(x<span class="sc">*</span>p)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>Expected_Value<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(x<span class="sc">*</span>p)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Now we can use the formula to calculate the expected value of fund1:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p><em>and fund 2:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
 <p><em>For the standard deviation we can create another function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>Standard_Deviation<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">Expected_Value</span>(x,p))<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p))</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>Standard_Deviation<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">Expected_Value</span>(x,p))<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Using the function to get the standard deviation of fund 1 we get:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11.13553</code></pre>
 </div>
 </div>
 <p><em>and for fund 2:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31.04835</code></pre>
 </div>
@@ -704,14 +719,14 @@ Answer
 <p><em>The expected return of the portfolio is</em> <span class="math inline">\(10.4\)</span> and the standard deviation is <span class="math inline">\(14.60\)</span>.</p>
 <p><em>In R we can start by calculating the expected return. This is given by the formula</em> <span class="math inline">\(\alpha R_{1} +\beta R_{2}\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>(ER<span class="ot">&lt;-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">8</span><span class="sc">+</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>(ER<span class="ot">&lt;-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">8</span><span class="sc">+</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.4</code></pre>
 </div>
 </div>
 <p><em>Next we can find the standard deviation with the formula</em> <span class="math inline">\(\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}+\alpha \beta \rho \sigma_{1} \sigma_{2}}\)</span>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(Risk<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fl">0.4</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">12</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.6</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="dv">12</span><span class="sc">*</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(Risk<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fl">0.4</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">12</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.6</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="dv">12</span><span class="sc">*</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.59863</code></pre>
 </div>
@@ -730,14 +745,14 @@ Answer
 <p><span class="math inline">\(P(Z=1)=0.31\)</span>, and <span class="math inline">\(P(Z \geq 2)=0.57\)</span>. The expected value is <span class="math inline">\(np=1.75\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=1.067\)</span>.</p>
 <p><em>Let’s use R and the <code>dbinom()</code> function to find</em> <span class="math inline">\(P(Z=1)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3123859</code></pre>
 </div>
 </div>
 <p><em>We can now use <code>pbinom()</code> to find the cumulative distribution. Since we want the right tale of the distribution, we will specify this with an argument.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.571585</code></pre>
 </div>
@@ -753,14 +768,14 @@ Answer
 <p><span class="math inline">\(P(W&gt;160)=0.14\)</span>, and <span class="math inline">\(P(155 \leq W \leq 165 )=0.45\)</span>. The expected value is <span class="math inline">\(np=154\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=5.95\)</span>.</p>
 <p><em>Using the <code>pbinom()</code> function we find that</em> <span class="math inline">\(P(W&gt;160)\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">160</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">160</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.136611</code></pre>
 </div>
 </div>
 <p><em>We make two calculations to find the probability. First,</em> <span class="math inline">\(P(W \leq 165)\)</span> and then <span class="math inline">\(P(W \geq 154)\)</span>. The difference between these two, gives us the desired outcome.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">165</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">154</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">165</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">154</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4487104</code></pre>
 </div>
@@ -776,27 +791,27 @@ Answer
 <p><em>The probabilities are the same. Each event has a probability of</em> <span class="math inline">\(0.3456\)</span>. If the probability changes to <span class="math inline">\(0.5\)</span> now the event of two women and two men is more likely.</p>
 <p><em>Let’s calculate the probabilities in R. First, the probability of three men and one woman.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3456</code></pre>
 </div>
 </div>
 <p><em>Now the probability of two men and two women.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3456</code></pre>
 </div>
 </div>
 <p><em>Changing the probabilities reveals that:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.25</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.375</code></pre>
 </div>
@@ -816,14 +831,14 @@ Answer
 <p><em>The</em> <span class="math inline">\(P(S=2)=0.25\)</span> and <span class="math inline">\(P(S \geq 2)=0.44\)</span>. The expected value and the variance is <span class="math inline">\(1.5\)</span>.</p>
 <p><em>In R we will make use of the <code>dpois()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">2</span>,<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">2</span>,<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2510214</code></pre>
 </div>
 </div>
 <p><em>For the second probability we will use <code>ppois()</code>:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">1</span>,<span class="fl">1.5</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">1</span>,<span class="fl">1.5</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4421746</code></pre>
 </div>
@@ -839,14 +854,14 @@ Answer
 <p><em>The</em> <span class="math inline">\(P(T=14)=0.039\)</span> and <span class="math inline">\(P(18 \leq T \leq 23)=0.49\)</span>.</p>
 <p><em>Using the <code>dpois()</code> function once more:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">14</span>,<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">14</span>,<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.03873664</code></pre>
 </div>
 </div>
 <p><em>For the second probability we will find the difference between two probabilities:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">23</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">17</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">23</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">17</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4904644</code></pre>
 </div>
@@ -862,7 +877,7 @@ Answer
 <p><em>The probability of administering more than</em> <span class="math inline">\(8\)</span> but less than <span class="math inline">\(12\)</span> shots is <span class="math inline">\(0.3\)</span>.</p>
 <p><em>Let’s first note that if</em> <span class="math inline">\(84\)</span> shots are administered on average weekly, then <span class="math inline">\(12\)</span> are administered daily. Now we can use this average and the <code>ppois()</code> function to find the probability:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">11</span>,<span class="dv">12</span>)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">8</span>,<span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">11</span>,<span class="dv">12</span>)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">8</span>,<span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3065696</code></pre>
 </div>
@@ -881,21 +896,21 @@ Answer
 <p><span class="math inline">\(P(X=0)=0.58\)</span>, <span class="math inline">\(P(X=1)=0.37\)</span>, and <span class="math inline">\(P(X \leq 1)=0.94\)</span>.</p>
 <p><em>In R we can use the <code>dhyper()</code> function</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">22</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">22</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5782609</code></pre>
 </div>
 </div>
 <p><em>once more for the second probability:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3652174</code></pre>
 </div>
 </div>
 <p><em>For the last probability we can add the previous probabilities or use the <code>phyper()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9434783</code></pre>
 </div>
@@ -911,7 +926,7 @@ Answer
 <p><em>The probability is</em> <span class="math inline">\(0.545\)</span>.</p>
 <p><em>In R we use the <code>dhyper()</code> function once more:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5454545</code></pre>
 </div>
@@ -927,29 +942,29 @@ Answer
 <p><em>The probability of matching two white balls is</em> <span class="math inline">\(5%\)</span>. Winning the jackpot is extremely unlikely! A probability of <span class="math inline">\(0.00000000512\)</span>. It is more likely to be struck by lightning according to the CDC.</p>
 <p><em>In R use the <code>dhyper()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.04954472</code></pre>
 </div>
 </div>
 <p><em>For the jackpot we first calculate the probability of getting all of the white balls.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">5</span>,<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">5</span>,<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.00000019974</code></pre>
 </div>
 </div>
 <p><em>Now the probability of getting the Powerball.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.025641</code></pre>
 </div>
 </div>
 <p><em>Since the two events are independent, we can multiply them to find the probability of a jackpot.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)<span class="sc">*</span><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)<span class="sc">*</span><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.0000000051217</code></pre>
 </div>
