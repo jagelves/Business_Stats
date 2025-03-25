@@ -56,7 +56,7 @@ Next, we calculate the intercept to complete the regression line and answer the 
 
 The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is $\hat{y_i}=1.5+2.2x_i$. With this equation we can now establish that if we had a budget of $6$ for advertisement, our predicted price would be $\hat{y_i}=1.5+2.2(6)=14.7$. This answers our prediction question.
 
-In conclusion regression line has allowed us to answer both questions: 1. The effectiveness of advertisement: For every dollar spent, the price increases by $2.2$. 2. The predicted price: With an advertisement budget of $6$, the predicted price is $14.7$.
+In conclusion regression line has allowed us to answer both questions: 1. The effectiveness of advertisement: For every dollar spent on advertisment, the price increases by $2.2$. 2. The predicted price: With an advertisement budget of $6$, the predicted price is $14.7$.
 
 This demonstrates the value of regression analysis in quantifying relationships and making informed predictions.
 
