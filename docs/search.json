@@ -1194,7 +1194,7 @@
     "href": "ProbabilityII.html#generating-random-numbers-using-r",
     "title": "9  Probability II",
     "section": "9.10 Generating Random numbers using R",
-    "text": "9.10 Generating Random numbers using R\nTo generate random numbers use the rbinom(), rhyper(), rpois(), and rdunif() functions.",
+    "text": "9.10 Generating Random numbers using R\nTo generate random numbers use the rbinom(), rhyper(), rpois(), and rdunif() functions. Let’s generate 100 random numbers from the basketball example to look at the distribution of outcomes.\n\nshots&lt;-rbinom(100,3,0.9)\n\nThe first input in the function is the number of random numbers we want to generate from the binomial distribution. We can now plot using ggplot.\n\nlibrary(tidyverse)\nlibrary(ggthemes)\nggplot() + geom_bar(aes(shots), col=\"black\",\n                    bg=\"grey\", alpha=0.5) +\n  theme_clean()\n\n\n\n\n\n\n\n\nThe graph shows how the shooter makes all three shots about 72 times out of 100 shots.",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Probability II</span>"
     ]

@@ -181,7 +181,22 @@ That is, 80% of the outcomes are at two or less defective items.
 
 ## Generating Random numbers using R
 
-To generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions.
+To generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions. Let's generate 100 random numbers from the basketball example to look at the distribution of outcomes.
+
+```{r}
+shots<-rbinom(100,3,0.9)
+```
+
+The first input in the function is the number of random numbers we want to generate from the binomial distribution. We can now plot using `ggplot`.
+
+```{r message=FALSE}
+library(tidyverse)
+library(ggthemes)
+ggplot() + geom_bar(aes(shots), col="black",
+                    bg="grey", alpha=0.5) +
+  theme_clean()
+```
+The graph shows how the shooter makes all three shots about 72 times out of 100 shots.
 
 ## Exercises
 
