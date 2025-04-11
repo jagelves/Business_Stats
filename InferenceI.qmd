@@ -20,7 +20,7 @@ Statistical inference is a cornerstone of modern business decision-making. It en
 
 ## Statistical Inference
 
-Statistical inference helps us learn about a population by studying a smaller sample. It relies on a sample statistic, like the sample mean (i.e., the sample statistic), calculated from a random sample where each item is picked independently. This sample mean gives us a good guess about the population mean (i.e., the population parameter). Since it comes from a fair and random selection, it’s a simple, trustworthy way to understand bigger trends without needing all the data. Some properties of the sample mean are:
+The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), since it comes from a fair and random selection. Some of the properties of the sample mean are as follows:
 
 -   The expected value of the sample means is equal to the population mean (i.e., the sample mean is unbiased). Formally, $E(\bar x_i) = \mu$.
 
@@ -28,11 +28,13 @@ Statistical inference helps us learn about a population by studying a smaller sa
 
 -   If the population is normally distributed, then the sample means ($\bar x$'s) are normally distributed.
 
--   If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., $n>30$). This is the **central limit theorem**.
+-   If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., $n>30$). This is known as the **central limit theorem**.
 
-## Proportions 
+In conclusion, when we estimate a sample mean drawn from a random sample of the population, we know that the mean comes from a normal distribution with a mean equal to the population mean and a smaller standard deviation than the population standard deviation.
 
-Recall that the **binomial distribution** describes the number of successes $x$ in $n$ trials of a Bernoulli process where $p$ is the probability of success. Here, $x/n$ is the proportion of successes.
+## Proportions
+
+Statistical inference can also be performed with proportions (e.g. the proportion of left handed people, proportion of people with a particular virus, etc.). We can relate this proportions to the outcome of a binomial distribution. Recall that the **binomial distribution** describes the number of successes $x$ in $n$ trials of a Bernoulli process where $p$ is the probability of success. Here, $x/n$ is the proportion of successes.
 
 -   To estimate the **population proportion** use the **sample proportion** $\bar p = x/n$. This estimate is unbiased (i.e., $E(\bar p)=P$), where $P$ is the population proportion.
 
@@ -73,6 +75,7 @@ In this exercise we will be simulating the central limit theorem. You will need 
 <details>
 
 <summary>Answer</summary>
+
 *Let's start by creating the random sample. We can use the `runif()` function in R to do this. We will set a seed so that results are reproducible.*
 
 ```{r}
@@ -87,7 +90,7 @@ PopMean<-mean(Population)
 PopSD<-sd(Population)
 ```
 
-*The mean and standard deviation are $150.53$ and $29.2$. Let's quickly create a histogram of population, so that we can convince ourselves that the data is uniformly distributed.*
+*The mean and standard deviation are* $150.53$ and $29.2$. Let's quickly create a histogram of population, so that we can convince ourselves that the data is uniformly distributed.
 
 ```{r}
 library(tidyverse)
@@ -99,12 +102,15 @@ ggplot() +
                  boundary=100, binwidth = 10) +
   theme_clean()
 ```
+
 </details>
+
 2.  Create a for loop (with 1000 iterations) that takes a sample of 10 points from *population*, calculate the mean, and then store the result in a vector called *SampleMeans*. Calculate the mean of the *SampleMeans* object. How does this mean compare to *PopMean*? How does the standard deviation compare to *PopSD*?
 
 <details>
 
 <summary>Answer</summary>
+
 *Now let's create a for loop that allows us to sample the population several times. In fact, we will sample the population 1000 times and record the mean of the samples.*
 
 ```{r}
@@ -122,7 +128,7 @@ for (i in 1:nrep){
 mean(SampleMeans)
 ```
 
-*Note that the mean is very close to *PopMean*. In the limit (that is if we take many more samples), these two values are equal to each other. Now let's calculate the standard deviation of the sample means.*
+*Note that the mean is very close to* PopMean*. In the limit (that is if we take many more samples), these two values are equal to each other. Now let's calculate the standard deviation of the sample means.*
 
 ```{r}
 sd(SampleMeans)
@@ -133,6 +139,7 @@ sd(SampleMeans)
 ```{r}
 PopSD/sqrt(10)
 ```
+
 </details>
 
 3.  Create a histogram for the sample means. Is the distribution uniform? Is it normal? What is the probability that the sample mean is between 140 and 160?
@@ -140,6 +147,7 @@ PopSD/sqrt(10)
 <details>
 
 <summary>Answer</summary>
+
 *To create the histogram we use the `geom_histogram()` function once more:*
 
 ```{r}
@@ -149,14 +157,14 @@ ggplot() +
   theme_clean()
 ```
 
-*The distribution looks normal. To be clear, if the population follows a uniform distribution, we have shown that the distribution of the sample means is normal with a mean equal to the population mean and a smaller standard deviation.*
-*We can use the distribution of the sample means to calculate the desired probability. Noting the the distribution is normal:*
+*The distribution looks normal. To be clear, if the population follows a uniform distribution, we have shown that the distribution of the sample means is normal with a mean equal to the population mean and a smaller standard deviation.* *We can use the distribution of the sample means to calculate the desired probability. Noting the the distribution is normal:*
 
 ```{r}
 pnorm(160,mean(SampleMeans),sd(SampleMeans))-pnorm(140,mean(SampleMeans),sd(SampleMeans))
 ```
 
-*There is a $70.87$% probability that the sample mean is between $140$ and $160$.*
+*There is a* $70.87$% probability that the sample mean is between $140$ and $160$.
+
 </details>
 
 ### Exercise 2 {.unnumbered}
@@ -166,7 +174,8 @@ pnorm(160,mean(SampleMeans),sd(SampleMeans))-pnorm(140,mean(SampleMeans),sd(Samp
 <details>
 
 <summary>Answer</summary>
-*The expected value is $80$ since it is equal to the mean of the population. The standard error is $1.4$. The probability is $98.38$%.*
+
+*The expected value is* $80$ since it is equal to the mean of the population. The standard error is $1.4$. The probability is $98.38$%.
 
 *We can use R as a calculator to find the standard error.*
 
@@ -179,6 +188,7 @@ pnorm(160,mean(SampleMeans),sd(SampleMeans))-pnorm(140,mean(SampleMeans),sd(Samp
 ```{r}
 pnorm(85,80,1.4)-pnorm(77,80,1.4)
 ```
+
 </details>
 
 2.  Assume that miles-per-gallons of combustion cars are normally distributed with mean of $33.8$ and standard deviation of $3.5$. What is the probability that the mean mpg of four randomly selected cars is more than $35$? What is the probability that all four selected cars have mpg greater than $35$?
@@ -186,15 +196,16 @@ pnorm(85,80,1.4)-pnorm(77,80,1.4)
 <details>
 
 <summary>Answer</summary>
-*The probabilities are $24.66$% and $1.8$%.*
 
-*For the first probability we can use a sample size of $4$ and use the standard error in the `pnorm()` function.*
+*The probabilities are* $24.66$% and $1.8$%.
+
+*For the first probability we can use a sample size of* $4$ and use the standard error in the `pnorm()` function.
 
 ```{r}
 pnorm(35,33.8,3.5/sqrt(4),lower.tail = F)
 ```
 
-*For the second probability we can first calculate the probability that a randomly selected car has mpg greater than $35$. In R:*
+*For the second probability we can first calculate the probability that a randomly selected car has mpg greater than* $35$. In R:
 
 ```{r}
 (p35<-pnorm(35,33.8,3.5,lower.tail = F))
@@ -205,6 +216,7 @@ pnorm(35,33.8,3.5/sqrt(4),lower.tail = F)
 ```{r}
 p35^4
 ```
+
 </details>
 
 ### Exercise 3 {.unnumbered}
@@ -214,7 +226,8 @@ p35^4
 <details>
 
 <summary>Answer</summary>
-*The expected value is $0.75$, the same as the population. The standard error is $\sqrt{p(1-p)/n}=0.03$. The probability for a sample of $200$ is $0.8975$.*
+
+*The expected value is* $0.75$, the same as the population. The standard error is $\sqrt{p(1-p)/n}=0.03$. The probability for a sample of $200$ is $0.8975$.
 
 *The standard error is given by:*
 
@@ -235,15 +248,16 @@ pnorm(0.8,0.75,sqrt(0.75*0.25/200))-pnorm(0.7,0.75,sqrt(0.75*0.25/200))
 <details>
 
 <summary>Answer</summary>
-*The probability with a sample of $50$ is $69.29$%. When the sample is $200$ the probability is $84.33$%. As the sample size increases the standard error goes down. This means that the distribution of the sample proportions gets tighter and there is more area to the right of $\bar{p}=0.2$.*
 
-*In R we can use the `pnorm()` function one more time with a mean of $0.2$ and $n=50$.*
+*The probability with a sample of* $50$ is $69.29$%. When the sample is $200$ the probability is $84.33$%. As the sample size increases the standard error goes down. This means that the distribution of the sample proportions gets tighter and there is more area to the right of $\bar{p}=0.2$.
+
+*In R we can use the `pnorm()` function one more time with a mean of* $0.2$ and $n=50$.
 
 ```{r}
 pnorm(0.2,0.23,sqrt(0.23*0.77/50),lower.tail = F)
 ```
 
-*Updating the code so that $n=200$ yields:*
+*Updating the code so that* $n=200$ yields:
 
 ```{r}
 pnorm(0.2,0.23,sqrt(0.23*0.77/200),lower.tail = F)
@@ -262,6 +276,7 @@ pnorm(0.2,0.23,sqrt(0.23*0.77/200),lower.tail = F)
 <details>
 
 <summary>Answer</summary>
+
 *The process seems to be out of control. In the early samples, the machine is not filling the cans with enough drink. Although, in the later periods the machine reverts back to the expected performance, it seems unlikely that it will remain functioning correctly.*
 
 *Let's start by calculating the upper and lower limits in R.*
@@ -295,6 +310,7 @@ ggplot() +
 <details>
 
 <summary>Answer</summary>
+
 *Good Dolls production looks good. All proportions fall between three standard errors of the mean.*
 
 *Once more we can calculate upper and lower limits for the proportions.*
@@ -318,8 +334,3 @@ ggplot() +
 ```
 
 </details>
-
-
-
-
-

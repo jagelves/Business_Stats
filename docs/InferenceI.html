@@ -341,17 +341,18 @@ details summary {
 <p>Statistical inference is a cornerstone of modern business decision-making. It enables companies to extract meaningful insights from data amid uncertainty and complexity. Businesses can predict customer behavior, optimize marketing strategies, and assess risks by drawing reliable conclusions from sample data. In this chapter, we explore how we can draw insights from the population using sample data.</p>
 <section id="statistical-inference" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="statistical-inference"><span class="header-section-number">11.1</span> Statistical Inference</h2>
-<p>Statistical inference helps us learn about a population by studying a smaller sample. It relies on a sample statistic, like the sample mean (i.e., the sample statistic), calculated from a random sample where each item is picked independently. This sample mean gives us a good guess about the population mean (i.e., the population parameter). Since it comes from a fair and random selection, it’s a simple, trustworthy way to understand bigger trends without needing all the data. Some properties of the sample mean are:</p>
+<p>The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), since it comes from a fair and random selection. Some of the properties of the sample mean are as follows:</p>
 <ul>
 <li><p>The expected value of the sample means is equal to the population mean (i.e., the sample mean is unbiased). Formally, <span class="math inline">\(E(\bar x_i) = \mu\)</span>.</p></li>
 <li><p>The standard deviation of the sample means is lower than the population standard deviation. <span class="math inline">\(\sigma_{\bar x}= \sigma/\sqrt{n}\)</span>. We call this measure the <strong>standard error</strong>.</p></li>
 <li><p>If the population is normally distributed, then the sample means (<span class="math inline">\(\bar x\)</span>’s) are normally distributed.</p></li>
-<li><p>If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., <span class="math inline">\(n&gt;30\)</span>). This is the <strong>central limit theorem</strong>.</p></li>
+<li><p>If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., <span class="math inline">\(n&gt;30\)</span>). This is known as the <strong>central limit theorem</strong>.</p></li>
 </ul>
+<p>In conclusion, when we estimate a sample mean drawn from a random sample of the population, we know that the mean comes from a normal distribution with a mean equal to the population mean and a smaller standard deviation than the population standard deviation.</p>
 </section>
 <section id="proportions" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="proportions"><span class="header-section-number">11.2</span> Proportions</h2>
-<p>Recall that the <strong>binomial distribution</strong> describes the number of successes <span class="math inline">\(x\)</span> in <span class="math inline">\(n\)</span> trials of a Bernoulli process where <span class="math inline">\(p\)</span> is the probability of success. Here, <span class="math inline">\(x/n\)</span> is the proportion of successes.</p>
+<p>Statistical inference can also be performed with proportions (e.g.&nbsp;the proportion of left handed people, proportion of people with a particular virus, etc.). We can relate this proportions to the outcome of a binomial distribution. Recall that the <strong>binomial distribution</strong> describes the number of successes <span class="math inline">\(x\)</span> in <span class="math inline">\(n\)</span> trials of a Bernoulli process where <span class="math inline">\(p\)</span> is the probability of success. Here, <span class="math inline">\(x/n\)</span> is the proportion of successes.</p>
 <ul>
 <li><p>To estimate the <strong>population proportion</strong> use the <strong>sample proportion</strong> <span class="math inline">\(\bar p = x/n\)</span>. This estimate is unbiased (i.e., <span class="math inline">\(E(\bar p)=P\)</span>), where <span class="math inline">\(P\)</span> is the population proportion.</p></li>
 <li><p>The <strong>standard error</strong> of the estimate is <span class="math inline">\(se(\bar P)= \sqrt { \frac {p(1-p)}{n}}\)</span>, where <span class="math inline">\(p\)</span> is the sample proportion, and <span class="math inline">\(n\)</span> is the sample size.</p></li>
@@ -395,7 +396,7 @@ Answer
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>PopMean<span class="ot">&lt;-</span><span class="fu">mean</span>(Population)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>PopSD<span class="ot">&lt;-</span><span class="fu">sd</span>(Population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><em>The mean and standard deviation are <span class="math inline">\(150.53\)</span> and <span class="math inline">\(29.2\)</span>. Let’s quickly create a histogram of population, so that we can convince ourselves that the data is uniformly distributed.</em></p>
+<p><em>The mean and standard deviation are</em> <span class="math inline">\(150.53\)</span> and <span class="math inline">\(29.2\)</span>. Let’s quickly create a histogram of population, so that we can convince ourselves that the data is uniformly distributed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -449,7 +450,7 @@ Answer
 <pre><code>[1] 151.4461</code></pre>
 </div>
 </div>
-<p><em>Note that the mean is very close to </em>PopMean<em>. In the limit (that is if we take many more samples), these two values are equal to each other. Now let’s calculate the standard deviation of the sample means.</em></p>
+<p><em>Note that the mean is very close to</em> PopMean<em>. In the limit (that is if we take many more samples), these two values are equal to each other. Now let’s calculate the standard deviation of the sample means.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(SampleMeans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -492,7 +493,7 @@ Answer
 <pre><code>[1] 0.708682</code></pre>
 </div>
 </div>
-<em>There is a <span class="math inline">\(70.87\)</span>% probability that the sample mean is between <span class="math inline">\(140\)</span> and <span class="math inline">\(160\)</span>.</em>
+<p><em>There is a</em> <span class="math inline">\(70.87\)</span>% probability that the sample mean is between <span class="math inline">\(140\)</span> and <span class="math inline">\(160\)</span>.</p>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
@@ -504,7 +505,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The expected value is <span class="math inline">\(80\)</span> since it is equal to the mean of the population. The standard error is <span class="math inline">\(1.4\)</span>. The probability is <span class="math inline">\(98.38\)</span>%.</em></p>
+<p><em>The expected value is</em> <span class="math inline">\(80\)</span> since it is equal to the mean of the population. The standard error is <span class="math inline">\(1.4\)</span>. The probability is <span class="math inline">\(98.38\)</span>%.</p>
 <p><em>We can use R as a calculator to find the standard error.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">14</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -527,15 +528,15 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probabilities are <span class="math inline">\(24.66\)</span>% and <span class="math inline">\(1.8\)</span>%.</em></p>
-<p><em>For the first probability we can use a sample size of <span class="math inline">\(4\)</span> and use the standard error in the <code>pnorm()</code> function.</em></p>
+<p><em>The probabilities are</em> <span class="math inline">\(24.66\)</span>% and <span class="math inline">\(1.8\)</span>%.</p>
+<p><em>For the first probability we can use a sample size of</em> <span class="math inline">\(4\)</span> and use the standard error in the <code>pnorm()</code> function.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">35</span>,<span class="fl">33.8</span>,<span class="fl">3.5</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">4</span>),<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2464466</code></pre>
 </div>
 </div>
-<p><em>For the second probability we can first calculate the probability that a randomly selected car has mpg greater than <span class="math inline">\(35\)</span>. In R:</em></p>
+<p><em>For the second probability we can first calculate the probability that a randomly selected car has mpg greater than</em> <span class="math inline">\(35\)</span>. In R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(p35<span class="ot">&lt;-</span><span class="fu">pnorm</span>(<span class="dv">35</span>,<span class="fl">33.8</span>,<span class="fl">3.5</span>,<span class="at">lower.tail =</span> F))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -560,7 +561,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The expected value is <span class="math inline">\(0.75\)</span>, the same as the population. The standard error is <span class="math inline">\(\sqrt{p(1-p)/n}=0.03\)</span>. The probability for a sample of <span class="math inline">\(200\)</span> is <span class="math inline">\(0.8975\)</span>.</em></p>
+<p><em>The expected value is</em> <span class="math inline">\(0.75\)</span>, the same as the population. The standard error is <span class="math inline">\(\sqrt{p(1-p)/n}=0.03\)</span>. The probability for a sample of <span class="math inline">\(200\)</span> is <span class="math inline">\(0.8975\)</span>.</p>
 <p><em>The standard error is given by:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fl">0.75</span><span class="sc">*</span><span class="fl">0.25</span><span class="sc">/</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -581,15 +582,15 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability with a sample of <span class="math inline">\(50\)</span> is <span class="math inline">\(69.29\)</span>%. When the sample is <span class="math inline">\(200\)</span> the probability is <span class="math inline">\(84.33\)</span>%. As the sample size increases the standard error goes down. This means that the distribution of the sample proportions gets tighter and there is more area to the right of <span class="math inline">\(\bar{p}=0.2\)</span>.</em></p>
-<p><em>In R we can use the <code>pnorm()</code> function one more time with a mean of <span class="math inline">\(0.2\)</span> and <span class="math inline">\(n=50\)</span>.</em></p>
+<p><em>The probability with a sample of</em> <span class="math inline">\(50\)</span> is <span class="math inline">\(69.29\)</span>%. When the sample is <span class="math inline">\(200\)</span> the probability is <span class="math inline">\(84.33\)</span>%. As the sample size increases the standard error goes down. This means that the distribution of the sample proportions gets tighter and there is more area to the right of <span class="math inline">\(\bar{p}=0.2\)</span>.</p>
+<p><em>In R we can use the <code>pnorm()</code> function one more time with a mean of</em> <span class="math inline">\(0.2\)</span> and <span class="math inline">\(n=50\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.2</span>,<span class="fl">0.23</span>,<span class="fu">sqrt</span>(<span class="fl">0.23</span><span class="sc">*</span><span class="fl">0.77</span><span class="sc">/</span><span class="dv">50</span>),<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6928964</code></pre>
 </div>
 </div>
-<p><em>Updating the code so that <span class="math inline">\(n=200\)</span> yields:</em></p>
+<p><em>Updating the code so that</em> <span class="math inline">\(n=200\)</span> yields:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.2</span>,<span class="fl">0.23</span>,<span class="fu">sqrt</span>(<span class="fl">0.23</span><span class="sc">*</span><span class="fl">0.77</span><span class="sc">/</span><span class="dv">200</span>),<span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
