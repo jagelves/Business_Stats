@@ -259,7 +259,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -369,8 +369,8 @@ details summary {
 <ul>
 <li><p>An <strong>experiment</strong> is a process that leads to one of several outcomes. <em>Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.</em></p></li>
 <li><p>An <strong>outcome</strong> is the result of an experiment. <em>Ex: A coin landing on heads, drawing the ace of spades.</em></p></li>
-<li><p>The <strong>sample space</strong> <span class="math inline">\((S)\)</span> of an experiment contains all possible outcomes of the experiment. <em>Ex: <span class="math inline">\(S=\{1,2,3,4,5,6\}\)</span> is the sample space for tossing a die.</em></p></li>
-<li><p>An <strong>event</strong> is a subset of the sample space. <em>Ex: <span class="math inline">\(A=\{2,4,6\}\)</span> is the event of tossing an even number when rolling a die. <span class="math inline">\(B=\{1A,1D,1S,1H\}\)</span> is the event of drawing an ace from a deck of cards.</em></p></li>
+<li><p>The <strong>sample space</strong> <span class="math inline">\((S)\)</span> of an experiment contains all possible outcomes of the experiment. <em>Ex:</em> <span class="math inline">\(S=\{1,2,3,4,5,6\}\)</span> is the sample space for tossing a die.</p></li>
+<li><p>An <strong>event</strong> is a subset of the sample space. <em>Ex:</em> <span class="math inline">\(A=\{2,4,6\}\)</span> is the event of tossing an even number when rolling a die. <span class="math inline">\(B=\{1A,1D,1S,1H\}\)</span> is the event of drawing an ace from a deck of cards.</p></li>
 </ul>
 </section>
 <section id="basic-probability-concepts" class="level2" data-number="8.3">
@@ -379,7 +379,7 @@ details summary {
 <p><span class="math display">\[
 P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
 \]</span></p>
-<p>Since the number of elements in the event <span class="math inline">\(A\)</span> is at most the same as the number of elements in <span class="math inline">\(S\)</span>, the probability of event <span class="math inline">\(A\)</span> is a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> inclusive. Formally, <span class="math inline">\(0\leq P(A) \leq1\)</span>. When the probability of the event is <span class="math inline">\(0\)</span> then the event is impossible. When the probability is <span class="math inline">\(1\)</span> then the event is certain.</p>
+<p>The probability of A satisfies <span class="math inline">\(0\leq P(A) \leq1\)</span>. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.</p>
 <p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.<strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
 <p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
 <p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
@@ -424,13 +424,13 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <section id="complement-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="complement-rule">Complement Rule</h3>
 <p>The <strong>Complement Rule</strong> state that: <span class="math display">\[P(A^c)=1-P(A)\]</span> where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>. This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.</p>
-<p><em>Ex: The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is <span class="math inline">\(P(Heart)=\frac{13}{52}\)</span>, then using the complement rule, <span class="math inline">\(P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}\)</span></em></p>
+<p><em>Ex: The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is</em> <span class="math inline">\(P(Heart)=\frac{13}{52}\)</span>, then using the complement rule, <span class="math inline">\(P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}\)</span></p>
 </section>
 <section id="addition-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="addition-rule">Addition Rule</h3>
 <p>The <strong>Addition Rule</strong> states:</p>
 <p><span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> where <span class="math inline">\(\cap\)</span> is intersection and <span class="math inline">\(\cup\)</span> is union. This formula prevents double-counting when events overlap by including the intersection of events.</p>
-<p><em>Ex: Let’s calculate the probability of drawing either a heart or a face card. If we let event <span class="math inline">\(A\)</span>, be drawing a heart, and event <span class="math inline">\(B\)</span> be drawing a face card, the probability is given by:</em> <span class="math display">\[P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}\]</span></p>
+<p><em>Ex: Let’s calculate the probability of drawing either a heart or a face card. If we let event</em> <span class="math inline">\(A\)</span>, be drawing a heart, and event <span class="math inline">\(B\)</span> be drawing a face card, the probability is given by: <span class="math display">\[P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}\]</span></p>
 </section>
 <section id="multiplication-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="multiplication-rule">Multiplication Rule</h3>
@@ -439,7 +439,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p><em>Ex: Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by:</em></p>
 <p><span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span> Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
 <p><span class="math display">\[P(A \cap B)= P(A)P(B)\]</span> Hence, we can define independence as: events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurrence (or non occurrence) of one does not affect the probability of the other occurring.</p>
-<p><em>Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is <span class="math inline">\(13/52\)</span>, the probability of drawing a spade in the second draw is also <span class="math inline">\(13/52\)</span>.</em></p>
+<p><em>Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is</em> <span class="math inline">\(13/52\)</span>, the probability of drawing a spade in the second draw is also <span class="math inline">\(13/52\)</span>.</p>
 <p><em>Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent</em></p>
 </section>
 <section id="law-of-total-probability" class="level3 unnumbered">
@@ -536,25 +536,25 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p>The table shows that there are six possible ways to organize a group of three people. The <strong>Factorial</strong> counts how many ways a group of <span class="math inline">\(N\)</span> objects can be organized. Formally, we write:</p>
 <p><span class="math display">\[Factorial=N!\]</span></p>
 <p>where the operator <span class="math inline">\(!\)</span> means to take the product of all positive integers from <span class="math inline">\(N\)</span> down to <span class="math inline">\(1\)</span>. Additionally, <span class="math inline">\(0!\)</span> is equal to zero. If we then try to find in how many ways we can organize a group of three people, we can avoid enumeration by calculating <span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>.</p>
-<p><em>Ex: Let’s assume that a manager has locked down the first five batters in a given game, but is undecided on the batting order. The number of ways that he can organize the five batters is given by <span class="math inline">\(5!=5 \times 4 \times 3 \times 2 \times 1=120\)</span>.</em></p>
+<p><em>Ex: Let’s assume that a manager has locked down the first five batters in a given game, but is undecided on the batting order. The number of ways that he can organize the five batters is given by</em> <span class="math inline">\(5!=5 \times 4 \times 3 \times 2 \times 1=120\)</span>.</p>
 </section>
 <section id="combinations" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="combinations">Combinations</h3>
-<p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter. If repetition is not allowed use: <span class="math display">\[C(n, x)= \frac{n!}{(n-x)!x!}\]</span> <em>Ex: Let’s imaging visiting the Mexican restaurant Chipotle. We are choosing a bowl for lunch and we can choose from the following items: beans, chicken, rice, pico, guac, and beef. If we are only allowed to select four items out of the six, in how many ways can we construct a bowl? Below we use the combination formula to show that there are <span class="math inline">\(15\)</span> possible bowls.</em></p>
+<p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter. If repetition is not allowed use: <span class="math display">\[C(n, x)= \frac{n!}{(n-x)!x!}\]</span> <em>Ex: Let’s imaging visiting the Mexican restaurant Chipotle. We are choosing a bowl for lunch and we can choose from the following items: beans, chicken, rice, pico, guac, and beef. If we are only allowed to select four items out of the six, in how many ways can we construct a bowl? Below we use the combination formula to show that there are</em> <span class="math inline">\(15\)</span> possible bowls.</p>
 <p><span class="math display">\[C(6, 4)= \frac{6!}{(6-4)!4!}=\frac{6 \times 5}{2}=15\]</span></p>
 <p>There are situations when we wish to count all possible combinations inclusive of repetition of elements. If repetition is allowed we use the following formula:</p>
 <p><span class="math display">\[C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}\]</span></p>
-<p><em>Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is <span class="math inline">\(35\)</span>.</em></p>
+<p><em>Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is</em> <span class="math inline">\(35\)</span>.</p>
 <p><span class="math display">\[C(7,3)=\frac{7!}{4!3!}= 7 \times 5=35\]</span></p>
 </section>
 <section id="permutations" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="permutations">Permutations</h3>
 <p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:</p>
 <p><span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
-<p><em>Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of <span class="math inline">\(336\)</span>. Below you can see the calculation.</em></p>
+<p><em>Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of</em> <span class="math inline">\(336\)</span>. Below you can see the calculation.</p>
 <p><span class="math display">\[P(8,3)= \frac{8!}{5!}= 8 \times 7 \times 6=336\]</span></p>
 <p>As with combinations, there might be situations were we wish to count when repetition is allowed. If this is this case, use: <span class="math display">\[P(n,x)=n^x\]</span></p>
-<p><em>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</em></p>
+<p><em>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are</em> <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
 </section>
 </section>
 <section id="probability-in-r" class="level2" data-number="8.8">
@@ -583,9 +583,9 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 Answer
 </summary>
 <ul>
-<li><em><span class="math inline">\(P(D)=1/5=0.2\)</span> since all events are equally likely.</em></li>
-<li><em><span class="math inline">\(P(B^c)=4/5=0.8\)</span></em></li>
-<li><em><span class="math inline">\(P(A \cup C \cup E)=P(A + C + E)=3/5=0.6\)</span>.</em></li>
+<li><span class="math inline">\(P(D)=1/5=0.2\)</span> since all events are equally likely.</li>
+<li><span class="math inline">\(P(B^c)=4/5=0.8\)</span></li>
+<li><span class="math inline">\(P(A \cup C \cup E)=P(A + C + E)=3/5=0.6\)</span>.</li>
 </ul>
 </details>
 <ol start="2" type="1">
@@ -596,7 +596,7 @@ Answer
 Answer
 </summary>
 <ul>
-<li><em>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not mutually exclusive since they share some of the same elements.</em></li>
+<li><em>Events</em> <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not mutually exclusive since they share some of the same elements.</li>
 <li><em>The events are not exhaustive since the union of both doesn’t create the sample space.</em></li>
 </ul>
 </details>
@@ -608,10 +608,10 @@ Answer
 Answer
 </summary>
 <ul>
-<li><em>The probability is <span class="math inline">\(68.8\)</span>%.</em></li>
+<li><em>The probability is</em> <span class="math inline">\(68.8\)</span>%.</li>
 <li><em>The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight.</em></li>
 <li><em>The events are not exhaustive since there are people in the U.S. that have a normal weight.</em></li>
-<li><em>The probability that the person drawn has normal weight is <span class="math inline">\(31.2\)</span>%.</em></li>
+<li><em>The probability that the person drawn has normal weight is</em> <span class="math inline">\(31.2\)</span>%.</li>
 </ul>
 </details>
 </section>
@@ -628,7 +628,7 @@ Answer
 <p><em>From the multiplication rule,</em> <span class="math display">\[
 P(A|B)*P(B)=P(A \cap B)
 \]</span></p>
-<p><em>substituting values yields: </em> <span class="math display">\[
+<p><em>substituting values yields:</em> <span class="math display">\[
 P(A \cap B)=0.45*0.3=0.135
 \]</span> <em>From the addition rule,</em> <span class="math display">\[
 P(A \cup B)=P(A)+P(B)-P(A \cap B)
@@ -641,8 +641,8 @@ P(A \cup B)=P(A)+P(B)-P(A \cap B)
 <summary>
 Answer
 </summary>
-<p><em>From the complement rule we have that <span class="math inline">\(P(A^c)=0.6\)</span> and <span class="math inline">\(P(B^c)=0.5\)</span>.</em><br>
-<em>Using the multiplication rule,</em> <span class="math display">\[P(A^c|B^c)=\frac{P(A^c \cap B^c)}{P(B^c)}\]</span> <em>substituting yields:</em> <span class="math display">\[P(A^c|B^c)=0.24/0.5=0.48\]</span> <em>From the addition rule,</em> <span class="math display">\[P(A^c \cup B^c)=P(A^c)+P(B^c)-P(A^c \cap B^c)\]</span> <em>substituting yields:</em> <span class="math display">\[P(A^c \cup B^c)=0.6+0.5-0.24=0.86\]</span> <em>The event that has no elements of <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is given by <span class="math inline">\(P(A^c \cap B^c)\)</span>. Therefore <span class="math inline">\(P(A \cup B)=1-0.24=0.76\)</span> has all the elements of A and B.</em></p>
+<p><em>From the complement rule we have that</em> <span class="math inline">\(P(A^c)=0.6\)</span> and <span class="math inline">\(P(B^c)=0.5\)</span>.<br>
+<em>Using the multiplication rule,</em> <span class="math display">\[P(A^c|B^c)=\frac{P(A^c \cap B^c)}{P(B^c)}\]</span> <em>substituting yields:</em> <span class="math display">\[P(A^c|B^c)=0.24/0.5=0.48\]</span> <em>From the addition rule,</em> <span class="math display">\[P(A^c \cup B^c)=P(A^c)+P(B^c)-P(A^c \cap B^c)\]</span> <em>substituting yields:</em> <span class="math display">\[P(A^c \cup B^c)=0.6+0.5-0.24=0.86\]</span> <em>The event that has no elements of</em> <span class="math inline">\(A\)</span> or <span class="math inline">\(B\)</span> is given by <span class="math inline">\(P(A^c \cap B^c)\)</span>. Therefore <span class="math inline">\(P(A \cup B)=1-0.24=0.76\)</span> has all the elements of A and B.</p>
 </details>
 <ol start="3" type="1">
 <li>Stock <span class="math inline">\(A\)</span> will rise in price with a probability of <span class="math inline">\(0.4\)</span>, stock <span class="math inline">\(B\)</span> will rise with a probability of <span class="math inline">\(0.6\)</span>. If stock <span class="math inline">\(B\)</span> rises in price, then <span class="math inline">\(A\)</span> will also rise with a probability of <span class="math inline">\(0.5\)</span>. What is the probability that at least one of the stocks will rise in price? Prove that events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are (are not) mutually exclusive (independent).</li>
@@ -651,7 +651,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>In short, the problem states <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.6\)</span>, and <span class="math inline">\(P(A|B)=0.5\)</span>. Where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events of stocks rising in price. The question asks for:</em> <span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> <em>Using the multiplication rule,</em> <span class="math display">\[P(A \cap B)=0.5*0.6=0.3\]</span> <em>Hence,</em> <span class="math display">\[P(A \cup B)=0.4+0.6-0.3=0.7\]</span> <em>The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.3 \neq 0\)</span>. The events are also not independent since <span class="math inline">\(P(A|B)=0.5 \neq 0.4=P(A)\)</span>.</em></p>
+<p><em>In short, the problem states</em> <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.6\)</span>, and <span class="math inline">\(P(A|B)=0.5\)</span>. Where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are events of stocks rising in price. The question asks for: <span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> <em>Using the multiplication rule,</em> <span class="math display">\[P(A \cap B)=0.5*0.6=0.3\]</span> <em>Hence,</em> <span class="math display">\[P(A \cup B)=0.4+0.6-0.3=0.7\]</span> <em>The events are not mutually exclusive since</em> <span class="math inline">\(P(A \cap B)=0.3 \neq 0\)</span>. The events are also not independent since <span class="math inline">\(P(A|B)=0.5 \neq 0.4=P(A)\)</span>.</p>
 </details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
@@ -682,7 +682,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>Below is the joint probability table. The <span class="math inline">\(P(A)=0.26+0.34=0.6\)</span>, <span class="math inline">\(P(A \cap B)=0.26\)</span>, <span class="math inline">\(P(A|B)=0.26/0.4=0.65\)</span>, and <span class="math inline">\(P(B|A^c)=0.14/0.4=0.35\)</span>. Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent since <span class="math inline">\(P(A) \neq P(A|B)\)</span>. The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.26 \neq 0\)</span>.</em></p>
+<p><em>Below is the joint probability table. The</em> <span class="math inline">\(P(A)=0.26+0.34=0.6\)</span>, <span class="math inline">\(P(A \cap B)=0.26\)</span>, <span class="math inline">\(P(A|B)=0.26/0.4=0.65\)</span>, and <span class="math inline">\(P(B|A^c)=0.14/0.4=0.35\)</span>. Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent since <span class="math inline">\(P(A) \neq P(A|B)\)</span>. The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.26 \neq 0\)</span>.</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -723,7 +723,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability of a Head-On crash is <span class="math inline">\((166+108)/4858=0.056\)</span>. The probability of a daylight crash is <span class="math inline">\((166+3258)/4858=0.70\)</span>. The probability that the car crash is Head-On given daylight is <span class="math inline">\(166/(166+3258)=0.048\)</span>.</em></p>
+<p><em>The probability of a Head-On crash is</em> <span class="math inline">\((166+108)/4858=0.056\)</span>. The probability of a daylight crash is <span class="math inline">\((166+3258)/4858=0.70\)</span>. The probability that the car crash is Head-On given daylight is <span class="math inline">\(166/(166+3258)=0.048\)</span>.</p>
 <p><em>Start by loading the data into R.</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -759,7 +759,7 @@ Answer
 </summary>
 <p><em>The probability of a head-on crash is:</em></p>
 <p><span class="math display">\[P(\text{Head-on})=0.03+0.02=0.05\]</span> <em>The probability that the crash is in daylight is:</em></p>
-<span class="math display">\[P(Daylight)=0.03+0.67=0.70\]</span> <span class="math display">\[P(Daylight)=\frac{P(\text{Head-on})}{P(Daylight)}=\frac{0.03}{0.70}\]</span>
+<p><span class="math display">\[P(Daylight)=0.03+0.67=0.70\]</span> <span class="math display">\[P(Daylight)=\frac{P(\text{Head-on})}{P(Daylight)}=\frac{0.03}{0.70}\]</span></p>
 </details>
 <ol start="3" type="1">
 <li>Show that Crashes and Light are dependent.</li>
@@ -768,7 +768,7 @@ Answer
 <summary>
 Answer
 </summary>
-<em>The two variables are dependent since <span class="math inline">\(P(Head-On|Daylight) \neq P(Head-On)\)</span>, that is <span class="math inline">\(0.048 \neq 0.56\)</span>.</em>
+<p><em>The two variables are dependent since</em> <span class="math inline">\(P(Head-On|Daylight) \neq P(Head-On)\)</span>, that is <span class="math inline">\(0.048 \neq 0.56\)</span>.</p>
 </details>
 </section>
 <section id="exercise-5" class="level3 unnumbered">
@@ -780,7 +780,7 @@ Answer
 <summary>
 Answer
 </summary>
-<em><span class="math inline">\(P(A^c)=1-P(A)=1-0.7=0.3\)</span>, <span class="math inline">\(P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) = 0.385\)</span>, <span class="math inline">\(P(A^c \cap B)=𝑃(B|A^c)𝑃(A^c) = 0.10(0.30) = 0.03\)</span>, <span class="math inline">\(P(B)= 𝑃(A \cap B) + 𝑃(𝐴^c \cap 𝐵) = 0.385 + 0.03 = 0.415\)</span>, and <span class="math inline">\(P(A|B)= \frac{𝑃(A \cap B)}{P(B)}=0.385/0.415=0.9277\)</span>.</em>
+<p><span class="math inline">\(P(A^c)=1-P(A)=1-0.7=0.3\)</span>, <span class="math inline">\(P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) = 0.385\)</span>, <span class="math inline">\(P(A^c \cap B)=𝑃(B|A^c)𝑃(A^c) = 0.10(0.30) = 0.03\)</span>, <span class="math inline">\(P(B)= 𝑃(A \cap B) + 𝑃(𝐴^c \cap 𝐵) = 0.385 + 0.03 = 0.415\)</span>, and <span class="math inline">\(P(A|B)= \frac{𝑃(A \cap B)}{P(B)}=0.385/0.415=0.9277\)</span>.</p>
 </details>
 <ol start="2" type="1">
 <li>Some find tutors helpful when taking a course. Julia has a 40% chance to fail a course if she does not have a tutor. With a tutor, the probability of failing is only 10%. There is a 50% chance that Julia finds an available tutor. What is the probability that Julia will fail the course? If she ends up failing the course, what is the probability that she had a tutor?</li>
@@ -789,7 +789,7 @@ Answer
 <summary>
 Answer
 </summary>
-<em>Let the event of failing be <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span>.</em>
+<p><em>Let the event of failing be</em> <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span>.</p>
 </details>
 </section>
 <section id="exercise-6" class="level3 unnumbered">
@@ -801,15 +801,15 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=6 \times 4=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20,160\)</span></em></p>
-<p><em>In R we can just use the factorial command. So <span class="math inline">\(3!\)</span> is:</em></p>
+<p><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=6 \times 4=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20,160\)</span></p>
+<p><em>In R we can just use the factorial command. So</em> <span class="math inline">\(3!\)</span> is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 6</code></pre>
 </div>
 </div>
-<p><em>and <span class="math inline">\(4!\)</span> is:</em></p>
+<p><em>and</em> <span class="math inline">\(4!\)</span> is:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -833,7 +833,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>If order doesn’t matter, there are <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30,240\)</span> ways.</em></p>
+<p><em>If order doesn’t matter, there are</em> <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30,240\)</span> ways.</p>
 <p><em>In R we can once more use the combination and permutation functions:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>B1<span class="ot">&lt;-</span><span class="fu">combinations</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
