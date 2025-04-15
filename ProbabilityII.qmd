@@ -104,7 +104,7 @@ There is a 47.72% chance that the inspector finds a defective fuse in his sample
 
 The **Poisson distribution** estimates the number of successes ($x$) over a specified interval of time or space.
 
-The **probability mass function** is given by: $$f(x)= \frac {\mu e^{-x}}{x!}$$
+The **probability mass function** is given by: $$f(x)= \frac {\mu^{x} e^{-\mu}}{x!}$$
 
 where $\mu$ is the expected number of successes in any given interval and also the variance, and $e$ is Euler's number (2.71828...).
 
@@ -130,6 +130,7 @@ To calculate probabilities based on discrete random variables use the `dbinom()`
 library(extraDistr)
 ddunif(2,1,6)
 ```
+
 The probability of rolling a 2 on a die is 0.167. The function's first argument is $x$, the second argument is the lower limit (i.e., 1) and the third argument is the upper limit (i.e., 6). To confirm the result of the basketball example, use the `dibinom()` function. Below is the code:
 
 ```{r}
@@ -161,6 +162,7 @@ Likewise, the probability of making at least 2 shots in our basketball example i
 ```{r}
 pbinom(1,3,0.9, lower.tail = F)
 ```
+
 Note the use of the *lower.tail* argument. This allows us to find the cumulative distribution to the right (i.e., upper tail of the distribution).
 
 ## Finding quantiles in R
@@ -170,13 +172,15 @@ Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qd
 ```{r}
 qdunif(0.7,1,6)
 ```
-This means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile. 
+
+This means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile.
 
 Let's recall the fuse box problem where an inspector samples some boxes and determines whether they are defective or not. The inputs for the problem are $N=12$, $n=3$, and $r=5$. For this problem we can find the 80% percentile with the `qhyper()` function.
 
 ```{r}
 qhyper(0.8,5,7,3)
 ```
+
 That is, 80% of the outcomes are at two or less defective items.
 
 ## Generating Random numbers using R
@@ -196,6 +200,7 @@ ggplot() + geom_bar(aes(shots), col="black",
                     bg="grey", alpha=0.5) +
   theme_clean()
 ```
+
 The graph shows how the shooter makes all three shots about 72 times out of 100 shots.
 
 ## Exercises
