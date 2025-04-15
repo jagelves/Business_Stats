@@ -1134,7 +1134,7 @@
     "href": "ProbabilityIII.html#exponential-distribution",
     "title": "10  Probability III",
     "section": "10.4 Exponential Distribution",
-    "text": "10.4 Exponential Distribution\nThe exponential distribution is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.\nThe probability density function is given by \\[f(x)=1-e^{\\frac{-x}{\\mu}}=1-e^{-{\\lambda} x}\\] Example: Let \\(x\\) represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.\n\npexp(6,1/15)\n\n[1] 0.32968\n\n\nWe can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%.\n\npexp(18,1/15)-pexp(6,1/15)\n\n[1] 0.3691258",
+    "text": "10.4 Exponential Distribution\nThe exponential distribution is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.\nThe probability density function is given by \\[f(x)=1/{\\mu} \\times e^{\\frac{-x}{\\mu}}=\\lambda e^{-{\\lambda} x}\\] Example: Let \\(x\\) represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.\n\npexp(6,1/15)\n\n[1] 0.32968\n\n\nWe can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%.\n\npexp(18,1/15)-pexp(6,1/15)\n\n[1] 0.3691258",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Probability III</span>"
     ]

@@ -381,7 +381,7 @@ details summary {
 <section id="exponential-distribution" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="exponential-distribution"><span class="header-section-number">10.4</span> Exponential Distribution</h2>
 <p>The <strong>exponential distribution</strong> is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.</p>
-<p>The probability density function is given by <span class="math display">\[f(x)=1-e^{\frac{-x}{\mu}}=1-e^{-{\lambda} x}\]</span> <strong>Example:</strong> Let <span class="math inline">\(x\)</span> represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.</p>
+<p>The probability density function is given by <span class="math display">\[f(x)=1/{\mu} \times e^{\frac{-x}{\mu}}=\lambda e^{-{\lambda} x}\]</span> <strong>Example:</strong> Let <span class="math inline">\(x\)</span> represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">6</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
