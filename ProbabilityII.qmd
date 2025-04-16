@@ -34,7 +34,7 @@ When summarizing a random variable, we are mostly interested in the variable's c
 
 The **expected value** (mean) is a measure of central location. For a discrete random variable it is given by: $$E(x)=\mu=\sum xf(x)$$ where $f(x)$ is the probability mass function. For a continuous random variable it is given by $E(x)= \int_{-\infty}^{\infty} x f(x) dx$, where $f(x)$ is the probability density function.
 
-The **variance** summarizes the deviation of the values of the random variable from the mean. It is calculated by: $$var(x)=E[(x-E(x))^2]=E[x^2]-E[x]^2$$ Note that this formula can be used for both discrete and continuous random variables.
+The **variance** summarizes the deviation of the values of the random variable from the mean. It is calculated by: $$var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2$$ Note that this formula can be used for both discrete and continuous random variables.
 
 **Example:** Let's consider an incentive pay scheme for a company. The table below summarizes the scheme:
 
