@@ -162,7 +162,7 @@ We can see that event A occurs 60 times and that event B occurs 40 times. Most i
 knitr::include_graphics("images/joint.png")
 ```
 
-In the middle of the table we have the joint probabilities or intersections of events (i.e., $A \cap B$, $A \cap B^c$, etc.). The values in the totals columns are the probabilities of each event happening (i.e., $P(A)$, $P(B^c)$, etc.). We call these probabilities **marginal probabilities** since they reside at the margin of the table.
+In the middle of the table we have the joint probabilities or intersections of events (i.e., $A \cap B$, $A \cap B^c$, etc.). The values in the totals columns or rows are the probabilities of each event happening (i.e., $P(A)$, $P(B^c)$, etc.). We call these probabilities **marginal probabilities** since they reside at the margin of the table.
 
 ## Counting Rules
 
