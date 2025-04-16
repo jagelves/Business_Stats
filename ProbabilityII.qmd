@@ -76,7 +76,7 @@ The function indicates that there is a 72.9% chance of taking the lead.
 
 ## The Hypergeometric Distribution
 
-The **hypergeometric distribution** is a probability distribution that describes the outcome of drawing a sample from a population without replacement. It is used to calculate the probability of drawing a certain number of successes ($x$) in a sample of a given size ($n$), where the success or failure of each individual draw is not dependent on the success or failure of other draws.
+The **hypergeometric distribution** is a probability distribution that describes the outcome of drawing a sample from a population without replacement. It is used to calculate the probability of drawing a certain number of successes ($x$) in a sample of a given size ($n$), where the success or failure of each individual draw is dependent on the success or failure of other draws.
 
 The **hypergeometric** experiment differs from the binomial since:
 
