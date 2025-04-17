@@ -54,10 +54,10 @@ $$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}$
 
 The **standard normal** has a mean of $0$ and a standard deviation of $1$. Otherwise, it has the exact same properties as the normal distribution.
 
-**Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles 75.8%. We can confirm this using R.
+**Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles 24.2%. We can confirm this using R.
 
 ```{r}
-pnorm(40000,36500,5000)
+1-pnorm(40000,36500,5000)
 ```
 
 ## Exponential Distribution
