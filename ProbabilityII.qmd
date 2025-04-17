@@ -561,7 +561,7 @@ phyper(1, 3, 22, 4)
 *In R we use the `dhyper()` function once more:*
 
 ```{r}
-dhyper(0, 2, 10, 3)
+phyper(7, 25, 75, 20, lower.tail = F)
 ```
 
 </details>
