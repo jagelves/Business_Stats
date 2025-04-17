@@ -120,7 +120,7 @@ An experiment satisfies a Poisson process if:
 
 We can use the Poisson PMF function for this problem. The arrival rate is 10 cars every 15 minutes. So there are 10 successes in the 15 minute interval. We can substitute values into the PMF:
 
-$$f(5)= \frac {10 e^{-5}}{5!}=0.0378$$ There is a 3.78% chance of five cars arriving within a 15 minute interval.
+$$f(5)= \frac {5^{10} e^{-5}}{5!}=0.0378$$ There is a 3.78% chance of five cars arriving within a 15 minute interval.
 
 ## Finding Probabilities in R
 
