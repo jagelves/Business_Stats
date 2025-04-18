@@ -42,7 +42,7 @@ punif(130,120,140)
 
 The **normal** PDF is given by
 
-$$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}$$ where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
+$$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}$$ where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
 
 -   It is symmetrical about the mean $\mu$.
 
