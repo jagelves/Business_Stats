@@ -22,6 +22,8 @@ In this chapter, you will begin mastering the concepts of null and alternative h
 
 The **null hypothesis** is a statement about the population parameter. Usually, the status quo. In research, it states no effect or no relationship between variables. The null hypothesis includes some form of the equality sign (i.e., $\geq$, $\leq$, or $=$).
 
+For instance, consider the hypothesis that the average annual income of an individual in the U.S. is 50,000 dollars. When we take a sufficiently large sample from the population, the sample mean can be treated as a random variable following a normal distribution (central limit theorem). The hypothesized value, 50,000, represents the mean of this distribution. Our goal is to determine whether the calculated sample mean is likely to have been drawn from this hypothesized normal distribution with the specified mean. If the sample mean is "close" to the hypothesized mean then we would conclude that our sample is likely to have been drawn from such a distribution. If it is "far away" then we question whether the population mean is the one hypothesized and we should pivot to an alternative.
+
 The **alternative hypothesis** directly contradicts the null hypothesis. In research, it states the prediction of the effect or relationship. The alternative includes non-equality signs (i.e., $>$, $<$, or $\ne$).
 
 To conduct hypothesis testing:
@@ -178,9 +180,10 @@ Try not to peek at the answers until you have formulated your own answer and dou
 
 According to www.nps.gov, the period of time between Old Faithful's eruptions is on average $92$ minutes. Use the built-in **faithful** R data set and a two-tail test to determine whether this claim is true.
 
-        
 <details>
+
 <summary>Answer</summary>
+
 *The claim that the duration between eruptions is 92 minutes can be rejected at a 10%, 5%, and 1% significance level.*
 
 *Once more calculate the t-test in R with the `t.test()` function.*
@@ -188,8 +191,8 @@ According to www.nps.gov, the period of time between Old Faithful's eruptions is
 ```{r}
 t.test(faithful$waiting, alternative = "two.sided", mu = 92, conf.level = 0.99)
 ```
-</details>
 
+</details>
 
 ### Exercise 3 {.unnumbered}
 
@@ -280,9 +283,10 @@ t.test(faithful$waiting, alternative = "two.sided", mu = 92, conf.level = 0.99)
 
 According to www.worldatlas.com, $5$% of the population has hazel color eyes. Use the built-in **HairEyeColor** R data set and a two-tail test to determine whether this claim is true.
 
-       
 <details>
+
 <summary>Answer</summary>
+
 *We reject the null hypothesis that 5% of the population has hazel eyes with our sample.*
 
 *The number of people with hazel eyes is calculated as:*
@@ -302,5 +306,5 @@ According to www.worldatlas.com, $5$% of the population has hazel color eyes. Us
 ```{r}
 prop.test(93, 592, p = 0.05, alternative = "two.sided", conf.level = 0.95, correct = FALSE)
 ```
-</details>
 
+</details>
