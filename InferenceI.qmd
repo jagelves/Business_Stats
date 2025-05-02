@@ -34,10 +34,13 @@ $$E(\bar x_i) = \mu$$
 Since we have access to the population, we can easily calculate the mean of $\mu=4$. Now consider us taking a random sample of three elements from the population. The table below show the possible samples, and their corresponding means.
 
 |Sample|Sample Outcome| $\bar{x}$|
+|:-:|:-:|:-:|
 |1| {2,4,5}|$\bar{x}_1=3.66$|
 |2| {2,4,10}|$\bar{x}_2=5.33$|
 |3| {2,5,10}|$\bar{x}_3=5.66$|
 |4| {4,5,10}|$\bar{x}_3=6.33$|
+
+
 -   The standard deviation of the sample means is lower than the population standard deviation. $\sigma_{\bar x}= \sigma/\sqrt{n}$. We call this measure the **standard error**.
 
 -   If the population is normally distributed, then the sample means ($\bar x$'s) are normally distributed.
