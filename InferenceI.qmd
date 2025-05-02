@@ -20,25 +20,27 @@ Statistical inference is a cornerstone of modern business decision-making. It en
 
 ## Statistical Inference
 
-The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), since it comes from a fair and random selection. Some of the properties of the sample mean are as follows:
+The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), since it comes from a fair and random selection. Some of the properties of the sample mean are unbiasedness, consistency, and efficiency (asympotic normality).
 
--   The expected value of the sample means is equal to the population mean (i.e., the sample mean is unbiased). Formally, 
+### Unbiasedness {.unnumbered}
+
+The expected value of the sample means is equal to the population mean. Formally, 
 
 $$E(\bar x_i) = \mu$$
-*Example:* Let's consider the following data to be the population.
+To convince ourselves of this property, consider the data below as being the population.
 
 |x_1|x_2|x_3|x_4|
 |:-:|:-:|:-:|:-:|
-|4|10|5|2|
+|3|12|18|30|
 
-Since we have access to the population, we can easily calculate the mean of $\mu=4$. Now consider us taking a random sample of three elements from the population. The table below show the possible samples, and their corresponding means.
+Since in this simple example, have access to the population, we can calculate the population mean and verify that it is $\mu=15.75$. However, in reality it is rarely that we have population data. Consider taking a random sample of three elements from the population. The table below show the possible samples, and their corresponding means.
 
 |Sample|Sample Outcome| $\bar{x}$|
 |:-:|:-:|:-:|
-|1| {2,4,5}|$\bar{x}_1=3.66$|
-|2| {2,4,10}|$\bar{x}_2=5.33$|
-|3| {2,5,10}|$\bar{x}_3=5.66$|
-|4| {4,5,10}|$\bar{x}_3=6.33$|
+|1| {3,12,18}|$\bar{x}_1=11$|
+|2| {3,12,30}|$\bar{x}_2=15$|
+|3| {3,18,30}|$\bar{x}_3=17$|
+|4| {12,18,30}|$\bar{x}_3=20$|
 
 
 -   The standard deviation of the sample means is lower than the population standard deviation. $\sigma_{\bar x}= \sigma/\sqrt{n}$. We call this measure the **standard error**.

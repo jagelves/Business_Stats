@@ -290,7 +290,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link active" data-scroll-target="#statistical-inference"><span class="header-section-number">11.1</span> Statistical Inference</a></li>
+  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link active" data-scroll-target="#statistical-inference"><span class="header-section-number">11.1</span> Statistical Inference</a>
+  <ul class="collapse">
+  <li><a href="#unbiasedness" id="toc-unbiasedness" class="nav-link" data-scroll-target="#unbiasedness">Unbiasedness</a></li>
+  </ul></li>
   <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">11.2</span> Proportions</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">11.3</span> Useful R Functions</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.4</span> Exercises</a>
@@ -341,11 +344,11 @@ details summary {
 <p>Statistical inference is a cornerstone of modern business decision-making. It enables companies to extract meaningful insights from data amid uncertainty and complexity. Businesses can predict customer behavior, optimize marketing strategies, and assess risks by drawing reliable conclusions from sample data. In this chapter, we explore how we can draw insights from the population using sample data.</p>
 <section id="statistical-inference" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="statistical-inference"><span class="header-section-number">11.1</span> Statistical Inference</h2>
-<p>The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), since it comes from a fair and random selection. Some of the properties of the sample mean are as follows:</p>
-<ul>
-<li>The expected value of the sample means is equal to the population mean (i.e., the sample mean is unbiased). Formally,</li>
-</ul>
-<p><span class="math display">\[E(\bar x_i) = \mu\]</span> <em>Example:</em> Let’s consider the following data to be the population.</p>
+<p>The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), since it comes from a fair and random selection. Some of the properties of the sample mean are unbiasedness, consistency, and efficiency (asympotic normality).</p>
+<section id="unbiasedness" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="unbiasedness">Unbiasedness</h3>
+<p>The expected value of the sample means is equal to the population mean. Formally,</p>
+<p><span class="math display">\[E(\bar x_i) = \mu\]</span> To convince ourselves of this property, consider the data below as being the population.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -357,14 +360,14 @@ details summary {
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">10</td>
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">2</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">30</td>
 </tr>
 </tbody>
 </table>
-<p>Since we have access to the population, we can easily calculate the mean of <span class="math inline">\(\mu=4\)</span>. Now consider us taking a random sample of three elements from the population. The table below show the possible samples, and their corresponding means.</p>
+<p>Since in this simple example, have access to the population, we can calculate the population mean and verify that it is <span class="math inline">\(\mu=15.75\)</span>. However, in reality it is rarely that we have population data. Consider taking a random sample of three elements from the population. The table below show the possible samples, and their corresponding means.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -376,23 +379,23 @@ details summary {
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">1</td>
-<td style="text-align: center;">{2,4,5}</td>
-<td style="text-align: center;"><span class="math inline">\(\bar{x}_1=3.66\)</span></td>
+<td style="text-align: center;">{3,12,18}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_1=11\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
-<td style="text-align: center;">{2,4,10}</td>
-<td style="text-align: center;"><span class="math inline">\(\bar{x}_2=5.33\)</span></td>
+<td style="text-align: center;">{3,12,30}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_2=15\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
-<td style="text-align: center;">{2,5,10}</td>
-<td style="text-align: center;"><span class="math inline">\(\bar{x}_3=5.66\)</span></td>
+<td style="text-align: center;">{3,18,30}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_3=17\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
-<td style="text-align: center;">{4,5,10}</td>
-<td style="text-align: center;"><span class="math inline">\(\bar{x}_3=6.33\)</span></td>
+<td style="text-align: center;">{12,18,30}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_3=20\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -402,6 +405,7 @@ details summary {
 <li><p>If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., <span class="math inline">\(n&gt;30\)</span>). This is known as the <strong>central limit theorem</strong>.</p></li>
 </ul>
 <p>In conclusion, with a sufficiently large random sample, the sample mean follows a normal distribution—regardless of the population’s distribution—with a mean equal to the population mean and a standard deviation smaller than that of the population.</p>
+</section>
 </section>
 <section id="proportions" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="proportions"><span class="header-section-number">11.2</span> Proportions</h2>
