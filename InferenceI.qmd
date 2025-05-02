@@ -33,7 +33,11 @@ To convince ourselves of this property, consider the data below as being the pop
 |:-:|:-:|:-:|:-:|
 |3|12|18|30|
 
-Since in this simple example, have access to the population, we can calculate the population mean and verify that it is $\mu=15.75$. However, in reality it is rarely that we have population data. Consider taking a random sample of three elements from the population. The table below show the possible samples, and their corresponding means.
+In this example, we have access to the entire population, consisting of the four numbers {3, 12, 18, 30}. This allows us to calculate the population mean as:
+
+$$\mu = \frac{3 + 12 + 18 + 30}{4} = 15.75$$
+
+In practice, however, population data is rarely available, and we rely on samples to estimate population parameters. Consider taking a random sample of three elements from this population. The table below lists all possible samples of size three, along with their corresponding sample means.
 
 |Sample|Sample Outcome| $\bar{x}$|
 |:-:|:-:|:-:|
@@ -42,6 +46,12 @@ Since in this simple example, have access to the population, we can calculate th
 |3| {3,18,30}|$\bar{x}_3=17$|
 |4| {12,18,30}|$\bar{x}_3=20$|
 
+The first thing that you'll realize when you look at the table is that none of the sample means is equal to the population mean. This is what we call sampling error. Formally, **sampling error** is the difference between a sample statistic (e.g., the sample mean) and the corresponding population parameter (e.g., the population mean). 
+
+$$ Sampling\ Error=\bar{x}-\mu$$
+Sampling error does not arise because of mistakes or biases rather it is a natural consequence of sampling variability as illustrated in the table above. Intuitively, it could be reduced to zero if we had a sample size as large as the population, and it could be very large if our sample size only has one element. As a consequence, the sampling error tends to decrease as the sample size increases.
+
+However, the biggest insight of the table is that if you find the mean of the sample means (third column of the table), you verify that the mean is exactly the same as the population mean. This is very important as it proves that although we could have some sampling error when we calculate the sample mean, our measure is directly related to the population mean.
 
 -   The standard deviation of the sample means is lower than the population standard deviation. $\sigma_{\bar x}= \sigma/\sqrt{n}$. We call this measure the **standard error**.
 
