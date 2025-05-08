@@ -51,6 +51,7 @@ Upon examining the table, it is evident that none of the sample means ($\bar{x}_
 $$ Sampling\ Error=\bar{x}-\mu$$
 Sampling error is not the result of mistakes or biases in the sampling process; rather, it is a natural consequence of sampling variability, as illustrated by the varying sample means in the table. Intuitively, the sampling error would be zero if the sample included the entire population, but it could be substantial with a very small sample, such as a single element. Generally, sampling error tends to decrease as the sample size increases, as larger samples provide more accurate estimates of the population parameter.
 
+
 A critical insight from the table emerges when we calculate the mean of the sample means. Summing the sample means and dividing by the number of samples:
 
 $$\frac{\bar{x}_1 + \bar{x}_2 + \bar{x}_3 + \bar{x}_4}{4} = \frac{11 + 15 + 17 + 20}{4} = \frac{63}{4} = 15.75$$
