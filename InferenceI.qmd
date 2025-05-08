@@ -49,8 +49,7 @@ In practice, population data is rarely available, and we rely on samples to esti
 Upon examining the table, it is evident that none of the sample means ($\bar{x}_1, \bar{x}_2, \bar{x}_3, \bar{x}_4$) equals the population mean ($\mu = 15.75$). This discrepancy is known as *sampling error*. Formally, sampling error is defined as the difference between a sample statistic, such as the sample mean, and the corresponding population parameter:
 
 $$ Sampling\ Error=\bar{x}-\mu$$
-Sampling error is not the result of mistakes or biases in the sampling process; rather, it is a natural consequence of sampling variability, as illustrated by the varying sample means in the table. Intuitively, the sampling error would be zero if the sample included the entire population, but it could be substantial with a very small sample, such as a single element. Generally, sampling error tends to decrease as the sample size increases, as larger samples provide more accurate estimates of the population parameter.
-
+Sampling error is not the result of mistakes or biases in the sampling process; rather, it is a natural consequence of sampling variability, as illustrated by the varying sample means in the table. Intuitively, the sampling error would be zero if the sample included the entire population, but it could be substantial with a very small sample, such as a single element. Generally, sampling error tends to decrease as the sample size increases, as larger samples provide more accurate estimates of the population parameter. *To explore a how the sampling error changes with the sample size press [here](https://jagelves.shinyapps.io/Sampling/)*
 
 A critical insight from the table emerges when we calculate the mean of the sample means. Summing the sample means and dividing by the number of samples:
 
