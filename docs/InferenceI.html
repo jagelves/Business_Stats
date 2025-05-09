@@ -406,19 +406,7 @@ details summary {
 </table>
 <p>Upon examining the table, it is evident that none of the sample means (<span class="math inline">\(\bar{x}_1, \bar{x}_2, \bar{x}_3, \bar{x}_4\)</span>) equals the population mean (<span class="math inline">\(\mu = 15.75\)</span>). This discrepancy is known as <em>sampling error</em>. Formally, sampling error is defined as the difference between a sample statistic, such as the sample mean, and the corresponding population parameter:</p>
 <p><span class="math display">\[ Sampling\ Error=\bar{x}-\mu\]</span> Sampling error is not the result of mistakes or biases in the sampling process; rather, it is a natural consequence of sampling variability, as illustrated by the varying sample means in the table. Intuitively, the sampling error would be zero if the sample included the entire population, but it could be substantial with a very small sample, such as a single element. Generally, sampling error tends to decrease as the sample size increases, as larger samples provide more accurate estimates of the population parameter.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>To explore how the sampling error changes with the sample size press <a href="https://jagelves.shinyapps.io/Sampling/">here</a>.</p>
-</div>
-</div>
+<p>::: {.callout-Interactive Example} To explore how the sampling error changes with the sample size press <a href="https://jagelves.shinyapps.io/Sampling/">here</a>. :::</p>
 <p>A critical insight from the table emerges when we calculate the mean of the sample means. Summing the sample means and dividing by the number of samples:</p>
 <p><span class="math display">\[\frac{\bar{x}_1 + \bar{x}_2 + \bar{x}_3 + \bar{x}_4}{4} = \frac{11 + 15 + 17 + 20}{4} = \frac{63}{4} = 15.75\]</span></p>
 <p>Remarkably, this value is exactly equal to the population mean, <span class="math inline">\(\mu = 15.75\)</span>. This is not a coincidence but a demonstration of a fundamental unbiasedness property. In statistical terms, an estimator is unbiased if its expected value equals the true population parameter. Once more, this is expressed as: <span class="math display">\[E[\bar{X}] = \mu\]</span> In this context, the mean of all possible sample means represents the expected value of the sample mean, and it precisely matches the population mean. This property underscores that, despite individual sample means deviating from <span class="math inline">\(\mu\)</span> due to sampling error, the sample mean is, on average, an accurate estimator of the population mean.</p>
