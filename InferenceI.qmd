@@ -67,9 +67,24 @@ Far from being disconnected, the sample mean and population mean are strongly re
 
 ### Consistency {.unnumbered}
 
-The property of consistency mainly states that as our sample size gets larger, the sample mean will converge in probability to the population mean. As we saw in the table above, a different sample will yield a different sampling error. Some will be larger than others, and so the error is random and dependent on the sample we take. The property of consistency ensures that larger samples yield more accurate estimates. Specifically, the probability of the sample mean deviating from $\mu$ by more than any fixed amount $\epsilon$ approaches zero.
+The property of consistency states that as the sample size increases, the sample mean converges in probability to the population mean. As we saw in the table above, different samples yield different sampling errors, with some errors being larger than others. This variability is random and depends on the specific sample drawn. Consistency ensures that larger samples produce more accurate estimates, meaning the probability that the sample mean deviates from the population mean $\mu$ by more than any fixed amount $\epsilon$ approaches zero as the sample size grows.
 
-**Example**: Use a sample of three in the example above.
+**Example:** Consider again the population {3, 12, 18, 30}, with a population mean $\mu = 15.75$. Now, let’s examine the effect of increasing the sample size. Suppose we take samples of size three, as shown in the table above, and compare them to samples of size four (i.e., the entire population).
+
+For samples of size three, we previously calculated the sample means as $\bar{x}_1 = 11$, $\bar{x}_2 = 15$, $\bar{x}_3 = 17$, and $\bar{x}_4 = 20$. The sampling errors are:
+
+$\bar{x}_1 - \mu = 11 - 15.75 = -4.75$
+$\bar{x}_2 - \mu = 15 - 15.75 = -0.75$
+$\bar{x}_3 - \mu = 17 - 15.75 = 1.25$
+$\bar{x}_4 - \mu = 20 - 15.75 = 4.25$
+
+These errors vary, with some as large as 4.75 in absolute value. Now, consider a sample of size four, which includes the entire population {3, 12, 18, 30}. The sample mean is:
+$ \bar{x} = \frac{3 + 12 + 18 + 30}{4} = 15.75 $
+The sampling error is:
+$ \bar{x} - \mu = 15.75 - 15.75 = 0 $
+With a sample size of four (the entire population), the sample mean exactly equals the population mean, and the sampling error is zero. This illustrates consistency: as the sample size increases from three to four, the sample mean becomes more likely to be closer to $\mu$. In practice, we rarely sample the entire population, but as the sample size grows larger (e.g., $n \to \infty$), the sample mean $\bar{x}$ converges in probability to $\mu$. Formally, for any $\epsilon > 0$,
+$ P(|\bar{X} - \mu| > \epsilon) \to 0 \text{ as } n \to \infty $
+This property ensures that larger samples yield estimates that are increasingly reliable, reducing the impact of sampling variability and making the sample mean a consistent estimator of the population mean.
 
 
 ### Precision {.unnumbered}

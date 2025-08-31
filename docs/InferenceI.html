@@ -426,8 +426,11 @@ Note
 </section>
 <section id="consistency" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="consistency">Consistency</h3>
-<p>The property of consistency mainly states that as our sample size gets larger, the sample mean will converge in probability to the population mean. As we saw in the table above, a different sample will yield a different sampling error. Some will be larger than others, and so the error is random and dependent on the sample we take. The property of consistency ensures that larger samples yield more accurate estimates. Specifically, the probability of the sample mean deviating from <span class="math inline">\(\mu\)</span> by more than any fixed amount <span class="math inline">\(\epsilon\)</span> approaches zero.</p>
-<p><strong>Example</strong>: Use a sample of three in the example above.</p>
+<p>The property of consistency states that as the sample size increases, the sample mean converges in probability to the population mean. As we saw in the table above, different samples yield different sampling errors, with some errors being larger than others. This variability is random and depends on the specific sample drawn. Consistency ensures that larger samples produce more accurate estimates, meaning the probability that the sample mean deviates from the population mean <span class="math inline">\(\mu\)</span> by more than any fixed amount <span class="math inline">\(\epsilon\)</span> approaches zero as the sample size grows.</p>
+<p><strong>Example:</strong> Consider again the population {3, 12, 18, 30}, with a population mean <span class="math inline">\(\mu = 15.75\)</span>. Now, let’s examine the effect of increasing the sample size. Suppose we take samples of size three, as shown in the table above, and compare them to samples of size four (i.e., the entire population).</p>
+<p>For samples of size three, we previously calculated the sample means as <span class="math inline">\(\bar{x}_1 = 11\)</span>, <span class="math inline">\(\bar{x}_2 = 15\)</span>, <span class="math inline">\(\bar{x}_3 = 17\)</span>, and <span class="math inline">\(\bar{x}_4 = 20\)</span>. The sampling errors are:</p>
+<p><span class="math inline">\(\bar{x}_1 - \mu = 11 - 15.75 = -4.75\)</span> <span class="math inline">\(\bar{x}_2 - \mu = 15 - 15.75 = -0.75\)</span> <span class="math inline">\(\bar{x}_3 - \mu = 17 - 15.75 = 1.25\)</span> <span class="math inline">\(\bar{x}_4 - \mu = 20 - 15.75 = 4.25\)</span></p>
+<p>These errors vary, with some as large as 4.75 in absolute value. Now, consider a sample of size four, which includes the entire population {3, 12, 18, 30}. The sample mean is: $ {x} = = 15.75 $ The sampling error is: $ {x} - = 15.75 - 15.75 = 0 $ With a sample size of four (the entire population), the sample mean exactly equals the population mean, and the sampling error is zero. This illustrates consistency: as the sample size increases from three to four, the sample mean becomes more likely to be closer to <span class="math inline">\(\mu\)</span>. In practice, we rarely sample the entire population, but as the sample size grows larger (e.g., <span class="math inline">\(n \to \infty\)</span>), the sample mean <span class="math inline">\(\bar{x}\)</span> converges in probability to <span class="math inline">\(\mu\)</span>. Formally, for any <span class="math inline">\(\epsilon &gt; 0\)</span>, $ P(|{X} - | &gt; ) n $ This property ensures that larger samples yield estimates that are increasingly reliable, reducing the impact of sampling variability and making the sample mean a consistent estimator of the population mean.</p>
 </section>
 <section id="precision" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="precision">Precision</h3>
@@ -561,9 +564,9 @@ Answer
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
+✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
