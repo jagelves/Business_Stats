@@ -427,17 +427,63 @@ Note
 <section id="consistency" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="consistency">Consistency</h3>
 <p>The property of consistency states that as the sample size increases, the sample mean converges in probability to the population mean. As we saw in the table above, different samples yield different sampling errors, with some errors being larger than others. This variability is random and depends on the specific sample drawn. Consistency ensures that larger samples produce more accurate estimates, meaning the probability that the sample mean deviates from the population mean <span class="math inline">\(\mu\)</span> by more than any fixed amount <span class="math inline">\(\epsilon\)</span> approaches zero as the sample size grows.</p>
-<p><strong>Example:</strong> Consider again the population {3, 12, 18, 30}, with a population mean <span class="math inline">\(\mu = 15.75\)</span>. Now, let’s examine the effect of increasing the sample size. Suppose we take samples of size three, as shown in the table above, and compare them to samples of size four (i.e., the entire population).</p>
-<p>For samples of size three, we previously calculated the sample means as <span class="math inline">\(\bar{x}_1 = 11\)</span>, <span class="math inline">\(\bar{x}_2 = 15\)</span>, <span class="math inline">\(\bar{x}_3 = 17\)</span>, and <span class="math inline">\(\bar{x}_4 = 20\)</span>. The sampling errors are:</p>
-<p><span class="math inline">\(\bar{x}_1 - \mu = 11 - 15.75 = -4.75\)</span> <span class="math inline">\(\bar{x}_2 - \mu = 15 - 15.75 = -0.75\)</span> <span class="math inline">\(\bar{x}_3 - \mu = 17 - 15.75 = 1.25\)</span> <span class="math inline">\(\bar{x}_4 - \mu = 20 - 15.75 = 4.25\)</span></p>
-<p>These errors vary, with some as large as 4.75 in absolute value. Now, consider a sample of size four, which includes the entire population {3, 12, 18, 30}. The sample mean is: $ {x} = = 15.75 $ The sampling error is: $ {x} - = 15.75 - 15.75 = 0 $ With a sample size of four (the entire population), the sample mean exactly equals the population mean, and the sampling error is zero. This illustrates consistency: as the sample size increases from three to four, the sample mean becomes more likely to be closer to <span class="math inline">\(\mu\)</span>. In practice, we rarely sample the entire population, but as the sample size grows larger (e.g., <span class="math inline">\(n \to \infty\)</span>), the sample mean <span class="math inline">\(\bar{x}\)</span> converges in probability to <span class="math inline">\(\mu\)</span>. Formally, for any <span class="math inline">\(\epsilon &gt; 0\)</span>, $ P(|{X} - | &gt; ) n $ This property ensures that larger samples yield estimates that are increasingly reliable, reducing the impact of sampling variability and making the sample mean a consistent estimator of the population mean.</p>
+<p><strong>Example:</strong> Consider the population {3, 12, 18, 30}, with a population mean <span class="math inline">\(\mu = 15.75\)</span>. To illustrate consistency, let’s compare the sampling errors for samples of size two, size three, and size four (the entire population).</p>
+<p>Below is a table listing all possible samples of size two, along with their sample means and sampling errors:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Sample</th>
+<th style="text-align: center;">Sample Outcome</th>
+<th style="text-align: center;"><span class="math inline">\(\bar{x}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\bar{x} - \mu\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">{3,12}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_1 = \frac{3+12}{2} = 7.5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-8.25\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">{3,18}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_2 = \frac{3+18}{2} = 10.5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-5.25\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">{3,30}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_3 = \frac{3+30}{2} = 16.5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.75\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">{12,18}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_4 = \frac{12+18}{2} = 15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.75\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">{12,30}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_5 = \frac{12+30}{2} = 21\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5.25\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">{18,30}</td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_6 = \frac{18+30}{2} = 24\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(8.25\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The sampling errors range from <span class="math inline">\(-8.25\)</span> to <span class="math inline">\(8.25\)</span>, with an average absolute error of: <span class="math display">\[\frac{|-8.25| + |-5.25| + |0.75| + |-0.75| + |5.25| + |8.25|}{6} = \frac{8.25 + 5.25 + 0.75 + 0.75 + 5.25 + 8.25}{6} = 4.75\]</span></p>
+<p>Similarly, the average absolute error for a sample size of three is given by: <span class="math display">\[\frac{|-4.75| + |-0.75| + |1.25| + |4.25|}{4} = \frac{4.75 + 0.75 + 1.25 + 4.25}{4} = 2.75\]</span></p>
+<p>The sampling error for the population is: <span class="math display">\[\bar{x} - \mu = 15.75 - 15.75 = 0\]</span></p>
 </section>
 <section id="precision" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="precision">Precision</h3>
-<p>For large samples, the sample mean is approximately normally distributed, regardless of the population distribution (due to the Central Limit Theorem), with mean <span class="math inline">\(\mu\)</span> and variance <span class="math inline">\(\sigma^2/n\)</span>. This makes it efficient for inference, as it has the smallest variance among unbiased estimators in many cases.</p>
-<ul>
-<li>The standard deviation of the sample means is lower than the population standard deviation. <span class="math inline">\(\sigma_{\bar x}= \sigma/\sqrt{n}\)</span>. We call this measure the <strong>standard error</strong>.</li>
-</ul>
+<p>In simple terms, the precision property of the sample mean ensures that as the sample size grows, the sample mean becomes a more reliable and tightly clustered estimate of the population mean. This follows from the fact that the standard deviation of the sample means or standard error (<span class="math inline">\(\sigma_{\bar{x}} = \sigma / \sqrt{n}\)</span>) is lower than the population standard deviation (<span class="math inline">\(\sigma\)</span>).</p>
 <p>Let’s consider once more the population data below:</p>
 <table class="caption-top table">
 <thead>
@@ -458,9 +504,10 @@ Note
 </tbody>
 </table>
 <p>The population variance is given by:</p>
-<p><span class="math inline">\(\sigma^2=\frac{(3-15.75)^2+(12-15.75)^2+(18-15.75)^2+(30-15.75)^2}{4}=96.1875\)</span></p>
-<p><span class="math inline">\(\frac{\sigma^2}{n} \times \frac{(N-n)}{(N-1)}=32.0625* 1/3=10.6875\)</span></p>
-<p>Recall, the sampling distribution data:</p>
+<p><span class="math inline">\(\sigma^2 = \frac{(3-15.75)^2 + (12-15.75)^2 + (18-15.75)^2 + (30-15.75)^2}{4} = 96.1875\)</span></p>
+<p>For a sample size of <span class="math inline">\(n=3\)</span>, the variance of the sample means, adjusted for a finite population of size <span class="math inline">\(N=4\)</span>, is:</p>
+<p><span class="math inline">\(\frac{\sigma^2}{n} \times \frac{(N-n)}{(N-1)} = \frac{96.1875}{3} \times \frac{(4-3)}{(4-1)} = 32.0625 \times \frac{1}{3} = 10.6875\)</span></p>
+<p>Notice how the sample size <span class="math inline">\(n\)</span> inversely affects the variance of the sample mean. As the sample size increases, the variance of the sample mean decreases, leading to more precise estimates. The equation above may not be immediately intuitive, so we verify it by calculating the variance using the sample means directly. Recall the sampling distribution data for samples of size <span class="math inline">\(n=3\)</span>:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -492,21 +539,21 @@ Note
 <tr class="even">
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">{12,18,30}</td>
-<td style="text-align: center;"><span class="math inline">\(\bar{x}_3=20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\bar{x}_4=20\)</span></td>
 <td style="text-align: center;">18.0625</td>
 </tr>
 </tbody>
 </table>
-<p><span class="math inline">\(Var(\bar{x})=\frac{22.5625+0.5625+1.5625+18.0625}{4}=10.6875\)</span></p>
-<p>Hence, the variance of the sampling distribution is less than the variance of the population. Moreover, as the sample size gets larger the sample means are even more accurate.</p>
-<ul>
-<li>If the population is normally distributed, then the sample means (<span class="math inline">\(\bar x\)</span>’s) are normally distributed.</li>
-</ul>
+<p>The variance of the sample means is:</p>
+<p><span class="math inline">\(\text{Var}(\bar{x}) = \frac{22.5625 + 0.5625 + 1.5625 + 18.0625}{4} = 10.6875\)</span></p>
+<p>As a final note, most population data we consider is sufficiently large so that we don’t have to adjust the measure of standard error. The standard error is then given by <span class="math inline">\(\sigma_{\bar{x}} = \sigma / \sqrt{n}\)</span> and not <span class="math inline">\(\frac{\sigma} {\sqrt{n}} \times \sqrt{\frac{(N-n)}{(N-1)}}\)</span>.</p>
+<p>In sum, the property of precision demonstrates that the variance of the sampling distribution is less than the population variance, and more importantly, as the sample size increases, the sample mean becomes an increasingly accurate estimator of the population mean.</p>
 </section>
 <section id="central-limit-theorem" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="central-limit-theorem">Central Limit Theorem</h3>
 <ul>
-<li>If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., <span class="math inline">\(n&gt;30\)</span>). This is known as the <strong>central limit theorem</strong>.</li>
+<li><p>If the population is normally distributed, then the sample means (<span class="math inline">\(\bar x\)</span>’s) are normally distributed.</p></li>
+<li><p>If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., <span class="math inline">\(n&gt;30\)</span>). This is known as the <strong>central limit theorem</strong>.</p></li>
 </ul>
 <p>In conclusion, with a sufficiently large random sample, the sample mean follows a normal distribution—regardless of the population’s distribution—with a mean equal to the population mean and a standard deviation smaller than that of the population.</p>
 </section>
