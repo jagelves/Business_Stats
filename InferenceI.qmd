@@ -133,7 +133,7 @@ In sum, the property of precision demonstrates that the variance of the sampling
 In conclusion, with a sufficiently large random sample, the sample mean follows a normal distribution—regardless of the population’s distribution—with a mean equal to the population mean and a standard deviation smaller than that of the population.
 
 ::: {.callout-note}
-To explore central limit theorem and how the sample size affects the sampling distribution press [here](https://jagelves.shinyapps.io/Sampling/).
+To explore central limit theorem and how the sample size affects the sampling distribution press [here](https://jagelves.shinyapps.io/Central/).
 :::
 
 ## Proportions
