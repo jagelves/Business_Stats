@@ -132,6 +132,10 @@ In sum, the property of precision demonstrates that the variance of the sampling
 
 In conclusion, with a sufficiently large random sample, the sample mean follows a normal distribution—regardless of the population’s distribution—with a mean equal to the population mean and a standard deviation smaller than that of the population.
 
+::: {.callout-note}
+To explore central limit theorem and how the sample size affects the sampling distribution press [here](https://jagelves.shinyapps.io/Sampling/).
+:::
+
 ## Proportions
 
 Statistical inference can also be performed with proportions (e.g. the proportion of left handed people, proportion of people with a particular virus, etc.). We can relate this proportions to the outcome of a binomial distribution. Recall that the **binomial distribution** describes the number of successes $x$ in $n$ trials of a Bernoulli process where $p$ is the probability of success. Here, $x/n$ is the proportion of successes.
