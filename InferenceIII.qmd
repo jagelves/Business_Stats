@@ -18,7 +18,7 @@ details summary {
 
 In this chapter, you will begin mastering the concepts of null and alternative hypotheses, equipping you with the skills to draw reliable conclusions from sample data, effectively manage risks, and confidently justify strategic decisions.
 
-## Hypothesis Testing
+## Hypothesis Testing Intuition
 
 The **null hypothesis** is a statement about the population parameter. Usually, the status quo. In research, it states no effect or no relationship between variables. The null hypothesis includes some form of the equality sign (i.e., $\geq$, $\leq$, or $=$).
 
@@ -37,16 +37,16 @@ Formally, we measure how far the sample statistic is from the hypothesized value
 $$t_{calculated}=\frac{\bar{x}-\mu}{s/\sqrt{n}}$$
 If this sample statistic is large for the given level of significance, then we can vote against the null hypothesis and favor the alternative.
 
-### Testing the Null Hypothesis {.unnumbered} 
+## Testing the Null Hypothesis 
 There are two equivalent ways to decide whether this observed difference is too large to be explained by random sampling error alone:
 
-#### a) The Critical Value (Rejection Region) Approach
+#### a) The Critical Value (Rejection Region) Approach {.unnumbered}
 1. Choose a significance level (e.g., α = 0.05).
 2. With degrees of freedom df = n − 1 = 99 and α = 0.05 (two-tailed test), look up the **critical t-values** in a t-table: approximately ±1.984.
 3. If |t₍calculated₎| > 1.984, reject the null hypothesis.
    - This means the sample mean is in the extreme 5% of the sampling distribution if the null were true.
 
-#### b) The p-value Approach (most common today)
+#### b) The p-value Approach (most common today) {.unnumbered}
 1. Calculate the t-statistic as above.
 2. Using software or a t-distribution calculator, find the probability of observing a t-value at least as extreme as the one calculated, assuming the null is true. This is the **p-value**.
 3. Decision rule:
@@ -59,7 +59,7 @@ A large p-value (e.g., 0.42) means the data are consistent with H₀ → not eno
 
 Both methods always lead to the same conclusion when using the same α level.
 
-### Steps to Perform Hypothesis Testing {.unnumbered}
+## Steps to Perform Hypothesis Testing 
 To conduct hypothesis testing:
 
 1.  Specify the null and alternate hypothesis.
