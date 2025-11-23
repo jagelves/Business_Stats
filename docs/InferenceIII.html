@@ -290,7 +290,11 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link active" data-scroll-target="#hypothesis-testing"><span class="header-section-number">13.1</span> Hypothesis Testing</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link active" data-scroll-target="#hypothesis-testing"><span class="header-section-number">13.1</span> Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#testing-the-null-hypothesis" id="toc-testing-the-null-hypothesis" class="nav-link" data-scroll-target="#testing-the-null-hypothesis">Testing the Null Hypothesis</a></li>
+  <li><a href="#steps-to-perform-hypothesis-testing" id="toc-steps-to-perform-hypothesis-testing" class="nav-link" data-scroll-target="#steps-to-perform-hypothesis-testing">Steps to Perform Hypothesis Testing</a></li>
+  </ul></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">13.2</span> Useful R Functions</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">13.3</span> Exercises</a>
   <ul class="collapse">
@@ -343,6 +347,46 @@ details summary {
 <p>The <strong>null hypothesis</strong> is a statement about the population parameter. Usually, the status quo. In research, it states no effect or no relationship between variables. The null hypothesis includes some form of the equality sign (i.e., <span class="math inline">\(\geq\)</span>, <span class="math inline">\(\leq\)</span>, or <span class="math inline">\(=\)</span>).</p>
 <p>For instance, consider the hypothesis that the average annual income of an individual in the U.S. is 50,000 dollars. When we take a sufficiently large sample from the population, the sample mean can be treated as a random variable following a normal distribution (central limit theorem). The hypothesized value, 50,000, represents the mean of this distribution. Our goal is to determine whether the calculated sample mean is likely to have been drawn from this hypothesized normal distribution with the specified mean. If the sample mean is “close” to the hypothesized mean then we would conclude that our sample is likely to have been drawn from such a distribution. If it is “far away” then we question whether the population mean is the one hypothesized and we should pivot to an alternative.</p>
 <p>The <strong>alternative hypothesis</strong> directly contradicts the null hypothesis. In research, it states the prediction of the effect or relationship. The alternative includes non-equality signs (i.e., <span class="math inline">\(&gt;\)</span>, <span class="math inline">\(&lt;\)</span>, or <span class="math inline">\(\ne\)</span>).</p>
+<p><strong>Example:</strong> We would like to test the hypothesis that the average income in the U.S. is $50,000. We take a sample of 100 people, and record their annual income. For this sample the mean is $48,000.</p>
+<p>Remember that any sample statistic is subject to sampling error. At first glance, a sample statistic close to the hypothesized value (e.g., a sample mean near $50,000) might suggest the null hypothesis is true. However, we must consider the <strong>standard error</strong> of the sampling distribution:</p>
+<ul>
+<li>If the standard error is small (e.g., $1), a sample mean even slightly away from $50,000 is many standard errors away → evidence <strong>against</strong> the hypothesis.</li>
+<li>If the standard error is large (e.g., $15,000), the same sample mean falls well within 2 standard errors → consistent with the hypothesis.</li>
+</ul>
+<p>Formally, we measure how far the sample statistic is from the hypothesized value in standard error units using the test statistic: <span class="math display">\[t_{calculated}=\frac{\bar{x}-\mu}{s/\sqrt{n}}\]</span> If this sample statistic is large for the given level of significance, then we can vote against the null hypothesis and favor the alternative.</p>
+<section id="testing-the-null-hypothesis" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="testing-the-null-hypothesis">Testing the Null Hypothesis</h3>
+<p>There are two equivalent ways to decide whether this observed difference is too large to be explained by random sampling error alone:</p>
+<section id="a-the-critical-value-rejection-region-approach" class="level4" data-number="13.1.0.1">
+<h4 data-number="13.1.0.1" class="anchored" data-anchor-id="a-the-critical-value-rejection-region-approach"><span class="header-section-number">13.1.0.1</span> a) The Critical Value (Rejection Region) Approach</h4>
+<ol type="1">
+<li>Choose a significance level (e.g., α = 0.05).</li>
+<li>With degrees of freedom df = n − 1 = 99 and α = 0.05 (two-tailed test), look up the <strong>critical t-values</strong> in a t-table: approximately ±1.984.</li>
+<li>If |t₍calculated₎| &gt; 1.984, reject the null hypothesis.
+<ul>
+<li>This means the sample mean is in the extreme 5% of the sampling distribution if the null were true.</li>
+</ul></li>
+</ol>
+</section>
+<section id="b-the-p-value-approach-most-common-today" class="level4" data-number="13.1.0.2">
+<h4 data-number="13.1.0.2" class="anchored" data-anchor-id="b-the-p-value-approach-most-common-today"><span class="header-section-number">13.1.0.2</span> b) The p-value Approach (most common today)</h4>
+<ol type="1">
+<li>Calculate the t-statistic as above.</li>
+<li>Using software or a t-distribution calculator, find the probability of observing a t-value at least as extreme as the one calculated, assuming the null is true. This is the <strong>p-value</strong>.</li>
+<li>Decision rule:
+<ul>
+<li>If p-value ≤ α (e.g., ≤ 0.05) → reject the null hypothesis.</li>
+<li>If p-value &gt; α → fail to reject the null hypothesis.</li>
+</ul></li>
+</ol>
+<p><strong>Interpretation:</strong><br>
+A small p-value (e.g., 0.003) means the data are very unlikely under the null hypothesis → evidence against H₀.<br>
+A large p-value (e.g., 0.42) means the data are consistent with H₀ → not enough evidence to reject it.</p>
+<p>Both methods always lead to the same conclusion when using the same α level.</p>
+</section>
+</section>
+<section id="steps-to-perform-hypothesis-testing" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="steps-to-perform-hypothesis-testing">Steps to Perform Hypothesis Testing</h3>
 <p>To conduct hypothesis testing:</p>
 <ol type="1">
 <li>Specify the null and alternate hypothesis.</li>
@@ -376,6 +420,7 @@ details summary {
 </ul></li>
 <li><p>The decision rule is to reject the null hypothesis when the <span class="math inline">\(p-value&lt;\alpha\)</span>, and not to reject when <span class="math inline">\(p-value \geq alpha\)</span>.</p></li>
 </ol>
+</section>
 </section>
 <section id="useful-r-functions" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">13.2</span> Useful R Functions</h2>
