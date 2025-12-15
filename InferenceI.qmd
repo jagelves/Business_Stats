@@ -22,7 +22,7 @@ Statistical inference is a cornerstone of modern business decision-making. It en
 
 The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), as long as it comes from a fair and random selection. Certain qualities or properties of the sample mean enable us to make sound inference of the population parameter. Below, we study the properties of unbiasedness, consistency, and efficiency (asymptotic normality).
 
-### Unbiasedness {.unnumbered}
+## Unbiasedness
 
 Simply put, unbiasedness states that expected value of the sample means is equal to the population mean. Formally, 
 
@@ -65,7 +65,7 @@ In this context, the mean of all possible sample means represents the expected v
 
 Far from being disconnected, the sample mean and population mean are strongly related through the concept of unbiasedness. While any single sample mean may differ from $\mu$ due to sampling variability, the unbiasedness property ensures that, over all possible samples, the sample mean centers on the true population mean. This relationship is the cornerstone of statistical inference, allowing us to use sample data to make reliable inferences about unknown population parameters. In practice, when population data is unavailable, the unbiasedness of the sample mean provides confidence that our estimates are, on average, correct, bridging the gap between sample statistics and population parameters.
 
-### Consistency {.unnumbered}
+## Consistency
 
 The property of consistency states that as the sample size increases, the sample mean converges in probability to the population mean. As we saw in the table above, different samples yield different sampling errors, with some errors being larger than others. This variability is random and depends on the specific sample drawn. Consistency ensures that larger samples produce more accurate estimates, meaning the probability that the sample mean deviates from the population mean $\mu$ by more than any fixed amount $\epsilon$ approaches zero as the sample size grows.
 
@@ -90,7 +90,7 @@ Similarly, the average absolute error for a sample size of three is given by: $$
 
 The sampling error for the population is: $$\bar{x} - \mu = 15.75 - 15.75 = 0$$
 
-### Precision {.unnumbered}
+## Precision
 In simple terms, the precision property of the sample mean ensures that as the sample size grows, the sample mean becomes a more reliable and tightly clustered estimate of the population mean. This follows from the fact that the standard deviation of the sample means or standard error ($\sigma_{\bar{x}} = \sigma / \sqrt{n}$) is lower than the population standard deviation ($\sigma$). 
 
 Let’s consider once more the population data below:
@@ -124,7 +124,7 @@ As a final note, most population data we consider is sufficiently large so that 
 
 In sum, the property of precision demonstrates that the variance of the sampling distribution is less than the population variance, and more importantly, as the sample size increases, the sample mean becomes an increasingly accurate estimator of the population mean.
 
-### Asymptotic Normality and the Central Limit Theorem {.unnumbered}
+## Asymptotic Normality and the Central Limit Theorem 
 We have explored the desirable properties of estimators. However, to construct confidence intervals or perform hypothesis tests, we need to know (or approximate) the *shape* of the sampling distribution of an estimator, not just its center and spread. For small samples from non-normal (or binary) populations, this shape can be unpredictable and inconvenient.
 
 This is where the **Central Limit Theorem (CLT)** emerges as one of the most profound and practical results in statistics. The CLT states that, regardless of the underlying population distribution (provided it has finite variance), the standardized sample mean becomes approximately normally distributed as the sample size ($n$) grows large:
@@ -157,7 +157,7 @@ Thus, with sufficiently large random samples satisfying the relevant conditions,
 To explore central limit theorem and how the sample size affects the sampling distribution press [here](https://jagelves.shinyapps.io/Central/).
 :::
 
-## Proportions
+## Some Details on Proportions
 
 Statistical inference can also be performed with proportions (e.g. the proportion of left handed people, proportion of people with a particular virus, etc.). We can relate this proportions to the outcome of a binomial distribution. Recall that the **binomial distribution** describes the number of successes $x$ in $n$ trials of a Bernoulli process where $p$ is the probability of success. Here, $x/n$ is the proportion of successes.
 
