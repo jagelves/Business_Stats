@@ -295,7 +295,7 @@ window.Quarto = {
   <li><a href="#unbiasedness" id="toc-unbiasedness" class="nav-link" data-scroll-target="#unbiasedness">Unbiasedness</a></li>
   <li><a href="#consistency" id="toc-consistency" class="nav-link" data-scroll-target="#consistency">Consistency</a></li>
   <li><a href="#precision" id="toc-precision" class="nav-link" data-scroll-target="#precision">Precision</a></li>
-  <li><a href="#central-limit-theorem" id="toc-central-limit-theorem" class="nav-link" data-scroll-target="#central-limit-theorem">Central Limit Theorem</a></li>
+  <li><a href="#asymptotic-normality-and-the-central-limit-theorem" id="toc-asymptotic-normality-and-the-central-limit-theorem" class="nav-link" data-scroll-target="#asymptotic-normality-and-the-central-limit-theorem">Asymptotic Normality and the Central Limit Theorem</a></li>
   </ul></li>
   <li><a href="#proportions" id="toc-proportions" class="nav-link" data-scroll-target="#proportions"><span class="header-section-number">11.2</span> Proportions</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">11.3</span> Useful R Functions</a></li>
@@ -350,7 +350,7 @@ details summary {
 <p>The power of statistical inference lies in allowing us to learn about a population by studying the properties of the sample. The process relies on estimating a sample statistic, like the sample mean (i.e., the sample statistic). The sample mean gives us a good guess about the population mean (i.e., the population parameter), as long as it comes from a fair and random selection. Certain qualities or properties of the sample mean enable us to make sound inference of the population parameter. Below, we study the properties of unbiasedness, consistency, and efficiency (asymptotic normality).</p>
 <section id="unbiasedness" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="unbiasedness">Unbiasedness</h3>
-<p>Simply put, unibiasedness states that expected value of the sample means is equal to the population mean. Formally,</p>
+<p>Simply put, unbiasedness states that expected value of the sample means is equal to the population mean. Formally,</p>
 <p><span class="math display">\[E[\bar{X}] = \mu\]</span> To convince ourselves of this property, consider the data below as being the population.</p>
 <table class="caption-top table">
 <thead>
@@ -549,13 +549,23 @@ Note
 <p>As a final note, most population data we consider is sufficiently large so that we don’t have to adjust the measure of standard error. The standard error is then given by <span class="math inline">\(\sigma_{\bar{x}} = \sigma / \sqrt{n}\)</span> and not <span class="math inline">\(\frac{\sigma} {\sqrt{n}} \times \sqrt{\frac{(N-n)}{(N-1)}}\)</span>.</p>
 <p>In sum, the property of precision demonstrates that the variance of the sampling distribution is less than the population variance, and more importantly, as the sample size increases, the sample mean becomes an increasingly accurate estimator of the population mean.</p>
 </section>
-<section id="central-limit-theorem" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="central-limit-theorem">Central Limit Theorem</h3>
+<section id="asymptotic-normality-and-the-central-limit-theorem" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="asymptotic-normality-and-the-central-limit-theorem">Asymptotic Normality and the Central Limit Theorem</h3>
+<p>We have explored the desirable properties of estimators. However, to construct confidence intervals or perform hypothesis tests, we need to know (or approximate) the <em>shape</em> of the sampling distribution of an estimator, not just its center and spread. For small samples from non-normal (or binary) populations, this shape can be unpredictable and inconvenient.</p>
+<p>This is where the <strong>Central Limit Theorem (CLT)</strong> emerges as one of the most profound and practical results in statistics. The CLT states that, regardless of the underlying population distribution (provided it has finite variance), the standardized sample mean becomes approximately normally distributed as the sample size (<span class="math inline">\(n\)</span>) grows large:</p>
+<p><span class="math display">\[
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \approx N(0, 1)\]</span></p>
+<p>This convergence to normality—building directly on the precision gains we have seen—enables us to use the familiar normal (or <span class="math inline">\(z\)</span>) table for probabilistic statements, even when the original data are skewed, discrete, or non-normal. The same principle applies to the sample proportion (<span class="math inline">\(\hat{p}\)</span>), where the sampling distribution of the sample proportion is also normally distributed for a sufficiently large (<span class="math inline">\(n\)</span>).</p>
+<p><span class="math display">\[
+\frac{\hat{p} - p}{\sqrt{p(1-p)/n}} \approx N(0, 1)
+\]</span></p>
+<p>In summary:</p>
+<p><strong>For the sample mean ({X}):</strong> - If the population is normal, the sampling distribution of (<span class="math inline">\(\bar{X}\)</span>) is exactly normal (for any (<span class="math inline">\(n\)</span>)). - If the population is non-normal, the sampling distribution of (<span class="math inline">\(\bar{X}\)</span>) is approximately normal for large (<span class="math inline">\(n\)</span>) (typically (<span class="math inline">\(n &gt; 30\)</span>)).</p>
+<p><strong>For the sample proportion ():</strong> - The underlying “population” is binary (success probability (<span class="math inline">\(p\)</span>)), so normality is only approximate.</p>
 <ul>
-<li><p>If the population is normally distributed, then the sample means (<span class="math inline">\(\bar x\)</span>’s) are normally distributed.</p></li>
-<li><p>If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., <span class="math inline">\(n&gt;30\)</span>). This is known as the <strong>central limit theorem</strong>.</p></li>
+<li>The approximation is good when (<span class="math inline">\(np \geq 10\)</span>) and (<span class="math inline">\(n(1-p) \geq 10\)</span>) (or more conservatively (<span class="math inline">\(geq 15\)</span>)); in practice, we check these using the estimated (<span class="math inline">\(\hat{p}\)</span>).</li>
 </ul>
-<p>In conclusion, with a sufficiently large random sample, the sample mean follows a normal distribution—regardless of the population’s distribution—with a mean equal to the population mean and a standard deviation smaller than that of the population.</p>
+<p>Thus, with sufficiently large random samples satisfying the relevant conditions, both (<span class="math inline">\(\bar{X}\)</span>) (mean (<span class="math inline">\(\mu\)</span>), standard error (<span class="math inline">\(\sigma / \sqrt{n}\)</span>)) and (<span class="math inline">\(\hat{p}\)</span>) (mean (<span class="math inline">\(p\)</span>), standard error (<span class="math inline">\(\sqrt{p(1-p)/n}\)</span>)) follow approximate normal distributions, regardless of the population’s shape.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

@@ -24,7 +24,7 @@ The power of statistical inference lies in allowing us to learn about a populati
 
 ### Unbiasedness {.unnumbered}
 
-Simply put, unibiasedness states that expected value of the sample means is equal to the population mean. Formally, 
+Simply put, unbiasedness states that expected value of the sample means is equal to the population mean. Formally, 
 
 $$E[\bar{X}] = \mu$$
 To convince ourselves of this property, consider the data below as being the population.
@@ -124,13 +124,34 @@ As a final note, most population data we consider is sufficiently large so that 
 
 In sum, the property of precision demonstrates that the variance of the sampling distribution is less than the population variance, and more importantly, as the sample size increases, the sample mean becomes an increasingly accurate estimator of the population mean.
 
-### Central Limit Theorem {.unnumbered}
+### Asymptotic Normality and the Central Limit Theorem {.unnumbered}
+We have explored the desirable properties of estimators. However, to construct confidence intervals or perform hypothesis tests, we need to know (or approximate) the *shape* of the sampling distribution of an estimator, not just its center and spread. For small samples from non-normal (or binary) populations, this shape can be unpredictable and inconvenient.
 
--   If the population is normally distributed, then the sample means ($\bar x$'s) are normally distributed.
+This is where the **Central Limit Theorem (CLT)** emerges as one of the most profound and practical results in statistics. The CLT states that, regardless of the underlying population distribution (provided it has finite variance), the standardized sample mean becomes approximately normally distributed as the sample size ($n$) grows large:
 
--   If the population is not normally distributed, the the sample means are also normally distributed if the sample size is large (i.e., $n>30$). This is known as the **central limit theorem**.
+$$
+\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} \approx N(0, 1)$$
 
-In conclusion, with a sufficiently large random sample, the sample mean follows a normal distribution—regardless of the population’s distribution—with a mean equal to the population mean and a standard deviation smaller than that of the population.
+This convergence to normality—building directly on the precision gains we have seen—enables us to use the familiar normal (or $z$) table for probabilistic statements, even when the original data are skewed, discrete, or non-normal. The same principle applies to the sample proportion ($\hat{p}$), where the sampling distribution of the sample proportion is also normally distributed for a sufficiently large ($n$).
+
+$$
+\frac{\hat{p} - p}{\sqrt{p(1-p)/n}} \approx N(0, 1)
+$$
+
+
+
+In summary:
+
+**For the sample mean \(\bar{X}\):**
+- If the population is normal, the sampling distribution of ($\bar{X}$) is exactly normal (for any ($n$)).
+- If the population is non-normal, the sampling distribution of ($\bar{X}$) is approximately normal for large ($n$) (typically ($n > 30$)).
+
+**For the sample proportion \(\hat{p}\):**
+- The underlying "population" is binary (success probability ($p$)), so normality is only approximate.
+
+- The approximation is good when ($np \geq 10$) and ($n(1-p) \geq 10$) (or more conservatively ($geq 15$)); in practice, we check these using the estimated ($\hat{p}$).
+
+Thus, with sufficiently large random samples satisfying the relevant conditions, both ($\bar{X}$) (mean ($\mu$), standard error ($\sigma / \sqrt{n}$)) and ($\hat{p}$) (mean ($p$), standard error ($\sqrt{p(1-p)/n}$)) follow approximate normal distributions, regardless of the population’s shape.
 
 ::: {.callout-note}
 To explore central limit theorem and how the sample size affects the sampling distribution press [here](https://jagelves.shinyapps.io/Central/).
