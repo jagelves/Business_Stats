@@ -290,9 +290,17 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link active" data-scroll-target="#confidence-intervals"><span class="header-section-number">12.1</span> Confidence Intervals</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">12.2</span> Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.3</span> Exercises</a>
+  <li><a href="#constructing-confidence-intervals-for-means" id="toc-constructing-confidence-intervals-for-means" class="nav-link active" data-scroll-target="#constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</a>
+  <ul class="collapse">
+  <li><a href="#example-1-life-expectancy" id="toc-example-1-life-expectancy" class="nav-link" data-scroll-target="#example-1-life-expectancy"><span class="header-section-number">12.1.1</span> Example 1: Life Expectancy</a></li>
+  </ul></li>
+  <li><a href="#constructing-confidence-intervals-for-proportions" id="toc-constructing-confidence-intervals-for-proportions" class="nav-link" data-scroll-target="#constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</a>
+  <ul class="collapse">
+  <li><a href="#example-2-success-rate" id="toc-example-2-success-rate" class="nav-link" data-scroll-target="#example-2-success-rate"><span class="header-section-number">12.2.1</span> Example 2: Success Rate</a></li>
+  </ul></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.3</span> Summary</a></li>
+  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.5</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -337,22 +345,54 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Confidence intervals are a powerful tool for making sense of data and drawing reliable conclusions about a population. Whether you’re estimating a population mean or proportion, confidence intervals provide a range of values that give you a sense of certainty—backed by statistical rigor—about where the true parameter lies. By mastering this concept, you’ll gain the ability to quantify uncertainty, assess the reliability of your estimates, and make informed decisions based on data. The information here equips you with the foundational formulas, key concepts like confidence levels and significance, and practical R functions to confidently apply these techniques in real-world scenarios.</p>
-<section id="confidence-intervals" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">12.1</span> Confidence Intervals</h2>
-<p>A <strong>confidence interval</strong> provides a range of values that, with a certain level of confidence, contains the population parameter of interest. For proper confidence intervals ensure that the sampling distributions are normal.</p>
-<p>A <span class="math inline">\(95\)</span>% <strong>confidence level</strong>, indicates that if the interval were constructed many times (from independent samples of the population), it would include the true population parameter <span class="math inline">\(95\)</span>% of the time.</p>
-<p>A <strong>significance level</strong> (<span class="math inline">\(\alpha\)</span>) of <span class="math inline">\(5\)</span>%, means that the confidence interval would would not include the true population parameter <span class="math inline">\(5\)</span>% of the time.</p>
-<p>The interval for the population mean when the population standard deviation is unknown is given by <span class="math inline">\(\bar x \pm t_{\alpha/2, df} \frac {s}{\sqrt{n}}\)</span>, where <span class="math inline">\(\bar x\)</span> is the point estimate, <span class="math inline">\(t_{a/2, df} \frac {s}{\sqrt{n}}\)</span> is the margin of error, <span class="math inline">\(\alpha\)</span> is the allowed probability that the interval does not include <span class="math inline">\(\mu\)</span>, and <span class="math inline">\(df\)</span> are the degrees of freedom <span class="math inline">\(n-1\)</span>.</p>
-<p>The interval for the population proportion mean is given by <span class="math inline">\(\bar p \pm z_{\alpha/2} \sqrt{\frac {\bar p (1-\bar p)}{n}}\)</span>.</p>
+<p>A <strong>confidence interval (CI)</strong> provides a range of plausible values for a population parameter, along with a confidence level indicating the probability that the interval contains the true parameter.</p>
+<p>For example, a 95% CI means that if we repeated the sampling process 100 times, about 95 of the intervals would contain the true population parameter.</p>
+<ul>
+<li>Confidence level (e.g., 95%) = 1 - significance level <span class="math inline">\((\alpha = 0.05)\)</span>.</li>
+<li>The remaining <span class="math inline">\((\alpha)\)</span> represents the risk of error (Type I error in hypothesis testing context).</li>
+</ul>
+<p>CIs account for sampling variability and are wider for lower confidence levels or smaller samples.</p>
+<section id="constructing-confidence-intervals-for-means" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</h2>
+<p>For a population mean, assuming normality (via CLT), the CI is:</p>
+<p><span class="math display">\[\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\]</span> or, if <span class="math inline">\((\sigma)\)</span> is unknown (common), use the t-distribution:</p>
+<p><span class="math display">\[\bar{x} \pm t_{\alpha/2} \cdot \frac{s}{\sqrt{n}}\]</span> - <span class="math inline">\((\bar{x})\)</span>: Sample mean - <span class="math inline">\((z_{\alpha/2})\)</span> or <span class="math inline">\((t_{\alpha/2})\)</span>: Critical value from standard normal or t-distribution (e.g., 1.96 for 95% CI with large n) - <span class="math inline">\((s)\)</span>: Sample standard deviation - <span class="math inline">\((n)\)</span>: Sample size</p>
+<p>The term after <span class="math inline">\((\pm)\)</span> is the <strong>margin of error</strong>.</p>
+<section id="example-1-life-expectancy" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="example-1-life-expectancy"><span class="header-section-number">12.1.1</span> Example 1: Life Expectancy</h3>
+<p>Suppose the average life expectancy sample mean is <span class="math inline">\(\bar{x} = 78.1\)</span> years, with population standard deviation <span class="math inline">\(\sigma = 4.5\)</span>, and <span class="math inline">\(n = 50\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
+<p><span class="math display">\[\frac{\sigma}{\sqrt{n}} = \frac{4.5}{\sqrt{50}} \approx 0.637\]</span></p>
+<p><span class="math display">\[78.1 \pm 1.645 \times 0.637 \approx 78.1 \pm 1.05\]</span></p>
+<p>Lower limit (LL): 77.05<br>
+Upper limit (UL): 79.15</p>
+<p>We are 90% confident that the true population mean life expectancy is between 77.05 and 79.15 years.</p>
 </section>
-<section id="useful-r-functions" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">12.2</span> Useful R Functions</h2>
+</section>
+<section id="constructing-confidence-intervals-for-proportions" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</h2>
+<p>For a population proportion <span class="math inline">\((p)\)</span>, the CI is:</p>
+<p><span class="math display">\[\bar{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\bar{p}(1-\bar{p})}{n}}\]</span> - <span class="math inline">\(\bar{p}\)</span>: Sample proportion (successes / n) - Assumes normality via CLT for proportions.</p>
+<section id="example-2-success-rate" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="example-2-success-rate"><span class="header-section-number">12.2.1</span> Example 2: Success Rate</h3>
+<p>A random sample of 100 yields 40 successes, so <span class="math inline">\(\bar{p} = 0.4\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
+<p><span class="math display">\[SE = \sqrt{\frac{0.4 \times 0.6}{100}} = \sqrt{0.0024} \approx 0.049\]</span></p>
+<p><span class="math display">\[0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081\]</span></p>
+<p>LL: 0.319<br>
+UL: 0.481</p>
+<p>We are 90% confident that the true population proportion is between 31.9% and 48.1%.</p>
+</section>
+</section>
+<section id="summary" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.3</span> Summary</h2>
+<p>Statistical inference bridges the gap between samples and populations through sampling distributions and the CLT. Confidence intervals offer a practical way to express uncertainty in estimates, essential for business decisions like market analysis or quality control. Remember, higher confidence levels widen intervals, and larger samples narrow them, improving precision.</p>
+</section>
+<section id="useful-r-functions" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</h2>
 <p>The <code>qnorm()</code> and <code>qt()</code> functions calculate quartiles for the normal and <span class="math inline">\(t\)</span> distributions, respectively.</p>
 <p>The <code>if()</code> function creates a conditional statement in R.</p>
 </section>
-<section id="exercises" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.3</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.5</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge on Statistical Inference. In particular, the exercises work on:</p>
 <ul>
 <li>Simulating confidence intervals.</li>
@@ -484,7 +524,7 @@ details summary {
 <p>Answer</p>
 </summary>
 <p><em>The 90% confidence interval is [94.52, 114.67] and the 95% confidence interval is [92.68, 116.76]. The larger the confidence level, the larger the interval.</em></p>
-<p><em>Let’s construct the intervals using R. Since the population standard deviation is unknown we will use the t-distribution. The interval is constructed as ({x} t_{/2} ).</em></p>
+<p><em>Let’s construct the intervals using R. Since the population standard deviation is unknown we will use the t-distribution. The interval is constructed as (</em>{x} t_{/2} ).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(ul90 <span class="ot">&lt;-</span> <span class="fl">104.6</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">23</span>) <span class="sc">*</span> <span class="fl">28.8</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -581,7 +621,7 @@ Answer
 <pre><code>[1] 3.762322</code></pre>
 </div>
 </div>
-<em>Drug 2 is more effective. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students’ sleeping time. Additionally, Drug 2’s mean increase in sleeping hours is 2.33 vs.&nbsp;0.75 for drug 1.</em>
+<p><em>Drug 2 is more effective. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students’ sleeping time. Additionally, Drug 2’s mean increase in sleeping hours is 2.33 vs.&nbsp;0.75 for drug 1.</em></p>
 </details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
@@ -663,7 +703,7 @@ Hair    Brown Blue Hazel Green
 <pre><code>[1] 0.1570946</code></pre>
 </div>
 </div>
-<p><em>Now we can use this proportion to construct the intervals. Recall that for proportions the interval is calculated by ({p} z_{/2} ). The 95% confidence interval is given by:</em></p>
+<p><em>Now we can use this proportion to construct the intervals. Recall that for proportions the interval is calculated by (</em>{p} z_{/2} ). The 95% confidence interval is given by:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(Ex2ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
