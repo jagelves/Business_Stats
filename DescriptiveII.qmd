@@ -169,7 +169,7 @@ dow<-c(277,174,202,383,358,188,293,156,
        96,95,43,188,200)
 ```
 
-To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is we will be using five classes, of width 100. Below is the code to do this:
+To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is, we will be using five classes, of width 100. Below is the code to do this:
 
 ```{r}
 intervals<-cut_width(dow, boundary=20, width=100)
@@ -211,7 +211,7 @@ The following exercises will help you practice summarizing data with tables and 
 
 -   Creating contingency tables.
 
-Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
@@ -385,3 +385,46 @@ ggplot() +
 ```
 
 </details>
+
+### Exercise 4 {.unnumbered}
+
+A company surveyed 40 employees about their primary department. The responses are:
+```{r}
+dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
+```
+1. Use R to create a frequency distribution table for these departments. 
+
+<details>
+<summary>Answer</summary>
+```{r}
+table(dept)
+```
+</details>
+2. Compute the relative frequencies (as percentages).
+<details>
+<summary>Answer</summary>
+```{r}
+prop.table(table(dept)) * 100
+```
+</details>
+3. Create a bar plot of the frequencies. Which department has the highest frequency? What is its relative frequency (percentage)?
+<details>
+<summary>Answer</summary>
+```{r}
+ggplot() +
+  geom_bar(aes(x=dept), bg="grey", 
+           col="black", alpha=0.5) +
+  theme_clean()
+```
+</details>
+### Exercise 5 {.unnumbered}
+
+A class of 50 students took a business statistics exam (out of 100 points). Their scores were:
+```{r}
+scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
+```
+
+1. Construct a frequency distribution using 7 classes with width 10, starting at 50 (bins: [50,60), [60,70), etc.). 
+
+2. Use `geom_histogram()` with appropriate parameters.
+In which bin is the highest frequency? How many students scored in that range?
