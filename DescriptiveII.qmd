@@ -82,7 +82,7 @@ $$
 
 **3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.
 
-*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should no be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.*
+*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should not be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.*
 
 **Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
 
@@ -301,7 +301,6 @@ You will need the **airquality** data set (in base R) to answer this question.
 intervals <- cut_width(airquality$Temp, width = 10,
                        boundary=50)
 ```
-
 
 *The frequency distribution can be obtained by using the `table()` function on the interval.cut object created above.*
 
