@@ -70,7 +70,14 @@ In sum, the **bar plot** illustrates the frequency distribution of categorical d
 When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:
 
 **1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.\
-*Ex: If a data set has 50 observations, we would choose six classes since* $2^6=64$ is greater than $50$ by the least amount.
+**Ex1:** If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.
+
+Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using
+$ k = \lceil 1 + 3.322 \log_{10}(n) \rceil $
+where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
+
+**Ex2:** If a data set has 50 observations,
+$ k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7 $ so we would choose seven classes.
 
 **2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
 
