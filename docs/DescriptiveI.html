@@ -234,6 +234,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -352,13 +353,13 @@ details summary {
 <ul>
 <li><p><strong>Categorical</strong> (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be <strong>nominal</strong> or <strong>ordinal</strong>.</p>
 <ul>
-<li><p>With <strong>nominal</strong> data, the order of the categories is arbitrary. <em>Ex: Marital Status, Race/Ethnicity, or NFL division.</em></p></li>
-<li><p>With <strong>ordinal</strong> data, the order or rank of the categories is meaningful. <em>Ex: Rating, Difficulty Level, or Spice Level.</em></p></li>
+<li><p>With <strong>nominal</strong> data, the order of the categories is arbitrary. Numbers (if used) serve only as identifiers. Common statistics used are based on counting frequencies and the mode (most common category) <em>Ex: Marital Status, Race/Ethnicity, or NFL division.</em></p></li>
+<li><p>With <strong>ordinal</strong> data, the order or rank of the categories is meaningful, but intervals between ranks are not necessarily equal or quantifiable. Common statistics are based on median, percentiles, or rank-order correlations. <em>Ex: Rating, Difficulty Level, or Spice Level.</em></p></li>
 </ul></li>
 <li><p><strong>Numerical</strong> (quantitative) include numerical values that indicate how many (discrete) or how much (continuous). The data can be either <strong>interval</strong> or <strong>ratio</strong>.</p>
 <ul>
-<li><p>With <strong>interval</strong> data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. <em>Ex: Temperature or Dates.</em></p></li>
-<li><p>With <strong>ratio</strong> data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. <em>Ex: Prices, Profits, Wins.</em></p></li>
+<li><p>With <strong>interval</strong> data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. Common statistics are the arithmetic mean, standard deviation, or the Pearson correlation, <em>Ex: Temperature or Dates.</em></p></li>
+<li><p>With <strong>ratio</strong> data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. All statistics are permissable including geometric mean, and the coefficient of variation. <em>Ex: Prices, Profits, Wins.</em></p></li>
 </ul></li>
 </ul>
 <p><strong>Example:</strong> Let’s keep using the EV example. Consider the new data set below:</p>
@@ -516,6 +517,27 @@ Answer
 Answer
 </summary>
 <p><em>The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.</em></p>
+</details>
+</section>
+<section id="exercise-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<p>A coffee shop chain collects customer feedback data for analysis. For each visit/transaction recorded in their database, the following variables are stored:</p>
+<ul>
+<li>Customer ID: A unique identifier assigned to each registered customer (e.g., C001234, C005678).</li>
+<li>Satisfaction Level: Customers rate their overall experience as 1 (Very Dissatisfied), 2 (Dissatisfied), 3 (Neutral), 4 (Satisfied), or 5 (Very Satisfied).</li>
+<li>Visit Duration: The time spent in the store in minutes (e.g., 15, 42, 8).</li>
+<li>Beverage Type: The main drink ordered (e.g., Latte, Cappuccino, Americano, Tea, Other).</li>
+</ul>
+<details>
+<summary>
+Answer
+</summary>
+<ul>
+<li><em>Customer ID: Categorical, Nominal. These are arbitrary labels used only for identification. There is no order or numerical meaning; you can only determine if two IDs are the same or different.</em></li>
+<li><em>Satisfaction Level: Categorical, Ordinal. The ratings have a clear order (higher numbers indicate greater satisfaction), but the intervals between levels are not necessarily equal (the difference between 4 and 5 may not be perceived the same as between 1 and 2). Ratios are not meaningful.</em></li>
+<li><em>Visit Duration: Numerical, Ratio. Time in minutes has a true zero (0 minutes means no time spent), equal intervals, and meaningful ratios (e.g., 60 minutes is twice as long as 30 minutes). All arithmetic operations are valid.</em></li>
+<li><em>Beverage Type: Categorical, Nominal. These are unordered categories/labels for different drinks. You can group or count them, but there is no natural order or numerical relationship between categories like “Latte” and “Tea”.</em></li>
+</ul>
 </details>
 
 

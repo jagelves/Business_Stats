@@ -74,15 +74,15 @@ The **scales of measurements** determine the amount and type of information cont
 
 -   **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
 
-    -   With **nominal** data, the order of the categories is arbitrary. *Ex: Marital Status, Race/Ethnicity, or NFL division.*
+    -   With **nominal** data, the order of the categories is arbitrary. Numbers (if used) serve only as identifiers. Common statistics used are based on counting frequencies and the mode (most common category) *Ex: Marital Status, Race/Ethnicity, or NFL division.*
 
-    -   With **ordinal** data, the order or rank of the categories is meaningful. *Ex: Rating, Difficulty Level, or Spice Level.*
+    -   With **ordinal** data, the order or rank of the categories is meaningful, but intervals between ranks are not necessarily equal or quantifiable. Common statistics are based on median, percentiles, or rank-order correlations. *Ex: Rating, Difficulty Level, or Spice Level.*
 
 -   **Numerical** (quantitative) include numerical values that indicate how many (discrete) or how much (continuous). The data can be either **interval** or **ratio**.
 
-    -   With **interval** data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. *Ex: Temperature or Dates.*
+    -   With **interval** data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. Common statistics are the arithmetic mean, standard deviation, or the Pearson correlation, *Ex: Temperature or Dates.*
 
-    -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. *Ex: Prices, Profits, Wins.*
+    -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. All statistics are permissable including geometric mean, and the coefficient of variation. *Ex: Prices, Profits, Wins.*
 
 **Example:** Let's keep using the EV example. Consider the new data set below:
 
@@ -195,3 +195,26 @@ A car company tracks the number of deliveries every quarter. A portion of the da
 *The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.*
 
 </details>
+
+
+
+### Exercise 3 {.unnumbered}
+A coffee shop chain collects customer feedback data for analysis. For each visit/transaction recorded in their database, the following variables are stored:
+
+- Customer ID: A unique identifier assigned to each registered customer (e.g., C001234, C005678).
+- Satisfaction Level: Customers rate their overall experience as 1 (Very Dissatisfied), 2 (Dissatisfied), 3 (Neutral), 4 (Satisfied), or 5 (Very Satisfied).
+- Visit Duration: The time spent in the store in minutes (e.g., 15, 42, 8).
+- Beverage Type: The main drink ordered (e.g., Latte, Cappuccino, Americano, Tea, Other).
+
+<details>
+
+<summary>Answer</summary>
+
+
+- *Customer ID: Categorical, Nominal. These are arbitrary labels used only for identification. There is no order or numerical meaning; you can only determine if two IDs are the same or different.*
+- *Satisfaction Level: Categorical, Ordinal. The ratings have a clear order (higher numbers indicate greater satisfaction), but the intervals between levels are not necessarily equal (the difference between 4 and 5 may not be perceived the same as between 1 and 2). Ratios are not meaningful.*
+- *Visit Duration: Numerical, Ratio. Time in minutes has a true zero (0 minutes means no time spent), equal intervals, and meaningful ratios (e.g., 60 minutes is twice as long as 30 minutes). All arithmetic operations are valid.*
+- *Beverage Type: Categorical, Nominal. These are unordered categories/labels for different drinks. You can group or count them, but there is no natural order or numerical relationship between categories like "Latte" and "Tea".*
+
+</details>
+
