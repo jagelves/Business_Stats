@@ -259,7 +259,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -302,6 +302,7 @@ window.Quarto = {
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -443,8 +444,7 @@ details summary {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="fu">prod</span>(poll<span class="sc">$</span>approval)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="fu">length</span>(poll<span class="sc">$</span>approval))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers.</p>
-<p>The <code>summary()</code> calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:</p>
+<p>Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers. The <code>summary()</code> function calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(poll)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -463,7 +463,7 @@ details summary {
 <li><p>The <code>median()</code> function calculates the median for a vector of numbers.</p></li>
 <li><p>The <code>table()</code> function generates the frequency distribution so that we can identify the mode or modes.</p></li>
 <li><p>The <code>weighted.mean()</code> function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.</p></li>
-<li><p>The <code>lenght()</code> function calculates the length of a vector.</p></li>
+<li><p>The <code>length()</code> function calculates the length of a vector.</p></li>
 <li><p>The <code>summary()</code> function provides measures of location for a vector of numbers.</p></li>
 </ul>
 </section>
@@ -475,7 +475,7 @@ details summary {
 <li><p>Calculating the weighted average.</p></li>
 <li><p>Applying the geometric mean for growth rates and returns.</p></li>
 </ul>
-<p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
+<p>Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
 <p>For the following exercises, make your calculations by hand and verify results using R functions when possible.</p>
@@ -804,7 +804,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The average growth rate is <span class="math inline">\(31.61%\)</span></em></p>
+<p><em>The average growth rate is</em> <span class="math inline">\(31.61%\)</span></p>
 <p><em>We can use the geometric mean formula with compounding. In R:</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>(Growth<span class="ot">&lt;-</span><span class="fu">prod</span>(<span class="fl">1.3</span>,<span class="fl">1.2308</span>,<span class="fl">1.125</span>,<span class="fl">1.1667</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)<span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -872,6 +872,82 @@ Answer
 <pre><code>[1] 1621.167</code></pre>
 </div>
 </div>
+</details>
+</section>
+<section id="exercise-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+<p>The <code>ISLR2</code> package includes a dataset called <strong>Hitters</strong> containing data on Major League Baseball players, including their salaries (in thousands of dollars) from 1987.</p>
+<ol type="1">
+<li>Load the Hitters dataset using data(Hitters) from the <code>ISLR2</code> package. Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Start by loading the libraries and previewing the data.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Hitters)</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(Hitters)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 322
+Columns: 20
+$ AtBat     &lt;int&gt; 293, 315, 479, 496, 321, 594, 185, 298, 323, 401, 574, 202, …
+$ Hits      &lt;int&gt; 66, 81, 130, 141, 87, 169, 37, 73, 81, 92, 159, 53, 113, 60,…
+$ HmRun     &lt;int&gt; 1, 7, 18, 20, 10, 4, 1, 0, 6, 17, 21, 4, 13, 0, 7, 3, 20, 2,…
+$ Runs      &lt;int&gt; 30, 24, 66, 65, 39, 74, 23, 24, 26, 49, 107, 31, 48, 30, 29,…
+$ RBI       &lt;int&gt; 29, 38, 72, 78, 42, 51, 8, 24, 32, 66, 75, 26, 61, 11, 27, 1…
+$ Walks     &lt;int&gt; 14, 39, 76, 37, 30, 35, 21, 7, 8, 65, 59, 27, 47, 22, 30, 11…
+$ Years     &lt;int&gt; 1, 14, 3, 11, 2, 11, 2, 3, 2, 13, 10, 9, 4, 6, 13, 3, 15, 5,…
+$ CAtBat    &lt;int&gt; 293, 3449, 1624, 5628, 396, 4408, 214, 509, 341, 5206, 4631,…
+$ CHits     &lt;int&gt; 66, 835, 457, 1575, 101, 1133, 42, 108, 86, 1332, 1300, 467,…
+$ CHmRun    &lt;int&gt; 1, 69, 63, 225, 12, 19, 1, 0, 6, 253, 90, 15, 41, 4, 36, 3, …
+$ CRuns     &lt;int&gt; 30, 321, 224, 828, 48, 501, 30, 41, 32, 784, 702, 192, 205, …
+$ CRBI      &lt;int&gt; 29, 414, 266, 838, 46, 336, 9, 37, 34, 890, 504, 186, 204, 1…
+$ CWalks    &lt;int&gt; 14, 375, 263, 354, 33, 194, 24, 12, 8, 866, 488, 161, 203, 2…
+$ League    &lt;fct&gt; A, N, A, N, N, A, N, A, N, A, A, N, N, A, N, A, N, A, A, N, …
+$ Division  &lt;fct&gt; E, W, W, E, E, W, E, W, W, E, E, W, E, E, E, W, W, W, W, W, …
+$ PutOuts   &lt;int&gt; 446, 632, 880, 200, 805, 282, 76, 121, 143, 0, 238, 304, 211…
+$ Assists   &lt;int&gt; 33, 43, 82, 11, 40, 421, 127, 283, 290, 0, 445, 45, 11, 151,…
+$ Errors    &lt;int&gt; 20, 10, 14, 3, 4, 25, 7, 9, 19, 0, 22, 11, 7, 6, 8, 0, 10, 1…
+$ Salary    &lt;dbl&gt; NA, 475.000, 480.000, 500.000, 91.500, 750.000, 70.000, 100.…
+$ NewLeague &lt;fct&gt; A, N, A, N, N, A, A, A, N, A, A, N, N, A, N, A, N, A, A, N, …</code></pre>
+</div>
+</div>
+<p>We can now find the mean and the median.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Hitters<span class="sc">$</span>Salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 535.9259</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(Hitters<span class="sc">$</span>Salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 425</code></pre>
+</div>
+</div>
+<p><em>Overall: mean ≈ 536 (thousand dollars), median = 425. Due to right-skew from superstar salaries, the median better represents the typical player.</em></p>
+</details>
+<ol start="2" type="1">
+<li>filter to only players with at least one home run (HmRun &gt;= 1) and compute the mean and median salary for this subgroup.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Filter the data using <code>dplyr</code>:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>Hitters <span class="sc">%&gt;%</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(HmRun <span class="sc">&gt;=</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_salary =</span> <span class="fu">mean</span>(Salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">median_salary =</span> <span class="fu">median</span>(Salary, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  mean_salary median_salary
+1    531.9612           425</code></pre>
+</div>
+</div>
+<em>For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.</em>
 </details>
 
 

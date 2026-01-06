@@ -126,9 +126,7 @@ Lastly, the geometric mean has no built in function in base R. However, we can e
 geometric_mean <- prod(poll$approval)^(1/length(poll$approval))
 ```
 
-Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers.
-
-The `summary()` calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:
+Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers. The `summary()` function calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:
 
 ```{r}
 summary(poll)
@@ -144,7 +142,7 @@ Below a list of the functions used:
 
 -   The `weighted.mean()` function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.
 
--   The `lenght()` function calculates the length of a vector.
+-   The `length()` function calculates the length of a vector.
 
 -   The `summary()` function provides measures of location for a vector of numbers.
 
@@ -158,7 +156,7 @@ The following exercises will help you practice the measures of central location.
 
 -   Applying the geometric mean for growth rates and returns.
 
-Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
@@ -398,19 +396,22 @@ CPI<-c(1,1.3,1.6,1.8,2.1)
 
 </details>
 
-2. What is the average growth rate for the inflation rate?
+2.  What is the average growth rate for the inflation rate?
 
 <details>
 
 <summary>Answer</summary>
-*The average growth rate is $31.61%$*
+
+*The average growth rate is* $31.61%$
 
 *We can use the geometric mean formula with compounding. In R:*
 
 ```{r}
 (Growth<-prod(1.3,1.2308,1.125,1.1667)^(1/4)-1)
 ```
+
 </details>
+
 2.  Suppose that you want to invest \$1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.
 
     | Year | Annual Return |
@@ -450,4 +451,50 @@ growth<-c(0.173,0.196,0.068,0.082)
 1000*(1+geom/100)^4
 ```
 
+</details>
+
+### Exercise 5 {.unnumbered}
+
+The `ISLR2` package includes a dataset called **Hitters** containing data on Major League Baseball players, including their salaries (in thousands of dollars) from 1987.  
+
+1. Load the Hitters dataset using data(Hitters) from the `ISLR2` package. Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?
+
+<details>
+
+<summary>Answer</summary>
+
+*Start by loading the libraries and previewing the data.*
+```{r}
+library(ISLR2)
+library(dplyr)
+data(Hitters)
+
+glimpse(Hitters)
+```
+
+We can now find the mean and the median.
+
+```{r}
+mean(Hitters$Salary, na.rm = TRUE)
+median(Hitters$Salary, na.rm = TRUE)
+```
+*Overall: mean ≈ 536 (thousand dollars), median = 425. Due to right-skew from superstar salaries, the median better represents the typical player.*
+
+</details>
+
+2. filter to only players with at least one home run (HmRun >= 1) and compute the mean and median salary for this subgroup. 
+
+<details>
+
+<summary>Answer</summary>
+
+*Filter the data using `dplyr`:*
+```{r}
+
+Hitters %>%
+  filter(HmRun >= 1) %>%
+  summarise(mean_salary = mean(Salary, na.rm = TRUE),
+            median_salary = median(Salary, na.rm = TRUE))
+```
+*For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.*
 </details>
