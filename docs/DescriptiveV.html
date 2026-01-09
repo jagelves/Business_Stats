@@ -259,7 +259,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -291,7 +291,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#.quartiles" id="toc-.quartiles" class="nav-link active" data-scroll-target="#.quartiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</a></li>
-  <li><a href="#chevyshevs-theorem" id="toc-chevyshevs-theorem" class="nav-link" data-scroll-target="#chevyshevs-theorem"><span class="header-section-number">5.2</span> Chevyshev’s Theorem</a></li>
+  <li><a href="#chebyshevs-theorem" id="toc-chebyshevs-theorem" class="nav-link" data-scroll-target="#chebyshevs-theorem"><span class="header-section-number">5.2</span> Chebyshev’s Theorem</a></li>
   <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</a></li>
   <li><a href="#outliers-z-scores" id="toc-outliers-z-scores" class="nav-link" data-scroll-target="#outliers-z-scores"><span class="header-section-number">5.4</span> Outliers Z-Scores</a></li>
   <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew"><span class="header-section-number">5.5</span> Skew</a></li>
@@ -360,21 +360,21 @@ details summary {
 <ol type="1">
 <li><p>We sort the data: <span class="math inline">\(IQ_{sorted}=\{75,80,90,100,110,130\}\)</span></p></li>
 <li><p>Find the location of the 25th percentile: <span class="math inline">\(L_{25}=7 \times 0.25=1.75\)</span>. The 25th percentile is in the position 1.75 of the sorted data.</p></li>
-<li><p>Retrieve the 25th percentile: Since position 1 is 75 and position 2 is 80, the 25th percentile lies 0.75 of the way between position 1 and 2. Hence, the 25th percentile is <span class="math inline">\(P_{25}=75+0.75(5)=78.75\)</span>.</p></li>
+<li><p>Retrieve the 25th percentile: Since position 1 is 75 and position 2 is 80, the 25th percentile lies 0.75 of the way between position 1 and 2. Hence, the 25th percentile is <span class="math inline">\(P_{25}=75+0.75(80-75)=78.75\)</span>.</p></li>
 </ol>
 </section>
-<section id="chevyshevs-theorem" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="chevyshevs-theorem"><span class="header-section-number">5.2</span> Chevyshev’s Theorem</h2>
-<p>Chebyshev’s Theorem is an important theorem, as it helps you form an expectation of the proportion of data that must lie between a given standard deviation from the mean. This offers a baseline to understanding the range and distribution of your data, and aids in detecting outliers. Formally, <strong>Chevyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least (<span class="math inline">\(1-1/z^2\)</span>)% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
-<p><em>Ex: For a given data set, we want to know at least how much of the data is between two standard deviations. Substituting 2 into Chevyshev’s formula yields $1-1/4=0.75. Hence, 75% of the data lies between two standard deviations from the mean.</em></p>
+<section id="chebyshevs-theorem" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="chebyshevs-theorem"><span class="header-section-number">5.2</span> Chebyshev’s Theorem</h2>
+<p>Chebyshev’s Theorem is an important theorem, as it helps you form an expectation of the proportion of data that must lie between a given standard deviation from the mean. This offers a baseline to understanding the range and distribution of your data, and aids in detecting outliers. Formally, <strong>Chebyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least (<span class="math inline">\(1-1/z^2\)</span>)% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
+<p><em>Ex: For a given data set, we want to know at least how much of the data is between two standard deviations. Substituting 2 into Chebyshev’s formula yields $1-1/4=0.75. Hence, 75% of the data lies between two standard deviations from the mean.</em></p>
 </section>
 <section id="the-empirical-rule" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</h2>
-<p>Whereas Chevyshev’s theorem holds for any data distribution, the empirical rule is a bit more precise when looking at “bell shaped” data. Formally, the <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule requires that the data be bell shape (normally) distributed.</p>
+<p>Whereas Chebyshev’s theorem holds for any data distribution, the empirical rule is a bit more precise when looking at “bell shaped” data. Formally, the <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule requires that the data be bell shape (normally) distributed.</p>
 </section>
 <section id="outliers-z-scores" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="outliers-z-scores"><span class="header-section-number">5.4</span> Outliers Z-Scores</h2>
-<p>Given the boundaries set by both the empirical rule and Chevyshev’s theorem, we can classify points as being common (normal) and not common (outliers). Specifically, <strong>outliers</strong> are extreme deviations from the mean. They are values that are not “common” or rarely occurring. Since both the empirical rule and Chevyshev’s theorem state that a large proportion of the data is between three standard deviations, it would be uncommon to have a data point that is more that three standard deviations away from the mean.</p>
+<p>Given the boundaries set by both the empirical rule and Chebyshev’s theorem, we can classify points as being common (normal) and not common (outliers). Specifically, <strong>outliers</strong> are extreme deviations from the mean. They are values that are not “common” or rarely occurring. Since both the empirical rule and Chebyshev’s theorem state that a large proportion of the data is between three standard deviations, it would be uncommon to have a data point that is more that three standard deviations away from the mean.</p>
 <p>To identify outliers we use a z-score, which is a measure of distance from the mean in units of standard deviations. It can be calculated for any data point in your variable by using the formula <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. By definition, <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected to be outliers.</p>
 <p><em>Ex: On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get:</em> <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</p>
 </section>
@@ -391,7 +391,7 @@ details summary {
 </div>
 </div>
 </div>
-<p><em>Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The pearson coefficient of skew is equal to</em> <span class="math inline">\(Sk=3(10-8)/3=2\)</span>. Since the skew is positive, we expect the distribution to be right skewed.</p>
+<p><em>Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The Pearson coefficient of skew is equal to</em> <span class="math inline">\(Sk=3(10-8)/3=2\)</span>. Since the skew is positive, we expect the distribution to be right skewed.</p>
 </section>
 <section id="five-point-summary" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</h2>
@@ -421,7 +421,7 @@ details summary {
 </section>
 <section id="outliers-iqr" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="outliers-iqr"><span class="header-section-number">5.7</span> Outliers IQR</h2>
-<p>An alternate way to identify outliers is by using the interquartile range. Specifically, we first calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If the observation (<span class="math inline">\(x_i\)</span>) is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p>
+<p>An alternate way to identify outliers is by using the interquartile range. This measure and the z-score method can disagree. To calculate the outliers using the IQR, we first calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If the observation (<span class="math inline">\(x_i\)</span>) is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p>
 <p><em>Ex: Consider once more the IQ data.</em> <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The lower limit for on outlier is given by <span class="math inline">\(LL=Q_1-1.5(IQR)=78.75-1.5(36.25)\)</span> or <span class="math inline">\(LL=24.375\)</span>. The upper limit is given by <span class="math inline">\(UL=Q_3+1.5(IQR)=115+1.5(36.25)\)</span> or <span class="math inline">\(UL=169.375\)</span>. Any data point outside the range [24.375,169.375] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.</p>
 </section>
 <section id="quantiles-and-quartiles-in-r" class="level2" data-number="5.8">
@@ -451,7 +451,7 @@ details summary {
 5  0.91575542  1.0373644</code></pre>
 </div>
 </div>
-<p>The data shown above are z-scores for the first five observations of the faithful data set. As you can see non of the observations are outliers, as they are all less that 3 standard deviations away from the mean.</p>
+<p>The data shown above are z-scores for the first five observations of the faithful data set. As you can see none of the observations are outliers, as they are all less that 3 standard deviations away from the mean.</p>
 <p>If we want to filter all observations that are say 1.3 standard deviations away from the mean, we can use the following command from <code>tidyverse</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -669,7 +669,7 @@ Answer
 </div>
 </div>
 </div>
-<p><em>The lines are close to each other but the mean is slighlty larger than the median. Let’s confirm with the skewness statistic</em> <span class="math inline">\(3(mean-median)/sd\)</span>.</p>
+<p><em>The lines are close to each other but the mean is slightlty larger than the median. Let’s confirm with the skewness statistic</em> <span class="math inline">\(3(mean-median)/sd\)</span>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(skew<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI))<span class="sc">/</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
