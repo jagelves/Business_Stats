@@ -18,6 +18,9 @@ details summary {
 
 Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions.
 
+## Sample Vs. Population Statistics
+In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use $N$ in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use $n$ and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.
+
 ## The Range
 
 This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by:
@@ -28,7 +31,7 @@ $$Range=Maximum-Minimum$$
 
 ## The Variance
 
-The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average. The population parameter is given by:
+The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The population parameter is given by:
 
 $$\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$$
 
@@ -57,10 +60,6 @@ knitr::include_graphics("images/Var1.png")
 ```
 
 The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The sample variance, averages the numbers in the third column using the degrees of freedom ($n-1$). The result is $s^2=1221880$, which means that the price of Ether varies on average $1221880$ squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.
-
-::: callout-note
-*Use population formulas when you truly have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use N in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use n and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.*
-:::
 
 ## The Standard Deviation
 
@@ -495,4 +494,30 @@ sd(Portfolio$Y)
 mean_return/standard[1]
 ```
 
+</details>
+
+### Exercise 4 {.unnumbered}
+The monthly returns (in percent) for a small project are:{2.1,-0.5,3.0,1.2,−1.8,0.7,2.5,−0.3}. Compute the sample mean, sample variance, sample standard deviation, coefficient of variation (CV) (in percent), and the mean absolute deviation (MAD). Briefly interpret the CV: what does it tell you about the returns relative to their mean?
+
+<details>
+
+<summary>Answer</summary>
+
+*You can use the `summarise()` function in r to get the list of sample statistics.*
+```{r}
+library(tidyverse)
+
+returns <- tibble(month = 1:8,
+                  ret = c(2.1, -0.5, 3.0, 1.2, -1.8, 0.7, 2.5, -0.3))
+
+returns %>%summarise(n = n(),
+                     Mean = mean(ret),
+                     Var_sample = var(ret),
+                     SD = sd(ret),
+                     CV = sd(ret) / mean(ret) * 100,
+                     MAD = mean(abs(ret - mean(ret)))
+                     )
+```
+
+*The CV is about 192%, which is large: the standard deviation is almost twice the mean. That indicates the returns are highly variable relative to their average — the mean is small compared with typical month‑to‑month fluctuations.*
 </details>
