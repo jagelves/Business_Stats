@@ -196,25 +196,24 @@ A car company tracks the number of deliveries every quarter. A portion of the da
 
 </details>
 
-
-
 ### Exercise 3 {.unnumbered}
+
 A coffee shop chain collects customer feedback data for analysis. For each visit/transaction recorded in their database, the following variables are stored:
 
-- Customer ID: A unique identifier assigned to each registered customer (e.g., C001234, C005678).
-- Satisfaction Level: Customers rate their overall experience as 1 (Very Dissatisfied), 2 (Dissatisfied), 3 (Neutral), 4 (Satisfied), or 5 (Very Satisfied).
-- Visit Duration: The time spent in the store in minutes (e.g., 15, 42, 8).
-- Beverage Type: The main drink ordered (e.g., Latte, Cappuccino, Americano, Tea, Other).
+-   Customer ID: A unique identifier assigned to each registered customer (e.g., C001234, C005678).
+-   Satisfaction Level: Customers rate their overall experience as 1 (Very Dissatisfied), 2 (Dissatisfied), 3 (Neutral), 4 (Satisfied), or 5 (Very Satisfied).
+-   Visit Duration: The time spent in the store in minutes (e.g., 15, 42, 8).
+-   Beverage Type: The main drink ordered (e.g., Latte, Cappuccino, Americano, Tea, Other).
+
+1. For each variable determine the data type and the scale of measurement.
 
 <details>
 
 <summary>Answer</summary>
 
-
-- *Customer ID: Categorical, Nominal. These are arbitrary labels used only for identification. There is no order or numerical meaning; you can only determine if two IDs are the same or different.*
-- *Satisfaction Level: Categorical, Ordinal. The ratings have a clear order (higher numbers indicate greater satisfaction), but the intervals between levels are not necessarily equal (the difference between 4 and 5 may not be perceived the same as between 1 and 2). Ratios are not meaningful.*
-- *Visit Duration: Numerical, Ratio. Time in minutes has a true zero (0 minutes means no time spent), equal intervals, and meaningful ratios (e.g., 60 minutes is twice as long as 30 minutes). All arithmetic operations are valid.*
-- *Beverage Type: Categorical, Nominal. These are unordered categories/labels for different drinks. You can group or count them, but there is no natural order or numerical relationship between categories like "Latte" and "Tea".*
+-   *Customer ID: Categorical, Nominal. These are arbitrary labels used only for identification. There is no order or numerical meaning; you can only determine if two IDs are the same or different.*
+-   *Satisfaction Level: Categorical, Ordinal. The ratings have a clear order (higher numbers indicate greater satisfaction), but the intervals between levels are not necessarily equal (the difference between 4 and 5 may not be perceived the same as between 1 and 2). Ratios are not meaningful.*
+-   *Visit Duration: Numerical, Ratio. Time in minutes has a true zero (0 minutes means no time spent), equal intervals, and meaningful ratios (e.g., 60 minutes is twice as long as 30 minutes). All arithmetic operations are valid.*
+-   *Beverage Type: Categorical, Nominal. These are unordered categories/labels for different drinks. You can group or count them, but there is no natural order or numerical relationship between categories like "Latte" and "Tea".*
 
 </details>
-
