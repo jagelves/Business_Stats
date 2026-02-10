@@ -360,6 +360,7 @@ details summary {
 <p><span class="math display">\[\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\]</span></p>
 <p>while the sample statistic is</p>
 <p><span class="math display">\[s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\]</span></p>
+<p>The two formulas look very similar, but there is one key difference: the population variance is divided by <span class="math inline">\(N\)</span>, while sample variance is divided by <span class="math inline">\(n − 1\)</span>. This small change is known as <strong>Bessel’s correction</strong>. The reason is simple. When we calculate the sample variance, we replace the true (but unknown) population mean <span class="math inline">\(\mu\)</span> with the sample mean <span class="math inline">\(\bar{x}\)</span>. Because <span class="math inline">\(\bar{x}\)</span>̄ is deliberately chosen to minimize the sum of squared deviations from the data points themselves, that sum ends up being artificially smaller than it would be if we had used the true <span class="math inline">\(\mu\)</span>. If we divided by <span class="math inline">\(n\)</span>, the result would systematically underestimate the true population variance <span class="math inline">\(\sigma^2\)</span> on average. Dividing by <span class="math inline">\(n − 1\)</span> instead provides the right adjustment to correct this bias.</p>
 <p><strong>Example:</strong> Let’s consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -967,7 +968,7 @@ Answer
 1     8 0.862       2.75  1.66  192.  1.34</code></pre>
 </div>
 </div>
-<em>The CV is about 192%, which is large: the standard deviation is almost twice the mean. That indicates the returns are highly variable relative to their average — the mean is small compared with typical month‑to‑month fluctuations.</em>
+<p><em>The CV is about 192%, which is large: the standard deviation is almost twice the mean. That indicates the returns are highly variable relative to their average — the mean is small compared with typical month‑to‑month fluctuations.</em></p>
 </details>
 
 

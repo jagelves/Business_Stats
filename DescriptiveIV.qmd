@@ -19,6 +19,7 @@ details summary {
 Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions.
 
 ## Sample Vs. Population Statistics
+
 In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use $N$ in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use $n$ and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.
 
 ## The Range
@@ -38,6 +39,8 @@ $$\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$$
 while the sample statistic is
 
 $$s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$$
+
+The two formulas look very similar, but there is one key difference: the population variance is divided by $N$, while sample variance is divided by $n − 1$. This small change is known as **Bessel’s correction**. The reason is simple. When we calculate the sample variance, we replace the true (but unknown) population mean $\mu$ with the sample mean $\bar{x}$. Because $\bar{x}$̄ is deliberately chosen to minimize the sum of squared deviations from the data points themselves, that sum ends up being artificially smaller than it would be if we had used the true $\mu$. If we divided by $n$, the result would systematically underestimate the true population variance $\sigma^2$ on average. Dividing by $n − 1$ instead provides the right adjustment to correct this bias.
 
 **Example:** Let's consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:
 
@@ -497,6 +500,7 @@ mean_return/standard[1]
 </details>
 
 ### Exercise 4 {.unnumbered}
+
 The monthly returns (in percent) for a small project are:{2.1,-0.5,3.0,1.2,−1.8,0.7,2.5,−0.3}. Compute the sample mean, sample variance, sample standard deviation, coefficient of variation (CV) (in percent), and the mean absolute deviation (MAD). Briefly interpret the CV: what does it tell you about the returns relative to their mean?
 
 <details>
@@ -504,6 +508,7 @@ The monthly returns (in percent) for a small project are:{2.1,-0.5,3.0,1.2,−1.
 <summary>Answer</summary>
 
 *You can use the `summarise()` function in r to get the list of sample statistics.*
+
 ```{r}
 library(tidyverse)
 
@@ -520,4 +525,5 @@ returns %>%summarise(n = n(),
 ```
 
 *The CV is about 192%, which is large: the standard deviation is almost twice the mean. That indicates the returns are highly variable relative to their average — the mean is small compared with typical month‑to‑month fluctuations.*
+
 </details>
