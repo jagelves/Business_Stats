@@ -458,11 +458,12 @@ scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69
 ggplot() + 
   geom_histogram(aes(x=scores),
                  bins=0,
-                 closed = "left",
+                 binwidth=10,
+                 boundary=50,
                  col="black", bg="grey") +
   theme_clean()
 ```
 
-*The highest frequency is in the bin (60,70\] with 9 students.*
+*The highest frequency is in the bin (50,60\] with 13 students.*
 
 </details>
