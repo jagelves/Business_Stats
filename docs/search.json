@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Business Statistics",
     "section": "",
-    "text": "Introduction\n“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – Epictetus\nThis course companion aims to build your mastery of statistics and its applications in R through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. For extra R support, see Grolemund (2014). I thank my business statistics students and Haipei Liu for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!",
+    "text": "Introduction\n“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – Epictetus\nThis course companion aims to build your mastery of statistics and its applications in R through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. For extra R support, see Grolemund (2014). I thank my business statistics students (Haipei Liu and Addison Allvine) for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!",
     "crumbs": [
       "Introduction"
     ]
