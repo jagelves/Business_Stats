@@ -73,12 +73,9 @@ When working with numerical data, building a frequency distributions requires ad
 
 **Ex1:** If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.
 
-Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using
-$k = \lceil 1 + 3.322 \log_{10}(n) \rceil$
-where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
+Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using $k = \lceil 1 + 3.322 \log_{10}(n) \rceil$ where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
 
-**Ex2:** If a data set has 50 observations,
-$k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
+**Ex2:** If a data set has 50 observations, $k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
 
 **2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
 
@@ -397,31 +394,41 @@ ggplot() +
 ### Exercise 4 {.unnumbered}
 
 A company surveyed 40 employees about their primary department. The responses are:
+
 ```{r}
 dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
 ```
-1. Use R to create a frequency distribution table for these departments. 
+
+1.  Use R to create a frequency distribution table for these departments.
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 table(dept)
 ```
+
 </details>
 
-2. Compute the relative frequencies (as percentages).
+2.  Compute the relative frequencies (as percentages).
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 prop.table(table(dept)) * 100
 ```
+
 </details>
 
-3. Create a bar plot of the frequencies. Which department has the highest frequency? What is its relative frequency (percentage)?
+3.  Create a bar plot of the frequencies. Which department has the highest frequency? What is its relative frequency (percentage)?
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 ggplot() +
   geom_bar(aes(x=dept), bg="grey", 
@@ -436,23 +443,26 @@ ggplot() +
 ### Exercise 5 {.unnumbered}
 
 A class of 50 students took a business statistics exam (out of 100 points). Their scores were:
+
 ```{r}
 scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
 ```
 
-1. Construct a histogram using 7 classes with width 10, starting at 50 (bins: [50,60), [60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
+1.  Construct a histogram using 5 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 ggplot() + 
   geom_histogram(aes(x=scores),
-                 breaks = seq(50, 100, by = 10),
+                 bins=0,
                  closed = "left",
                  col="black", bg="grey") +
   theme_clean()
 ```
-*The highest frequency is in the bin (60,70] with 9 students.*
+
+*The highest frequency is in the bin (60,70\] with 9 students.*
 
 </details>
-
