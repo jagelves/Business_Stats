@@ -67,6 +67,7 @@ You can also use the head() and tail() functions to preview the observations at 
 ```{r}
 head(di,3)
 ```
+
 ### Functions {.unnumbered}
 
 In general, **functions** relate an input (arguments) to an output. For example, the `sum()` function takes as an input a vector with numeric values and returns the sum of the elements.
@@ -94,25 +95,20 @@ The argument, removes any missing values in the data (NA) and then estimates the
 
 Understanding and using Base R functions is essential for efficiently managing and analyzing data.
 
--   The `rm()` function removes a specified object from the environment. *Input: A object in the environment.*
-
--   The `ls()` function lists all of the objects in the environments. *Input: none*
-
--   The `rep()` function repeats a number or vector a given amount of times. *Input: A number or a vector.*
-
--   The `seq()` function creates a vector with a sequence of numbers that range from a starting number to an ending number. *Input: A number or a vector.*
-
--   The `na.omit()` function removes any observations that have a missing value (NA). The resulting data frame has only complete cases. *Input: A data frame (tibble) or vector.*
-
--   The `nrow()` and `ncol()` functions return the number of rows and columns respectively from a data frame. *Input: A data frame (tibble).*
-
--   The `is.na()` function returns a vector of *True* and *False* that specify if an entry is missing (NA) or not. *Input: A data frame (tibble) or vector.*
-
--   The `summary()` function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. *Input: A data frame (tibble) or vector.*
-
--   The `as.integer()`, `as.factor()`, `as.double()`, are functions used to coerce your data into a different scale of measurement. *Input: A vector or column of a data frame (tibble).*
-
--   The `library()` function loads an R package. *Input: An R library found in CRAN.*
+- The `rm()` function removes a specified object from the environment. *Input: An object in the environment.*
+- The `ls()` function lists all of the objects in the environment. *Input: none.*
+- The `rep()` function repeats a number or vector a given amount of times. *Input: A number or a vector.*
+- The `seq()` function creates a vector with a sequence of numbers that range from a starting number to an ending number. *Input: A number or a vector.*
+- The `na.omit()` function removes any observations that have a missing value (NA). The resulting data frame has only complete cases. *Input: A data frame (tibble) or vector.*
+- The `nrow()` and `ncol()` functions return the number of rows and columns respectively from a data frame. *Input: A data frame (tibble).*
+- The `is.na()` function returns a vector of *True* and *False* that specify if an entry is missing (NA) or not. *Input: A data frame (tibble) or vector.*
+- The `summary()` function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable. *Input: A data frame (tibble) or vector.*
+- The `as.integer()`, `as.factor()`, `as.double()` are functions used to coerce your data into a different scale of measurement. *Input: A vector or column of a data frame (tibble).*
+- The `class()` function returns the high-level data type of an object, such as `"numeric"`, `"character"`, or `"factor"`. *Input: Any R object — a vector, data frame, or tibble.*
+- The `typeof()` function returns the low-level internal storage type of an object (e.g., `"double"`, `"integer"`, `"character"`), which can differ from the class. *Input: Any R object — typically a vector or column of a data frame.*
+- The `dim()` function returns a vector containing the dimensions of an object — for a data frame this is [number of rows, number of columns]. *Input: A data frame (tibble).*
+- The `head()` and `tail()` functions return the first or last *n* rows of a data object (default 6). Useful for quickly previewing data after import. *Input: A data frame (tibble) and an optional integer n.*
+- The `library()` function loads an R package. *Input: An R library found in CRAN.*
 
 ### Data Types {.unnumbered}
 
@@ -148,15 +144,32 @@ knitr::include_graphics("images/op.png")
 
 The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to @R4DS. To install, run the following command in the console `install.packages("tidyverse")`.
 
--   The `read_csv()` function imports data from a csv file.
--   The `write_csv()` exports a data frame in the environment as a csv file.
--   The `glimpse()` function returns a preview of a tibble or a data frame.
--   The `arrange()` function allows you to sort data frames in ascending order. Pair with the `desc()` function to sort the data in descending order.
--   The `filter()` function allows you to subset the rows of your data based on a condition.
--   The `select()` function allows you to select a subset of variables from your data frame.
--   The `mutate()` function allows you to create a new variable.
--   The `group_by()` function allows you to group your data frame by categories present in a given variable.
--   The `summarise()` function allows you to summarise your data, based on groupings generated by the `goup_by()` function.
+- The `read_csv()` function imports data from a csv file. *Input: A quoted file path or URL.*
+- The `write_csv()` function exports a data frame in the environment as a csv file. *Input: A data frame (tibble) and a quoted file path.*
+- The `glimpse()` function returns a compact preview of a tibble or data frame, showing each variable as a row with its type and first few values. *Input: A data frame (tibble).*
+- The `arrange()` function allows you to sort data frames in ascending order. Pair with the `desc()` function to sort the data in descending order. *Input: A data frame (tibble) and one or more unquoted column names.*
+- The `filter()` function allows you to subset the rows of your data based on one or more logical conditions. *Input: A data frame (tibble) and one or more logical conditions.*
+- The `select()` function allows you to select a subset of variables from your data frame. *Input: A data frame (tibble) and one or more unquoted column names.*
+- The `mutate()` function allows you to create a new variable or overwrite an existing one. *Input: A data frame (tibble) and one or more name–expression pairs.*
+- The `group_by()` function allows you to group your data frame by categories present in a given variable. *Input: A data frame (tibble) and one or more unquoted column names.*
+- The `summarise()` function allows you to summarise your data, based on groupings generated by the `group_by()` function. *Input: A grouped data frame (tibble) and one or more summary expressions.*
+
+### Useful Statistical Functions {.unnumbered}
+
+Base R includes a set of built-in statistical functions that compute common descriptive and inferential measures. These functions appear throughout the book.
+
+- The `sum()` function returns the total of all elements in a numeric vector. Accepts `na.rm = TRUE` to ignore missing values. *Input: A numeric vector.*
+- The `mean()` function computes the arithmetic average of a numeric vector. Accepts `na.rm = TRUE` to ignore missing values. *Input: A numeric vector.*
+- The `median()` function returns the middle value of a sorted numeric vector. Accepts `na.rm = TRUE` to ignore missing values. *Input: A numeric vector.*
+- The `sd()` function computes the sample standard deviation, measuring the average spread of values around the mean. Accepts `na.rm = TRUE`. *Input: A numeric vector.*
+- The `var()` function computes the sample variance, which is the square of the standard deviation. Accepts `na.rm = TRUE`. *Input: A numeric vector.*
+- The `min()` and `max()` functions return the smallest and largest values in a numeric vector, respectively. Accept `na.rm = TRUE`. *Input: A numeric vector.*
+- The `range()` function returns a vector of length two containing the minimum and maximum values. *Input: A numeric vector.*
+- The `quantile()` function returns sample quantiles corresponding to given probabilities (e.g., quartiles when probabilities are 0.25, 0.5, 0.75). *Input: A numeric vector and a probability value between 0 and 1.*
+- The `cor()` function computes the correlation coefficient between two numeric vectors, or a correlation matrix for a data frame. *Input: One or two numeric vectors, or a numeric data frame (tibble).*
+- The `table()` function creates a frequency table counting the occurrences of each unique value in a vector. *Input: A vector or one or more categorical variables.*
+- The `prop.table()` function converts a frequency table produced by `table()` into proportions. *Input: A table object (output of `table()`).*
+- The `length()` function returns the number of elements in a vector, or the number of columns in a data frame. *Input: A vector or data frame (tibble).*
 
 ## Exercises
 
