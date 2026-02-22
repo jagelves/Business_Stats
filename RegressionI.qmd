@@ -68,7 +68,7 @@ $$R^2=r^2$$ The number that we get from the $R^2$ tells us how well a variable (
 
 R makes it very convenient to retrieve measures of association. Let's get the data from SPY and BND example into R:
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggthemes)
 
