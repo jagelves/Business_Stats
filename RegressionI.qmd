@@ -42,7 +42,7 @@ Intuitively, the covariance checks whether on average the products of the deviat
 knitr::include_graphics("images/cov.png")
 ```
 
-The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You'll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.
+The image plots the SPY and BND in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represent the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You'll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.
 
 ## The Correlation
 
@@ -54,7 +54,7 @@ knitr::include_graphics("images/cor.png")
 
 The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship. When the absolute value of the correlation is 1, then there is a perfect linear relationship between the two variables.
 
-*Ex: Consider the SPY and BND data. The standard deviation of SPY is* $1.58$ and that of BDN is $50.37$. Substituting into the correlation formula we get a correlation coefficient of $r= \frac {-71}{1.58 \times 50.37}=-0.89$. This indicates that the relationship between SPY and BND is inverse and strong.
+*Ex: Consider the SPY and BND data. The standard deviation of SPY is* $1.58$ and that of BND is $50.37$. Substituting into the correlation formula we get a correlation coefficient of $r= \frac {-71}{1.58 \times 50.37}=-0.89$. This indicates that the relationship between SPY and BND is inverse and strong.
 
 ## The Coefficient of Determination ($R^2$)
 
@@ -62,7 +62,7 @@ The **coefficient of determination** or $R^2$, measures the percent of variation
 
 $$R^2=r^2$$ The number that we get from the $R^2$ tells us how well a variable (x) explains the variation in the another variable (y). The number could be anywhere from zero (indicating that the two variables are unrelated), to one (indicating that one variable explains entirely the variation of the other variable).
 
-*Ex: Consider once more the SPY and BND example. The correlation coefficient is given by* $r=-0.89$. The $R^2=(-0.89)^2=0.79$. This indicates that about 80% of the variation in the BND can be explained by the changes in SPY. Hence, these two variables are closely related.
+*Ex: Consider once more the SPY and BND example. The correlation coefficient is given by* $r=-0.89$. The $R^2=(-0.89)^2=0.79$. This indicates that about 79% of the variation in the BND can be explained by the changes in SPY. Hence, these two variables are closely related.
 
 ## Measures of Association in R
 
@@ -94,7 +94,7 @@ The correlation coefficient of -0.89 indicates a strong inverse linear relations
 cor(data$SPY,data$BND)^2
 ```
 
-It seems that about 80% of the variation in the price of bonds (BND) is explained by the variation in the price of stocks (SPY). We can create a visual of the relationship between the two variables by using the `geom_point()` function in R.
+It seems that about 79% of the variation in the price of bonds (BND) is explained by the variation in the price of stocks (SPY). We can create a visual of the relationship between the two variables by using the `geom_point()` function in R.
 
 ```{r}
 data %>% ggplot() +
@@ -123,7 +123,9 @@ The following exercises will help you understand statistical measures that estab
 
 -   Calculating the coefficient of determination.
 
-Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+-   Interpreting measures of association in a real-world context.
+
+Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
@@ -243,7 +245,7 @@ You will need the **mtcars** data set to answer this question. This data set is 
 
 <summary>Answer</summary>
 
-*The correlation coefficient is* $-0.78$. This is indicative of a moderately strong inverse relationship between mpg and mp.
+*The correlation coefficient is* $-0.78$. This is indicative of a moderately strong inverse relationship between mpg and hp.
 
 *In R we can easily calculate the correlation coefficient with the `cor()` function.*
 
@@ -261,7 +263,7 @@ cor(mtcars$mpg,mtcars$hp)
 
 The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of $-0.78$.
 
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(ggthemes)
 mtcars %>% ggplot() + 
@@ -280,7 +282,7 @@ mtcars %>% ggplot() +
 
 <summary>Answer</summary>
 
-*The coefficient of determination is* $0.6$. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains $60$% of the total variation.
+*The coefficient of determination is* $0.6$. This value is not very close to one. This is expected since miles per gallon can also vary because of the car's weight, and fuel efficiency. It makes sense that the hp only explains $60$% of the total variation.
 
 *In R we can calculate the coefficient of determination by squaring the correlation coefficient.*
 
@@ -341,6 +343,67 @@ College %>% ggplot() +
 
 ```{r}
 Correlation^2
+```
+
+</details>
+
+### Exercise 4 {.unnumbered}
+
+You will need the **HomePrices** data set to answer this question. You can find this data set here: https://jagelves.github.io/Data/HomePrices.csv
+
+1.  Load the data and create a scatter diagram between *berooms* (number of bedrooms) and *Price* (home sale price). What type of relationship do you observe between the two variables? Does the direction make intuitive sense?
+
+<details>
+
+<summary>Answer</summary>
+
+*There is a direct relationship between bedrooms and price. As the number of bedrooms increases, sale prices tend to rise. This is intuitive since larger homes generally command higher market values.*
+
+*Start by loading the data using the `read_csv()` function:*
+
+```{r message=FALSE, warning=FALSE}
+HomePrices <- read_csv("https://jagelves.github.io/Data/HomePrices.csv")
+```
+
+*The following code creates the scatter plot:*
+
+```{r warning=FALSE}
+HomePrices %>% ggplot() +
+  geom_point(aes(x = bedrooms, y = Price), col = "black", bg = "grey", pch = 21, alpha = 0.4) +
+  geom_smooth(aes(x = bedrooms, y = Price), formula = y ~ x, method = "lm", se = F) +
+  theme_clean()
+```
+
+</details>
+
+2.  Calculate the correlation coefficient between *bedrooms* and *Price*. Explain the direction and strength of the relationship in the context of the housing market.
+
+<details>
+
+<summary>Answer</summary>
+
+*The correlation coefficient indicates a strong direct relationship between bedrooms and sale price. Larger homes tend to sell for higher prices, though many other factors (location, condition, amenities) could also influence price, which prevents a perfect correlation.*
+
+*In R we can calculate the correlation coefficient with the `cor()` function:*
+
+```{r}
+(HP_Cor <- cor(HomePrices$bedrooms, HomePrices$Price))
+```
+
+</details>
+
+3.  Calculate the coefficient of determination. What percentage of the variation in *Price* is explained by *bedrooms*? What other factors might account for the remaining variation?
+
+<details>
+
+<summary>Answer</summary>
+
+*The coefficient of determination tells us what percentage of the variation in home prices is explained by square footage alone. The remaining variation is likely driven by factors such as location, number of bedrooms and bathrooms, lot size, school district quality, and the overall condition of the property.*
+
+*In R we can square the correlation coefficient to obtain the coefficient of determination:*
+
+```{r}
+HP_Cor^2
 ```
 
 </details>
