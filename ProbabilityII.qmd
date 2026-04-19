@@ -80,9 +80,9 @@ The **hypergeometric distribution** is a probability distribution that describes
 
 The **hypergeometric** experiment differs from the binomial since:
 
--   trials are not independent.
+- trials are not independent.
 
--   the probability of success changes from trial to trial.
+- the probability of success changes from trial to trial.
 
 The **probability mass function** is given by:
 
@@ -96,7 +96,7 @@ The **variance** of the hypergeometric distribution is: $$var(x)= n \frac {r}{N}
 
 We can use the hypergeometric probability mass function to solve this problem. From the problem we know that $N=12$, $n=3$, $r=5$, and $x=1$. Substituting these values into the PMF yields:
 
-$$f(1)=\frac {C_1^5 C_{4}^{7}}{C_3^{12}}=0.4772$$
+$$f(1)=\frac {C_1^5 C_{2}^{7}}{C_3^{12}}=0.4772$$
 
 There is a 47.72% chance that the inspector finds a defective fuse in his sample of three.
 
@@ -110,11 +110,11 @@ where $\mu$ is the expected number of successes in any given interval and also t
 
 An experiment satisfies a Poisson process if:
 
--   The number of successes with a specified time or space interval equals any integer between zero and infinity.
+- The number of successes with a specified time or space interval equals any integer between zero and infinity.
 
--   The number of successes counted in non-overlapping intervals are independent.
+- The number of successes counted in non-overlapping intervals are independent.
 
--   The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.
+- The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.
 
 **Example:** Imagine a fast-food restaurant’s drive-thru where, on average, 10 cars arrive in a 15-minute span. What’s the likelihood of exactly 5 cars showing up in 15 minutes?
 
@@ -207,11 +207,11 @@ The graph shows how the shooter makes all three shots about 72 times out of 100 
 
 The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:
 
--   Calculating probabilities for discrete random variables.
+- Calculating probabilities for discrete random variables.
 
--   Calculating the expected value and standard deviation.
+- Calculating the expected value and standard deviation.
 
--   Applying the binomial, Poisson and hypergeometric probability distributions.
+- Applying the binomial, Poisson and hypergeometric probability distributions.
 
 Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
 
@@ -424,7 +424,7 @@ pbinom(165,200,0.77, lower.tail=T)-pbinom(154,200,0.77, lower.tail=T)
 
 </details>
 
-3.  Sixty percent of a firm's employees are men. Suppose four of the firm's employees are randomly selected. What is more likely, finding three men and one woman, or two men and one woman? Does your answer change if the proportion falls to $50$%?
+3.  Sixty percent of a firm's employees are men. Suppose four of the firm's employees are randomly selected. What is more likely, finding three men and one woman, or two men and two women? Does your answer change if the proportion falls to $50$%?
 
 <details>
 
