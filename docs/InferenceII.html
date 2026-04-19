@@ -290,14 +290,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#constructing-confidence-intervals-for-means" id="toc-constructing-confidence-intervals-for-means" class="nav-link active" data-scroll-target="#constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</a>
-  <ul class="collapse">
-  <li><a href="#example-1-life-expectancy" id="toc-example-1-life-expectancy" class="nav-link" data-scroll-target="#example-1-life-expectancy"><span class="header-section-number">12.1.1</span> Example 1: Life Expectancy</a></li>
-  </ul></li>
-  <li><a href="#constructing-confidence-intervals-for-proportions" id="toc-constructing-confidence-intervals-for-proportions" class="nav-link" data-scroll-target="#constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</a>
-  <ul class="collapse">
-  <li><a href="#example-2-success-rate" id="toc-example-2-success-rate" class="nav-link" data-scroll-target="#example-2-success-rate"><span class="header-section-number">12.2.1</span> Example 2: Success Rate</a></li>
-  </ul></li>
+  <li><a href="#constructing-confidence-intervals-for-means" id="toc-constructing-confidence-intervals-for-means" class="nav-link active" data-scroll-target="#constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</a></li>
+  <li><a href="#constructing-confidence-intervals-for-proportions" id="toc-constructing-confidence-intervals-for-proportions" class="nav-link" data-scroll-target="#constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</a></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.3</span> Summary</a></li>
   <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.5</span> Exercises</a>
@@ -345,42 +339,43 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>A <strong>confidence interval (CI)</strong> provides a range of plausible values for a population parameter, along with a confidence level indicating the probability that the interval contains the true parameter.</p>
-<p>For example, a 95% CI means that if we repeated the sampling process 100 times, about 95 of the intervals would contain the true population parameter.</p>
+<p>A <strong>confidence interval (CI)</strong> provides a range of plausible values for a population parameter, along with a confidence level indicating that if the same procedure were repeated many times, that proportion of intervals would contain the true parameter. For example, a 95% CI means that if we repeated the sampling process 100 times, about 95 of the intervals would contain the true population parameter and 5 would not.</p>
+<p>We can now define two important concepts. First, <strong>the confidence level</strong> is the proportion of times that the constructed interval would contain the true population parameter if the sampling procedure were repeated indefinitely. Second, the <strong>significance level</strong> is the probability of rejecting a true null hypothesis — also known as a Type I error (i.e., You conclude there is an effect, but there isn’t or false positive). The significance level is captured by the greek letter <span class="math inline">\(\alpha\)</span> while and the confidence level is given by <span class="math inline">\(1-\alpha\)</span>.</p>
+<p><strong>Example:</strong></p>
 <ul>
-<li>Confidence level (e.g., 95%) = 1 - significance level <span class="math inline">\((\alpha = 0.05)\)</span>.</li>
-<li>The remaining <span class="math inline">\((\alpha)\)</span> represents the risk of error (Type I error in hypothesis testing context).</li>
+<li><strong>Confidence level (e.g., 95%) = 1 - significance level <span class="math inline">\((\alpha = 0.05)\)</span>.</strong></li>
+<li><strong>The remaining <span class="math inline">\((\alpha)\)</span> represents the risk of error (Type I error in hypothesis testing context).</strong></li>
 </ul>
-<p>CIs account for sampling variability and are wider for lower confidence levels or smaller samples.</p>
+<p>CIs account for sampling variability and are wider for lower confidence levels or smaller samples. There are two competing goals when building a confidence interval:</p>
+<ul>
+<li>Accuracy — we want the interval to actually contain the true parameter</li>
+<li>Precision — we want the interval to be narrow enough to be informative</li>
+</ul>
+<p>Choosing a very low <span class="math inline">\(\alpha\)</span> (like 0.01) prioritizes accuracy at the expense of precision, giving you a wide interval that is highly likely to include the true parameter but tells you very little about where exactly it is.</p>
+<p>A lower significance level does not necessarily mean a better estimate — it means a safer but vaguer one. The goal is to choose an α that balances the risk of error with the need for a practically useful, precise estimate. That’s why <span class="math inline">\(\alpha=0.5\)</span> has become the conventional standard in most fields — it strikes a reasonable balance between the two.</p>
 <section id="constructing-confidence-intervals-for-means" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</h2>
 <p>For a population mean, assuming normality (via CLT), the CI is:</p>
 <p><span class="math display">\[\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\]</span> or, if <span class="math inline">\((\sigma)\)</span> is unknown (common), use the t-distribution:</p>
-<p><span class="math display">\[\bar{x} \pm t_{\alpha/2} \cdot \frac{s}{\sqrt{n}}\]</span> - <span class="math inline">\((\bar{x})\)</span>: Sample mean - <span class="math inline">\((z_{\alpha/2})\)</span> or <span class="math inline">\((t_{\alpha/2})\)</span>: Critical value from standard normal or t-distribution (e.g., 1.96 for 95% CI with large n) - <span class="math inline">\((s)\)</span>: Sample standard deviation - <span class="math inline">\((n)\)</span>: Sample size</p>
-<p>The term after <span class="math inline">\((\pm)\)</span> is the <strong>margin of error</strong>.</p>
-<section id="example-1-life-expectancy" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="example-1-life-expectancy"><span class="header-section-number">12.1.1</span> Example 1: Life Expectancy</h3>
-<p>Suppose the average life expectancy sample mean is <span class="math inline">\(\bar{x} = 78.1\)</span> years, with population standard deviation <span class="math inline">\(\sigma = 4.5\)</span>, and <span class="math inline">\(n = 50\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
+<p><span class="math display">\[\bar{x} \pm t_{\alpha/2} \cdot \frac{s}{\sqrt{n}}\]</span></p>
+<p>where <span class="math inline">\((\bar{x})\)</span>: Sample mean, <span class="math inline">\((z_{\alpha/2})\)</span> or <span class="math inline">\((t_{\alpha/2})\)</span>: Critical value from standard normal or t-distribution (e.g., 1.96 for 95% CI with large n), <span class="math inline">\((s)\)</span>: Sample standard deviation and <span class="math inline">\((n)\)</span>: Sample size. The term after <span class="math inline">\((\pm)\)</span> is the <strong>margin of error</strong>.</p>
+<p><strong>Example:</strong> Suppose the average life expectancy sample mean is <span class="math inline">\(\bar{x} = 78.1\)</span> years, with population standard deviation <span class="math inline">\(\sigma = 4.5\)</span>, and <span class="math inline">\(n = 50\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
 <p><span class="math display">\[\frac{\sigma}{\sqrt{n}} = \frac{4.5}{\sqrt{50}} \approx 0.637\]</span></p>
 <p><span class="math display">\[78.1 \pm 1.645 \times 0.637 \approx 78.1 \pm 1.05\]</span></p>
 <p>Lower limit (LL): 77.05<br>
 Upper limit (UL): 79.15</p>
 <p>We are 90% confident that the true population mean life expectancy is between 77.05 and 79.15 years.</p>
 </section>
-</section>
 <section id="constructing-confidence-intervals-for-proportions" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</h2>
 <p>For a population proportion <span class="math inline">\((p)\)</span>, the CI is:</p>
 <p><span class="math display">\[\bar{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\bar{p}(1-\bar{p})}{n}}\]</span> - <span class="math inline">\(\bar{p}\)</span>: Sample proportion (successes / n) - Assumes normality via CLT for proportions.</p>
-<section id="example-2-success-rate" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="example-2-success-rate"><span class="header-section-number">12.2.1</span> Example 2: Success Rate</h3>
-<p>A random sample of 100 yields 40 successes, so <span class="math inline">\(\bar{p} = 0.4\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
+<p><strong>Example:</strong> A random sample of 100 yields 40 successes, so <span class="math inline">\(\bar{p} = 0.4\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
 <p><span class="math display">\[SE = \sqrt{\frac{0.4 \times 0.6}{100}} = \sqrt{0.0024} \approx 0.049\]</span></p>
 <p><span class="math display">\[0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081\]</span></p>
 <p>LL: 0.319<br>
 UL: 0.481</p>
 <p>We are 90% confident that the true population proportion is between 31.9% and 48.1%.</p>
-</section>
 </section>
 <section id="summary" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.3</span> Summary</h2>

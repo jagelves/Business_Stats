@@ -16,42 +16,44 @@ details summary {
 
 # Inference II
 
-A **confidence interval (CI)** provides a range of plausible values for a population parameter, along with a confidence level indicating the probability that the interval contains the true parameter.
+A **confidence interval (CI)** provides a range of plausible values for a population parameter, along with a confidence level indicating that if the same procedure were repeated many times, that proportion of intervals would contain the true parameter. For example, a 95% CI means that if we repeated the sampling process 100 times, about 95 of the intervals would contain the true population parameter and 5 would not.
 
-For example, a 95% CI means that if we repeated the sampling process 100 times, about 95 of the intervals would contain the true population parameter.
+We can now define two important concepts. First, **the confidence level** is the proportion of times that the constructed interval would contain the true population parameter if the sampling procedure were repeated indefinitely. Second, the **significance level** is the probability of rejecting a true null hypothesis — also known as a Type I error (i.e., You conclude there is an effect, but there isn't or false positive). The significance level is captured by the greek letter $\alpha$ while and the confidence level is given by $1-\alpha$.
 
-- Confidence level (e.g., 95%) = 1 - significance level $(\alpha = 0.05)$.
-- The remaining $(\alpha)$ represents the risk of error (Type I error in hypothesis testing context).
+**Example:**
 
-CIs account for sampling variability and are wider for lower confidence levels or smaller samples.
+- **Confidence level (e.g., 95%) = 1 - significance level $(\alpha = 0.05)$.**
+- **The remaining $(\alpha)$ represents the risk of error (Type I error in hypothesis testing context).**
+
+CIs account for sampling variability and are wider for lower confidence levels or smaller samples. There are two competing goals when building a confidence interval:
+
+- Accuracy — we want the interval to actually contain the true parameter
+- Precision — we want the interval to be narrow enough to be informative
+
+Choosing a very low $\alpha$ (like 0.01) prioritizes accuracy at the expense of precision, giving you a wide interval that is highly likely to include the true parameter but tells you very little about where exactly it is.
+
+A lower significance level does not necessarily mean a better estimate — it means a safer but vaguer one. The goal is to choose an α that balances the risk of error with the need for a practically useful, precise estimate. That's why $\alpha=0.5$ has become the conventional standard in most fields — it strikes a reasonable balance between the two.
 
 ## Constructing Confidence Intervals for Means
 
 For a population mean, assuming normality (via CLT), the CI is:
 
-$$\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}$$
-or, if $(\sigma)$ is unknown (common), use the t-distribution:
+$$\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}$$ or, if $(\sigma)$ is unknown (common), use the t-distribution:
 
 $$\bar{x} \pm t_{\alpha/2} \cdot \frac{s}{\sqrt{n}}$$
-- $(\bar{x})$: Sample mean
-- $(z_{\alpha/2})$ or $(t_{\alpha/2})$: Critical value from standard normal or t-distribution (e.g., 1.96 for 95% CI with large n)
-- $(s)$: Sample standard deviation
-- $(n)$: Sample size
 
-The term after $(\pm)$ is the **margin of error**.
+where $(\bar{x})$: Sample mean, $(z_{\alpha/2})$ or $(t_{\alpha/2})$: Critical value from standard normal or t-distribution (e.g., 1.96 for 95% CI with large n), $(s)$: Sample standard deviation and $(n)$: Sample size. The term after $(\pm)$ is the **margin of error**.
 
-### Example 1: Life Expectancy
-Suppose the average life expectancy sample mean is $\bar{x} = 78.1$ years, with population standard deviation $\sigma = 4.5$, and $n = 50$. For a 90% CI $z_{0.05} \approx 1.645$:
 
+
+**Example:** Suppose the average life expectancy sample mean is $\bar{x} = 78.1$ years, with population standard deviation $\sigma = 4.5$, and $n = 50$. For a 90% CI $z_{0.05} \approx 1.645$:
 
 $$\frac{\sigma}{\sqrt{n}} = \frac{4.5}{\sqrt{50}} \approx 0.637$$
 
-
-
 $$78.1 \pm 1.645 \times 0.637 \approx 78.1 \pm 1.05$$
 
-Lower limit (LL): 77.05  
-Upper limit (UL): 79.15  
+Lower limit (LL): 77.05\
+Upper limit (UL): 79.15
 
 We are 90% confident that the true population mean life expectancy is between 77.05 and 79.15 years.
 
@@ -59,21 +61,16 @@ We are 90% confident that the true population mean life expectancy is between 77
 
 For a population proportion $(p)$, the CI is:
 
-$$\bar{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\bar{p}(1-\bar{p})}{n}}$$
-- $\bar{p}$: Sample proportion (successes / n)
-- Assumes normality via CLT for proportions.
+$$\bar{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\bar{p}(1-\bar{p})}{n}}$$ - $\bar{p}$: Sample proportion (successes / n) - Assumes normality via CLT for proportions.
 
-### Example 2: Success Rate
-A random sample of 100 yields 40 successes, so $\bar{p} = 0.4$. For a 90% CI $z_{0.05} \approx 1.645$:
-
+**Example:** A random sample of 100 yields 40 successes, so $\bar{p} = 0.4$. For a 90% CI $z_{0.05} \approx 1.645$:
 
 $$SE = \sqrt{\frac{0.4 \times 0.6}{100}} = \sqrt{0.0024} \approx 0.049$$
 
-
 $$0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081$$
 
-LL: 0.319  
-UL: 0.481  
+LL: 0.319\
+UL: 0.481
 
 We are 90% confident that the true population proportion is between 31.9% and 48.1%.
 
@@ -91,9 +88,9 @@ The `if()` function creates a conditional statement in R.
 
 The following exercises will help you test your knowledge on Statistical Inference. In particular, the exercises work on:
 
--   Simulating confidence intervals.
--   Estimating confidence intervals in R.
--   Estimating confidence intervals for proportions.
+- Simulating confidence intervals.
+- Estimating confidence intervals in R.
+- Estimating confidence intervals for proportions.
 
 Try not to peek at the answers until you have formulated your own answer and double-checked your work for any mistakes.
 
