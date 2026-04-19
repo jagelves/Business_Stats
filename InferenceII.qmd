@@ -69,10 +69,44 @@ $$SE = \sqrt{\frac{0.4 \times 0.6}{100}} = \sqrt{0.0024} \approx 0.049$$
 
 $$0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081$$
 
-LL: 0.319\
-UL: 0.481
+Lower Limit (LL): 0.319\
+Upper Limit (UL): 0.481
 
 We are 90% confident that the true population proportion is between 31.9% and 48.1%.
+
+## P-Hacking
+A researcher wants to estimate the average body length of an ant (in mm) for a species found in a backyard. The true population mean is unknown.
+
+The researcher collects a sample of 30 ants and computes a 95% CI:
+
+CI: [1.1, 2.9] mm
+
+This interval is very wide and includes values the researcher doesn't find interesting. They were hoping to show the ants are unusually large (say, larger than 2.5 mm). The result is not significant. So instead of reporting this, they start manipulating the process:
+
+🔴 Hack 1: Keep re-sampling
+They go out and collect new samples repeatedly until they happen to get a sample of ants that looks bigger than average — maybe they unknowingly sampled near a food source where ants are larger.
+
+🔴 Hack 2: Selectively remove data
+They notice 5 ants in their sample are very small. They label them "outliers" without a real scientific reason and remove them, which pulls the mean upward.
+
+🔴 Hack 3: Change the confidence level
+Their 95% CI includes 2.5 mm in its range, meaning the result isn't significant. So they switch to a 90% CI, which is narrower, and now the interval is:
+
+CI: [2.6, 3.4] mm
+
+Now it excludes the reference value of 2.5 mm and looks significant!
+
+🔴 Hack 4: Measure something else
+Their body length result wasn't impressive, so they start measuring head width, leg length, antenna length — 10 different things — until one of them gives a significant result, then report only that one.
+
+
+Any one of these manipulations can produce a CI that looks clean and legitimate in a published report, but was actually the result of repeated tries and selective reporting. The reader has no idea.
+
+The Honest Version Would Say "We collected one random sample, measured body length, and found a 95% CI of [1.1, 2.9] mm. The wide interval reflects natural variability in ant size and our sample size of 30." That is far less exciting — but scientifically valid.
+
+
+P-hacking with ant sizes illustrates that the problem isn't always malicious. Researchers can convince themselves their re-sampling or outlier removal is justified. But every extra "try" inflates the chance of a false result — and the published CI ends up being a lucky shot dressed up as a reliable estimate.
+
 
 ## Summary
 

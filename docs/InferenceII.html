@@ -292,9 +292,10 @@ window.Quarto = {
   <ul>
   <li><a href="#constructing-confidence-intervals-for-means" id="toc-constructing-confidence-intervals-for-means" class="nav-link active" data-scroll-target="#constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</a></li>
   <li><a href="#constructing-confidence-intervals-for-proportions" id="toc-constructing-confidence-intervals-for-proportions" class="nav-link" data-scroll-target="#constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.3</span> Summary</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.5</span> Exercises</a>
+  <li><a href="#p-hacking" id="toc-p-hacking" class="nav-link" data-scroll-target="#p-hacking"><span class="header-section-number">12.3</span> P-Hacking</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.4</span> Summary</a></li>
+  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">12.5</span> Useful R Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.6</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -373,21 +374,37 @@ Upper limit (UL): 79.15</p>
 <p><strong>Example:</strong> A random sample of 100 yields 40 successes, so <span class="math inline">\(\bar{p} = 0.4\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
 <p><span class="math display">\[SE = \sqrt{\frac{0.4 \times 0.6}{100}} = \sqrt{0.0024} \approx 0.049\]</span></p>
 <p><span class="math display">\[0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081\]</span></p>
-<p>LL: 0.319<br>
-UL: 0.481</p>
+<p>Lower Limit (LL): 0.319<br>
+Upper Limit (UL): 0.481</p>
 <p>We are 90% confident that the true population proportion is between 31.9% and 48.1%.</p>
 </section>
-<section id="summary" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.3</span> Summary</h2>
+<section id="p-hacking" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="p-hacking"><span class="header-section-number">12.3</span> P-Hacking</h2>
+<p>A researcher wants to estimate the average body length of an ant (in mm) for a species found in a backyard. The true population mean is unknown.</p>
+<p>The researcher collects a sample of 30 ants and computes a 95% CI:</p>
+<p>CI: [1.1, 2.9] mm</p>
+<p>This interval is very wide and includes values the researcher doesn’t find interesting. They were hoping to show the ants are unusually large (say, larger than 2.5 mm). The result is not significant. So instead of reporting this, they start manipulating the process:</p>
+<p>🔴 Hack 1: Keep re-sampling They go out and collect new samples repeatedly until they happen to get a sample of ants that looks bigger than average — maybe they unknowingly sampled near a food source where ants are larger.</p>
+<p>🔴 Hack 2: Selectively remove data They notice 5 ants in their sample are very small. They label them “outliers” without a real scientific reason and remove them, which pulls the mean upward.</p>
+<p>🔴 Hack 3: Change the confidence level Their 95% CI includes 2.5 mm in its range, meaning the result isn’t significant. So they switch to a 90% CI, which is narrower, and now the interval is:</p>
+<p>CI: [2.6, 3.4] mm</p>
+<p>Now it excludes the reference value of 2.5 mm and looks significant!</p>
+<p>🔴 Hack 4: Measure something else Their body length result wasn’t impressive, so they start measuring head width, leg length, antenna length — 10 different things — until one of them gives a significant result, then report only that one.</p>
+<p>Any one of these manipulations can produce a CI that looks clean and legitimate in a published report, but was actually the result of repeated tries and selective reporting. The reader has no idea.</p>
+<p>The Honest Version Would Say “We collected one random sample, measured body length, and found a 95% CI of [1.1, 2.9] mm. The wide interval reflects natural variability in ant size and our sample size of 30.” That is far less exciting — but scientifically valid.</p>
+<p>P-hacking with ant sizes illustrates that the problem isn’t always malicious. Researchers can convince themselves their re-sampling or outlier removal is justified. But every extra “try” inflates the chance of a false result — and the published CI ends up being a lucky shot dressed up as a reliable estimate.</p>
+</section>
+<section id="summary" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.4</span> Summary</h2>
 <p>Statistical inference bridges the gap between samples and populations through sampling distributions and the CLT. Confidence intervals offer a practical way to express uncertainty in estimates, essential for business decisions like market analysis or quality control. Remember, higher confidence levels widen intervals, and larger samples narrow them, improving precision.</p>
 </section>
-<section id="useful-r-functions" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</h2>
+<section id="useful-r-functions" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">12.5</span> Useful R Functions</h2>
 <p>The <code>qnorm()</code> and <code>qt()</code> functions calculate quartiles for the normal and <span class="math inline">\(t\)</span> distributions, respectively.</p>
 <p>The <code>if()</code> function creates a conditional statement in R.</p>
 </section>
-<section id="exercises" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.5</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.6</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge on Statistical Inference. In particular, the exercises work on:</p>
 <ul>
 <li>Simulating confidence intervals.</li>
