@@ -384,12 +384,12 @@ Upper Limit (UL): 0.481</p>
 <p>The researcher collects a sample of 30 ants and computes a 95% CI:</p>
 <p>CI: [1.1, 2.9] mm</p>
 <p>This interval is very wide and includes values the researcher doesn’t find interesting. They were hoping to show the ants are unusually large (say, larger than 2.5 mm). The result is not significant. So instead of reporting this, they start manipulating the process:</p>
-<p>🔴 Hack 1: Keep re-sampling They go out and collect new samples repeatedly until they happen to get a sample of ants that looks bigger than average — maybe they unknowingly sampled near a food source where ants are larger.</p>
-<p>🔴 Hack 2: Selectively remove data They notice 5 ants in their sample are very small. They label them “outliers” without a real scientific reason and remove them, which pulls the mean upward.</p>
-<p>🔴 Hack 3: Change the confidence level Their 95% CI includes 2.5 mm in its range, meaning the result isn’t significant. So they switch to a 90% CI, which is narrower, and now the interval is:</p>
+<p><strong>Hack 1: Keep re-sampling</strong> They go out and collect new samples repeatedly until they happen to get a sample of ants that looks bigger than average — maybe they unknowingly sampled near a food source where ants are larger.</p>
+<p><strong>Hack 2: Selectively remove data</strong> They notice 5 ants in their sample are very small. They label them “outliers” without a real scientific reason and remove them, which pulls the mean upward.</p>
+<p><strong>Hack 3: Change the confidence level</strong> Their 95% CI includes 2.5 mm in its range, meaning the result isn’t significant. So they switch to a 90% CI, which is narrower, and now the interval is:</p>
 <p>CI: [2.6, 3.4] mm</p>
 <p>Now it excludes the reference value of 2.5 mm and looks significant!</p>
-<p>🔴 Hack 4: Measure something else Their body length result wasn’t impressive, so they start measuring head width, leg length, antenna length — 10 different things — until one of them gives a significant result, then report only that one.</p>
+<p><strong>Hack 4: Measure something else</strong> Their body length result wasn’t impressive, so they start measuring head width, leg length, antenna length — 10 different things — until one of them gives a significant result, then report only that one.</p>
 <p>Any one of these manipulations can produce a CI that looks clean and legitimate in a published report, but was actually the result of repeated tries and selective reporting. The reader has no idea.</p>
 <p>The Honest Version Would Say “We collected one random sample, measured body length, and found a 95% CI of [1.1, 2.9] mm. The wide interval reflects natural variability in ant size and our sample size of 30.” That is far less exciting — but scientifically valid.</p>
 <p>P-hacking with ant sizes illustrates that the problem isn’t always malicious. Researchers can convince themselves their re-sampling or outlier removal is justified. But every extra “try” inflates the chance of a false result — and the published CI ends up being a lucky shot dressed up as a reliable estimate.</p>

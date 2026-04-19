@@ -83,20 +83,20 @@ CI: [1.1, 2.9] mm
 
 This interval is very wide and includes values the researcher doesn't find interesting. They were hoping to show the ants are unusually large (say, larger than 2.5 mm). The result is not significant. So instead of reporting this, they start manipulating the process:
 
-🔴 Hack 1: Keep re-sampling
+**Hack 1: Keep re-sampling**
 They go out and collect new samples repeatedly until they happen to get a sample of ants that looks bigger than average — maybe they unknowingly sampled near a food source where ants are larger.
 
-🔴 Hack 2: Selectively remove data
+**Hack 2: Selectively remove data**
 They notice 5 ants in their sample are very small. They label them "outliers" without a real scientific reason and remove them, which pulls the mean upward.
 
-🔴 Hack 3: Change the confidence level
+**Hack 3: Change the confidence level**
 Their 95% CI includes 2.5 mm in its range, meaning the result isn't significant. So they switch to a 90% CI, which is narrower, and now the interval is:
 
 CI: [2.6, 3.4] mm
 
 Now it excludes the reference value of 2.5 mm and looks significant!
 
-🔴 Hack 4: Measure something else
+**Hack 4: Measure something else**
 Their body length result wasn't impressive, so they start measuring head width, leg length, antenna length — 10 different things — until one of them gives a significant result, then report only that one.
 
 
