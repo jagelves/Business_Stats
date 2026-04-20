@@ -59,7 +59,7 @@ We are 90% confident that the true population mean life expectancy is between 77
 
 **Example:** A random sample of $n=25$ college students reports an average weekly study time of $\bar{x} = 14.3$ hours, with a sample standard deviation of $s = 4.2$ hours. The population standard deviation is unknown. To construct a 95% confidence interval for the true mean weekly study time we start by identifying the degrees of freedom as $df=n−1=24$.
 
-At a $\alpha = 0.05$ the critical value is $t_{0.025, \, 24} \approx 2.064$.
+At a $\alpha = 0.05$ the critical value is $t_{0.025, \, 24} \approx 2.064$. The standard error is given by:
 
 $$\frac{s}{\sqrt{n}} = \frac{4.2}{\sqrt{25}} = \frac{4.2}{5} = 0.84$$
 
