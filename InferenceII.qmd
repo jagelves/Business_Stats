@@ -548,8 +548,6 @@ t.test(miami_2024$lap_seconds, conf.level = 0.95)
 
    </details>
 
----
-
 3. Logan Sargeant's fastest lap of 1:33.452 (93.452 sec) is noticeably slower than
    the rest of the field. Remove his lap time from the data and recalculate the 95%
    confidence interval. How does removing this outlier affect the interval, and what
