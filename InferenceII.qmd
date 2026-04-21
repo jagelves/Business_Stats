@@ -407,3 +407,170 @@ You will need the **sleep** data set for this problem. The data is built into R,
     ```
 
     </details>
+
+### Exercise 5 {.unnumbered}
+
+The **2024 Formula 1 Crypto.com Miami Grand Prix** was held on May 5, 2024 at the
+Miami International Autodrome. Lando Norris won the race for McLaren in his first-ever
+F1 victory. The table below shows the **fastest lap time** recorded by each of the 20
+drivers during the race.
+
+| Driver | Team | Fastest Lap |
+|---|---|---|
+| Oscar Piastri | McLaren Mercedes | 1:30.634 |
+| Alexander Albon | Williams Mercedes | 1:30.849 |
+| Sergio Perez | Red Bull Racing | 1:30.855 |
+| Carlos Sainz | Ferrari | 1:30.928 |
+| Lando Norris | McLaren Mercedes | 1:30.980 |
+| Charles Leclerc | Ferrari | 1:31.084 |
+| Lewis Hamilton | Mercedes | 1:31.233 |
+| Max Verstappen | Red Bull Racing | 1:31.261 |
+| Lance Stroll | Aston Martin | 1:31.588 |
+| Yuki Tsunoda | RB Honda RBPT | 1:31.682 |
+| Fernando Alonso | Aston Martin | 1:31.727 |
+| Kevin Magnussen | Haas Ferrari | 1:31.774 |
+| George Russell | Mercedes | 1:31.921 |
+| Nico Hulkenberg | Haas Ferrari | 1:31.941 |
+| Zhou Guanyu | Kick Sauber | 1:31.991 |
+| Esteban Ocon | Alpine Renault | 1:32.037 |
+| Pierre Gasly | Alpine Renault | 1:32.055 |
+| Valtteri Bottas | Kick Sauber | 1:32.098 |
+| Daniel Ricciardo | RB Honda RBPT | 1:32.122 |
+| Logan Sargeant | Williams Mercedes | 1:33.452 |
+
+*Source: Formula 1 Official Results, formula1.com*
+
+---
+
+We can store the data into a tibble and convert the lap times
+to seconds with the code below:
+
+```{r}
+library(tidyverse)
+
+   miami_2024 <- tibble(
+     position    = 1:20,
+     driver      = c("Oscar Piastri", "Alexander Albon", "Sergio Perez",
+                     "Carlos Sainz", "Lando Norris", "Charles Leclerc",
+                     "Lewis Hamilton", "Max Verstappen", "Lance Stroll",
+                     "Yuki Tsunoda", "Fernando Alonso", "Kevin Magnussen",
+                     "George Russell", "Nico Hulkenberg", "Zhou Guanyu",
+                     "Esteban Ocon", "Pierre Gasly", "Valtteri Bottas",
+                     "Daniel Ricciardo", "Logan Sargeant"),
+     team        = c("McLaren Mercedes", "Williams Mercedes", "Red Bull Racing",
+                     "Ferrari", "McLaren Mercedes", "Ferrari",
+                     "Mercedes", "Red Bull Racing", "Aston Martin",
+                     "RB Honda RBPT", "Aston Martin", "Haas Ferrari",
+                     "Mercedes", "Haas Ferrari", "Kick Sauber",
+                     "Alpine Renault", "Alpine Renault", "Kick Sauber",
+                     "RB Honda RBPT", "Williams Mercedes"),
+     fastest_lap = c("1:30.634", "1:30.849", "1:30.855", "1:30.928", "1:30.980",
+                     "1:31.084", "1:31.233", "1:31.261", "1:31.588", "1:31.682",
+                     "1:31.727", "1:31.774", "1:31.921", "1:31.941", "1:31.991",
+                     "1:32.037", "1:32.055", "1:32.098", "1:32.122", "1:33.452"),
+     lap_seconds = c(90.634, 90.849, 90.855, 90.928, 90.980,
+                     91.084, 91.233, 91.261, 91.588, 91.682,
+                     91.727, 91.774, 91.921, 91.941, 91.991,
+                     92.037, 92.055, 92.098, 92.122, 93.452)
+   )
+
+```
+1. What is the sample mean and sample standard deviation?
+
+   <details>
+   <summary>Answer</summary>
+
+   *The sample mean is 91.611 seconds (1:31.611) and the sample standard deviation is
+   0.656 seconds. Since the true population standard deviation is unknown, we will use
+   the t-distribution to construct confidence intervals.*
+
+The sample size is:
+```{r}
+   (n <- nrow(miami_2024))
+```
+
+The mean:
+```{r}
+   (xbar <- mean(miami_2024$lap_seconds))
+```
+
+and the Standard Deviation
+```{r}
+   (s <- sd(miami_2024$lap_seconds))
+```
+   </details>
+
+2. Construct a **90%** and a **95%** confidence interval for the true mean fastest lap
+   time at the Miami circuit. Use the `t.test()` function to verify your results.
+
+   <details>
+   <summary>Answer</summary>
+
+   *The 90% confidence interval is [1:31.357, 1:31.864] and the 95% confidence interval
+   is [1:31.304, 1:31.918]. Since $n = 20$, we use the t-distribution with $df = n - 1 = 19$ degrees of freedom.*
+
+   *The standard error is:*
+
+```{r}
+   (se <- s / sqrt(n))
+```
+
+   *For the 90% CI ($\alpha = 0.10$), $t_{0.05, \, 19} \approx 1.729$:*
+
+The lower bound is:
+```{r}
+   (ll90 <- xbar + qt(0.05, 19) * se)
+```
+
+and the upper:
+```{r}
+   (ul90 <- xbar - qt(0.05, 19) * se)
+```
+
+   *For the 95% CI ($\alpha = 0.05$), $t_{0.025, \, 19} \approx 2.093$:*
+
+The lower:
+```{r}
+   (ll95 <- xbar + qt(0.025, 19) * se)
+```
+
+   
+The upper:
+```{r}
+   (ul95 <- xbar - qt(0.025, 19) * se)
+```
+
+   *We can verify using `t.test()`:*
+
+```{r}
+t.test(miami_2024$lap_seconds, conf.level = 0.95)
+```
+
+   </details>
+
+---
+
+3. Logan Sargeant's fastest lap of 1:33.452 (93.452 sec) is noticeably slower than
+   the rest of the field. Remove his lap time from the data and recalculate the 95%
+   confidence interval. How does removing this outlier affect the interval, and what
+   does this illustrate about the sensitivity of confidence intervals to extreme values?
+
+   <details>
+   <summary>Answer</summary>
+
+   *Without Sargeant's lap time, the 95% CI narrows to approximately [91.189, 91.630],
+   with a new mean of 91.409 seconds. The interval shifts downward and becomes
+   substantially narrower — the margin of error drops because the sample standard
+   deviation falls sharply once the outlier is removed. This illustrates that confidence
+   intervals are sensitive to extreme observations, particularly in small samples. This
+   is also a reminder of why removing data points should only be done with a clear
+   justification — in this case, Sargeant set his fastest lap on lap 15 during an
+   early pit phase, making it a genuinely unrepresentative time.*
+
+```{r}
+miami_no_sar <- miami_2024 |> filter(driver != "Logan Sargeant")
+
+   t.test(miami_no_sar$lap_seconds, conf.level = 0.95)
+```
+
+   </details>

@@ -301,6 +301,7 @@ window.Quarto = {
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
   <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -734,6 +735,285 @@ Hair    Brown Blue Hazel Green
 </div>
 </details></li>
 </ol>
+</section>
+<section id="exercise-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+<p>The <strong>2024 Formula 1 Crypto.com Miami Grand Prix</strong> was held on May 5, 2024 at the Miami International Autodrome. Lando Norris won the race for McLaren in his first-ever F1 victory. The table below shows the <strong>fastest lap time</strong> recorded by each of the 20 drivers during the race.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Driver</th>
+<th>Team</th>
+<th>Fastest Lap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Oscar Piastri</td>
+<td>McLaren Mercedes</td>
+<td>1:30.634</td>
+</tr>
+<tr class="even">
+<td>Alexander Albon</td>
+<td>Williams Mercedes</td>
+<td>1:30.849</td>
+</tr>
+<tr class="odd">
+<td>Sergio Perez</td>
+<td>Red Bull Racing</td>
+<td>1:30.855</td>
+</tr>
+<tr class="even">
+<td>Carlos Sainz</td>
+<td>Ferrari</td>
+<td>1:30.928</td>
+</tr>
+<tr class="odd">
+<td>Lando Norris</td>
+<td>McLaren Mercedes</td>
+<td>1:30.980</td>
+</tr>
+<tr class="even">
+<td>Charles Leclerc</td>
+<td>Ferrari</td>
+<td>1:31.084</td>
+</tr>
+<tr class="odd">
+<td>Lewis Hamilton</td>
+<td>Mercedes</td>
+<td>1:31.233</td>
+</tr>
+<tr class="even">
+<td>Max Verstappen</td>
+<td>Red Bull Racing</td>
+<td>1:31.261</td>
+</tr>
+<tr class="odd">
+<td>Lance Stroll</td>
+<td>Aston Martin</td>
+<td>1:31.588</td>
+</tr>
+<tr class="even">
+<td>Yuki Tsunoda</td>
+<td>RB Honda RBPT</td>
+<td>1:31.682</td>
+</tr>
+<tr class="odd">
+<td>Fernando Alonso</td>
+<td>Aston Martin</td>
+<td>1:31.727</td>
+</tr>
+<tr class="even">
+<td>Kevin Magnussen</td>
+<td>Haas Ferrari</td>
+<td>1:31.774</td>
+</tr>
+<tr class="odd">
+<td>George Russell</td>
+<td>Mercedes</td>
+<td>1:31.921</td>
+</tr>
+<tr class="even">
+<td>Nico Hulkenberg</td>
+<td>Haas Ferrari</td>
+<td>1:31.941</td>
+</tr>
+<tr class="odd">
+<td>Zhou Guanyu</td>
+<td>Kick Sauber</td>
+<td>1:31.991</td>
+</tr>
+<tr class="even">
+<td>Esteban Ocon</td>
+<td>Alpine Renault</td>
+<td>1:32.037</td>
+</tr>
+<tr class="odd">
+<td>Pierre Gasly</td>
+<td>Alpine Renault</td>
+<td>1:32.055</td>
+</tr>
+<tr class="even">
+<td>Valtteri Bottas</td>
+<td>Kick Sauber</td>
+<td>1:32.098</td>
+</tr>
+<tr class="odd">
+<td>Daniel Ricciardo</td>
+<td>RB Honda RBPT</td>
+<td>1:32.122</td>
+</tr>
+<tr class="even">
+<td>Logan Sargeant</td>
+<td>Williams Mercedes</td>
+<td>1:33.452</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: Formula 1 Official Results, formula1.com</em></p>
+<hr>
+<p>We can store the data into a tibble and convert the lap times to seconds with the code below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.2.0     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.2     ✔ tibble    3.3.1
+✔ lubridate 1.9.5     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>   miami_2024 <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">position    =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">driver      =</span> <span class="fu">c</span>(<span class="st">"Oscar Piastri"</span>, <span class="st">"Alexander Albon"</span>, <span class="st">"Sergio Perez"</span>,</span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Carlos Sainz"</span>, <span class="st">"Lando Norris"</span>, <span class="st">"Charles Leclerc"</span>,</span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Lewis Hamilton"</span>, <span class="st">"Max Verstappen"</span>, <span class="st">"Lance Stroll"</span>,</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Yuki Tsunoda"</span>, <span class="st">"Fernando Alonso"</span>, <span class="st">"Kevin Magnussen"</span>,</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"George Russell"</span>, <span class="st">"Nico Hulkenberg"</span>, <span class="st">"Zhou Guanyu"</span>,</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Esteban Ocon"</span>, <span class="st">"Pierre Gasly"</span>, <span class="st">"Valtteri Bottas"</span>,</span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Daniel Ricciardo"</span>, <span class="st">"Logan Sargeant"</span>),</span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">team        =</span> <span class="fu">c</span>(<span class="st">"McLaren Mercedes"</span>, <span class="st">"Williams Mercedes"</span>, <span class="st">"Red Bull Racing"</span>,</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Ferrari"</span>, <span class="st">"McLaren Mercedes"</span>, <span class="st">"Ferrari"</span>,</span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Mercedes"</span>, <span class="st">"Red Bull Racing"</span>, <span class="st">"Aston Martin"</span>,</span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"RB Honda RBPT"</span>, <span class="st">"Aston Martin"</span>, <span class="st">"Haas Ferrari"</span>,</span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Mercedes"</span>, <span class="st">"Haas Ferrari"</span>, <span class="st">"Kick Sauber"</span>,</span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Alpine Renault"</span>, <span class="st">"Alpine Renault"</span>, <span class="st">"Kick Sauber"</span>,</span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"RB Honda RBPT"</span>, <span class="st">"Williams Mercedes"</span>),</span>
+<span id="cb71-17"><a href="#cb71-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">fastest_lap =</span> <span class="fu">c</span>(<span class="st">"1:30.634"</span>, <span class="st">"1:30.849"</span>, <span class="st">"1:30.855"</span>, <span class="st">"1:30.928"</span>, <span class="st">"1:30.980"</span>,</span>
+<span id="cb71-18"><a href="#cb71-18" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"1:31.084"</span>, <span class="st">"1:31.233"</span>, <span class="st">"1:31.261"</span>, <span class="st">"1:31.588"</span>, <span class="st">"1:31.682"</span>,</span>
+<span id="cb71-19"><a href="#cb71-19" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"1:31.727"</span>, <span class="st">"1:31.774"</span>, <span class="st">"1:31.921"</span>, <span class="st">"1:31.941"</span>, <span class="st">"1:31.991"</span>,</span>
+<span id="cb71-20"><a href="#cb71-20" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"1:32.037"</span>, <span class="st">"1:32.055"</span>, <span class="st">"1:32.098"</span>, <span class="st">"1:32.122"</span>, <span class="st">"1:33.452"</span>),</span>
+<span id="cb71-21"><a href="#cb71-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">lap_seconds =</span> <span class="fu">c</span>(<span class="fl">90.634</span>, <span class="fl">90.849</span>, <span class="fl">90.855</span>, <span class="fl">90.928</span>, <span class="fl">90.980</span>,</span>
+<span id="cb71-22"><a href="#cb71-22" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">91.084</span>, <span class="fl">91.233</span>, <span class="fl">91.261</span>, <span class="fl">91.588</span>, <span class="fl">91.682</span>,</span>
+<span id="cb71-23"><a href="#cb71-23" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">91.727</span>, <span class="fl">91.774</span>, <span class="fl">91.921</span>, <span class="fl">91.941</span>, <span class="fl">91.991</span>,</span>
+<span id="cb71-24"><a href="#cb71-24" aria-hidden="true" tabindex="-1"></a>                     <span class="fl">92.037</span>, <span class="fl">92.055</span>, <span class="fl">92.098</span>, <span class="fl">92.122</span>, <span class="fl">93.452</span>)</span>
+<span id="cb71-25"><a href="#cb71-25" aria-hidden="true" tabindex="-1"></a>   )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p>What is the sample mean and sample standard deviation?</p>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The sample mean is 91.611 seconds (1:31.611) and the sample standard deviation is 0.656 seconds. Since the true population standard deviation is unknown, we will use the t-distribution to construct confidence intervals.</em></p></details></li>
+</ol>
+<p>The sample size is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>   (n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(miami_2024))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+<p>The mean:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>   (xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(miami_2024<span class="sc">$</span>lap_seconds))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91.6106</code></pre>
+</div>
+</div>
+<p>and the Standard Deviation</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>   (s <span class="ot">&lt;-</span> <span class="fu">sd</span>(miami_2024<span class="sc">$</span>lap_seconds))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6559704</code></pre>
+</div>
+</div>
+
+<ol start="2" type="1">
+<li><p>Construct a <strong>90%</strong> and a <strong>95%</strong> confidence interval for the true mean fastest lap time at the Miami circuit. Use the <code>t.test()</code> function to verify your results.</p>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The 90% confidence interval is [1:31.357, 1:31.864] and the 95% confidence interval is [1:31.304, 1:31.918]. Since <span class="math inline">\(n = 20\)</span>, we use the t-distribution with <span class="math inline">\(df = n - 1 = 19\)</span> degrees of freedom.</em></p>
+<p><em>The standard error is:</em></p></details></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>   (se <span class="ot">&lt;-</span> s <span class="sc">/</span> <span class="fu">sqrt</span>(n))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1466794</code></pre>
+</div>
+</div>
+<p><em>For the 90% CI (<span class="math inline">\(\alpha = 0.10\)</span>), <span class="math inline">\(t_{0.05, \, 19} \approx 1.729\)</span>:</em></p>
+<p>The lower bound is:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>   (ll90 <span class="ot">&lt;-</span> xbar <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">19</span>) <span class="sc">*</span> se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91.35697</code></pre>
+</div>
+</div>
+<p>and the upper:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>   (ul90 <span class="ot">&lt;-</span> xbar <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">19</span>) <span class="sc">*</span> se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91.86423</code></pre>
+</div>
+</div>
+<p><em>For the 95% CI (<span class="math inline">\(\alpha = 0.05\)</span>), <span class="math inline">\(t_{0.025, \, 19} \approx 2.093\)</span>:</em></p>
+<p>The lower:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>   (ll95 <span class="ot">&lt;-</span> xbar <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">19</span>) <span class="sc">*</span> se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91.3036</code></pre>
+</div>
+</div>
+<p>The upper:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>   (ul95 <span class="ot">&lt;-</span> xbar <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">19</span>) <span class="sc">*</span> se)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 91.9176</code></pre>
+</div>
+</div>
+<p><em>We can verify using <code>t.test()</code>:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(miami_2024<span class="sc">$</span>lap_seconds, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  miami_2024$lap_seconds
+t = 624.56, df = 19, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 91.3036 91.9176
+sample estimates:
+mean of x 
+  91.6106 </code></pre>
+</div>
+</div>
+
+<hr>
+<ol start="3" type="1">
+<li><p>Logan Sargeant’s fastest lap of 1:33.452 (93.452 sec) is noticeably slower than the rest of the field. Remove his lap time from the data and recalculate the 95% confidence interval. How does removing this outlier affect the interval, and what does this illustrate about the sensitivity of confidence intervals to extreme values?</p>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>Without Sargeant’s lap time, the 95% CI narrows to approximately [91.189, 91.630], with a new mean of 91.409 seconds. The interval shifts downward and becomes substantially narrower — the margin of error drops because the sample standard deviation falls sharply once the outlier is removed. This illustrates that confidence intervals are sensitive to extreme observations, particularly in small samples. This is also a reminder of why removing data points should only be done with a clear justification — in this case, Sargeant set his fastest lap on lap 15 during an early pit phase, making it a genuinely unrepresentative time.</em></p></details></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>miami_no_sar <span class="ot">&lt;-</span> miami_2024 <span class="sc">|&gt;</span> <span class="fu">filter</span>(driver <span class="sc">!=</span> <span class="st">"Logan Sargeant"</span>)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">t.test</span>(miami_no_sar<span class="sc">$</span>lap_seconds, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  miami_no_sar$lap_seconds
+t = 788.53, df = 18, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 91.26986 91.75751
+sample estimates:
+mean of x 
+ 91.51368 </code></pre>
+</div>
+</div>
+
 
 
 </section>
